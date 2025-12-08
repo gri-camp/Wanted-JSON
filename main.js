@@ -3,6 +3,7 @@ import Components from "./service/Components.js";
 // consts:
 import {
   API_CONSTS,
+  AUTH_FORM_LIST,
   DOCUMENTATION_LIST,
   ENTITIES_LIST,
   EXAMPLES_LIST,
@@ -14,6 +15,7 @@ import {
 import { draw, getHTMLFromList } from "./helpers/helpers.js";
 // service classes:
 import Api from "./service/Api.js";
+import { AuthForm } from "./service/AuthForm.js";
 import { Menu } from "./service/Menu.js";
 import { Observer } from "./service/Observer.js";
 import { Request } from "./service/Request.js";
@@ -25,8 +27,9 @@ try {
   const EXAMPLES = document.querySelector("#examples ol");
   const DOCUMENTATION = document.querySelector("#documentation ul");
   const FOOTER = document.querySelector(".footer");
+  const AUTH_FORM = document.querySelector("#authForm");
 
-  // Отрисовка главного меню:
+  // !Отрисовка главного меню:
   new Menu({ list: MENU_LIST, Component: Components.MENU });
 
   // !Содержимое секции 'FEATURES':
@@ -69,14 +72,22 @@ try {
     document.querySelectorAll(".request-card")
   );
 
+  // !Отрисовка формы авторизации:
+  new AuthForm({
+    container: AUTH_FORM,
+    component: Components.AUTH_FORM,
+    elements: AUTH_FORM_LIST,
+    // target: 'signIn'
+  });
+
   // ! getEntities -----------
-  (async function (endPoint, qs) {
-    let res = await Api.getEntities(endPoint, qs);
-    console.log(res);
-  })(
-    API_CONSTS.ATHLETES,
-    "select=fullName,zodiacSign,instagramFollowers,annualSalary&sort=annualSalary:desc&limit=7&page=5"
-  );
+  // (async function (endPoint, qs) {
+  //   let res = await Api.getEntities(endPoint, qs);
+  //   console.log(res);
+  // })(
+  //   API_CONSTS.ATHLETES,
+  //   "select=fullName,zodiacSign,instagramFollowers,annualSalary&sort=annualSalary:desc&limit=7&page=5"
+  // );
 
   // ! getSingleEntity -----------
   // (async function (endPoint, id) {

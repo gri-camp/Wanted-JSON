@@ -24,7 +24,6 @@ class Components {
     </nav>
         `;
   }
-
   REQUEST_CARD_MAIN_PAGE = (
     { id, title, method, url, cls = "" },
     host,
@@ -292,6 +291,14 @@ class Components {
         </address>
       </a>
     `;
+  }
+  AUTH_FORM({ type, placeholder, name, errorMsg, value, regExp }, submitValue) {
+    return `
+      <p>
+        <input type='${type}' name="${name}" placeholder="${placeholder}" ${
+        type === "submit" ? `value='${submitValue}' disabled readonly` : ""}/>
+        <span class="auth-form-error">${errorMsg}</span>
+      </p>`;
   }
 }
 

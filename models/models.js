@@ -361,8 +361,40 @@ const POST_REQUIRED_FIELDS = {
   ],
 };
 
+const AUTH_FORM_LIST = [
+  {
+    type: "text",
+    placeholder: "имя пользователя:",
+    name: "login",
+    errorMsg: "логин включает латинские буквы, цифры, знаки: '--', '__'",
+    regExp: /^[A-Z][A-Z0-9-_]{1,20}$/i,
+  },
+  {
+    type: "password",
+    placeholder: "пароль:",
+    name: "pass",
+    errorMsg: "пароль включает латинские буквы, цифры, знаки: '--', '__'",
+    regExp: /^[A-Z0-9_-]{8,20}$/i,
+  },
+  {
+    type: "password",
+    placeholder: "подтвердить пароль:",
+    name: "passСonf",
+    errorMsg: "пароль включает латинские буквы, цифры, знаки: '--', '__'",
+    regExp: /^[A-Z0-9_-]{8,20}$/i,
+  },
+  {
+    type: "submit",
+    placeholder: null,
+    name: "submit",
+    errorMsg: null,
+    regExp: null,
+  },
+];
+
 export {
   API_CONSTS,
+  AUTH_FORM_LIST,
   DOCUMENTATION_LIST,
   ENTITIES_LIST,
   EXAMPLES_LIST,

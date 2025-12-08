@@ -67,7 +67,8 @@ p {
 }
 
 dfn,
-em, address {
+em,
+address {
   font-style: normal;
 }
 
@@ -87,11 +88,10 @@ ol {
 
 address {
   letter-spacing: inherit;
-	text-transform: none;
-	font-size: inherit;
+  text-transform: none;
+  font-size: inherit;
 }
-	
-	
+
 a {
   text-decoration: none;
   color: inherit;
@@ -115,4 +115,58 @@ abbr {
 
 cite {
   padding: var(--app-sm-spacing);
+}
+
+form {
+  padding: var(--app-lg-spacing);
+}
+
+input {
+  outline: none;
+  padding: var(--app-lg-spacing);
+  display: inline-block;
+  border: none;
+  color: inherit;
+  background: none;
+  width: 100%;
+  box-shadow: var(--app-features-card-shadow);
+  border-radius: var(--app-md-spacing);
+  font-size: inherit;
+  letter-spacing: inherit;
+}
+
+input:focus {
+  outline: 2px solid var(--app-success-color);
+  box-shadow: none;
+}
+
+input::placeholder {
+  color: inherit;
+  opacity: 0.7;
+  font-size: 0.92em;
+  transition: 0.25s all linear;
+}
+
+input:focus::placeholder {
+  opacity: 0;
+  transform: scale(0);
+}
+
+input[type="submit"] {
+  cursor: pointer;
+  text-transform: uppercase;
+  background-color: var(--app-success-color);
+  box-shadow: none;
+  color: var(--app-white-color);
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+input[type="submit"]:disabled {
+  opacity: 0.7;
+  cursor: none;
+}
+
+input[type="submit"]:hover {
+  color: var(--app-warning-color);
 }
