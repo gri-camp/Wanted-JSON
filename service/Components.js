@@ -10,7 +10,7 @@ class Components {
   //! компоненты main.html
   MENU(list) {
     return `
-      <nav class='main-nav'>
+      <nav class='header-nav'>
       <ul class="header-menu">
         ${getHTMLFromList(
           list,

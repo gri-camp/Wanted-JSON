@@ -11,7 +11,7 @@ class AuthForm {
       signUp: "регистрация",
     };
     if (!((target === "signUp") | (target === "signIn")))
-      throw new Error("Incorrect target parameter value...");
+      throw new Error("incorrect target parameter value...");
     this.target = target;
     this.form = null;
     this.submitBtn = null;
@@ -23,7 +23,8 @@ class AuthForm {
   template(container, component, elements) {
     this.render(container, component, elements)
       .addInputListener()
-      .addSubmitListener();
+      .addSubmitListener()
+      .addClickListener();
   }
 
   render(container, component, elements) {
@@ -37,12 +38,6 @@ class AuthForm {
     this.form = container.querySelector(".auth-form");
     this.submitBtn = this.form.submit;
     return this;
-  }
-
-  getInitState(elements) {
-    return elements
-      .slice(0, -1)
-      .reduce((acc, el) => ({ ...acc, [el.name]: "" }), {});
   }
 
   addInputListenerHandler = (e) => {
@@ -81,18 +76,28 @@ class AuthForm {
       this.submitBtn.nextElementSibling.classList.remove("active");
     }
 
-    const body = JSON.stringify(this.state);
+    const json = JSON.stringify(this.state);
 
     new Promise((res) => {
       this.submitBtn.value = "Загрузка...";
-      console.log(body);
       setTimeout(() => {
-        this.reset();
+        res(json);
       }, 1500);
-    });
-
-    setTimeout(() => this.reset(), 1500);
+    }).then((json) => this.reset());
   };
+
+  addSubmitListener() {
+    this.form?.addEventListener("submit", this.addSubmitListenerHandler);
+    return this;
+  }
+
+  addClickListenerHandler = (e) => {
+    if(!e.target.closest('.auth-form')) this.container.classList.toggle('active')
+  };
+
+  addClickListener() {
+    this.container.addEventListener("click", this.addClickListenerHandler);
+  }
 
   reset() {
     this.form.reset();
@@ -101,9 +106,10 @@ class AuthForm {
     this.submitBtn.value = this.submitValues[this.target];
   }
 
-  addSubmitListener() {
-    this.form?.addEventListener("submit", this.addSubmitListenerHandler);
-    return this.getInitState;
+  getInitState(elements) {
+    return elements
+      .slice(0, -1)
+      .reduce((acc, el) => ({ ...acc, [el.name]: "" }), {});
   }
 }
 

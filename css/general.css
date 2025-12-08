@@ -131,7 +131,7 @@ input {
   width: 100%;
   box-shadow: var(--app-features-card-shadow);
   border-radius: var(--app-md-spacing);
-  font-size: inherit;
+  font-size: 1em;
   letter-spacing: inherit;
 }
 

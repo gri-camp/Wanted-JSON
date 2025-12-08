@@ -1,12 +1,13 @@
 .header 
 	display: flex
-	align-items: center
-	justify-content: space-between	
+	align-items: center	
 	background: $app-features-card-bg
 	padding: $app-md-spacing
 	border-radius: $app-md-spacing
 	position: relative
 	margin: 0 0 1.5rem 0
+	gap: 1rem
+	
 
 	&-logo 
 		padding: $app-sm-spacing
@@ -22,10 +23,13 @@
 		.material-icons-round 
 			font-size: 2rem
 
+	&-nav
+		margin-left: auto		
+
 	&-menu 
 		display: flex
 		list-style-type: none
-		margin: 0px
+		
 
 		li
 			text-transform: uppercase

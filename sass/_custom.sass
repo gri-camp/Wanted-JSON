@@ -58,10 +58,26 @@
 	line-height: 140%	
 	margin: $app-md-spacing
 
-/* Информационные секции на странице docs.html */
+/* Информационные секции  страниц  */
 
 .app-section 
-	margin-bottom: 3.5rem	
+	margin-bottom: 3.5rem
+
+/* Всплывающие секции страниц  */
+
+.popup-section
+	position: fixed
+	width: 100%
+	height: 100vh
+	top: 0px
+	left: 0px
+	display: flex
+	background: rgba(45, 48, 45, .97)
+	backdrop-filter: blur(1.6px)
+	display: none
+
+	&.active
+		display: flex
 
 
 /* контейнер для иконок */
@@ -76,20 +92,21 @@
 
 .burger 
 	display: none
+	margin-left: auto
 
-.burger .material-icons-round 
+.registration
+	cursor: pointer	
+
+.burger .material-icons-round, .registration .material-icons-round
 	font-size: 2rem
 
 
 /* Секция кнопки назад */
 
 .back
-
-	margin: $app-md-spacing 0px $app-xl-spacing 0px
-	
+	margin: $app-md-spacing 0px $app-xl-spacing 0px	
 	a 
 		width: max-content
-
 		&:hover 			
 			transform: scale(1.02)
 			color: $app-warning-color

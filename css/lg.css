@@ -77,4 +77,8 @@
   .request-card .icon-box {
     padding: var(--app-md-spacing);
   }
+
+  .auth-form {
+    width: 80%;
+  }
 }

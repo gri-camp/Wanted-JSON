@@ -15,7 +15,7 @@
     text-align: center;
   }
 
-  .main-nav {
+  .header-nav {
     min-width: 40%;
   }
 
@@ -64,5 +64,9 @@
 
   .section-text {
     margin: var(--app-md-spacing) 0px;
+  }
+
+  .auth-form {
+    width: 95%;
   }
 }

@@ -27,7 +27,10 @@ try {
   const EXAMPLES = document.querySelector("#examples ol");
   const DOCUMENTATION = document.querySelector("#documentation ul");
   const FOOTER = document.querySelector(".footer");
-  const AUTH_FORM = document.querySelector("#authForm");
+  const POPUP = document.querySelector("#popup");
+  const REGISTRATION = document.querySelector(".registration");
+
+  REGISTRATION.onclick = () => POPUP.classList.toggle('active')
 
   // !Отрисовка главного меню:
   new Menu({ list: MENU_LIST, Component: Components.MENU });
@@ -74,7 +77,7 @@ try {
 
   // !Отрисовка формы авторизации:
   new AuthForm({
-    container: AUTH_FORM,
+    container: POPUP,
     component: Components.AUTH_FORM,
     elements: AUTH_FORM_LIST,
     // target: 'signIn'
