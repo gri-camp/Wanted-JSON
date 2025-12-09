@@ -292,10 +292,10 @@ class Components {
       </a>
     `;
   }
-  AUTH_FORM({ type, placeholder, name, errorMsg, value, regExp }, submitValue) {
+  AUTH_FORM({ type, placeholder, name, errorMsg, value, regExp }, submitValue, index) {
     return `
       <p>
-        <input type='${type}' name="${name}" placeholder="${placeholder}" ${
+        <input type='${type}' ${!index && "autofocus"} name="${name}" placeholder="${placeholder}" ${
         type === "submit" ? `value='${submitValue}' disabled readonly` : ""}/>
         <span class="auth-form-error">${errorMsg}</span>
       </p>`;

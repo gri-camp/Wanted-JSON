@@ -49,7 +49,7 @@
   margin-left: auto;
 }
 
-.registration {
+.registration, .authorization {
   cursor: pointer;
   border-radius: 50%;
   box-shadow: var(--app-light-card-shadow);

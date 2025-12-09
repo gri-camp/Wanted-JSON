@@ -58,8 +58,7 @@
 }
 
 .li > a:hover {
-  color: var(--app-success-color);
-  transform: scale(1.01);
+  color: var(--app-danger-color);
 }
 
 /* параграфы секций */
@@ -146,10 +145,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
+  box-shadow: var(--app-light-card-shadow);
 }
 
 .upwardBtn .material-icons-round {
-  font-size: 2rem;
+  font-size: 2em;
 }
 
 .upwardBtn.active {

@@ -32,7 +32,7 @@ class AuthForm {
       this.target === "signUp"
         ? elements
         : elements.filter((el) => el.name !== "passСonf"),
-      (el) => component(el, this.submitValues[this.target])
+      (el, index) => component(el, this.submitValues[this.target], index)
     );
     draw(container, `<form class='auth-form'>${html}</form>`);
     this.form = container.querySelector(".auth-form");
