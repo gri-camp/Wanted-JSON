@@ -11,7 +11,7 @@
     display: flex;
   }
 
-  nav {
+  .header-nav {
     position: absolute;
     top: 0%;
     right: 0px;
@@ -23,7 +23,7 @@
     border-radius: 0px var(--app-md-spacing) var(--app-md-spacing) 0px;
   }
 
-  nav.active {
+  .header-nav.active {
     opacity: 1;
     z-index: 1;
   }
@@ -31,6 +31,10 @@
   .header-menu {
     flex-direction: column;
     padding: 0px;
+  }
+
+  .header-menu .li {
+    font-size: 1.2em;
   }
 
   .header-menu .li::after {
@@ -42,10 +46,6 @@
     margin-top: var(--app-sm-spacing);
     opacity: 0.07;
     border-radius: 2px;
-  }
-
-  .header-menu .li {
-    font-size: 1.2em;
   }
 
   .app-section {

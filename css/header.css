@@ -12,7 +12,6 @@
 .header-logo {
   padding: var(--app-sm-spacing);
   display: flex;
-  font-size: 1.5em;
   align-items: center;
   gap: var(--app-md-spacing);
   color: var(--app-danger-color);
@@ -21,12 +20,17 @@
   cursor: pointer;
 }
 
-.header-logo .material-icons-round {
-  font-size: 2rem;
+.header .material-icons-round {
+  font-size: 2em;
 }
 
 .header-nav {
   margin-left: auto;
+}
+
+.header-menu {
+  display: flex;
+  list-style-type: none;
 }
 
 .header-menu li {
@@ -38,4 +42,15 @@
 .menu-link.active {
   font-weight: 700;
   color: var(--app-danger-color);
+}
+
+.burger {
+  display: none;
+  margin-left: auto;
+}
+
+.registration {
+  cursor: pointer;
+  border-radius: 50%;
+  box-shadow: var(--app-light-card-shadow);
 }

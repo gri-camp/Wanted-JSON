@@ -27,7 +27,7 @@
   column-gap: var(--app-sm-spacing);
 }
 
-.material-icons-round {
+.footer .material-icons-round {
   font-size: 1.5em;
   color: var(--app-warning-color);
 }

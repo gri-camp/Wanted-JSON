@@ -82,7 +82,7 @@
   height: 100vh;
   top: 0px;
   left: 0px;
-  display: flex;
+  display: none;
   background: rgba(45, 48, 45, 0.97);
   backdrop-filter: blur(1.6px);
 }
@@ -102,20 +102,6 @@
   width: max-content;
 }
 
-.burger {
-  display: none;
-  margin-left: auto;
-}
-
-.registration {
-  cursor: pointer;
-}
-
-.burger .material-icons-round,
-.registration .material-icons-round {
-  font-size: 2rem;
-}
-
 /* Секция кнопки назад */
 
 .back {
@@ -127,8 +113,7 @@
 }
 
 .back a:hover {
-  transform: scale(1.02);
-  color: var(--app-success-color);
+  color: var(--app-warning-color);
 }
 
 .white-list {

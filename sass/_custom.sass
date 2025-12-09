@@ -71,7 +71,6 @@
 	height: 100vh
 	top: 0px
 	left: 0px
-	display: flex
 	background: rgba(45, 48, 45, .97)
 	backdrop-filter: blur(1.6px)
 	display: none
@@ -90,25 +89,14 @@
 	background: $app-features-card-bg  
 	width: max-content
 
-.burger 
-	display: none
-	margin-left: auto
-
-.registration
-	cursor: pointer	
-
-.burger .material-icons-round, .registration .material-icons-round
-	font-size: 2rem
-
-
 /* Секция кнопки назад */
 
 .back
 	margin: $app-md-spacing 0px $app-xl-spacing 0px	
 	a 
 		width: max-content
+		
 		&:hover 			
-			transform: scale(1.02)
 			color: $app-warning-color
 
 	.material-icons-round 

@@ -19,7 +19,7 @@
     min-width: 40%;
   }
 
-  .main-nav .li {
+  .header-nav .li {
     margin: var(--app-lg-spacing) 0px;
   }
 
