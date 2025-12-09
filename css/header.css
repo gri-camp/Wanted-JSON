@@ -49,8 +49,14 @@
   margin-left: auto;
 }
 
-.registration, .authorization {
+.registration,
+.authorization,
+.home {
   cursor: pointer;
   border-radius: 50%;
   box-shadow: var(--app-light-card-shadow);
+}
+
+.home {
+  margin-left: var(--app-md-spacing);
 }

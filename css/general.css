@@ -54,7 +54,7 @@ code {
   font-family: "FiraCode";
   overflow-y: auto;
   line-height: 140%;
-  max-height: 580px;
+  max-height: 540px;
   color: var(--app-white-color);
 }
 

@@ -370,14 +370,14 @@ const AUTH_FORM_LIST = [
     regExp: /^[A-Z][A-Z0-9-_]{1,20}$/i,
   },
   {
-    type: "password",
+    type: "text",
     placeholder: "пароль:",
     name: "pass",
     errorMsg: "пароль включает латинские буквы, цифры, знаки: '-', '_'",
     regExp: /^[A-Z0-9_-]{8,20}$/i,
   },
   {
-    type: "password",
+    type: "text",
     placeholder: "подтвердить пароль:",
     name: "passСonf",
     errorMsg: "пароль включает латинские буквы, цифры, знаки: '-', '_'",
