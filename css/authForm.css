@@ -5,6 +5,10 @@
   overflow: hidden;
 }
 
+.auth-form input {
+  font-size: 1.1em;
+}
+
 .auth-form-error {
   margin: var(--app-md-spacing) 0px var(--app-md-spacing) 0px;
   display: inline-block;
@@ -18,6 +22,6 @@
 }
 
 .auth-form-error.active {
-  opacity: 0.88;
+  opacity: 0.92;
   font-weight: 500;
 }
