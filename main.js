@@ -2,7 +2,6 @@
 import Components from "./service/Components.js";
 // consts:
 import {
-  API_CONSTS,
   AUTH_FORM_LIST,
   DOCUMENTATION_LIST,
   ENTITIES_LIST,
@@ -14,7 +13,6 @@ import {
 // utils:
 import { draw, getHTMLFromList } from "./helpers/helpers.js";
 // service classes:
-import Api from "./service/Api.js";
 import { AuthForm } from "./service/AuthForm.js";
 import { Menu } from "./service/Menu.js";
 import { Observer } from "./service/Observer.js";
@@ -27,10 +25,13 @@ try {
   const EXAMPLES = document.querySelector("#examples ol");
   const DOCUMENTATION = document.querySelector("#documentation ul");
   const FOOTER = document.querySelector(".footer");
-  const POPUP = document.querySelector("#popup");
-  const REGISTRATION = document.querySelector(".registration");
+  const REGISTRATION = document.querySelector("#registration");
+  const AUTHORIZATION = document.querySelector("#authorization");
+  const REGISTRATION_ICON = document.querySelector(".registration");
+  const AUTHORIZATION_ICON = document.querySelector(".authorization");
 
-  REGISTRATION.onclick = () => POPUP.classList.toggle('active')
+  REGISTRATION_ICON.onclick = () => REGISTRATION.classList.toggle("active");
+  AUTHORIZATION_ICON.onclick = () => AUTHORIZATION.classList.toggle("active");
 
   // !Отрисовка главного меню:
   new Menu({ list: MENU_LIST, Component: Components.MENU });
@@ -77,10 +78,16 @@ try {
 
   // !Отрисовка формы авторизации:
   new AuthForm({
-    container: POPUP,
+    container: REGISTRATION,
     component: Components.AUTH_FORM,
     elements: AUTH_FORM_LIST,
-    // target: 'signIn'
+  });
+
+  new AuthForm({
+    container: AUTHORIZATION,
+    component: Components.AUTH_FORM,
+    elements: AUTH_FORM_LIST.filter((el) => el.name !== "passСonf"),
+    target: "signIn",
   });
 
   // ! getEntities -----------

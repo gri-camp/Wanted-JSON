@@ -6,13 +6,13 @@ class AuthForm {
     this.container = container;
     this.component = component;
     this.elements = elements;
+    this.target = target;
     this.submitValues = {
       signIn: "войти",
       signUp: "регистрация",
     };
-    if (!((target === "signUp") | (target === "signIn")))
-      throw new Error("incorrect target parameter value...");
-    this.target = target;
+    if (!((this.target === "signUp") | (this.target === "signIn")))
+      throw new Error("incorrect value of 'target' parameter...");
     this.form = null;
     this.submitBtn = null;
     this.state = this.getInitState(this.elements);
@@ -28,11 +28,8 @@ class AuthForm {
   }
 
   render(container, component, elements) {
-    const html = getHTMLFromList(
-      this.target === "signUp"
-        ? elements
-        : elements.filter((el) => el.name !== "passСonf"),
-      (el, index) => component(el, this.submitValues[this.target], index)
+    const html = getHTMLFromList(elements, (el, index) =>
+      component(el, this.submitValues[this.target], index)
     );
     draw(container, `<form class='auth-form'>${html}</form>`);
     this.form = container.querySelector(".auth-form");
@@ -68,7 +65,7 @@ class AuthForm {
   addSubmitListenerHandler = (e) => {
     e.preventDefault();
 
-    if (this.state.pass !== this.state.passСonf) {
+    if (this.state.pass !== this.state.passСonf && this.target !== "signIn") {
       this.submitBtn.nextElementSibling.textContent = "Пароли не совпадают...";
       this.submitBtn.nextElementSibling.classList.add("active");
       return;
@@ -92,7 +89,8 @@ class AuthForm {
   }
 
   addClickListenerHandler = (e) => {
-    if(!e.target.closest('.auth-form')) this.container.classList.toggle('active')
+    if (!e.target.closest(".auth-form"))
+      this.container.classList.toggle("active");
   };
 
   addClickListener() {
