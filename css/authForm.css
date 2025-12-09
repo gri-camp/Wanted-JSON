@@ -1,6 +1,7 @@
 .auth-form {
   width: 45%;
   margin: auto;
+  color: var(--app-white-color);
 }
 
 .auth-form-error {
@@ -8,7 +9,7 @@
   display: inline-block;
   width: 100%;
   color: var(--app-danger-color);
-  padding-left: 0.5rem;
+  padding-left: 0.25rem;
   opacity: 0;
   font-size: 0.8em;
   text-align: center;

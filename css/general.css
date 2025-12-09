@@ -157,7 +157,6 @@ input[type="submit"] {
   text-transform: uppercase;
   background-color: var(--app-success-color);
   box-shadow: none;
-  color: var(--app-white-color);
   font-weight: 700;
   letter-spacing: 1px;
 }
@@ -165,6 +164,7 @@ input[type="submit"] {
 input[type="submit"]:disabled {
   opacity: 0.7;
   cursor: none;
+  background-color: none;
 }
 
 input[type="submit"]:hover {

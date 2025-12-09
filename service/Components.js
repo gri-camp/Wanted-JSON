@@ -227,7 +227,7 @@ class Components {
     return `
         <p class='section-text'>
           Получение лимитированного количеcтва сущностей осуществляется
-          GET-запросом с передачей query-параметра: <strong>limit</strong>:
+          GET-запросом с передачей query-параметра <strong>limit</strong>:
         </p>
         <div>
             <code class='request-card-url doca'>${URLS.getLimitedEntities(
