@@ -1,7 +1,7 @@
 .header {
   display: flex;
   align-items: center;
-  background: var(--app-advantages-card-bg);
+  background: var(--app-features-card-bg);
   padding: var(--app-md-spacing);
   border-radius: var(--app-md-spacing);
   position: relative;
@@ -33,10 +33,10 @@
   list-style-type: none;
 }
 
-.header-menu li {
-  text-transform: uppercase;
+.header-menu li {  
   font-family: inherit;
   letter-spacing: 1px;
+  font-variant: small-caps;
 }
 
 .menu-link.active {
@@ -55,6 +55,7 @@
   cursor: pointer;
   border-radius: 50%;
   box-shadow: var(--app-light-card-shadow);
+  padding: var(--app-sm-spacing);
 }
 
 .home {

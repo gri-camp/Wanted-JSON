@@ -147,6 +147,7 @@
   justify-content: center;
   cursor: pointer;
   box-shadow: var(--app-light-card-shadow);
+  user-select: none;
 }
 
 .upwardBtn .material-icons-round {

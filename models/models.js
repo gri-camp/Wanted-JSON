@@ -235,7 +235,7 @@ const MENU_LIST = [
   },
   {
     href: `customers`,
-    text: `пользователям`,
+    text: `партнерам`,
   },
 ];
 

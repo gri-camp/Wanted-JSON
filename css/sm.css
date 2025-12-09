@@ -19,10 +19,6 @@
     min-width: 40%;
   }
 
-  .header-nav .li {
-    margin: var(--app-lg-spacing) 0px;
-  }
-
   .features-card {
     width: 100%;
     height: auto;

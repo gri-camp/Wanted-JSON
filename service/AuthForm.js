@@ -91,6 +91,8 @@ class AuthForm {
   addClickListenerHandler = (e) => {
     if (!e.target.closest(".auth-form"))
       this.container.classList.toggle("active");
+      this.submitBtn.nextElementSibling.classList.toggle('active');
+      this.submitBtn.nextElementSibling.textContent = '';
   };
 
   addClickListener() {
@@ -102,6 +104,8 @@ class AuthForm {
     this.state = this.getInitState(this.elements);
     this.submitBtn.disabled = true;
     this.submitBtn.value = this.submitValues[this.target];
+    this.submitBtn.nextElementSibling.classList.toggle('active');
+    this.submitBtn.nextElementSibling.textContent = 'Данные успешно отправлены!';
   }
 
   getInitState(elements) {
