@@ -2,6 +2,7 @@ const API_CONSTS = {
   HOST: "185.104.248.25:3000",
   BOOKS: "books",
   ATHLETES: "athletes",
+  VIDEOGAMES: "videoGames",
   SEARCH: "search",
 };
 

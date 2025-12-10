@@ -17,7 +17,7 @@ class Components {
           ({ href, text }) =>
             `<li class="li"><a ${
               href === "customers" ? `href='./${href}.html'` : `id="${href}"`
-            } class="menu-link">${text}</a></li>`
+            } class="menu-link" rel="noopener noreferrer">${text}</a></li>`
         )}
         
       </ul>
@@ -64,7 +64,7 @@ class Components {
     </article>
     `;
   ENTITIES_LINK = ({ href, endpoint, icon }) => `
-    <a class="entities-card" href="${href}">
+    <a class="entities-card" href="${href}" rel="noopener noreferrer">
         <button class="btn btn-entity">
         ${icon}
         ${endpoint} 
@@ -78,12 +78,12 @@ class Components {
     `;
   EXAMPLES_LINK = ({ href, text }) => `
     <li class="request-card-url doca">
-        <a href="${href}">${text}</a>
+        <a href="${href}" rel="noopener noreferrer">${text}</a>
     </li>
     `;
   DOCUMENTATION_LINK = ({ href, text }) => `
     <li class="request-card-url doca">
-        <a href="${href}">
+        <a href="${href}" rel="noopener noreferrer">
             ${text}
         </a>
     </li>
@@ -283,7 +283,7 @@ class Components {
   }
   FOOTER() {
     return `
-      <a href="mailto:mail@easyjson.ru?body=привет" class="footer-link">
+      <a href="mailto:mail@easyjson.ru?body=привет" class="footer-link" rel="noopener noreferrer">
         <em>поддержка, донаты: </em>
         <address>
           <span class="material-icons-round"> mail_outline </span>
@@ -292,7 +292,7 @@ class Components {
       </a>
     `;
   }
-  AUTH_FORM({ type, placeholder, name, errorMsg, value, regExp }, submitValue, index) {
+  AUTH_FORM({ type, placeholder, name, errorMsg }, submitValue, index) {
     return `
       <p>
         <input type='${type}' ${!index && "autofocus"} name="${name}" placeholder="${placeholder}" 

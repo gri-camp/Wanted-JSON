@@ -2,6 +2,7 @@
 import Components from "./service/Components.js";
 // consts:
 import {
+  API_CONSTS,
   AUTH_FORM_LIST,
   DOCUMENTATION_LIST,
   ENTITIES_LIST,
@@ -13,6 +14,7 @@ import {
 // utils:
 import { draw, getHTMLFromList } from "./helpers/helpers.js";
 // service classes:
+import Api from "./service/Api.js";
 import { AuthForm } from "./service/AuthForm.js";
 import { Menu } from "./service/Menu.js";
 import { Observer } from "./service/Observer.js";
@@ -91,19 +93,16 @@ try {
   });
 
   // ! getEntities -----------
-  // (async function (endPoint, qs) {
-  //   let res = await Api.getEntities(endPoint, qs);
-  //   console.log(res);
-  // })(
-  //   API_CONSTS.ATHLETES,
-  //   "select=fullName,zodiacSign,instagramFollowers,annualSalary&sort=annualSalary:desc&limit=7&page=5"
-  // );
+  (async function (endPoint, qs) {
+    let res = await Api.getEntities(endPoint, qs);
+    console.log(res);
+  })(API_CONSTS.VIDEOGAMES);
 
   // ! getSingleEntity -----------
   // (async function (endPoint, id) {
   //   let res = await Api.getSingleEntity(endPoint, id);
   //   console.log(res);
-  // })(API_CONSTS.BOOKS, "300");
+  // })(API_CONSTS.VIDEOGAMES, "13");
 
   // ! getSearchedEntity -----------
   // (async function (endPoint, q) {
@@ -112,16 +111,21 @@ try {
   // })(API_CONSTS.BOOKS, "преступление");
 
   // ! addEntity -----------
-  // (async function (endPoint, body) {
-  //   let res = await Api.addEntity(endPoint, body);
-  //   console.log(res);
-  // })(API_CONSTS.ATHLETES, {fullNme: 'foo', sport: 'foo2', country: 'foo3', age: 25});
+  (async function (endPoint, body) {
+    let res = await Api.addEntity(endPoint, body);
+    console.log(res);
+  })(API_CONSTS.ATHLETES, {
+    title: "foo",
+    author: "adventure",
+    hui2: "12+",
+    hui: 30.25,
+  });
 
   //  ! deleteEntity-----------
   // (async function (endPoint, id) {
   //   let res = await Api.deleteEntity(endPoint, id);
   //   console.log(res);
-  // })(API_CONSTS.BOOKS, "45");
+  // })(API_CONSTS.VIDEOGAMES, 16);
 } catch (error) {
   console.warn(error.message, error.name);
 }
