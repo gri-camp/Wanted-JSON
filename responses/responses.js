@@ -158,7 +158,8 @@ const Responses = {
     pageCount: 1110, 
     description: "Герой романа 'Гений', талантливый художник Юджин Витла, во многом сродни своему создателю – американскому писателю Теодору Драйзеру. Их сближают не только биографические совпадения, но и эстетические взгляды.",
     tags: <span class='purple'>[</span>"Американская классика", "Зарубежная классика", "Судьба человека"<span class='purple'>]</span>,                        
-    originalLanguage: "английский",        
+    originalLanguage: "английский",
+    ...        
 <strong class='purple'>}</strong>
 </code>`,
     deleteEntity: `
