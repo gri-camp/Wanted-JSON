@@ -211,6 +211,10 @@ const EXAMPLES_LIST = [
     href: `http://${API_CONSTS.HOST}/${API_CONSTS.BOOKS}?limit=5&page=3`,
     text: `<div class="icon-box"><span class="material-icons-round">cloud</span></div> http://hostname/${API_CONSTS.BOOKS}?limit=5&page=3`,
   },
+  {
+    href: `http://${API_CONSTS.HOST}/${API_CONSTS.VIDEOGAMES}?limit=5`,
+    text: `<div class="icon-box"><span class="material-icons-round">cloud</span></div> http://hostname/${API_CONSTS.VIDEOGAMES}?limit=5`,
+  },
 ];
 
 const MENU_LIST = [
@@ -367,21 +371,24 @@ const AUTH_FORM_LIST = [
     type: "text",
     placeholder: "имя пользователя:",
     name: "login",
-    errorMsg: "логин должен начинаться с буквы и включать прописные и строчные латинские буквы, цифры, знаки: '-', '_' ",
+    errorMsg:
+      "логин должен начинаться с буквы и включать прописные и строчные латинские буквы, цифры, знаки: '-', '_' ",
     regExp: /^[A-Z][A-Z0-9-_]{1,20}$/i,
   },
   {
     type: "text",
     placeholder: "пароль:",
     name: "pass",
-    errorMsg: "пароль должен включать прописные и строчные латинские буквы, цифры, знаки: '-', '_'",
+    errorMsg:
+      "пароль должен включать прописные и строчные латинские буквы, цифры, знаки: '-', '_'",
     regExp: /^[A-Z0-9_-]{8,20}$/i,
   },
   {
     type: "text",
     placeholder: "подтвердить пароль:",
     name: "passСonf",
-    errorMsg: "пароль должен включать прописные и строчные латинские буквы, цифры, знаки: '-', '_'",
+    errorMsg:
+      "пароль должен включать прописные и строчные латинские буквы, цифры, знаки: '-', '_'",
     regExp: /^[A-Z0-9_-]{8,20}$/i,
   },
   {
