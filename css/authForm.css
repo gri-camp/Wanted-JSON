@@ -22,8 +22,7 @@
 }
 
 .auth-form-error.active {
-  opacity: 0.92;
-  font-weight: 500;
+  opacity: 0.92; 
 }
 
 .auth-form input {
