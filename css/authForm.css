@@ -10,14 +10,15 @@
 }
 
 .auth-form-error {
-  margin: var(--app-md-spacing) 0px var(--app-md-spacing) 0px;
+  margin: var(--app-md-spacing) 0px;
   display: inline-block;
   width: 100%;
   color: var(--app-danger-color);
-  padding-left: 0.25rem;
   opacity: 0;
   font-size: 0.8em;
   text-align: center;
+  min-height: 45px;
+  font-weight: 500;
 }
 
 .auth-form-error.active {
