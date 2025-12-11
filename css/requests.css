@@ -7,7 +7,7 @@
   margin: 0px 0px var(--app-xl-spacing) 0px;
   border-radius: var(--app-md-spacing);
   background: none;
-  box-shadow: var(--app-features-card-shadow);
+  box-shadow: var(--app-danger-shadow);
   height: max-content;
   transform: translateX(-30%);
   opacity: 0;
@@ -49,7 +49,7 @@ h3 {
 
 .request-card-url.doca {
   padding: var(--app-md-spacing);
-  box-shadow: var(--app-features-card-shadow);
+  box-shadow: var(--app-danger-shadow);
   border-radius: var(--app-sm-spacing);
   display: flex;
 }

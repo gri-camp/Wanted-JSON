@@ -22,11 +22,6 @@
     var(--app-darken-color)
   );
 
-  --app-danger-card-bg: linear-gradient(
-    to right top,
-    var(--app-pink-color) 30%,
-    var(--app-danger-color) 75%
-  );
 
   --app-sm-spacing: 0.25rem;
   --app-md-spacing: 0.5rem;
@@ -37,6 +32,6 @@
   --app-light-card-shadow: 0.5px 0.5px 3px var(--app-light-color),
     -0.5px -0.5px 3px var(--app-light-color);
 
-  --app-features-card-shadow: 0.5px 0.5px 3px var(--app-danger-color),
+  --app-danger-shadow: 0.5px 0.5px 3px var(--app-danger-color),
     -0.5px -0.5px 3px var(--app-danger-color);
 }

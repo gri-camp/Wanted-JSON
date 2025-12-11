@@ -117,8 +117,8 @@ try {
   })(API_CONSTS.ATHLETES, {
     title: "foo",
     author: "adventure",
-    hui2: "12+",
-    hui: 30.25,
+    foo: "12+",
+    foo2: 30.25,
   });
 
   //  ! deleteEntity-----------

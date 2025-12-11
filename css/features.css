@@ -1,41 +1,11 @@
-.features-card:nth-of-type(1) {
-  -webkit-transform: translateX(-40%);
-  -ms-transform: translateX(-40%);
-  transform: translateX(-40%);
-}
-.features-card:nth-of-type(2) {
-  -webkit-transform: translateX(-40%);
-  -ms-transform: translateX(-40%);
-  transform: translateX(-40%);
-}
-.features-card:nth-of-type(3) {
-  -webkit-transform: translateX(-40%);
-  -ms-transform: translateX(-40%);
-  transform: translateX(-40%);
-}
-.features-card:nth-of-type(4) {
-  -webkit-transform: translateX(-40%);
-  -ms-transform: translateX(-40%);
-  transform: translateX(-40%);
-}
-.features-card:nth-of-type(5) {
-  -webkit-transform: translateX(-40%);
-  -ms-transform: translateX(-40%);
-  transform: translateX(-40%);
-}
-.features-card:nth-of-type(6) {
-  -webkit-transform: translateX(-40%);
-  -ms-transform: translateX(-40%);
-  transform: translateX(-40%);
-}
-.features-card:nth-of-type(7) {
-  -webkit-transform: translateX(-40%);
-  -ms-transform: translateX(-40%);
-  transform: translateX(-40%);
-}
-.features-card:nth-of-type(8) {
-  -webkit-transform: translateX(-40%);
-  -ms-transform: translateX(-40%);
+.features-card:first-of-type,
+.features-card:nth-of-type(2),
+.features-card:nth-of-type(3),
+.features-card:nth-of-type(4),
+.features-card:nth-of-type(5),
+.features-card:nth-of-type(6),
+.features-card:nth-of-type(7),
+.features-card:last-of-type {
   transform: translateX(-40%);
 }
 
@@ -58,7 +28,7 @@
   height: 275px;
   margin: calc(7% / 6);
   background: var(--app-features-card-bg);
-  box-shadow: var(--app-features-card-shadow);
+  box-shadow: var(--app-danger-shadow);
   opacity: 0;
 }
 
