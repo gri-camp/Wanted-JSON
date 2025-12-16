@@ -3,11 +3,11 @@ import Components from "./service/Components.js";
 // consts:
 import {
   API_CONSTS,
-  FORM_ELEMS_LIST,
   DOCUMENTATION_LIST,
   ENTITIES_LIST,
   EXAMPLES_LIST,
   FEATURES_CARD_LIST,
+  FORM_ELEMS_LIST,
   MENU_LIST,
   REQUEST_CARD_LIST,
 } from "./models/models.js";
@@ -82,22 +82,22 @@ try {
   new Form({
     container: REGISTRATION,
     component: Components.FORM,
-    elements: FORM_ELEMS_LIST,    
+    elements: FORM_ELEMS_LIST,
   });
 
-   // !Отрисовка формы авторизации:
+  // !Отрисовка формы авторизации:
   new Form({
     container: AUTHORIZATION,
     component: Components.FORM,
     elements: FORM_ELEMS_LIST.filter((el) => el.name !== "password2"),
-    formCls: 'auth-form'
+    formCls: "auth-form",
   });
 
   // ! getEntities -----------
   (async function (endPoint, qs) {
     let res = await Api.getEntities(endPoint, qs);
     console.log(res);
-  })(API_CONSTS.VIDEOGAMES, 'foo=bar&bar=foo&vmbr=pdf');
+  })(API_CONSTS.BOOKS, "sort=id:desc&limit=unknown");
 
   // ! getSingleEntity -----------
   // (async function (endPoint, id) {
@@ -130,3 +130,6 @@ try {
 } catch (error) {
   console.warn(error.message, error.name);
 }
+
+
+

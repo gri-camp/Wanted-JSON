@@ -10,9 +10,12 @@ const Errors = {
   getEntitiesQS: `
 <code><strong class='purple'>{</strong> 
     "statusCode": 400,
-    "message": '<span class='danger'>сообщение ошибке...</span>',
-    "timestamp": "2025-11-25T09:02:34.843Z",
-    "path": "<span class='danger'>/\${endpoint}</span>",
+    "message": "Ошибка валидации данных",
+    "timestamp": "2025-12-16T13:08:16.087Z",
+    "path": "/\${endpoint}?sort=id:desc&limit=unknown",
+    "errors": [
+        "limit must be an integer number"
+    ]
 <strong class='purple'>}</strong>           
 </code>
 `,
