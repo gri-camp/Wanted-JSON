@@ -97,7 +97,7 @@ try {
   (async function (endPoint, qs) {
     let res = await Api.getEntities(endPoint, qs);
     console.log(res);
-  })(API_CONSTS.VIDEOGAMES);
+  })(API_CONSTS.VIDEOGAMES, 'foo=bar&bar=foo&vmbr=pdf');
 
   // ! getSingleEntity -----------
   // (async function (endPoint, id) {
@@ -112,15 +112,15 @@ try {
   // })(API_CONSTS.BOOKS, "преступление");
 
   // ! addEntity -----------
-  (async function (endPoint, body) {
-    let res = await Api.addEntity(endPoint, body);
-    console.log(res);
-  })(API_CONSTS.ATHLETES, {
-    title: "foo",
-    author: "adventure",
-    foo: "12+",
-    foo2: 30.25,
-  });
+  // (async function (endPoint, body) {
+  //   let res = await Api.addEntity(endPoint, body);
+  //   console.log(res);
+  // })(API_CONSTS.ATHLETES, {
+  //   fullName: "foo",
+  //   country: "adventure",
+  //   age: 25,
+  //   sport: 'hello',
+  // });
 
   //  ! deleteEntity-----------
   // (async function (endPoint, id) {

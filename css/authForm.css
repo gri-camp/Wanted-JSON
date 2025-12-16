@@ -4,10 +4,10 @@
   margin: auto;
   color: var(--app-white-color);
   overflow: hidden;
-  background: var(--app-darken-color);
+  background: var(--app-dark-secondary-color);
   padding: var(--app-xl-spacing);
   padding-top: 2rem;
-  border-radius: var(--app-md-spacing);
+  border-radius: var(--app-lg-spacing);
 }
 
 .auth-form input,

@@ -9,6 +9,7 @@
   --app-light-color: #e8e2e2;
   --app-teal-color: rgb(14, 96, 100);
   --app-pink-color: #ff0095;
+  --app-dark-secondary-color: #29333d;
 
   --app-request-card-bg: linear-gradient(
     to right top,
@@ -21,7 +22,6 @@
     var(--app-dark-color) 60%,
     var(--app-darken-color)
   );
-
 
   --app-sm-spacing: 0.25rem;
   --app-md-spacing: 0.5rem;
