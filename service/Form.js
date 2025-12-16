@@ -31,8 +31,7 @@ class Form {
   
   render(container, component, elements) {
     draw(container, component(elements, this.formCls, this.submitBtnValue));
-    this.form = container.querySelector(`form`);    
-    this.form.username.focus();
+    this.form = container.querySelector(`form`);
     this.submitBtn = this.form.submit;
     return this;
   }
