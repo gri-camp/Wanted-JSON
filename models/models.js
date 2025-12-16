@@ -366,30 +366,33 @@ const POST_REQUIRED_FIELDS = {
   ],
 };
 
-const AUTH_FORM_LIST = [
+const FORM_ELEMS_LIST = [
   {
     type: "text",
     placeholder: "имя пользователя:",
-    name: "login",
+    name: "username",
     errorMsg:
       "логин должен начинаться с буквы и включать прописные и строчные латинские буквы, цифры, знаки: '-', '_' ",
     regExp: /^[A-Z][A-Z0-9-_]{1,20}$/i,
+    tabindex: 1,
   },
   {
     type: "text",
     placeholder: "пароль:",
-    name: "pass",
+    name: "password",
     errorMsg:
-      "пароль должен включать прописные и строчные латинские буквы, цифры, знаки: '-', '_'",
-    regExp: /^[A-Z0-9_-]{8,20}$/i,
+      "пароль должен содержать не менее 8 символов и включать прописные и строчные латинские буквы, цифры, знаки: '-', '_'",
+    regExp: /^[A-Z0-9_-]{8,}$/i,
+    tabindex: 2,
   },
   {
     type: "text",
     placeholder: "подтвердить пароль:",
-    name: "passСonf",
+    name: "password2",
     errorMsg:
-      "пароль должен включать прописные и строчные латинские буквы, цифры, знаки: '-', '_'",
-    regExp: /^[A-Z0-9_-]{8,20}$/i,
+      "пароль должен содержать не менее 8 символов и включать прописные и строчные латинские буквы, цифры, знаки: '-', '_'",
+    regExp: /^[A-Z0-9_-]{8,}$/i,
+    tabindex: 3,
   },
   {
     type: "submit",
@@ -397,12 +400,13 @@ const AUTH_FORM_LIST = [
     name: "submit",
     errorMsg: null,
     regExp: null,
+    tabindex: 4,
   },
 ];
 
 export {
   API_CONSTS,
-  AUTH_FORM_LIST,
+  FORM_ELEMS_LIST,
   DOCUMENTATION_LIST,
   ENTITIES_LIST,
   EXAMPLES_LIST,

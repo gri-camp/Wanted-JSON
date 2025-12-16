@@ -1,15 +1,21 @@
-.auth-form {
+.auth-form,
+.reg-form {
   width: 45%;
   margin: auto;
   color: var(--app-white-color);
   overflow: hidden;
+  background: var(--app-darken-color);
+  padding: var(--app-xl-spacing);
+  padding-top: 2rem;
+  border-radius: var(--app-md-spacing);
 }
 
-.auth-form input {
+.auth-form input,
+.reg-form input {
   font-size: 1.1em;
 }
 
-.auth-form-error {
+.form-error {
   margin: var(--app-md-spacing) 0px;
   display: inline-block;
   width: 100%;
@@ -21,10 +27,6 @@
   font-weight: 500;
 }
 
-.auth-form-error.active {
-  opacity: 0.92; 
-}
-
-.auth-form input {
-  font-size: 1.1em;
+.form-error.active {
+  opacity: 0.92;
 }

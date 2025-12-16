@@ -292,16 +292,24 @@ class Components {
       </a>
     `;
   }
-  AUTH_FORM({ type, placeholder, name, errorMsg }, submitValue, index) {
+  FORM(elements, formCls, submitValue) {
     return `
-      <p>
-        <input type='${type}' ${!index && "autofocus"} name="${name}" placeholder="${placeholder}" 
-        ${type === "submit" ? `value='${submitValue}' disabled readonly` : ""}
-        ${type === "password" ? "autocomplete='new-password'" : ""}
-        ${type === "text" ? "autocomplete='username'" : ""}        
-        />
-        <span class="auth-form-error">${errorMsg}</span>
-      </p>`;
+    <form class='${formCls}'>
+      ${getHTMLFromList(
+        elements,
+        ({ type, placeholder, name, errorMsg, tabindex }) => `
+        <p>
+          <input type='${type}' name="${name}" placeholder="${placeholder}" 
+          ${type === "submit" ? `value='${submitValue}' disabled readonly` : ""}
+          ${type === "password" ? "autocomplete='new-password'" : ""}
+          ${type === "text" ? "autocomplete='username'" : ""}
+          tabindex="${tabindex}"        
+          />
+          <span class="form-error">${errorMsg}</span>
+      </p>
+        `
+      )}      
+    </form>`;
   }
 }
 

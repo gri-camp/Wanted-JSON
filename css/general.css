@@ -117,11 +117,7 @@ cite {
   padding: var(--app-sm-spacing);
 }
 
-form {
-  padding: var(--app-lg-spacing);
-}
-
-input {
+input { 
   outline: none;
   padding: var(--app-lg-spacing);
   display: inline-block;

@@ -3,7 +3,7 @@ import Components from "./service/Components.js";
 // consts:
 import {
   API_CONSTS,
-  AUTH_FORM_LIST,
+  FORM_ELEMS_LIST,
   DOCUMENTATION_LIST,
   ENTITIES_LIST,
   EXAMPLES_LIST,
@@ -15,7 +15,7 @@ import {
 import { draw, getHTMLFromList } from "./helpers/helpers.js";
 // service classes:
 import Api from "./service/Api.js";
-import { AuthForm } from "./service/AuthForm.js";
+import { Form } from "./service/Form.js";
 import { Menu } from "./service/Menu.js";
 import { Observer } from "./service/Observer.js";
 import { Request } from "./service/Request.js";
@@ -78,18 +78,19 @@ try {
     document.querySelectorAll(".request-card")
   );
 
-  // !Отрисовка формы авторизации:
-  new AuthForm({
+  // !Отрисовка формы регистрации:
+  new Form({
     container: REGISTRATION,
-    component: Components.AUTH_FORM,
-    elements: AUTH_FORM_LIST,
+    component: Components.FORM,
+    elements: FORM_ELEMS_LIST,    
   });
 
-  new AuthForm({
+   // !Отрисовка формы авторизации:
+  new Form({
     container: AUTHORIZATION,
-    component: Components.AUTH_FORM,
-    elements: AUTH_FORM_LIST.filter((el) => el.name !== "passСonf"),
-    target: "signIn",
+    component: Components.FORM,
+    elements: FORM_ELEMS_LIST.filter((el) => el.name !== "password2"),
+    formCls: 'auth-form'
   });
 
   // ! getEntities -----------

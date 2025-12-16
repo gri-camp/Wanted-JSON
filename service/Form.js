@@ -1,23 +1,25 @@
 // utils
 import { draw, getHTMLFromList } from "../helpers/helpers.js";
 
-class AuthForm {
-  constructor({ container, component, elements, target = "signUp" }) {
+class Form {
+  constructor({ container, component, elements, formCls = 'reg-form' }) {
     this.container = container;
     this.component = component;
     this.elements = elements;
-    this.target = target;
-    this.submitValues = {
-      signIn: "войти",
-      signUp: "регистрация",
-    };
-    if (!((this.target === "signUp") | (this.target === "signIn")))
-      throw new Error("incorrect value of 'target' parameter...");
+    if (!(formCls === "reg-form" | formCls === "auth-form"))  throw new Error("Invalid 'formCls' param!");
+    this.formCls = formCls;    
+    this.submitBtnValue = this.getSubmitBtnValue(this.formCls); 
     this.form = null;
     this.submitBtn = null;
     this.state = this.getInitState(this.elements);
     // methods
     this.template(this.container, this.component, this.elements);
+   
+    
+  }
+
+  getSubmitBtnValue(formCls) {
+    return formCls === 'reg-form' ? "регистрация" : "войти"
   }
 
   template(container, component, elements) {
@@ -26,13 +28,11 @@ class AuthForm {
       .addSubmitListener()
       .addClickListener();
   }
-
+  
   render(container, component, elements) {
-    const html = getHTMLFromList(elements, (el, index) =>
-      component(el, this.submitValues[this.target], index)
-    );
-    draw(container, `<form class='auth-form'>${html}</form>`);
-    this.form = container.querySelector(".auth-form");
+    draw(container, component(elements, this.formCls, this.submitBtnValue));
+    this.form = container.querySelector(`form`);    
+    this.form.username.focus();
     this.submitBtn = this.form.submit;
     return this;
   }
@@ -65,7 +65,10 @@ class AuthForm {
   addSubmitListenerHandler = (e) => {
     e.preventDefault();
 
-    if (this.state.pass !== this.state.passСonf && this.target !== "signIn") {
+    if (
+      this.state.password !== this.state.password2 &&
+      this.formCls !== "auth-form"
+    ) {
       this.submitBtn.nextElementSibling.textContent = "Пароли не совпадают...";
       this.submitBtn.nextElementSibling.classList.add("active");
       return;
@@ -89,10 +92,9 @@ class AuthForm {
   }
 
   addClickListenerHandler = (e) => {
-    if (!e.target.closest(".auth-form"))
-      this.container.classList.toggle("active");
-      this.submitBtn.nextElementSibling.classList.toggle('active');
-      this.submitBtn.nextElementSibling.textContent = '';
+    if (!e.target.closest('form')) this.container.classList.toggle("active");
+    this.submitBtn.nextElementSibling.classList.toggle("active");
+    this.submitBtn.nextElementSibling.textContent = "";
   };
 
   addClickListener() {
@@ -103,9 +105,10 @@ class AuthForm {
     this.form.reset();
     this.state = this.getInitState(this.elements);
     this.submitBtn.disabled = true;
-    this.submitBtn.value = this.submitValues[this.target];
-    this.submitBtn.nextElementSibling.classList.toggle('active');
-    this.submitBtn.nextElementSibling.textContent = 'Данные успешно отправлены!';
+    this.submitBtn.value = this.submitBtnValue;
+    this.submitBtn.nextElementSibling.classList.toggle("active");
+    this.submitBtn.nextElementSibling.textContent =
+      "Данные успешно отправлены!";
   }
 
   getInitState(elements) {
@@ -115,4 +118,4 @@ class AuthForm {
   }
 }
 
-export { AuthForm };
+export { Form };

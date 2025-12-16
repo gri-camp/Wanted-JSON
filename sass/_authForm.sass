@@ -1,28 +1,30 @@
-.auth-form
+.auth-form, .reg-form
     width: 45%
     margin: auto
     color: $app-white-color
     overflow: hidden
+    background: $app-darken-color
+    padding: $app-xl-spacing
+    padding-top: 2rem
+    border-radius: $app-md-spacing
 
     p
-        position: relative
-    
-    &-error
-        margin: $app-md-spacing 0px
-        display: inline-block
-        width: 100%
-        color: $app-danger-color        
-        opacity: 0
-        font-size: 0.8em
-        text-align: center
-        font-weight: 500
-        min-height: 45px
-        font-weight: 500        
-        
-        &.active
-            opacity: 0.92           
+        position: relative                
 
     input 
         font-size: 1.1em
 
-        
+.form-error
+    margin: $app-md-spacing 0px
+    display: inline-block
+    width: 100%
+    color: $app-danger-color        
+    opacity: 0
+    font-size: 0.8em
+    text-align: center
+    font-weight: 500
+    min-height: 45px
+    font-weight: 500 
+
+    &.active
+        opacity: 0.92          
