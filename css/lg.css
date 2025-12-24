@@ -78,7 +78,7 @@
     padding: var(--app-md-spacing);
   }
 
-  .auth-form, .reg-form {
+  .signin, .signup {
     width: 80%;
   }
 }

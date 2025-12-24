@@ -560,6 +560,28 @@ const Responses = {
 <strong class='purple'>}</strong>
 </code>`,
   },
+  auth: {
+    signin: `<code>    
+<strong class='purple'>{</strong>
+    "user": {
+        "id": 222,
+        "login": "foo"
+    },
+    "accessToken": "your access-token (Base64)",    
+<strong class='purple'>}</strong>           
+</code>`,
+    signup: `<code>    
+<strong class='purple'>{</strong>
+    "user": {
+        "id": 222,
+        "login": "foo"
+    },
+    "accessToken": "your access-token (Base64)",    
+<strong class='purple'>}</strong>           
+</code>`,
+    logout: ``,
+    refresh: ``,
+  },
 };
 
 export { Responses };

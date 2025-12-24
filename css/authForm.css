@@ -1,5 +1,5 @@
-.auth-form,
-.reg-form {
+.signin,
+.signup {
   width: 45%;
   margin: auto;
   color: var(--app-white-color);
@@ -10,8 +10,8 @@
   border-radius: var(--app-lg-spacing);
 }
 
-.auth-form input,
-.reg-form input {
+.signin input,
+.signup input {
   font-size: 1.1em;
 }
 

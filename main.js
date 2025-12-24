@@ -27,13 +27,8 @@ try {
   const EXAMPLES = document.querySelector("#examples ol");
   const DOCUMENTATION = document.querySelector("#documentation ul");
   const FOOTER = document.querySelector(".footer");
-  const REGISTRATION = document.querySelector("#registration");
-  const AUTHORIZATION = document.querySelector("#authorization");
-  const REGISTRATION_ICON = document.querySelector(".registration");
-  const AUTHORIZATION_ICON = document.querySelector(".authorization");
-
-  REGISTRATION_ICON.onclick = () => REGISTRATION.classList.toggle("active");
-  AUTHORIZATION_ICON.onclick = () => AUTHORIZATION.classList.toggle("active");
+  const SIGN_UP_POPUP = document.querySelector("#signup");
+  const SIGN_IN_POPUP = document.querySelector("#signin");
 
   // !Отрисовка главного меню:
   new Menu({ list: MENU_LIST, Component: Components.MENU });
@@ -80,17 +75,19 @@ try {
 
   // !Отрисовка формы регистрации:
   new Form({
-    container: REGISTRATION,
+    container: SIGN_UP_POPUP,
     component: Components.FORM,
     elements: FORM_ELEMS_LIST,
+    triggerIcon: ".signup-icon",
   });
 
   // !Отрисовка формы авторизации:
   new Form({
-    container: AUTHORIZATION,
+    container: SIGN_IN_POPUP,
     component: Components.FORM,
     elements: FORM_ELEMS_LIST.filter((el) => el.name !== "password2"),
-    formCls: "auth-form",
+    formType: "signin",
+    triggerIcon: ".signin-icon",
   });
 
   // ! getEntities -----------
@@ -98,8 +95,8 @@ try {
     let res = await Api.getEntities(endPoint, qs);
     console.log(res);
   })(
-    API_CONSTS.VIDEOGAMES,
-    "limit=30&select=price,title&sort=price:asc&q=strike"
+    API_CONSTS.BOOKS,
+    "limit=30&select=price,title,id,author&sort=author:desc"
   );
 
   // ! getSingleEntity -----------
@@ -118,11 +115,11 @@ try {
   // (async function (endPoint, body) {
   //   let res = await Api.addEntity(endPoint, body);
   //   console.log(res);
-  // })(API_CONSTS.VIDEOGAMES, {
+  // })(API_CONSTS.BOOKS, {
   //   title: "foo",
-  //   ageRating : "18+",
-  //   genre: 25,
-  //   price: 30,
+  //   ageRating: "18+",
+  //   author: 25,
+  //   genre: 30,
   // });
 
   //  ! deleteEntity-----------
@@ -130,6 +127,21 @@ try {
   //   let res = await Api.deleteEntity(endPoint, id);
   //   console.log(res);
   // })(API_CONSTS.VIDEOGAMES, 16);
+
+  //  ! logout-----------
+  (async function (endPoint, token) {
+    let res = await Api.logout(endPoint, token);
+    console.log(res);
+  })(
+    API_CONSTS.LOGOUT,
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEzLCJsb2dpbiI6InRlc3QiLCJpYXQiOjE3NjY1OTIzNjAsImV4cCI6MTc2NjU5MzI2MH0.kxEVAD_IS7S5kipo09ZH9pnK9WTpDpbqC9gQ9GPxkkw"
+  );
+
+  //  ! refresh-----------
+  // (async function (endPoint, token) {
+  //   let res = await Api.refresh(endPoint, token);
+  //   console.log(res);
+  // })(API_CONSTS.REFRESH, '');
 } catch (error) {
   console.warn(error.message, error.name);
 }

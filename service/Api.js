@@ -25,7 +25,7 @@ class Api {
           "Content-Type": "application/json",
         },
       });
-            
+
       if (!res.ok) {
         const mess = await res.text();
         throw new Error(mess);
@@ -38,14 +38,11 @@ class Api {
 
   static async getSearchedEntity(endpoint, q) {
     try {
-      let res = await fetch(
-        `http://${API_CONSTS.HOST}/${endpoint}?q=${q}`,
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      let res = await fetch(`http://${API_CONSTS.HOST}/${endpoint}?q=${q}`, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
       if (!res.ok) {
         const mess = await res.text();
         throw new Error(mess);
@@ -92,19 +89,136 @@ class Api {
       return e.message;
     }
   }
+
+  static async signup(endpoint, body) {
+    try {
+      let res = await fetch(`http://${API_CONSTS.HOST}/${endpoint}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(body),
+      });
+
+      if (!res.ok) {
+        const mess = await res.text();
+        throw new Error(mess);
+      }
+
+      return await res.json();
+    } catch (e) {
+      return e.message;
+    }
+  }
+
+  static async signin(endpoint, body) {
+    try {
+      let res = await fetch(`http://${API_CONSTS.HOST}/${endpoint}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(body),
+      });
+
+      if (!res.ok) {
+        const mess = await res.text();
+        throw new Error(mess);
+      }
+
+      return await res.json();
+    } catch (e) {
+      return e.message;
+    }
+  }
+
+  static async signin(endpoint, body) {
+    try {
+      let res = await fetch(`http://${API_CONSTS.HOST}/${endpoint}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(body),
+      });
+
+      if (!res.ok) {
+        const mess = await res.text();
+        throw new Error(mess);
+      }
+
+      return await res.json();
+    } catch (e) {
+      return e.message;
+    }
+  }
+
+  static async signin(endpoint, body) {
+    try {
+      let res = await fetch(`http://${API_CONSTS.HOST}/${endpoint}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(body),
+      });
+
+      if (!res.ok) {
+        const mess = await res.text();
+        throw new Error(mess);
+      }
+
+      return await res.json();
+    } catch (e) {
+      return e.message;
+    }
+  }
+
+  static async logout(endpoint, accessToken) {
+    try {
+      let res = await fetch(`http://${API_CONSTS.HOST}/${endpoint}`, {
+        method: "POST",
+
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
+        },
+      });
+
+      if (!res.ok) {
+        const mess = await res.text();
+        throw new Error(mess);
+      }
+
+      return await res.json();
+    } catch (e) {
+      return e.message;
+    }
+  }
+
+  static async refresh(endpoint, refreshToken) {
+    try {
+      let res = await fetch(`http://${API_CONSTS.HOST}/${endpoint}`, {
+        method: "POST",
+
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${refreshToken}`,
+        },
+      });
+
+      if (!res.ok) {
+        const mess = await res.text();
+        throw new Error(mess);
+      }
+
+      return await res.json();
+    } catch (e) {
+      return e.message;
+    }
+  }
 }
 
 export default Api;
 
-
-
-
-
-
-
-
-
-
-
-
-
+// Успешный ответ -------

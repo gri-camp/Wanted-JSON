@@ -1,4 +1,5 @@
 import {
+  AUTH_ENDPOINTS,
   POST_REQUIRED_FIELDS,
   SORTING_WHITE_LIST,
   URLS,
@@ -35,7 +36,11 @@ class Components {
             </h3>
             <div class="request-card-info" data-id="${id}" data-method="${method}">
                 <button class='btn ${cls}'> ${method} </button>
-                <code class='request-card-url'> ${url(host, endpoint)} </code>
+                <code class='request-card-url'> ${
+                  AUTH_ENDPOINTS.includes(id)
+                    ? url(host, id)
+                    : url(host, endpoint)
+                } </code>
             </div>            
         </article>`;
   NOTE_MAIN_PAGE = () => `
@@ -101,7 +106,9 @@ class Components {
         </h3>
         <section class="request-card-info" data-id="${id}" data-method="${method}">
             <button class='btn ${cls}'> ${method} </button>
-            <code class='request-card-url'> ${url(host, endpoint)} </code>
+            <code class='request-card-url'> ${
+              AUTH_ENDPOINTS.includes(id) ? url(host, id) : url(host, endpoint)
+            } </code>
         </section>
         ${this.URL_CARD_TRIGGERS({
           id,

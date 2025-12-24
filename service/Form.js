@@ -1,36 +1,47 @@
 // utils
-import { draw, getHTMLFromList } from "../helpers/helpers.js";
+import { draw } from "../helpers/helpers.js";
+// service
+import Api from "./Api.js";
 
 class Form {
-  constructor({ container, component, elements, formCls = 'reg-form' }) {
+  constructor({
+    container,
+    component,
+    elements,
+    formType = "signup",
+    triggerIcon,
+  }) {
     this.container = container;
     this.component = component;
     this.elements = elements;
-    if (!(formCls === "reg-form" | formCls === "auth-form"))  throw new Error("Invalid 'formCls' param!");
-    this.formCls = formCls;    
-    this.submitBtnValue = this.getSubmitBtnValue(this.formCls); 
+    if (!((formType === "signin") | (formType === "signup")))
+      throw new Error("Invalid 'formType' param!");
+    this.formType = formType;
+    this.submitBtnValue = this.getSubmitBtnValue(this.formType);
     this.form = null;
     this.submitBtn = null;
+    this.passCompareError = new Error("пароли не совпадают!");
+    this.triggerIcon = document.querySelector(triggerIcon);
     this.state = this.getInitState(this.elements);
     // methods
-    this.template(this.container, this.component, this.elements);
-   
+    this.template(this.container, this.component, this.elements, this.triggerIcon);
     
   }
 
-  getSubmitBtnValue(formCls) {
-    return formCls === 'reg-form' ? "регистрация" : "войти"
+  getSubmitBtnValue(formType) {
+    return formType === "signup" ? "регистрация" : "войти";
   }
 
-  template(container, component, elements) {
+  template(container, component, elements, triggerIcon) {
     this.render(container, component, elements)
       .addInputListener()
       .addSubmitListener()
-      .addClickListener();
+      .addClickListenerToContainer()
+      .addClickListenerToAuthIcon(triggerIcon);
   }
-  
+
   render(container, component, elements) {
-    draw(container, component(elements, this.formCls, this.submitBtnValue));
+    draw(container, component(elements, this.formType, this.submitBtnValue));
     this.form = container.querySelector(`form`);
     this.submitBtn = this.form.submit;
     return this;
@@ -61,28 +72,29 @@ class Form {
     return this;
   }
 
-  addSubmitListenerHandler = (e) => {
+  addSubmitListenerHandler = async (e) => {
     e.preventDefault();
 
     if (
       this.state.password !== this.state.password2 &&
-      this.formCls !== "auth-form"
+      this.formType === "signup"
     ) {
-      this.submitBtn.nextElementSibling.textContent = "Пароли не совпадают...";
+      this.submitBtn.nextElementSibling.textContent = this.passCompareError.message;
       this.submitBtn.nextElementSibling.classList.add("active");
       return;
     } else {
       this.submitBtn.nextElementSibling.classList.remove("active");
     }
 
-    const json = JSON.stringify(this.state);
+    const body = { login: this.state.login, password: this.state.password };
 
-    new Promise((res) => {
-      this.submitBtn.value = "Загрузка...";
-      setTimeout(() => {
-        res(json);
-      }, 1500);
-    }).then((json) => this.reset());
+    this.submitBtn.value = "Загрузка...";
+
+    let res = await Api[this.formType](this.formType, body);
+
+    const msg = typeof res === "object" ? "успешно" : res;
+
+    this.reset(msg);
   };
 
   addSubmitListener() {
@@ -90,24 +102,34 @@ class Form {
     return this;
   }
 
-  addClickListenerHandler = (e) => {
-    if (!e.target.closest('form')) this.container.classList.toggle("active");
+  addClickListenerToContainerHandler = (e) => {
+    if (!e.target.closest("form")) this.container.classList.toggle("active");
     this.submitBtn.nextElementSibling.classList.toggle("active");
     this.submitBtn.nextElementSibling.textContent = "";
   };
 
-  addClickListener() {
-    this.container.addEventListener("click", this.addClickListenerHandler);
+  addClickListenerToContainer() {
+    this.container.addEventListener(
+      "click",
+      this.addClickListenerToContainerHandler
+    );
+    return this;
   }
 
-  reset() {
+  addClickListenerToAuthIcon(icon) {
+    icon.addEventListener("click", () =>
+      this.container.classList.toggle("active")
+    );
+    return this;
+  }
+
+  reset(res) {
     this.form.reset();
     this.state = this.getInitState(this.elements);
     this.submitBtn.disabled = true;
     this.submitBtn.value = this.submitBtnValue;
     this.submitBtn.nextElementSibling.classList.toggle("active");
-    this.submitBtn.nextElementSibling.textContent =
-      "Данные успешно отправлены!";
+    this.submitBtn.nextElementSibling.textContent = res;
   }
 
   getInitState(elements) {

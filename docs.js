@@ -1,5 +1,5 @@
 // consts:
-import { REQUEST_CARD_LIST } from "./models/models.js";
+import { REQUEST_CARD_LIST, AUTH_ENDPOINTS } from "./models/models.js";
 // utils:
 import { draw } from "./helpers/helpers.js";
 // service classes:
@@ -24,7 +24,7 @@ try {
 
   // !Содержимое секции 'urls':
   new Request({
-    list: REQUEST_CARD_LIST,
+    list: REQUEST_CARD_LIST.filter(card => !AUTH_ENDPOINTS.includes(card?.id)),
     endPoint,
     Component: "REQUEST_CARD_DOCS_PAGE",
   });

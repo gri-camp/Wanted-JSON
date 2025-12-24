@@ -49,8 +49,8 @@
   margin-left: auto;
 }
 
-.registration,
-.authorization,
+.signin-icon,
+.signup-icon,
 .home {
   cursor: pointer;
   border-radius: 50%;

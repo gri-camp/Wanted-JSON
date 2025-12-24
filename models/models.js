@@ -4,7 +4,13 @@ const API_CONSTS = {
   ATHLETES: "athletes",
   VIDEOGAMES: "videoGames",
   SEARCH: "search",
+  SIGNUP: 'signup',
+  SIGNIN: 'signin',
+  LOGOUT: 'logout',
+  REFRESH: 'refresh',
 };
+
+const AUTH_ENDPOINTS = ['signin', 'signup', 'logout', 'refresh'];
 
 const URLS = {
   getEntities: (host, ep = "${endpoint}") => `https://${host}/${ep}`,
@@ -23,6 +29,11 @@ const URLS = {
     `https://${host}/${ep}?select=value1,value2`,
   getSortedEntities: (host, ep = "${endpoint}") =>
     `https://${host}/${ep}?sort=\${field}:\${dir}`,
+  // ! Авторизация / регистрация
+  signup: (host, ep) => `https://${host}/${ep}`,
+  signin: (host, ep) => `https://${host}/${ep}`,
+  logout: (host, ep) => `https://${host}/${ep}`,
+  refresh: (host, ep) => `https://${host}/${ep}`,
 };
 
 const REQUEST_CARD_LIST = [
@@ -122,6 +133,70 @@ const REQUEST_CARD_LIST = [
     ErrBtn: '<span class="material-icons-round">error</span>',
     note: false,
   },
+  {
+    id: "signup",
+    title: "регистрация пользователя",
+    method: "post",
+    url: (host, ep) => URLS.signup(host, ep),
+    cls: "btn-success",
+    scheme: {
+      req: "запрос",
+      res: "ответ",
+      err: "ошибка",
+    },
+    ReqBtn: '<span class="material-icons-round">rocket_launch</span>',
+    ResBtn: '<span class="material-icons-round">data_object</span>',
+    ErrBtn: '<span class="material-icons-round">error</span>',
+    note: false,
+  },
+  {
+    id: "signin",
+    title: "авторизация пользователя",
+    method: "post",
+    url: (host, ep) => URLS.signin(host, ep),
+    cls: "btn-success",
+    scheme: {
+      req: "запрос",
+      res: "ответ",
+      err: "ошибка",
+    },
+    ReqBtn: '<span class="material-icons-round">rocket_launch</span>',
+    ResBtn: '<span class="material-icons-round">data_object</span>',
+    ErrBtn: '<span class="material-icons-round">error</span>',
+    note: false,
+  },
+  {
+    id: "logout",
+    title: "выход из системы",
+    method: "post",
+    url: (host, ep) => URLS.logout(host, ep),
+    cls: "btn-success",
+    scheme: {
+      req: "запрос",
+      res: "ответ",
+      err: "ошибка",
+    },
+    ReqBtn: '<span class="material-icons-round">rocket_launch</span>',
+    ResBtn: '<span class="material-icons-round">data_object</span>',
+    ErrBtn: '<span class="material-icons-round">error</span>',
+    note: false,
+  },
+  {
+    id: "refresh",
+    title: "обновления токена",
+    method: "post",
+    url: (host, ep) => URLS.refresh(host, ep),
+    cls: "btn-success",
+    scheme: {
+      req: "запрос",
+      res: "ответ",
+      err: "ошибка",
+    },
+    ReqBtn: '<span class="material-icons-round">rocket_launch</span>',
+    ResBtn: '<span class="material-icons-round">data_object</span>',
+    ErrBtn: '<span class="material-icons-round">error</span>',
+    note: false,
+  },
 ];
 
 const FEATURES_CARD_LIST = [
@@ -183,6 +258,11 @@ const ENTITIES_LIST = [
     href: `./docs.html?endpoint=videoGames`,
     endpoint: `videoGames`,
     icon: `<span class="material-icons-round">gamepad</span>`,
+  },
+  {
+    href: `./auth.html?endpoint=auth`,
+    endpoint: `auth`,
+    icon: `<span class="material-icons-round">login</span>`,
   },
 ];
 
@@ -256,6 +336,10 @@ const DOCUMENTATION_LIST = [
   {
     href: `./docs.html?endpoint=videoGames`,
     text: `<div class="icon-box"><span class="material-icons-round">description</span></div> Документация <em style="font-weight:bold;">videoGames</em>`,
+  },
+  {
+    href: `./auth.html?endpoint=auth`,
+    text: `<div class="icon-box"><span class="material-icons-round">description</span></div> Документация <em style="font-weight:bold;">auth</em>`,
   },
 ];
 
@@ -370,7 +454,7 @@ const FORM_ELEMS_LIST = [
   {
     type: "text",
     placeholder: "имя пользователя:",
-    name: "username",
+    name: "login",
     errorMsg:
       "логин должен начинаться с буквы и включать прописные и строчные латинские буквы, цифры, знаки: '-', '_' ",
     regExp: /^[A-Z][A-Z0-9-_]{1,20}$/i,
@@ -416,4 +500,5 @@ export {
   REQUEST_CARD_LIST,
   SORTING_WHITE_LIST,
   URLS,
+  AUTH_ENDPOINTS
 };
