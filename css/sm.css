@@ -15,6 +15,10 @@
     text-align: center;
   }
 
+  .header {
+    row-gap: 0.5rem;
+  }
+
   .header-nav {
     min-width: 40%;
   }
@@ -62,7 +66,8 @@
     margin: var(--app-md-spacing) 0px;
   }
 
-  .signin, .signup  {
+  .signin,
+  .signup {
     width: 95%;
   }
 }

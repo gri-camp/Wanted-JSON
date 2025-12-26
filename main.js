@@ -1,5 +1,3 @@
-// components:
-import Components from "./service/Components.js";
 // consts:
 import {
   API_CONSTS,
@@ -12,8 +10,9 @@ import {
   REQUEST_CARD_LIST,
 } from "./models/models.js";
 // utils:
-import { draw, getHTMLFromList } from "./helpers/helpers.js";
+import { draw, getHTMLFromList, getDataFromLS } from "./helpers/helpers.js";
 // service classes:
+import Components from "./service/Components.js";
 import Api from "./service/Api.js";
 import { Form } from "./service/Form.js";
 import { Menu } from "./service/Menu.js";
@@ -129,13 +128,13 @@ try {
   // })(API_CONSTS.VIDEOGAMES, 16);
 
   //  ! logout-----------
-  (async function (endPoint, token) {
-    let res = await Api.logout(endPoint, token);
-    console.log(res);
-  })(
-    API_CONSTS.LOGOUT,
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEzLCJsb2dpbiI6InRlc3QiLCJpYXQiOjE3NjY1OTIzNjAsImV4cCI6MTc2NjU5MzI2MH0.kxEVAD_IS7S5kipo09ZH9pnK9WTpDpbqC9gQ9GPxkkw"
-  );
+  // (async function (endPoint, token) {
+  //   let res = await Api.logout(endPoint, token);
+  //   console.log(res);
+  // })(
+  //   API_CONSTS.LOGOUT,
+  //   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEzLCJsb2dpbiI6InRlc3QiLCJpYXQiOjE3NjY1OTM5MDEsImV4cCI6MTc2NjU5NDgwMX0.UYbI-zSoXpFfLhdaYt9so1BZJKWQqXdLqzT7l_82Q7c"
+  // );
 
   //  ! refresh-----------
   // (async function (endPoint, token) {

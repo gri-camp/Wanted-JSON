@@ -1,7 +1,9 @@
 // utils
-import { draw } from "../helpers/helpers.js";
+import { draw, setDataToLS, getDataFromLS } from "../helpers/helpers.js";
 // service
 import Api from "./Api.js";
+// const
+import { API_CONSTS } from "../models/models.js";
 
 class Form {
   constructor({
@@ -20,12 +22,19 @@ class Form {
     this.submitBtnValue = this.getSubmitBtnValue(this.formType);
     this.form = null;
     this.submitBtn = null;
+    if (this.formType === "signin") {
+      this.login = document.querySelector(".login");
+    }
     this.passCompareError = new Error("пароли не совпадают!");
     this.triggerIcon = document.querySelector(triggerIcon);
     this.state = this.getInitState(this.elements);
     // methods
-    this.template(this.container, this.component, this.elements, this.triggerIcon);
-    
+    this.template(
+      this.container,
+      this.component,
+      this.elements,
+      this.triggerIcon
+    );
   }
 
   getSubmitBtnValue(formType) {
@@ -37,7 +46,7 @@ class Form {
       .addInputListener()
       .addSubmitListener()
       .addClickListenerToContainer()
-      .addClickListenerToAuthIcon(triggerIcon);
+      .addClickListenerToTriggerIcon(triggerIcon);
   }
 
   render(container, component, elements) {
@@ -55,8 +64,6 @@ class Form {
     if (elemData.regExp.test(value)) {
       this.state[name] = value;
       e.target.nextElementSibling.classList.remove("active");
-      if (Object.values(this.state).every((v) => v))
-        this.form.submit.disabled = false;
     } else {
       e.target.nextElementSibling.classList.add("active");
       this.state[name] = "";
@@ -79,7 +86,8 @@ class Form {
       this.state.password !== this.state.password2 &&
       this.formType === "signup"
     ) {
-      this.submitBtn.nextElementSibling.textContent = this.passCompareError.message;
+      this.submitBtn.nextElementSibling.textContent =
+        this.passCompareError.message;
       this.submitBtn.nextElementSibling.classList.add("active");
       return;
     } else {
@@ -92,10 +100,19 @@ class Form {
 
     let res = await Api[this.formType](this.formType, body);
 
-    const msg = typeof res === "object" ? "успешно" : res;
+    if (!(res instanceof Object)) return this.reset(res);
 
-    this.reset(msg);
+    if (this.formType === "signin") this.registerUser(res);
+
+    this.reset("успешно");
   };
+
+  registerUser(res) {
+    this.login.textContent = res?.user?.login;
+    setDataToLS("token", res?.accessToken);
+    this.login.classList.toggle("active");
+    this.triggerIcon.firstElementChild.textContent = "logout";
+  }
 
   addSubmitListener() {
     this.form?.addEventListener("submit", this.addSubmitListenerHandler);
@@ -116,10 +133,23 @@ class Form {
     return this;
   }
 
-  addClickListenerToAuthIcon(icon) {
-    icon.addEventListener("click", () =>
-      this.container.classList.toggle("active")
-    );
+  async logoutUser() {
+    this.triggerIcon.firstElementChild.textContent = "login";
+    this.login.classList.toggle("active");
+    this.login.textContent = "guest";
+    await Api.logout(API_CONSTS.LOGOUT, getDataFromLS('token'));
+    setDataToLS("token", null);
+  }
+
+  addClickListenerToTriggerIconHandler = () => {
+    if (this.triggerIcon.firstElementChild.textContent === "logout") {
+      return this.logoutUser();
+    }
+    this.container.classList.toggle("active");
+  };
+
+  addClickListenerToTriggerIcon(icon) {
+    icon.addEventListener("click", this.addClickListenerToTriggerIconHandler);
     return this;
   }
 

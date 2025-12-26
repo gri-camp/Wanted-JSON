@@ -49,8 +49,7 @@
   margin-left: auto;
 }
 
-.signin-icon,
-.signup-icon,
+.auth,
 .home {
   cursor: pointer;
   border-radius: 50%;

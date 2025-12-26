@@ -190,3 +190,14 @@
 .tooltip.active {
   opacity: 1;
 }
+
+.login {
+  opacity: 0.7;
+  font-variant: small-caps;
+  font-size: 1.1em;
+}
+
+.login.active {
+  opacity: 1;
+  color: var(--app-success-color);
+}
