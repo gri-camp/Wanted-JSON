@@ -560,6 +560,375 @@ const Responses = {
 <strong class='purple'>}</strong>
 </code>`,
   },
+  movies: {
+    getEntities: `
+<code><span class='purple'>{</span> 
+    "data": <span class='purple'>[</span>
+        <span class='purple'>{</span>
+            id: 1,
+            title: 'Начало',
+            "originalTitle": 'Inception',
+            "releaseYear": 2010,
+            duration: 148,
+            country: 'США, Великобритания',
+            language: 'Английский,
+            director: 'Кристофер Нолан',
+            "mainActors": <span class='purple'>[</span>"Леонардо ДиКаприо", "Джозеф Гордон-Левитт", "Эллиот Пейдж", "Том Харди"<span class='purple'>]</span>,
+            genre: <span class='purple'>[</span>"фантастика", "боевик", "триллер"<span class='purple'>]</span>,
+            ageRating: '12+',
+            budget: 160000000.00,
+            boxOffice: 836800000.00,
+            imdb: 8.8,
+            kinopoiskRating: 8.7,
+            awards: <span class='purple'>[</span>"Оскар (4 номинации)", "BAFTA (9 номинаций)"<span class='purple'>]</span>,
+            description: 'Профессиональный вор, специализирующийся на краже идей во время сна, получает задание внедрить идею в подсознание наследника крупной корпорации.',
+            location: <span class='purple'>[</span>"Токио", "Лос-Анджелес", "Париж", "Лондон"<span class='purple'>]</span>,
+            studio: "Warner Bros.",
+            isSeries: false,
+            seasons: null,
+            lastUpdated: '2025-12-25',
+        <span class='purple'>}</span>,
+        <span class='purple'>{</span>
+            id: 2,
+            title: 'Побег из Шоушенка',
+            "originalTitle": 'The Shawshank Redemption',
+            "releaseYear": 1994,
+            duration: 142,
+            country: 'США',
+            language: 'Английский,
+            director: 'Фрэнк Дарабонт',
+            "mainActors": <span class='purple'>[</span>"Тим Роббинс", "Морган Фриман", "Боб Гантон"<span class='purple'>]</span>,
+            genre: <span class='purple'>[</span>"фантастика", "боевик", "триллер"<span class='purple'>]</span>,
+            ageRating: '16+',
+            budget: 25000000.00,
+            boxOffice: 73300000.00,
+            imdb: 9.3,
+            kinopoiskRating: 9.1,
+            awards: <span class='purple'>[</span>"Оскар (7 номинаций)"<span class='purple'>]</span>,
+            description: 'Бухгалтер Энди Дюфрейн оказывается в тюрьме Шоушенк по обвинению в убийстве жены и её любовника.',
+            location: <span class='purple'>[</span>"Мэн, США"<span class='purple'>]</span>,
+            studio: "Castle Rock Entertainment",
+            isSeries: false,
+            seasons: null,
+            lastUpdated: '2025-12-25',         
+        <span class='purple'>}</span>       
+        ...
+    <span class='purple'>]</span>,
+    "total": 45,
+    "page": 1,
+    "limit": 10,
+    "totalPages": 5,
+<span class='purple'>}</span></code>`,
+    getEntitiesQS: `
+<code><span class='purple'>{</span> 
+    "data": <span class='purple'>[</span>
+        <span class='purple'>{</span>
+            id: 6,
+            title: 'Звёздные войны: Новая надежда',
+            "originalTitle": 'Star Wars: Episode IV - A New Hope',
+            "releaseYear": 1977,
+            duration: 121,
+            country: 'США',
+            language: 'Английский,
+            director: 'Джордж Лукас',
+            "mainActors": <span class='purple'>[</span>"Марк Хэмилл", "Харрисон Форд", "Кэрри Фишер"<span class='purple'>]</span>,
+            genre: <span class='purple'>[</span>"фантастика", "приключения", "боевик"<span class='purple'>]</span>,
+            ageRating: '6+',
+            budget: 11000000.00,
+            boxOffice: 775800000.00,
+            imdb: 8.6,
+            kinopoiskRating: 8.1,
+            awards: <span class='purple'>[</span>"Оскар (6 побед)"<span class='purple'>]</span>,
+            description: 'Люк Скайуокер присоединяется к повстанцам, чтобы спасти принцессу Лею и помочь вернуть свободу галактике.',
+            location: <span class='purple'>[</span>"Тунис", "Гватемала", "Калифорния"<span class='purple'>]</span>,
+            studio: "Lucasfilm",
+            isSeries: false,
+            seasons: null,
+            lastUpdated: '2025-12-25',
+        <span class='purple'>}</span>,        
+        ...
+    <span class='purple'>]</span>,
+    "total": 45,
+    "page": 2,
+    "limit": 5,
+    "totalPages": 9,
+<span class='purple'>}</span></code>`,
+    getSingleEntity: `
+<code><span class='purple'>{</span>        
+    id: 2,
+    title: 'Побег из Шоушенка',
+    "originalTitle": 'The Shawshank Redemption',
+    "releaseYear": 1994,
+    duration: 142,
+    country: 'США',
+    language: 'Английский,
+    director: 'Фрэнк Дарабонт',
+    "mainActors": <span class='purple'>[</span>"Тим Роббинс", "Морган Фриман", "Боб Гантон"<span class='purple'>]</span>,
+    genre: <span class='purple'>[</span>"фантастика", "боевик", "триллер"<span class='purple'>]</span>,
+    ageRating: '16+',
+    budget: 25000000.00,
+    boxOffice: 73300000.00,
+    imdb: 9.3,
+    kinopoiskRating: 9.1,
+    awards: <span class='purple'>[</span>"Оскар (7 номинаций)"<span class='purple'>]</span>,
+    description: 'Бухгалтер Энди Дюфрейн оказывается в тюрьме Шоушенк по обвинению в убийстве жены и её любовника.',
+    location: <span class='purple'>[</span>"Мэн, США"<span class='purple'>]</span>,
+    studio: "Castle Rock Entertainment",
+    isSeries: false,
+    seasons: null,
+    lastUpdated: '2025-12-25',       
+<span class='purple'>}</span></code>`,
+    getSearchedEntity: `
+<code><span class='purple'>{</span> 
+    "data": <span class='purple'>[</span>        
+        <span class='purple'>{</span>
+            id: 2,
+            title: 'Побег из Шоушенка',
+            "originalTitle": 'The Shawshank Redemption',
+            "releaseYear": 1994,
+            duration: 142,
+            country: 'США',
+            language: 'Английский,
+            director: 'Фрэнк Дарабонт',
+            "mainActors": <span class='purple'>[</span>"Тим Роббинс", "Морган Фриман", "Боб Гантон"<span class='purple'>]</span>,
+            genre: <span class='purple'>[</span>"фантастика", "боевик", "триллер"<span class='purple'>]</span>,
+            ageRating: '16+',
+            budget: 25000000.00,
+            boxOffice: 73300000.00,
+            imdb: 9.3,
+            kinopoiskRating: 9.1,
+            awards: <span class='purple'>[</span>"Оскар (7 номинаций)"<span class='purple'>]</span>,
+            description: 'Бухгалтер Энди Дюфрейн оказывается в тюрьме Шоушенк по обвинению в убийстве жены и её любовника.',
+            location: <span class='purple'>[</span>"Мэн, США"<span class='purple'>]</span>,
+            studio: "Castle Rock Entertainment",
+            isSeries: false,
+            seasons: null,
+            lastUpdated: '2025-12-25',         
+        <span class='purple'>}</span>       
+        ...
+    <span class='purple'>]</span>,
+    "total": 5,
+    "page": 1,
+    "limit": 5,
+    "totalPages": 1,
+<span class='purple'>}</span></code>`,
+    addEntity: `
+<code> // Код ответа: <span class='success'>201</span>.
+
+<strong class='purple'>{</strong>    
+    id: 46,
+    title: "Cчастливое число Слевина", <span class="danger">// required</span> 
+    country: "CША", <span class="danger">// required</span>
+    ageRating: '16+', <span class="danger">// required</span>
+    releaseYear: 2006, <span class="danger">// required</span>   
+    genre: <span class='purple'>[</span>"триллер", "драма", "преступление"<span class='purple'>]</span>,  
+    description: 'Крупный криминальный авторитет по прозвищу Босс хочет рассчитаться со своим бывшим партнером за убийство сына и в отместку заказать его наследника.',
+    awards: null,
+    imdb: 7.7,         
+    ...
+<strong class='purple'>}</strong>
+</code>`,
+    deleteEntity: `
+<code> // Код ответа: <span class='success'>200</span>.
+
+<strong class='purple'>{</strong> 
+    id: 6,
+    title: 'Звёздные войны: Новая надежда',
+    "originalTitle": 'Star Wars: Episode IV - A New Hope',
+    "releaseYear": 1977,
+    duration: 121,
+    country: 'США',
+    language: 'Английский,
+    director: 'Джордж Лукас',
+    "mainActors": <span class='purple'>[</span>"Марк Хэмилл", "Харрисон Форд", "Кэрри Фишер"<span class='purple'>]</span>,
+    genre: <span class='purple'>[</span>"фантастика", "приключения", "боевик"<span class='purple'>]</span>,
+    ageRating: '6+',
+    budget: 11000000.00,
+    boxOffice: 775800000.00,
+    imdb: 8.6,
+    kinopoiskRating: 8.1,
+    awards: <span class='purple'>[</span>"Оскар (6 побед)"<span class='purple'>]</span>,
+    description: 'Люк Скайуокер присоединяется к повстанцам, чтобы спасти принцессу Лею и помочь вернуть свободу галактике.',
+    location: <span class='purple'>[</span>"Тунис", "Гватемала", "Калифорния"<span class='purple'>]</span>,
+    studio: "Lucasfilm",
+    isSeries: false,
+    seasons: null,
+    lastUpdated: '2025-12-25',
+<strong class='purple'>}</strong></code>`,
+  },
+  cars: {
+    getEntities: `
+<code><span class='purple'>{</span> 
+    "data": <span class='purple'>[</span>
+        <span class='purple'>{</span>
+            id: 1,
+            brand: 'Toyota',
+            "model": 'Camry XV70',
+            "country": 'Япония',
+            modelYear: 2017,
+            engineTypes: <span class='purple'>[</span>"атмосферный", "гибрид"<span class='purple'>]</span>,
+            bodyType: <span class='purple'>[</span>"седан"<span class='purple'>]</span>,
+            transmissionType: 'автоматическая',
+            "basePrice": 25000.00,
+            enginePowerList: <span class='purple'>{</span>"Н·м": 190, "л.с.": 150 <span class='purple'>}</span>, 
+            segment: 'эконом',
+            licenseCategory: 'B',
+            annualProduction: 500000,
+            topSales: 'США',
+            euroStandart: 'Евро 6',
+            colors: <span class='purple'>[</span>"белый", "черный", "серебристый", "синий"<span class='purple'>]</span>,
+            headlights: 'светодиодные',
+            lastUpdated: '2025-12-27',
+        <span class='purple'>}</span>,
+        <span class='purple'>{</span>
+            id: 2,
+            brand: 'BMW',
+            "model": 'X5 G05',
+            "country": 'Германия',
+            modelYear: 2018,
+            engineTypes: <span class='purple'>[</span>"турбо", "дизель"<span class='purple'>]</span>,
+            bodyType: <span class='purple'>[</span>"внедорожник", "кроссовер"<span class='purple'>]</span>,
+            transmissionType: 'автоматическая',
+            "basePrice": 65000.00,
+            enginePowerList: <span class='purple'>{</span>"Н·м": 450, "л.с.": 340<span class='purple'>}</span>, 
+            segment: 'премиум',
+            licenseCategory: 'B',
+            annualProduction: 200000,
+            topSales: 'Китай',
+            euroStandart: 'Евро 6',
+            colors: <span class='purple'>[</span>"черный", "белый", "синий", "серый"<span class='purple'>]</span>,
+            headlights: 'лазерные, матричные, светодиодные',
+            lastUpdated: '2025-12-27',         
+        <span class='purple'>}</span>       
+        ...
+    <span class='purple'>]</span>,
+    "total": 30,
+    "page": 1,
+    "limit": 10,
+    "totalPages": 3,
+<span class='purple'>}</span></code>`,
+    getEntitiesQS: `
+<code><span class='purple'>{</span> 
+    "data": <span class='purple'>[</span>
+        <span class='purple'>{</span>
+            id: 6,
+            brand: 'Tesla',
+            "model": 'Model 3',
+            "country": 'США',
+            modelYear: 2017,
+            engineTypes: <span class='purple'>[</span>"электрический"<span class='purple'>]</span>,
+            bodyType: <span class='purple'>[</span>"седан"<span class='purple'>]</span>,
+            transmissionType: 'автоматическая',
+            "basePrice": 35000.00,
+            enginePowerList: <span class='purple'>{</span>"Н·м": 375, "л.с.": 283 <span class='purple'>}</span>, 
+            segment: 'премиум',
+            licenseCategory: 'B',
+            annualProduction: 500000,
+            topSales: 'Китай',
+            euroStandart: 'Евро 6',
+            colors: <span class='purple'>[</span>"белый", "черный", "красный", "синий"<span class='purple'>]</span>,
+            headlights: 'светодиодные',
+            lastUpdated: '2025-12-27',
+        <span class='purple'>}</span>,             
+        ...
+    <span class='purple'>]</span>,
+    "total": 30,
+    "page": 2,
+    "limit": 5,
+    "totalPages": 6,
+<span class='purple'>}</span></code>`,
+    getSingleEntity: `
+<code><span class='purple'>{</span>    
+        id: 2,
+        brand: 'BMW',
+        "model": 'X5 G05',
+        "country": 'Германия',
+        modelYear: 2018,
+        engineTypes: <span class='purple'>[</span>"турбо", "дизель"<span class='purple'>]</span>,
+        bodyType: <span class='purple'>[</span>"внедорожник", "кроссовер"<span class='purple'>]</span>,
+        transmissionType: 'автоматическая',
+        "basePrice": 65000.00,
+        enginePowerList: <span class='purple'>{</span>"Н·м": 450, "л.с.": 340<span class='purple'>}</span>, 
+        segment: 'премиум',
+        licenseCategory: 'B',
+        annualProduction: 200000,
+        topSales: 'Китай',
+        euroStandart: 'Евро 6',
+        colors: <span class='purple'>[</span>"черный", "белый", "синий", "серый"<span class='purple'>]</span>,
+        headlights: 'лазерные, матричные, светодиодные',
+        lastUpdated: '2025-12-27',         
+<span class='purple'>}</span></code>`,
+    getSearchedEntity: `
+  <code><span class='purple'>{</span> 
+    "data": <span class='purple'>[</span>        
+        <span class='purple'>{</span>
+            id: 2,
+            brand: 'BMW',
+            "model": 'X5 G05',
+            "country": 'Германия',
+            modelYear: 2018,
+            engineTypes: <span class='purple'>[</span>"турбо", "дизель"<span class='purple'>]</span>,
+            bodyType: <span class='purple'>[</span>"внедорожник", "кроссовер"<span class='purple'>]</span>,
+            transmissionType: 'автоматическая',
+            "basePrice": 65000.00,
+            enginePowerList: <span class='purple'>{</span>"Н·м": 450, "л.с.": 340<span class='purple'>}</span>, 
+            segment: 'премиум',
+            licenseCategory: 'B',
+            annualProduction: 200000,
+            topSales: 'Китай',
+            euroStandart: 'Евро 6',
+            colors: <span class='purple'>[</span>"черный", "белый", "синий", "серый"<span class='purple'>]</span>,
+            headlights: 'лазерные, матричные, светодиодные',
+            lastUpdated: '2025-12-27',         
+        <span class='purple'>}</span>       
+        ...
+    <span class='purple'>]</span>,
+    "total": 3,
+    "page": 1,
+    "limit": 3,
+    "totalPages": 1,
+<span class='purple'>}</span>           
+</code>`,
+    addEntity: `
+<code> // Код ответа: <span class='success'>201</span>.
+
+<strong class='purple'>{</strong>    
+    id: 31,
+    brand: "Subaru", <span class="danger">// required</span> 
+    model: "Outback", <span class="danger">// required</span>
+    country: '16+', <span class="danger">// required</span>
+    modelYear: 2025, <span class="danger">// required</span>
+    licenseCategory: 'B',
+    headlights: 'светодиодные',
+    bodyType: ["кроссовер"],         
+    ...
+<strong class='purple'>}</strong>
+</code>`,
+    deleteEntity: `
+<code> // Код ответа: <span class='success'>200</span>.
+
+<strong class='purple'>{</strong> 
+    id: 6,
+    brand: 'Tesla',
+    "model": 'Model 3',
+    "country": 'США',
+    modelYear: 2017,
+    engineTypes: <span class='purple'>[</span>"электрический"<span class='purple'>]</span>,
+    bodyType: <span class='purple'>[</span>"седан"<span class='purple'>]</span>,
+    transmissionType: 'автоматическая',
+    "basePrice": 35000.00,
+    enginePowerList: <span class='purple'>{</span>"Н·м": 375, "л.с.": 283 <span class='purple'>}</span>, 
+    segment: 'премиум',
+    licenseCategory: 'B',
+    annualProduction: 500000,
+    topSales: 'Китай',
+    euroStandart: 'Евро 6',
+    colors: <span class='purple'>[</span>"белый", "черный", "красный", "синий"<span class='purple'>]</span>,
+    headlights: 'светодиодные',
+    lastUpdated: '2025-12-27',
+<strong class='purple'>}</strong>  
+</code>`,
+  },
   auth: {
     signin: `<code>    
 <strong class='purple'>{</strong>
