@@ -1,9 +1,7 @@
 // utils
-import { draw, setDataToLS, getDataFromLS } from "../helpers/helpers.js";
+import { draw, getUserFromLS, setDataToLS } from "../helpers/helpers.js";
 // service
 import Api from "./Api.js";
-// const
-import { API_CONSTS } from "../models/models.js";
 
 class Form {
   constructor({
@@ -11,42 +9,49 @@ class Form {
     component,
     elements,
     formType = "signup",
-    triggerIcon,
+    actionTrigger,
   }) {
-    this.container = container;
-    this.component = component;
-    this.elements = elements;
     if (!((formType === "signin") | (formType === "signup")))
       throw new Error("Invalid 'formType' param!");
-    this.formType = formType;
-    this.submitBtnValue = this.getSubmitBtnValue(this.formType);
+    // ! DOM ELEMENTS
+    this.container = container;
+    this.component = component;
+    this.actionTrigger = document.querySelector(actionTrigger);
     this.form = null;
     this.submitBtn = null;
+    // ! LOGIC PROPS -----
+    this.elements = elements;
+    this.formType = formType;
     if (this.formType === "signin") {
       this.login = document.querySelector(".login");
+      this.login.textContent = getUserFromLS("user")?.login ?? "guest";
+      this.actionTrigger.firstElementChild.textContent =
+        getUserFromLS("user")?.action ?? "login";
     }
+    this.submitBtnValue = this.getSubmitBtnValue(this.formType);
     this.passCompareError = new Error("пароли не совпадают!");
-    this.triggerIcon = document.querySelector(triggerIcon);
+    // ! FORM STATE (UX)
     this.state = this.getInitState(this.elements);
     // methods
     this.template(
       this.container,
       this.component,
       this.elements,
-      this.triggerIcon
+      this.actionTrigger
     );
+    // if (Date.now() > getUserFromLS("user").expiresIn * 1000) this.logoutUser();
   }
 
   getSubmitBtnValue(formType) {
     return formType === "signup" ? "регистрация" : "войти";
   }
 
-  template(container, component, elements, triggerIcon) {
+  template(container, component, elements, actionTrigger) {
     this.render(container, component, elements)
       .addInputListener()
       .addSubmitListener()
       .addClickListenerToContainer()
-      .addClickListenerToTriggerIcon(triggerIcon);
+      .addClickListenerToactionTrigger(actionTrigger);
   }
 
   render(container, component, elements) {
@@ -104,15 +109,10 @@ class Form {
 
     if (this.formType === "signin") this.registerUser(res);
 
-    this.reset("успешно");
-  };
+    this.reset("действие успешно!");
 
-  registerUser(res) {
-    this.login.textContent = res?.user?.login;
-    setDataToLS("token", res?.accessToken);
-    this.login.classList.toggle("active");
-    this.triggerIcon.firstElementChild.textContent = "logout";
-  }
+    this.container.classList.toggle("active");
+  };
 
   addSubmitListener() {
     this.form?.addEventListener("submit", this.addSubmitListenerHandler);
@@ -134,22 +134,33 @@ class Form {
   }
 
   async logoutUser() {
-    this.triggerIcon.firstElementChild.textContent = "login";
+    this.actionTrigger.firstElementChild.textContent = "login";
     this.login.classList.toggle("active");
     this.login.textContent = "guest";
-    await Api.logout(API_CONSTS.LOGOUT, getDataFromLS('token'));
-    setDataToLS("token", null);
+    await Api.logout(getUserFromLS("user").token);
+    setDataToLS("user", null);
   }
 
-  addClickListenerToTriggerIconHandler = () => {
-    if (this.triggerIcon.firstElementChild.textContent === "logout") {
+  registerUser(res) {
+    this.actionTrigger.firstElementChild.textContent = "logout";
+    this.login.classList.toggle("active");
+    this.login.textContent = res?.user?.login;
+    setDataToLS("user", {
+      login: res?.user?.login,
+      token: res?.accessToken,
+      action: "logout",
+      expiresIn: res?.expiresIn,
+    });
+  }
+
+  addClickListenerToactionTriggerHandler = () => {
+    if (this.actionTrigger.firstElementChild.textContent === "logout")
       return this.logoutUser();
-    }
     this.container.classList.toggle("active");
   };
 
-  addClickListenerToTriggerIcon(icon) {
-    icon.addEventListener("click", this.addClickListenerToTriggerIconHandler);
+  addClickListenerToactionTrigger(icon) {
+    icon.addEventListener("click", this.addClickListenerToactionTriggerHandler);
     return this;
   }
 

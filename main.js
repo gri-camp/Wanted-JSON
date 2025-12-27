@@ -10,7 +10,7 @@ import {
   REQUEST_CARD_LIST,
 } from "./models/models.js";
 // utils:
-import { draw, getHTMLFromList, getDataFromLS } from "./helpers/helpers.js";
+import { draw, getHTMLFromList } from "./helpers/helpers.js";
 // service classes:
 import Components from "./service/Components.js";
 import Api from "./service/Api.js";
@@ -77,7 +77,7 @@ try {
     container: SIGN_UP_POPUP,
     component: Components.FORM,
     elements: FORM_ELEMS_LIST,
-    triggerIcon: ".signup-icon",
+    actionTrigger: ".signup-icon",
   });
 
   // !Отрисовка формы авторизации:
@@ -86,7 +86,7 @@ try {
     component: Components.FORM,
     elements: FORM_ELEMS_LIST.filter((el) => el.name !== "password2"),
     formType: "signin",
-    triggerIcon: ".signin-icon",
+    actionTrigger: ".signin-icon",
   });
 
   // ! getEntities -----------

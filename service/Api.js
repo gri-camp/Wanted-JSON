@@ -132,7 +132,7 @@ class Api {
     }
   }
 
-  static async signin(endpoint, body) {
+  static async signin(endpoint  = 'signup', body) {
     try {
       let res = await fetch(`http://${API_CONSTS.HOST}/${endpoint}`, {
         method: "POST",
@@ -153,7 +153,7 @@ class Api {
     }
   }
 
-  static async signin(endpoint, body) {
+  static async signin(endpoint = 'signin', body) {
     try {
       let res = await fetch(`http://${API_CONSTS.HOST}/${endpoint}`, {
         method: "POST",
@@ -174,7 +174,7 @@ class Api {
     }
   }
 
-  static async logout(endpoint, accessToken) {
+  static async logout(accessToken, endpoint = 'logout') {
     try {
       let res = await fetch(`http://${API_CONSTS.HOST}/${endpoint}`, {
         method: "POST",
@@ -196,15 +196,14 @@ class Api {
     }
   }
 
-  static async refresh(endpoint, refreshToken) {
+  static async refresh(endpoint = 'refresh') {
     try {
       let res = await fetch(`http://${API_CONSTS.HOST}/${endpoint}`, {
         method: "POST",
-
         headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${refreshToken}`,
+          "Content-Type": "application/json",          
         },
+        credentials: "include",
       });
 
       if (!res.ok) {

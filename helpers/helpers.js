@@ -3,9 +3,8 @@ const draw = (container, html) =>
 
 const getHTMLFromList = (list, callback) => list.map(callback).join("");
 
-const setDataToLS = (key, data) =>
-  localStorage.setItem(key, JSON.stringify(data));
+const setDataToLS = (key, data) => localStorage.setItem(key, JSON.stringify(data));
 
-const getDataFromLS = (key) => JSON.parse(localStorage.getItem(key) || "null");
+const getUserFromLS = (key) => JSON.parse(localStorage.getItem(key)) || null;
 
-export { draw, getDataFromLS, getHTMLFromList, setDataToLS };
+export { draw, getUserFromLS, getHTMLFromList, setDataToLS };
