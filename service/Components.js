@@ -299,9 +299,9 @@ class Components {
       </a>
     `;
   }
-  FORM(elements, formCls, submitValue) {
+  FORM(elements, formType, submitValue) {
     return `
-    <form class='${formCls}'>
+    <form class='${formType}'>
       ${getHTMLFromList(
         elements,
         ({ type, placeholder, name, errorMsg, tabindex }) => `

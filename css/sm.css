@@ -9,12 +9,6 @@
     padding: var(--app-sm-spacing) 0px;
   }
 
-  .slogan {
-    width: 65%;
-    padding: 1rem;
-    text-align: center;
-  }
-
   .header {
     row-gap: 0.5rem;
   }
