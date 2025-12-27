@@ -270,19 +270,19 @@ signIn(<span class='success'>'signin'</span>, <span class='success'>{login: 'foo
 logout(<span class='success'>'logout'</span>, <span class='success'>accessToken</span>)
 </code>`,
   refresh: (endpoint = "") => `
-<code>const refresh = <span class='danger'>async</span>(<span class='success'>endpoint</span>, <span class='success'>refreshToken</span>) => {
+<code>const refresh = <span class='danger'>async</span>(<span class='success'>endpoint='refresh'</span>) => {
 
     <span class='danger'>try</span> {
 
         <span class='danger'>let</span> res = <span class='danger'>await</span> <span class='primary'>fetch</span>(\`https://hostname/<span class='success'>\${endpoint}</span>\`, {
             
-            method: 'POST',
+            method: "POST",
 
             headers: {
-                "Content-Type": "application/json",
-
-                "Authorization": \`Bearer <span class='success'>\${refreshToken}</span>\`,
-            },                    
+                "Content-Type": "application/json",               
+            },
+            
+            credentials: "include",
         });
 
         <span class='danger'>if</span> (!res.<span class='primary'>ok</span>) {
@@ -299,7 +299,7 @@ logout(<span class='success'>'logout'</span>, <span class='success'>accessToken<
     }
 }
     
-refresh(<span class='success'>'refresh'</span>, <span class='success'>refreshToken</span>)
+refresh()
 </code>`,
 };
 

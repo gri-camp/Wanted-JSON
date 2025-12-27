@@ -1,7 +1,12 @@
 .header {
   display: flex;
   align-items: center;
+<<<<<<< Updated upstream
   background: var(--app-features-card-bg);
+=======
+  justify-content: space-between;
+  background: var(--app-advantages-card-bg);
+>>>>>>> Stashed changes
   padding: var(--app-md-spacing);
   border-radius: var(--app-md-spacing);
   position: relative;
@@ -13,19 +18,24 @@
   padding: var(--app-sm-spacing);
   display: flex;
   align-items: center;
-  gap: var(--app-md-spacing);
-  color: var(--app-danger-color);
-  letter-spacing: 0.125rem;
-  font-weight: 700;
+  justify-content: center;
   cursor: pointer;
+  width: 60px;
+  height: 60px;
 }
 
+<<<<<<< Updated upstream
 .header .material-icons-round {
   font-size: 2em;
 }
 
 .header-nav {
   margin-left: auto;
+=======
+.header-logo img {
+  width: 100%;
+  height: 100%;
+>>>>>>> Stashed changes
 }
 
 .header-menu {

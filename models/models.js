@@ -3,6 +3,8 @@ const API_CONSTS = {
   BOOKS: "books",
   ATHLETES: "athletes",
   VIDEOGAMES: "videoGames",
+  CARS: "cars",
+  MOVIES: "movies",
   SEARCH: "search",
   SIGNUP: 'signup',
   SIGNIN: 'signin',
@@ -260,6 +262,16 @@ const ENTITIES_LIST = [
     icon: `<span class="material-icons-round">gamepad</span>`,
   },
   {
+    href: `./docs.html?endpoint=movies`,
+    endpoint: `movies`,
+    icon: `<span class="material-icons-round">movie_creation</span>`,
+  },
+  {
+    href: `./docs.html?endpoint=cars`,
+    endpoint: `cars`,
+    icon: `<span class="material-icons-round">directions_car</span>`,
+  },
+  {
     href: `./auth.html?endpoint=auth`,
     endpoint: `auth`,
     icon: `<span class="material-icons-round">login</span>`,
@@ -338,8 +350,16 @@ const DOCUMENTATION_LIST = [
     text: `<div class="icon-box"><span class="material-icons-round">description</span></div> Документация <em style="font-weight:bold;">videoGames</em>`,
   },
   {
+    href: `./docs.html?endpoint=movies`,
+    text: `<div class="icon-box"><span class="material-icons-round">description</span></div> Документация <em style="font-weight:bold;">movies</em>`,
+  },
+  {
+    href: `./docs.html?endpoint=cars`,
+    text: `<div class="icon-box"><span class="material-icons-round">description</span></div> Документация <em style="font-weight:bold;">cars</em>`,
+  },
+  {
     href: `./auth.html?endpoint=auth`,
-    text: `<div class="icon-box"><span class="material-icons-round">description</span></div> Документация <em style="font-weight:bold;">auth</em>`,
+    text: `<div class="icon-box"><span class="material-icons-round">description</span></div> Документация <em style="font-weight:bold;">auth</em>`,    
   },
 ];
 
@@ -395,6 +415,41 @@ const SORTING_WHITE_LIST = {
     "setting",
     "lastUpdated",
   ],
+  movies: [
+    "id",
+    "title",
+    "originalTitle",
+    "releaseYear",
+    "duration",
+    "country",
+    "language",
+    "director",
+    "ageRating",
+    "budget",
+    "boxOffice",
+    "imdb",
+    "kinopoiskRating",
+    "description",
+    "studio",
+    "seasons",
+    "lastUpdated",
+  ],
+  cars: [
+    "id",
+    "brand",
+    "model",
+    "country",
+    "modelYear",
+    "transmissionType",
+    "basePrice",
+    "segment",
+    "licenseCategory",
+    "annualProduction",
+    "topSales",
+    "euroStandart",
+    "headlights",
+    "lastUpdated",
+  ],
 };
 
 const POST_REQUIRED_FIELDS = {
@@ -445,6 +500,42 @@ const POST_REQUIRED_FIELDS = {
     },
     {
       field: "price",
+      type: "integer",
+    },
+  ],
+  movies: [
+    {
+      field: "title",
+      type: "string",
+    },
+    {
+      field: "country",
+      type: "string",
+    },
+    {
+      field: "ageRating",
+      type: "string",
+    },
+    {
+      field: "releaseYear",
+      type: "integer",
+    },
+  ],
+  cars: [
+    {
+      field: "brand",
+      type: "string",
+    },
+    {
+      field: "model",
+      type: "string",
+    },
+    {
+      field: "country",
+      type: "string",
+    },
+    {
+      field: "modelYear",
       type: "integer",
     },
   ],
