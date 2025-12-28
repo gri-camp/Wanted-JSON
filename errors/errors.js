@@ -23,6 +23,7 @@ const Errors = {
     message: '<span class='danger'>Entity with ID 999 not found</span>',
     timestamp: "2025-11-25T09:02:34.843Z",
     path: "<span class='danger'>/\${endpoint}</span>",
+    errors: "Not Found",
 <strong class='purple'>}</strong>           
 </code>`,
   getSearchedEntity: `
@@ -51,6 +52,7 @@ const Errors = {
     message: '<span class='danger'>Entity with ID 999 not found</span>',
     timestamp: "2025-11-25T09:02:34.843Z",
     path: "<span class='danger'>/\${endpoint}</span>",
+    errors: "Not Found",
 <strong class='purple'>}</strong>           
 </code>
 `,
