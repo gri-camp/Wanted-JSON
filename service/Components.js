@@ -132,7 +132,7 @@ class Components {
   }
   NOTE_DOCS_PAGE = () => `
     <p class="note">
-        <span class="danger">&#10071;</span>В качестве <strong>body</strong> передается объект с минимально необходимым набором полей <span class='warning'>(см. схему)</span>. 
+        <span class="danger">*</span> Необходимые поля для передачи в параметре <strong>body</strong>. 
     </p>
     `;
   URL_CARD_TRIGGERS({ id, req, res, err, ReqBtn, ResBtn, ErrBtn }) {
@@ -255,7 +255,7 @@ class Components {
               endpoint
             )}</code>
         </div>
-        <p class='note'><span class="danger">&#10071;</span>Минимально необходимые поля для передачи в теле запроса: 
+        <p class='note'><span class="danger">&#10071;</span>Необходимые поля для передачи в теле запроса: 
         </p>
         <ul class='white-list'> 
           ${getHTMLFromList(
