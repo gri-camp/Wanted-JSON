@@ -126,13 +126,12 @@ class Components {
             <em class='copy-status'>копировать</em> 
           </div>
           <pre></pre>
-        </div>
-        ${note ? this.NOTE_DOCS_PAGE() : ""}            
+        </div>                  
     </article>`;
   }
   NOTE_DOCS_PAGE = () => `
     <p class="note">
-        <span class="danger">*</span> Необходимые поля для передачи в параметре <strong>body</strong>. 
+        <span class="danger">*</span> Минимально необходимые поля для передачи в параметре <strong>body</strong>. 
     </p>
     `;
   URL_CARD_TRIGGERS({ id, req, res, err, ReqBtn, ResBtn, ErrBtn }) {
@@ -247,7 +246,7 @@ class Components {
   ADD_ENTITY_DOCA(host, endpoint) {
     return `
         <p class='section-text'>
-          POST-запрос к API имитирует добавление новой сущности на сервер. В случае успеха, сервер вернет объект, содержащий поля, переданные в запросе <a href="#addEntity" class='warning'>(см. схему)</a>:
+          POST-запрос к API имитирует добавление новой сущности на сервер. В случае успеха, сервер вернет объект, содержащий <strong class='success'>валидные</strong> поля, переданные в запросе <a href="#addEntity" class='warning'>(см. схему)</a>:
         </p>
         <div>
             <code class='request-card-url doca'>${URLS.addEntity(
@@ -255,7 +254,7 @@ class Components {
               endpoint
             )}</code>
         </div>
-        <p class='note'><span class="danger">&#10071;</span>Необходимые поля для передачи в теле запроса: 
+        <p class='note'><span class="danger">&#10071;</span>Минимально необходимые поля в параметре body для совершения запроса: 
         </p>
         <ul class='white-list'> 
           ${getHTMLFromList(
