@@ -5,12 +5,14 @@ import { Responses } from "../responses/responses.js";
 import Components from "./Components.js";
 // utils
 import { draw, getHTMLFromList } from "../helpers/helpers.js";
+// consts:
+import { API_CONSTS } from "../models/models.js";
 
 class Request {
   constructor({
     list,
     endPoint = "${endpoint}",
-    host = "hostname",
+    host = API_CONSTS.HOST,
     Component,
   }) {
     this.$appContainer = document.querySelector(".appContainer");

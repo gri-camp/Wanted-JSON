@@ -94,15 +94,15 @@ try {
     let res = await Api.getEntities(endPoint, qs);
     console.log(res);
   })(
-    API_CONSTS.BOOKS,
-    "limit=30&select=price,title,id,author&sort=author:desc"
+    API_CONSTS.MOVIES,
+    "limit=100&select=title,id,director,title&sort=director:asc"
   );
 
   // ! getSingleEntity -----------
   // (async function (endPoint, id) {
   //   let res = await Api.getSingleEntity(endPoint, id);
   //   console.log(res);
-  // })(API_CONSTS.VIDEOGAMES, "13");
+  // })(API_CONSTS.MOVIES, '22');
 
   // ! getSearchedEntity -----------
   // (async function (endPoint, q) {

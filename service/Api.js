@@ -3,7 +3,7 @@ import { API_CONSTS } from "../models/models.js";
 class Api {
   static async getEntities(endpoint, qs = "") {
     try {
-      let res = await fetch(`http://${API_CONSTS.HOST}/${endpoint}?${qs}`, {
+      let res = await fetch(`${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${endpoint}?${qs}`, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -20,7 +20,7 @@ class Api {
 
   static async getSingleEntity(endpoint, id = "") {
     try {
-      let res = await fetch(`http://${API_CONSTS.HOST}/${endpoint}/${id}`, {
+      let res = await fetch(`${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${endpoint}/${id}`, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -38,11 +38,14 @@ class Api {
 
   static async getSearchedEntity(endpoint, q) {
     try {
-      let res = await fetch(`http://${API_CONSTS.HOST}/${endpoint}?q=${q}`, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      let res = await fetch(
+        `${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${endpoint}?q=${q}`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
       if (!res.ok) {
         const mess = await res.text();
         throw new Error(mess);
@@ -55,7 +58,7 @@ class Api {
 
   static async addEntity(endpoint, body) {
     try {
-      let res = await fetch(`http://${API_CONSTS.HOST}/${endpoint}`, {
+      let res = await fetch(`${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${endpoint}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -74,7 +77,7 @@ class Api {
 
   static async deleteEntity(endpoint, id) {
     try {
-      let res = await fetch(`http://${API_CONSTS.HOST}/${endpoint}/${id}`, {
+      let res = await fetch(`${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${endpoint}/${id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -92,7 +95,7 @@ class Api {
 
   static async signup(endpoint, body) {
     try {
-      let res = await fetch(`http://${API_CONSTS.HOST}/${endpoint}`, {
+      let res = await fetch(`${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${endpoint}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -113,7 +116,7 @@ class Api {
 
   static async signin(endpoint, body) {
     try {
-      let res = await fetch(`http://${API_CONSTS.HOST}/${endpoint}`, {
+      let res = await fetch(`${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${endpoint}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -134,7 +137,7 @@ class Api {
 
   static async signin(endpoint = "signup", body) {
     try {
-      let res = await fetch(`http://${API_CONSTS.HOST}/${endpoint}`, {
+      let res = await fetch(`${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${endpoint}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -155,7 +158,7 @@ class Api {
 
   static async signin(endpoint = "signin", body) {
     try {
-      let res = await fetch(`http://${API_CONSTS.HOST}/${endpoint}`, {
+      let res = await fetch(`${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${endpoint}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -176,7 +179,7 @@ class Api {
 
   static async logout(accessToken, endpoint = "logout") {
     try {
-      let res = await fetch(`http://${API_CONSTS.HOST}/${endpoint}`, {
+      let res = await fetch(`${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${endpoint}`, {
         method: "POST",
 
         headers: {
@@ -198,7 +201,7 @@ class Api {
 
   static async refresh(endpoint = "refresh") {
     try {
-      let res = await fetch(`http://${API_CONSTS.HOST}/${endpoint}`, {
+      let res = await fetch(`${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${endpoint}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

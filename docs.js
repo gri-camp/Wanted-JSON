@@ -1,5 +1,5 @@
 // consts:
-import { REQUEST_CARD_LIST, AUTH_ENDPOINTS } from "./models/models.js";
+import { REQUEST_CARD_LIST, AUTH_ENDPOINTS, API_CONSTS } from "./models/models.js";
 // utils:
 import { draw } from "./helpers/helpers.js";
 // service classes:
@@ -30,22 +30,22 @@ try {
   });
 
   // !Содержимое секции 'limiting':
-  draw(limiting, Components.LIMITING_DOCA("hostname", endPoint));
+  draw(limiting, Components.LIMITING_DOCA(API_CONSTS.HOST, endPoint));
 
   // !Содержимое секции 'pagination':
-  draw(pagination, Components.PAGINATION_DOCA("hostname", endPoint));
+  draw(pagination, Components.PAGINATION_DOCA(API_CONSTS.HOST, endPoint));
 
   // !Содержимое секции 'selectedFields':
-  draw(selectedFields, Components.SELECTEDFIELDS_DOCA("hostname", endPoint));
+  draw(selectedFields, Components.SELECTEDFIELDS_DOCA(API_CONSTS.HOST, endPoint));
 
   // !Содержимое секции 'sorting':
-  draw(sorting, Components.SORTING_DOCA("hostname", endPoint));
+  draw(sorting, Components.SORTING_DOCA(API_CONSTS.HOST, endPoint));
 
   // !Содержимое секции 'addEntity':
-  draw(addEntity, Components.ADD_ENTITY_DOCA("hostname", endPoint));
+  draw(addEntity, Components.ADD_ENTITY_DOCA(API_CONSTS.HOST, endPoint));
 
   // !Содержимое секции 'addEntity':
-  draw(deleteEntity, Components.DELETE_ENTITY_DOCA("hostname", endPoint));
+  draw(deleteEntity, Components.DELETE_ENTITY_DOCA(API_CONSTS.HOST, endPoint));
 
   // ! Отрисовка навигационной кнопки:
   new UpwardButton({ Component: Components.UPWARD_BTN });

@@ -1,5 +1,6 @@
 const API_CONSTS = {
-  HOST: "185.104.248.25:3000",
+  PROTOCOL: 'https',
+  HOST: "dummy.chromiusj.ru",
   BOOKS: "books",
   ATHLETES: "athletes",
   VIDEOGAMES: "videoGames",
@@ -15,20 +16,20 @@ const API_CONSTS = {
 const AUTH_ENDPOINTS = ['signin', 'signup', 'logout', 'refresh'];
 
 const URLS = {
-  getEntities: (host, ep = "${endpoint}") => `https://${host}/${ep}`,
+  getEntities: (host, ep = "${endpoint}") => `${API_CONSTS.PROTOCOL}://${host}/${ep}`,
   getEntitiesQS: (host, ep = "${endpoint}") =>
-    `https://${host}/${ep}?page=\${value}&limit=\${value}`,
-  getSingleEntity: (host, ep = "${endpoint}") => `https://${host}/${ep}/\${id}`,
+    `${API_CONSTS.PROTOCOL}://${host}/${ep}?page=\${value}&limit=\${value}`,
+  getSingleEntity: (host, ep = "${endpoint}") => `${API_CONSTS.PROTOCOL}://${host}/${ep}/\${id}`,
   getSearchedEntity: (host, ep = "${endpoint}") =>
-    `https://${host}/${ep}?q=\${value}`,
-  addEntity: (host, ep = "${endpoint}") => `https://${host}/${ep}`,
-  deleteEntity: (host, ep = "${endpoint}") => `https://${host}/${ep}/\${id}`,
+    `${API_CONSTS.PROTOCOL}://${host}/${ep}?q=\${value}`,
+  addEntity: (host, ep = "${endpoint}") => `${API_CONSTS.PROTOCOL}://${host}/${ep}`,
+  deleteEntity: (host, ep = "${endpoint}") => `${API_CONSTS.PROTOCOL}://${host}/${ep}/\${id}`,
   getLimitedEntities: (host, ep = "${endpoint}") =>
-    `https://${host}/${ep}?limit=10`,
+    `${API_CONSTS.PROTOCOL}://${host}/${ep}?limit=10`,
   getPaginatedEntities: (host, ep = "${endpoint}") =>
-    `https://${host}/${ep}?page=2&limit=10`,
+    `${API_CONSTS.PROTOCOL}://${host}/${ep}?page=2&limit=10`,
   getSelectedEntities: (host, ep = "${endpoint}") =>
-    `https://${host}/${ep}?select=value1,value2`,
+    `${API_CONSTS.PROTOCOL}://${host}/${ep}?select=value1,value2`,
   getSortedEntities: (host, ep = "${endpoint}") =>
     `https://${host}/${ep}?sort=\${field}:\${dir}`,
   // ! Авторизация / регистрация
@@ -280,28 +281,32 @@ const ENTITIES_LIST = [
 
 const EXAMPLES_LIST = [
   {
-    href: `http://${API_CONSTS.HOST}/${API_CONSTS.BOOKS}`,
-    text: `<div class="icon-box"><span class="material-icons-round">cloud</span></div> http://hostname/books`,
+    href: `${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.CARS}`,
+    text: `<div class="icon-box"><span class="material-icons-round">cloud</span></div> ${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.CARS}`,
   },
   {
-    href: `http://${API_CONSTS.HOST}/${API_CONSTS.BOOKS}/5`,
-    text: `<div class="icon-box"><span class="material-icons-round">cloud</span></div> http://hostname/${API_CONSTS.BOOKS}/5`,
+    href: `${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.BOOKS}/5`,
+    text: `<div class="icon-box"><span class="material-icons-round">cloud</span></div> ${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.BOOKS}/5`,
   },
   {
-    href: `http://${API_CONSTS.HOST}/${API_CONSTS.ATHLETES}?q=Лионель Месси`,
-    text: `<div class="icon-box"><span class="material-icons-round">cloud</span></div> http://hostname/${API_CONSTS.ATHLETES}?q=Месси`,
+    href: `${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.ATHLETES}?q=Лионель Месси`,
+    text: `<div class="icon-box"><span class="material-icons-round">cloud</span></div> ${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.ATHLETES}?q=Месси`,
   },
   {
-    href: `http://${API_CONSTS.HOST}/${API_CONSTS.BOOKS}?select=title,author,pageCount`,
-    text: `<div class="icon-box"><span class="material-icons-round">cloud</span></div> http://hostname/${API_CONSTS.BOOKS}?select=title,author,pageCount`,
+    href: `${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.BOOKS}?select=title,author,pageCount`,
+    text: `<div class="icon-box"><span class="material-icons-round">cloud</span></div> ${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.BOOKS}?select=title,author,pageCount`,
   },
   {
-    href: `http://${API_CONSTS.HOST}/${API_CONSTS.BOOKS}?sort=pageCount:desc`,
-    text: `<div class="icon-box"><span class="material-icons-round">cloud</span></div> http://hostname/${API_CONSTS.BOOKS}?sort=pageCount:desc`,
+    href: `${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.BOOKS}?sort=pageCount:desc`,
+    text: `<div class="icon-box"><span class="material-icons-round">cloud</span></div> ${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.BOOKS}?sort=pageCount:desc`,
   },
   {
-    href: `http://${API_CONSTS.HOST}/${API_CONSTS.BOOKS}?limit=5&page=3`,
-    text: `<div class="icon-box"><span class="material-icons-round">cloud</span></div> http://hostname/${API_CONSTS.BOOKS}?limit=5&page=3`,
+    href: `${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.VIDEOGAMES}?limit=20`,
+    text: `<div class="icon-box"><span class="material-icons-round">cloud</span></div> ${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.VIDEOGAMES}?limit=20`,
+  },
+  {
+    href: `${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.MOVIES}?q=матрица`,
+    text: `<div class="icon-box"><span class="material-icons-round">cloud</span></div> ${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.MOVIES}?q=матрица`,
   },
   {
     href: `http://${API_CONSTS.HOST}/${API_CONSTS.VIDEOGAMES}?limit=5`,
