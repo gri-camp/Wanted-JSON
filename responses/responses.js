@@ -949,7 +949,17 @@ const Responses = {
 <strong class='purple'>}</strong>           
 </code>`,
     logout: ``,
-    refresh: ``,
+    refresh: `<code>    
+<strong class='purple'>{</strong>
+    "user": <strong class='purple'>{</strong>
+        "id": 13,
+        "login": "test"
+    <strong class='purple'>}</strong>,
+    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEzLCJsb2dpbiI6InRlc3QiLCJpYXQiOjE3NjcwODY5MzcsImV4cCI6MTc2NzA4NzgzN30.zExmsjwwPl7J5HFJOCZpC8hQcXSjN2EPXUmdRD3nKr8",
+    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEzLCJsb2dpbiI6InRlc3QiLCJpYXQiOjE3NjcwODY5MzcsImV4cCI6MTc2NzY5MTczN30.t4fKrBjali5a9-XoQQJtaGTUbXQdiXjIX62j1ErOBqY",
+<strong class='purple'>}</strong>
+
+</code>`,
   },
 };
 

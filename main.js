@@ -137,10 +137,10 @@ try {
   // );
 
   //  ! refresh-----------
-  // (async function (endPoint, token) {
-  //   let res = await Api.refresh(endPoint, token);
-  //   console.log(res);
-  // })(API_CONSTS.REFRESH, '');
+  (async function (endPoint, token) {
+    let res = await Api.refresh(endPoint, token);
+    console.log(res);
+  })(API_CONSTS.REFRESH, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEzLCJsb2dpbiI6InRlc3QiLCJpYXQiOjE3NjcwODY5MTQsImV4cCI6MTc2NzY5MTcxNH0.07XU75gxFEfw1J2_C4qqpYL9tEEDJ8oP4clFzcgrKL8');
 } catch (error) {
   console.warn(error.message, error.name);
 }
