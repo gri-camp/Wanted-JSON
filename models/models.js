@@ -290,7 +290,7 @@ const ENTITIES_LIST = [
   {
     href: `${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.DOCS}`,
     endpoint: API_CONSTS.DOCS,
-    icon: `<span class="material-icons-round">integration_instructions</span>`,
+    icon: `<span class="material-icons-round" style='color: #1c963c;'>integration_instructions</span>`,
   },
 ];
 
