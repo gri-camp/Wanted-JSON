@@ -1,29 +1,34 @@
 const API_CONSTS = {
-  PROTOCOL: 'https',
+  PROTOCOL: "https",
   HOST: "dummy.chromiusj.ru",
   BOOKS: "books",
   ATHLETES: "athletes",
   VIDEOGAMES: "videoGames",
   CARS: "cars",
   MOVIES: "movies",
-  SEARCH: "search",
-  SIGNUP: 'signup',
-  SIGNIN: 'signin',
-  LOGOUT: 'logout',
-  REFRESH: 'refresh',
+  DOCS: "docs",
+  AUTH: "auth",
+  SIGNUP: "signup",
+  SIGNIN: "signin",
+  LOGOUT: "logout",
+  REFRESH: "refresh",
 };
 
-const AUTH_ENDPOINTS = ['signin', 'signup', 'logout', 'refresh'];
+const AUTH_ENDPOINTS = ["signin", "signup", "logout", "refresh"];
 
 const URLS = {
-  getEntities: (host, ep = "${endpoint}") => `${API_CONSTS.PROTOCOL}://${host}/${ep}`,
+  getEntities: (host, ep = "${endpoint}") =>
+    `${API_CONSTS.PROTOCOL}://${host}/${ep}`,
   getEntitiesQS: (host, ep = "${endpoint}") =>
     `${API_CONSTS.PROTOCOL}://${host}/${ep}?page=\${value}&limit=\${value}`,
-  getSingleEntity: (host, ep = "${endpoint}") => `${API_CONSTS.PROTOCOL}://${host}/${ep}/\${id}`,
+  getSingleEntity: (host, ep = "${endpoint}") =>
+    `${API_CONSTS.PROTOCOL}://${host}/${ep}/\${id}`,
   getSearchedEntity: (host, ep = "${endpoint}") =>
     `${API_CONSTS.PROTOCOL}://${host}/${ep}?q=\${value}`,
-  addEntity: (host, ep = "${endpoint}") => `${API_CONSTS.PROTOCOL}://${host}/${ep}`,
-  deleteEntity: (host, ep = "${endpoint}") => `${API_CONSTS.PROTOCOL}://${host}/${ep}/\${id}`,
+  addEntity: (host, ep = "${endpoint}") =>
+    `${API_CONSTS.PROTOCOL}://${host}/${ep}`,
+  deleteEntity: (host, ep = "${endpoint}") =>
+    `${API_CONSTS.PROTOCOL}://${host}/${ep}/\${id}`,
   getLimitedEntities: (host, ep = "${endpoint}") =>
     `${API_CONSTS.PROTOCOL}://${host}/${ep}?limit=10`,
   getPaginatedEntities: (host, ep = "${endpoint}") =>
@@ -253,34 +258,39 @@ const FEATURES_CARD_LIST = [
 
 const ENTITIES_LIST = [
   {
-    href: `./docs.html?endpoint=books`,
-    endpoint: `books`,
+    href: `./docs.html?endpoint=${API_CONSTS.BOOKS}`,
+    endpoint: API_CONSTS.BOOKS,
     icon: `<span class="material-icons-round">book</span>`,
   },
   {
-    href: `./docs.html?endpoint=athletes`,
-    endpoint: `athletes`,
+    href: `./docs.html?endpoint=${API_CONSTS.ATHLETES}`,
+    endpoint: API_CONSTS.ATHLETES,
     icon: `<span class="material-icons-round">sports_basketball</span>`,
   },
   {
-    href: `./docs.html?endpoint=videoGames`,
-    endpoint: `videoGames`,
+    href: `./docs.html?endpoint=${API_CONSTS.VIDEOGAMES}`,
+    endpoint: API_CONSTS.VIDEOGAMES,
     icon: `<span class="material-icons-round">gamepad</span>`,
   },
   {
-    href: `./docs.html?endpoint=movies`,
-    endpoint: `movies`,
+    href: `./docs.html?endpoint=${API_CONSTS.MOVIES}`,
+    endpoint: API_CONSTS.MOVIES,
     icon: `<span class="material-icons-round">movie_creation</span>`,
   },
   {
-    href: `./docs.html?endpoint=cars`,
-    endpoint: `cars`,
+    href: `./docs.html?endpoint=${API_CONSTS.CARS}`,
+    endpoint: API_CONSTS.CARS,
     icon: `<span class="material-icons-round">directions_car</span>`,
   },
   {
-    href: `./auth.html?endpoint=auth`,
-    endpoint: `auth`,
+    href: `./auth.html?endpoint=${API_CONSTS.AUTH}`,
+    endpoint: API_CONSTS.AUTH,
     icon: `<span class="material-icons-round">login</span>`,
+  },
+  {
+    href: `${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.DOCS}`,
+    endpoint: API_CONSTS.DOCS,
+    icon: `<span class="material-icons-round">integration_instructions</span>`,
   },
 ];
 
@@ -369,7 +379,7 @@ const DOCUMENTATION_LIST = [
   },
   {
     href: `./auth.html?endpoint=auth`,
-    text: `<div class="icon-box"><span class="material-icons-round">description</span></div> Документация <em style="font-weight:bold;">auth</em>`,    
+    text: `<div class="icon-box"><span class="material-icons-round">description</span></div> Документация <em style="font-weight:bold;">auth</em>`,
   },
 ];
 
@@ -591,15 +601,15 @@ const FORM_ELEMS_LIST = [
 
 export {
   API_CONSTS,
-  FORM_ELEMS_LIST,
+  AUTH_ENDPOINTS,
   DOCUMENTATION_LIST,
   ENTITIES_LIST,
   EXAMPLES_LIST,
   FEATURES_CARD_LIST,
+  FORM_ELEMS_LIST,
   MENU_LIST,
   POST_REQUIRED_FIELDS,
   REQUEST_CARD_LIST,
   SORTING_WHITE_LIST,
   URLS,
-  AUTH_ENDPOINTS
 };

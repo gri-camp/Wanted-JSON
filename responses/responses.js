@@ -932,19 +932,19 @@ const Responses = {
   auth: {
     signin: `<code>    
 <strong class='purple'>{</strong>
-    "user": {
+    "user": <strong class='purple'>{</strong>
         "id": 222,
         "login": "foo"
-    },
+    <strong class='purple'>}</strong>,
     "accessToken": "your access-token (Base64)",    
 <strong class='purple'>}</strong>           
 </code>`,
     signup: `<code>    
 <strong class='purple'>{</strong>
-    "user": {
+    "user": <strong class='purple'>{</strong>
         "id": 222,
         "login": "foo"
-    },
+    <strong class='purple'>}</strong>,
     "accessToken": "your access-token (Base64)",    
 <strong class='purple'>}</strong>           
 </code>`,
