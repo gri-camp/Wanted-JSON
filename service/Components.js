@@ -73,13 +73,9 @@ class Components {
     <a class="entities-card" href="${href}" rel="noopener noreferrer">
         <button class="btn btn-entity">
         ${icon}
-        ${endpoint} 
-        <span class="entities-card-url"> ${URLS.getEntities(
-          API_CONSTS.HOST,
-          endpoint
-        )} </span>       
-        </button>
-        
+        ${endpoint !== 'docs' ? endpoint : 'swagger'} 
+        <span class="entities-card-url"> /${endpoint} </span>       
+        </button>        
     </a>
     `;
   EXAMPLES_LINK = ({ href, text }) => `
@@ -130,11 +126,7 @@ class Components {
         </div>                  
     </article>`;
   }
-  NOTE_DOCS_PAGE = () => `
-    <p class="note">
-        <span class="danger">*</span> Минимально необходимые поля для передачи в параметре <strong>body</strong>. 
-    </p>
-    `;
+
   URL_CARD_TRIGGERS({ id, req, res, err, ReqBtn, ResBtn, ErrBtn }) {
     return `
             <div class="request-card-triggers">
