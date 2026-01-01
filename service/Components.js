@@ -283,7 +283,7 @@ class Components {
     `<a href="./customers.html" rel="noopener noreferrer">
       <button class="btn">
         <span class="material-icons-round"> free_breakfast </span>
-        <span>поддержать проект...</span>
+        <span>поддержать нас...</span>
       </button>
     </a>`;
 
