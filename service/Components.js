@@ -292,7 +292,7 @@ class Components {
       <a href="mailto:mail@wantedjson.ru?body=привет" class="footer-link" rel="noopener noreferrer">
         <div class='footer-link-tasks'>
           <p>
-            <strong>поддержка: </strong>
+            <strong>тех. поддержка: </strong>
           </p>
           <p>
             <strong>идеи для развития: </strong>
