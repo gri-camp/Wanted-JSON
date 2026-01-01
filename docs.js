@@ -55,6 +55,9 @@ try {
 
   // !Запуск декоратора наблюдателя:
   new Observer(null, document.querySelectorAll(".request-card"));
+
+  console.log(window.parent.location);
+
 } catch (error) {
   console.warn(error.message, error.name);
 }

@@ -2,10 +2,13 @@
 	padding: $app-lg-spacing
 	border-radius: $app-md-spacing  $app-md-spacing  0px  0px 
 	position: relative	
-	font-size: 1em	
+	font-size: 0.95em	
 	position: relative
-	z-index: 5
-	background: $app-darken-color	
+	z-index: 1
+	background: $app-features-card-bg
+	color: $app-white-color
+	font-weight: 300
+	line-height: 150%	
 
 	&-link
 		display: flex
@@ -14,7 +17,22 @@
 		width: max-content
 
 		&:hover
-			color: $app-warning-color	
+			color: $app-warning-color
+
+		&-tasks
+			padding: $app-md-spacing
+			flex-basis: content
+			
+			strong
+				font-variant: small-caps				
+
+				&::after
+					content: ''
+					height: 1px
+					display: block
+					width: 100%
+					background: $app-white-color
+					opacity: .07 				
 	
 	address
 		align-items: center
