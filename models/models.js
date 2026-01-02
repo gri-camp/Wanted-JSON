@@ -25,10 +25,6 @@ const URLS = {
     `${API_CONSTS.PROTOCOL}://${host}/${ep}/\${id}`,
   getSearchedEntity: (host, ep = "${endpoint}") =>
     `${API_CONSTS.PROTOCOL}://${host}/${ep}?q=\${value}`,
-  addEntity: (host, ep = "${endpoint}") =>
-    `${API_CONSTS.PROTOCOL}://${host}/${ep}`,
-  deleteEntity: (host, ep = "${endpoint}") =>
-    `${API_CONSTS.PROTOCOL}://${host}/${ep}/\${id}`,
   getLimitedEntities: (host, ep = "${endpoint}") =>
     `${API_CONSTS.PROTOCOL}://${host}/${ep}?limit=10`,
   getPaginatedEntities: (host, ep = "${endpoint}") =>
@@ -36,12 +32,18 @@ const URLS = {
   getSelectedEntities: (host, ep = "${endpoint}") =>
     `${API_CONSTS.PROTOCOL}://${host}/${ep}?select=value1,value2`,
   getSortedEntities: (host, ep = "${endpoint}") =>
-    `https://${host}/${ep}?sort=\${field}:\${dir}`,
+    `${API_CONSTS.PROTOCOL}://${host}/${ep}?sort=\${field}:\${dir}`,
+  getFilteredEntities: (host, ep = "${endpoint}") =>
+    `${API_CONSTS.PROTOCOL}://${host}/${ep}?\${field}=\${value}`,
+  addEntity: (host, ep = "${endpoint}") =>
+    `${API_CONSTS.PROTOCOL}://${host}/${ep}`,
+  deleteEntity: (host, ep = "${endpoint}") =>
+    `${API_CONSTS.PROTOCOL}://${host}/${ep}/\${id}`,
   // ! Авторизация / регистрация
-  signup: (host, ep) => `https://${host}/${ep}`,
-  signin: (host, ep) => `https://${host}/${ep}`,
-  logout: (host, ep) => `https://${host}/${ep}`,
-  refresh: (host, ep) => `https://${host}/${ep}`,
+  signup: (host, ep) => `${API_CONSTS.PROTOCOL}://${host}/${ep}`,
+  signin: (host, ep) => `${API_CONSTS.PROTOCOL}://${host}/${ep}`,
+  logout: (host, ep) => `${API_CONSTS.PROTOCOL}://${host}/${ep}`,
+  refresh: (host, ep) => `${API_CONSTS.PROTOCOL}://${host}/${ep}`,
 };
 
 const REQUEST_CARD_LIST = [
@@ -221,7 +223,7 @@ const FEATURES_CARD_LIST = [
   },
   {
     icon: `<span class="material-icons-round">data_object</span>`,
-    text: `Все данные предоставлены в популярном, простом и гибком формате <abbr title="JavaScript Object Notation">JSON</abbr>!`,
+    text: `Все данные предоставлены в популярном и гибком формате <abbr title="JavaScript Object Notation">JSON</abbr>!`,
     title: "JSON-данные",
   },
   {
@@ -231,7 +233,7 @@ const FEATURES_CARD_LIST = [
   },
   {
     icon: `<span class="material-icons-round">html</span>`,
-    text: `Возможность быстро протестировать внешний вид приложения, используя данные нашего <abbr>API</abbr>.`,
+    text: `Возможность быстро протестировать внешний вид приложения, используя <abbr>API</abbr>.`,
     title: `Тестирование <abbrss>UI</abbrss> Вашего приложения`,
   },
   {
@@ -248,6 +250,11 @@ const FEATURES_CARD_LIST = [
     icon: `<span class="material-icons-round">search</span>`,
     text: `Для каждой сущности реализован поиск по множеству полей.`,
     title: "Удобный поиск",
+  },
+  {
+    icon: `<span class="material-icons-round">settings</span>`,
+    text: `Поддержка query-параметров для фильтрации, сортировки, пагинации, лимитирования, поиска и выборки данных!`,
+    title: "Настраиваемые данные",
   },
   {
     icon: `<span class="material-icons-round" style='color: #1c963c;'>integration_instructions</span>`,
@@ -324,8 +331,12 @@ const EXAMPLES_LIST = [
     text: `<div class="icon-box"><span class="material-icons-round">cloud</span></div> ${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.MOVIES}?q=матрица`,
   },
   {
-    href: `http://${API_CONSTS.HOST}/${API_CONSTS.VIDEOGAMES}?limit=5`,
-    text: `<div class="icon-box"><span class="material-icons-round">cloud</span></div> http://hostname/${API_CONSTS.VIDEOGAMES}?limit=5`,
+    href: `${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.CARS}?country=ЯПОНИЯ`,
+    text: `<div class="icon-box"><span class="material-icons-round">cloud</span></div> ${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.CARS}?country=ЯПОНИЯ`,
+  },
+  {
+    href: `${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.BOOKS}?genre=фэнтези`,
+    text: `<div class="icon-box"><span class="material-icons-round">cloud</span></div> ${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.BOOKS}?genre=фэнтези`,
   },
 ];
 
@@ -359,23 +370,23 @@ const MENU_LIST = [
 const DOCUMENTATION_LIST = [
   {
     href: `./docs.html?endpoint=books`,
-    text: `<div class="icon-box"><span class="material-icons-round">description</span></div> Документация <em style="font-weight:bold;">books</em>`,
+    text: `<div class="icon-box"><span class="material-icons-round">description</span></div> <em style="font-weight:bold;">books</em>`,
   },
   {
     href: `./docs.html?endpoint=athletes`,
-    text: `<div class="icon-box"><span class="material-icons-round">description</span></div> Документация <em style="font-weight:bold;">athletes</em>`,
+    text: `<div class="icon-box"><span class="material-icons-round">description</span></div> <em style="font-weight:bold;">athletes</em>`,
   },
   {
     href: `./docs.html?endpoint=videoGames`,
-    text: `<div class="icon-box"><span class="material-icons-round">description</span></div> Документация <em style="font-weight:bold;">videoGames</em>`,
+    text: `<div class="icon-box"><span class="material-icons-round">description</span></div> <em style="font-weight:bold;">videoGames</em>`,
   },
   {
     href: `./docs.html?endpoint=movies`,
-    text: `<div class="icon-box"><span class="material-icons-round">description</span></div> Документация <em style="font-weight:bold;">movies</em>`,
+    text: `<div class="icon-box"><span class="material-icons-round">description</span></div> <em style="font-weight:bold;">movies</em>`,
   },
   {
     href: `./docs.html?endpoint=cars`,
-    text: `<div class="icon-box"><span class="material-icons-round">description</span></div> Документация <em style="font-weight:bold;">cars</em>`,
+    text: `<div class="icon-box"><span class="material-icons-round">description</span></div> <em style="font-weight:bold;">cars</em>`,
   },
   {
     href: `./auth.html?endpoint=auth`,
@@ -470,6 +481,14 @@ const SORTING_WHITE_LIST = {
     "headlights",
     "lastUpdated",
   ],
+};
+
+const FILTERING_WHITE_LIST = {
+  books: ["author", "genre"],
+  athletes: ["sport", "country"],
+  videoGames: ["genre", "developer"],
+  movies: ["genre", "country"],
+  cars: ["brand", "country"],
 };
 
 const POST_REQUIRED_FIELDS = {
@@ -606,6 +625,7 @@ export {
   ENTITIES_LIST,
   EXAMPLES_LIST,
   FEATURES_CARD_LIST,
+  FILTERING_WHITE_LIST,
   FORM_ELEMS_LIST,
   MENU_LIST,
   POST_REQUIRED_FIELDS,

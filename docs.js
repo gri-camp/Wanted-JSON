@@ -16,9 +16,11 @@ try {
   const pagination = document.querySelector("#pagination");
   const selectedFields = document.querySelector("#selectedFields");
   const sorting = document.querySelector("#sorting");
+  const filtering = document.querySelector("#filtering");
   const addEntity = document.querySelector("#addEntity");
   const deleteEntity = document.querySelector("#deleteEntity");
   const FOOTER = document.querySelector(".footer");
+  
   const endPointName = document.querySelector(".endpoint");
   endPointName.textContent = endPoint;
 
@@ -41,10 +43,13 @@ try {
   // !Содержимое секции 'sorting':
   draw(sorting, Components.SORTING_DOCA(API_CONSTS.HOST, endPoint));
 
+   // !Содержимое секции 'filterEntity':
+  draw(filtering, Components.FILTERING_DOCA(API_CONSTS.HOST, endPoint));
+
   // !Содержимое секции 'addEntity':
   draw(addEntity, Components.ADD_ENTITY_DOCA(API_CONSTS.HOST, endPoint));
 
-  // !Содержимое секции 'addEntity':
+  // !Содержимое секции 'deleteEntity':
   draw(deleteEntity, Components.DELETE_ENTITY_DOCA(API_CONSTS.HOST, endPoint));
 
   // ! Отрисовка навигационной кнопки:

@@ -2,6 +2,7 @@ import {
   AUTH_ENDPOINTS,
   POST_REQUIRED_FIELDS,
   SORTING_WHITE_LIST,
+  FILTERING_WHITE_LIST,
   URLS,
 } from "../models/models.js";
 // helpers:
@@ -221,6 +222,28 @@ class Components {
         </p>
         `;
   }
+  FILTERING_DOCA(host, endpoint) {
+    return `
+        <p class='section-text'>
+          Получение данных осуществляется GET-запросом с передачей уникальных для каждой сущности
+          параметров (см. ниже):
+        </p>
+        <div>
+            <code class='request-card-url doca'> ${URLS.getFilteredEntities(
+              host,
+              endpoint
+            )} </code>
+        </div>
+        <p class='note'>
+            <span class="danger">&#10071;</span>Переменная \${field} принимает значения: 
+            <ul class='white-list'>${getHTMLFromList(
+              FILTERING_WHITE_LIST[endpoint],
+              (filterValue) => `<li class=' btn'> ${filterValue} </li>`
+            )}
+            </ul>
+        </p> 
+        `;
+  }
   LIMITING_DOCA(host, endpoint) {
     return `
         <p class='section-text'>
@@ -246,8 +269,7 @@ class Components {
               endpoint
             )}</code>
         </div>
-        <p class='note'><span class="danger">&#10071;</span>Минимально необходимые поля в параметре body для совершения запроса: 
-        </p>
+        <p class='note'><span class="danger">&#10071;</span>Минимально требуемые поля в теле запроса (<strong> body </strong>):</p>
         <ul class='white-list'> 
           ${getHTMLFromList(
             POST_REQUIRED_FIELDS[endpoint],
