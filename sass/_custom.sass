@@ -24,7 +24,7 @@
 	margin-top: var(--app-md-spacing)
 	display: block
 	font-size: 1.1em
-	background: var(--app-dark-color)	
+	background: var(--app-default-bg)	
 	border-radius: var(--app-md-spacing) var(--app-md-spacing) 0px 0px
 	position: relative
 	max-height: 0px
@@ -113,8 +113,8 @@
 
 	.btn
 		font-size: inherit
-		color: var(--app-light-color)
-		border: 1px dotted var(--app-light-color)		
+		color: var(--app-default-color)
+		border: 1px dotted 		
 		text-transform: none
 		letter-spacing: 1px
 		border-radius: var(--app-sm-spacing)
@@ -135,9 +135,11 @@
 	align-items: center
 	justify-content: center
 	cursor: pointer
-	box-shadow: $app-light-card-shadow
+	box-shadow: $app-card-shadow
 	transition: 0.25s all ease-out
 	user-select: none
+	color: var(--app-default-color)
+	background: var(--app-default-bg)
 
 	.material-icons-round 
 		font-size: 2em
@@ -151,8 +153,6 @@
 .note	
 	margin: var(--app-md-spacing) 0px
 
-	strong
-		color: var(--app-white-color)
 
 .tooltip
 	position: absolute
@@ -167,7 +167,7 @@
 	transform: translateY(-100%)
 	opacity: 0
 	transition: 0.25s all linear
-	box-shadow: $app-light-card-shadow
+	box-shadow: $app-tooltip-shadow
 
 	&.active
 		opacity: 1	

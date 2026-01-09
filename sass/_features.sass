@@ -20,7 +20,7 @@
 		height: 275px
 		margin: calc(7% / 6)
 		background: $app-features-card-bg
-		box-shadow: var(--app-danger-shadow)
+		box-shadow: $app-card-shadow
 		opacity: 0
 
 		&.active
@@ -30,12 +30,13 @@
 		&:hover 
 			transform: translateY(-0.5rem)
 			background: none
+			color: var(--app-warning-color)
 
 		&-hr 
 			height: 3px
 			width: 50%
 			border: none
-			background-color: var(--app-light-color)
+			background-color: var(--app-default-color)
 			border-radius: var(--app-sm-spacing)			
 			opacity: .07
 

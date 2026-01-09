@@ -1,26 +1,33 @@
 :root
-	--app-dark-color: #2d302d
-	--app-white-color: #fff
+	--app-light-color: #2d302d
+	--app-dark-color: #fff
+	--app-beige-color: #e8e2e2
 	--app-darken-color: #444644
 	--app-danger-color: #d84961
 	--app-warning-color: #cfbf21
 	--app-purple-color: #9216a8
 	--app-success-color: #1c963c
-	--app-light-color: #e8e2e2
 	--app-teal-color: rgb(14, 96, 100)
 	--app-pink-color: #ff0095
 	--app-dark-secondary-color: #29333D
+
+	--app-light-bg: var(--app-beige-color)
+	--app-dark-bg: #2d302d
+
+	--app-default-color: var(--app-dark-color)
+	--app-default-bg: var(--app-dark-bg)
 
 	--app-sm-spacing: 0.25rem
 	--app-md-spacing: 0.5rem
 	--app-lg-spacing: 0.75rem
 	--app-xl-spacing: 1.25rem
 	--app-xxl-spacing: 1.5rem
+
 	--app-card-offset: 40%  
 
 $app-features-card-bg: linear-gradient(
 	to right bottom,
-	var(--app-dark-color) 60%,
+	var(--app-dark-bg) 60%,
 	var(--app-darken-color)
 )
 
@@ -31,8 +38,8 @@ $app-danger-card-bg: linear-gradient(
 	var(--app-pink-color) 90%
 	)
 
-	
-$app-light-card-shadow: 0.5px 0.5px 3px, -0.5px -0.5px 3px 
-$app-danger-shadow: 0.5px 0.5px 3px, -0.5px -0.5px 3px 
+$app-card-shadow: 0.5px 0.5px 3px, -0.5px -0.5px 3px
+$app-tooltip-shadow: 0.5px 0.5px 3px var(--app-default-color), -0.5px -0.5px 3px var(--app-default-color)
+
 
 

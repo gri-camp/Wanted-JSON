@@ -6,7 +6,7 @@
 	margin: 0px 0px var(--app-xl-spacing) 0px
 	background: none
 	border-radius: var(--app-md-spacing)
-	box-shadow: $app-danger-shadow
+	box-shadow: $app-card-shadow
 	height: max-content
 	transform: translateX(-30%)
 	opacity: 0
@@ -39,13 +39,12 @@
 		text-shadow: 0.3px 0.3px 1px var(--app-light-color)
 		overflow-x: auto
 		overflow-y: initial
-		white-space: nowrap 
-		color: var(--app-white-color)
+		white-space: nowrap 		
 		font-weight: 400
 		
 		&.doca   
 			padding: var(--app-md-spacing)			
-			box-shadow: $app-danger-shadow
+			box-shadow: $app-card-shadow
 			border-radius: var(--app-sm-spacing)
 			display: flex
 			
@@ -69,6 +68,7 @@
 		background-color: var(--app-darken-color)
 		opacity: 0.8		
 		transition: color 0.2s linear
+		color: var(--app-dark-color)
 
 		&:hover   
 			color: var(--app-warning-color)
