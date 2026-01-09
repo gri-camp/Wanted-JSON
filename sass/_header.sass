@@ -6,7 +6,7 @@
 	border-radius: var(--app-md-spacing)
 	position: relative
 	margin: 0 0 1.5rem 0
-	gap: 1rem
+	gap: 0.5rem
 
 	.material-icons-round 
 		font-size: 2em	
@@ -46,9 +46,17 @@
 	display: none
 	margin-left: auto
 
-	.material-icons-round 
-		font-size: 2em
+.theme 
+	cursor: pointer
+	display: flex
+	align-items: center
+	justify-content: center
+	padding: var(--app-md-spacing) 0px
 
+.burger, .theme  
+	
+	.material-icons-round  
+		font-size: 2rem	
 
 .auth, .home
 	cursor: pointer
@@ -58,6 +66,10 @@
 
 .home
 	margin-left: var(--app-md-spacing)	
+
+.auth
+	background: var(--app-default-bg)
+	box-shadow: $app-elem-shadow
 				
 
 

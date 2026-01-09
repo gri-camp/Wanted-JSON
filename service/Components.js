@@ -33,7 +33,7 @@ class Components {
   ) => `
         <article id="${id}" class="request-card">
             <h3>
-                <strong class="request-card-title warning">${title}</strong>
+                <strong class="request-card-title danger">${title}</strong>
             </h3>
             <div class="request-card-info" data-id="${id}" data-method="${method}">
                 <button class='btn ${cls}'> ${method} </button>
@@ -81,7 +81,7 @@ class Components {
   EXAMPLES_LINK = ({ href, example }) => `
     <li class="request-card-url doca">
         <a href="${href}" rel="noopener noreferrer">
-          <div class="icon-box"><span class="material-icons-round">cloud</span></div>
+          <div><span class="material-icons-round warning">cloud</span></div>
           <span class='example'>${example}</span>
         </a>
     </li>
@@ -102,7 +102,7 @@ class Components {
     return `
     <article id="${id}" class="request-card">
         <h3>
-            <strong class="request-card-title warning">${title}</strong>
+            <strong class="request-card-title danger">${title}</strong>
         </h3>
         <section class="request-card-info" data-id="${id}" data-method="${method}">
             <button class='btn ${cls}'> ${method} </button>

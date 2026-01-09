@@ -93,7 +93,10 @@
 
 .back
 	margin: var(--app-md-spacing) 0px var(--app-xl-spacing) 0px
-	
+	display: flex
+	align-items: center
+	column-gap: 0.5rem
+
 	a 
 		width: max-content
 		
@@ -101,8 +104,7 @@
 			color: var(--app-warning-color)
 
 	.material-icons-round 
-		font-size: 2em				
-
+		font-size: 2em	
 
 .white-list 
 	padding: 0px var(--app-sm-spacing)
@@ -167,7 +169,7 @@
 	transform: translateY(-100%)
 	opacity: 0
 	transition: 0.25s all linear
-	box-shadow: $app-tooltip-shadow
+	box-shadow: $app-elem-shadow
 
 	&.active
 		opacity: 1	
