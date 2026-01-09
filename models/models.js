@@ -373,27 +373,27 @@ const MENU_LIST = [
 const DOCUMENTATION_LIST = [
   {
     href: `./docs.html?endpoint=books`,
-    text: `<div class="warning"><span class="material-icons-round">description</span></div> <em style="font-weight:bold;">books</em>`,
+    text: `<div class="icon-box"><span class="material-icons-round">description</span></div> <em style="font-weight:bold;">books</em>`,
   },
   {
     href: `./docs.html?endpoint=athletes`,
-    text: `<div class="warning"><span class="material-icons-round">description</span></div> <em style="font-weight:bold;">athletes</em>`,
+    text: `<div class="icon-box"><span class="material-icons-round">description</span></div> <em style="font-weight:bold;">athletes</em>`,
   },
   {
     href: `./docs.html?endpoint=videoGames`,
-    text: `<div class="warning"><span class="material-icons-round">description</span></div> <em style="font-weight:bold;">videoGames</em>`,
+    text: `<div class="icon-box"><span class="material-icons-round">description</span></div> <em style="font-weight:bold;">videoGames</em>`,
   },
   {
     href: `./docs.html?endpoint=movies`,
-    text: `<div class="warning"><span class="material-icons-round">description</span></div> <em style="font-weight:bold;">movies</em>`,
+    text: `<div class="icon-box"><span class="material-icons-round">description</span></div> <em style="font-weight:bold;">movies</em>`,
   },
   {
     href: `./docs.html?endpoint=cars`,
-    text: `<div class="warning"><span class="material-icons-round">description</span></div> <em style="font-weight:bold;">cars</em>`,
+    text: `<div class="icon-box"><span class="material-icons-round">description</span></div> <em style="font-weight:bold;">cars</em>`,
   },
   {
     href: `./auth.html?endpoint=auth`,
-    text: `<div class="warning"><span class="material-icons-round">description</span></div> <em style="font-weight:bold;">auth</em>`,
+    text: `<div class="icon-box"><span class="material-icons-round">description</span></div> <em style="font-weight:bold;">auth</em>`,
   },
 ];
 

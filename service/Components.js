@@ -81,7 +81,7 @@ class Components {
   EXAMPLES_LINK = ({ href, example }) => `
     <li class="request-card-url doca">
         <a href="${href}" rel="noopener noreferrer">
-          <div><span class="material-icons-round warning">cloud</span></div>
+          <div class='icon-box'><span class="material-icons-round warning">cloud</span></div>
           <span class='example'>${example}</span>
         </a>
     </li>
