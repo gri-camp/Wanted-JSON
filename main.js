@@ -8,6 +8,7 @@ import {
   FORM_ELEMS_LIST,
   MENU_LIST,
   REQUEST_CARD_LIST,
+  ROOT
 } from "./models/models.js";
 // utils:
 import { draw, getHTMLFromList } from "./helpers/helpers.js";
@@ -19,6 +20,7 @@ import { Menu } from "./service/Menu.js";
 import { Observer } from "./service/Observer.js";
 import { Request } from "./service/Request.js";
 import { UpwardButton } from "./service/UpWardButton.js";
+import {Theme} from "./service/Theme.js"
 
 try {
   const FEATURES = document.querySelector("#features");
@@ -29,6 +31,9 @@ try {
   const FOOTER = document.querySelector(".footer");
   const SIGN_UP_POPUP = document.querySelector("#signup");
   const SIGN_IN_POPUP = document.querySelector("#signin");
+
+  // Подключаем тему:
+  new Theme({ trigger: ".theme", root: ROOT });
 
   // !Отрисовка главного меню:
   new Menu({ list: MENU_LIST, Component: Components.MENU });

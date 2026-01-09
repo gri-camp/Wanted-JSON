@@ -1,5 +1,10 @@
 // consts:
-import { REQUEST_CARD_LIST, AUTH_ENDPOINTS, API_CONSTS } from "./models/models.js";
+import {
+  API_CONSTS,
+  AUTH_ENDPOINTS,
+  REQUEST_CARD_LIST,
+  ROOT
+} from "./models/models.js";
 // utils:
 import { draw } from "./helpers/helpers.js";
 // service classes:
@@ -7,6 +12,7 @@ import Components from "./service/Components.js";
 import { Observer } from "./service/Observer.js";
 import { Request } from "./service/Request.js";
 import { UpwardButton } from "./service/UpWardButton.js";
+import {Theme} from "./service/Theme.js"
 
 try {
   const endPoint = location.search.replace(/^\?endpoint=/, "");
@@ -20,13 +26,18 @@ try {
   const addEntity = document.querySelector("#addEntity");
   const deleteEntity = document.querySelector("#deleteEntity");
   const FOOTER = document.querySelector(".footer");
-  
+
   const endPointName = document.querySelector(".endpoint");
   endPointName.textContent = endPoint;
 
+  // Подключаем тему:
+  new Theme({ trigger: ".theme", root: ROOT });
+
   // !Содержимое секции 'urls':
   new Request({
-    list: REQUEST_CARD_LIST.filter(card => !AUTH_ENDPOINTS.includes(card?.id)),
+    list: REQUEST_CARD_LIST.filter(
+      (card) => !AUTH_ENDPOINTS.includes(card?.id)
+    ),
     endPoint,
     Component: "REQUEST_CARD_DOCS_PAGE",
   });
@@ -38,12 +49,15 @@ try {
   draw(pagination, Components.PAGINATION_DOCA(API_CONSTS.HOST, endPoint));
 
   // !Содержимое секции 'selectedFields':
-  draw(selectedFields, Components.SELECTEDFIELDS_DOCA(API_CONSTS.HOST, endPoint));
+  draw(
+    selectedFields,
+    Components.SELECTEDFIELDS_DOCA(API_CONSTS.HOST, endPoint)
+  );
 
   // !Содержимое секции 'sorting':
   draw(sorting, Components.SORTING_DOCA(API_CONSTS.HOST, endPoint));
 
-   // !Содержимое секции 'filterEntity':
+  // !Содержимое секции 'filterEntity':
   draw(filtering, Components.FILTERING_DOCA(API_CONSTS.HOST, endPoint));
 
   // !Содержимое секции 'addEntity':
@@ -62,7 +76,6 @@ try {
   new Observer(null, document.querySelectorAll(".request-card"));
 
   console.log(window.parent.location);
-
 } catch (error) {
   console.warn(error.message, error.name);
 }
