@@ -9,11 +9,11 @@
 
 
 body 
-	background-color: $app-dark-color
+	background-color: var(--app-dark-color)
 	min-height: 100vh
 	font-family: "Roboto"
 	padding: 1rem
-	color: $app-light-color
+	color: var(--app-light-color)
 	letter-spacing: 1px
 	line-height: 140%
 	-webkit-font-smoothing: antialiased
@@ -28,7 +28,7 @@ h3
 	width: 100%
 
 h3 
-	margin: $app-md-spacing 0px
+	margin: var(--app-md-spacing) 0px
 	font-size: 1.2em
 	
 h2
@@ -36,13 +36,13 @@ h2
 
 
 header 
-	margin: $app-md-spacing
+	margin: var(--app-md-spacing)
 
 pre 
 	margin: 0px
-	padding: $app-md-spacing
+	padding: var(--app-md-spacing)
 	font-weight: 500
-	border-radius: $app-md-spacing
+	border-radius: var(--app-md-spacing)
 	
 
 code 
@@ -52,7 +52,7 @@ code
 	font-family: 'FiraCode'
 	overflow-y: auto
 	max-height: 540px
-	color: $app-white-color
+	color: var(--app-white-color)
 	
 pre code 
 	width: 100%
@@ -82,7 +82,7 @@ address
 ul,
 ol 
 	list-style-position: inside  
-	padding: $app-md-spacing
+	padding: var(--app-md-spacing)
 	line-height: 140%
 
 
@@ -105,23 +105,23 @@ abbr
 	text-decoration: none
 
 cite
-	padding: $app-sm-spacing	
+	padding: var(--app-sm-spacing)	
 
 input
 	outline: none	
-	padding: $app-lg-spacing
+	padding: var(--app-lg-spacing)
 	display: inline-block
 	border: none
 	color: inherit
 	background: none
 	width: 100%
 	box-shadow: $app-light-card-shadow
-	border-radius: $app-md-spacing
+	border-radius: var(--app-md-spacing)
 	font-size: inherit
 	letter-spacing: inherit
 
 	&:focus
-		outline: 2px solid $app-success-color
+		outline: 2px solid var(--app-success-color)
 		box-shadow: none
 
 	&::placeholder
@@ -140,7 +140,7 @@ input[type='submit']
 	outline: none
 	cursor: pointer
 	text-transform: uppercase
-	background-color: $app-success-color
+	background-color: var(--app-success-color)
 	box-shadow: none
 	font-weight: 700
 	letter-spacing: 1px
@@ -152,4 +152,4 @@ input[type='submit']
 		background: none
 	
 	&:hover
-		color: $app-warning-color 
+		color: var(--app-warning-color) 

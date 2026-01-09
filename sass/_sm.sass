@@ -2,10 +2,11 @@
 	body 
 		font-size: 12.7px
 		margin: 0px
-		padding: $app-sm-spacing
+		padding: var(--app-sm-spacing) 
+
 
 	.appContainer 
-		padding: $app-sm-spacing $app-md-spacing
+		padding: var(--app-sm-spacing) var(--app-md-spacing)
 
 	.header-nav
 		min-width: 40%		
@@ -13,7 +14,7 @@
 	.features-card 
 		width: 100%		
 		height: auto
-		margin: $app-md-spacing 0px
+		margin: var(--app-md-spacing) 0px
 
 		&-text
 			font-size: 1.15em
@@ -23,26 +24,26 @@
 
 	.entities-card 
 		width: 100%
-		margin: $app-md-spacing 0px	
+		margin: var(--app-md-spacing) 0px	
 
 	.request-card 
-		padding: $app-md-spacing
-		margin-bottom: calc($app-md-spacing * 2)
+		padding: var(--app-md-spacing)
+		margin-bottom: calc(var(--app-md-spacing) * 2)
 			
 
 		&-info 
 			gap: 0.5rem			
-			padding: $app-md-spacing 0px	
+			padding: var(--app-md-spacing) 0px	
 
 		&-copybar
-			padding: $app-sm-spacing
+			padding: var(--app-sm-spacing)
 
 			button
-				padding: $app-sm-spacing	
+				padding: var(--app-sm-spacing)	
 
 
 	.icon-box, .back .btn 
-		padding: $app-sm-spacing
+		padding: var(--app-sm-spacing)
 
 	.upwardBtn		
 		width: 38px

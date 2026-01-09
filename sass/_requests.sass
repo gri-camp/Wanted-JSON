@@ -2,10 +2,10 @@
 	border: none
 
 .request-card 
-	padding: $app-lg-spacing
-	margin: 0px 0px $app-xl-spacing 0px
+	padding: var(--app-lg-spacing)
+	margin: 0px 0px var(--app-xl-spacing) 0px
 	background: none
-	border-radius: $app-md-spacing
+	border-radius: var(--app-md-spacing)
 	box-shadow: $app-danger-shadow
 	height: max-content
 	transform: translateX(-30%)
@@ -24,7 +24,7 @@
 		display: flex
 		align-items: start
 		gap: 1rem
-		padding: $app-lg-spacing 0px
+		padding: var(--app-lg-spacing) 0px
 		flex-direction: column
 
 		.btn 
@@ -36,37 +36,42 @@
 		font-weight: 300
 		font-size: 1.15em
 		width: 100%
-		text-shadow: 0.3px 0.3px 1px $app-light-color
-		word-break: break-all
-		color: $app-white-color
+		text-shadow: 0.3px 0.3px 1px var(--app-light-color)
+		overflow-x: auto
+		overflow-y: initial
+		white-space: nowrap 
+		color: var(--app-white-color)
 		font-weight: 400
 		
 		&.doca   
-			padding: $app-md-spacing			
+			padding: var(--app-md-spacing)			
 			box-shadow: $app-danger-shadow
-			border-radius: $app-sm-spacing
+			border-radius: var(--app-sm-spacing)
 			display: flex
 			
 			a
 				width: 100%
-
+				
 				&:hover
-					color: $app-warning-color
-					transform: scale(1.01)			 
+					color: var(--app-warning-color)
+					transform: scale(1.01)
+
+			.example
+				padding: var(--app-sm-spacing)					 
 
 	&-copybar 
-		padding: $app-md-spacing
+		padding: var(--app-md-spacing)
 		display: flex
 		font-size: 1em
 		align-items: center		
-		border-radius: $app-md-spacing $app-md-spacing 0px 0px
+		border-radius: var(--app-md-spacing) var(--app-md-spacing) 0px 0px
 		cursor: pointer		
-		background-color: $app-darken-color
+		background-color: var(--app-darken-color)
 		opacity: 0.8		
 		transition: color 0.2s linear
 
 		&:hover   
-			color: $app-warning-color
+			color: var(--app-warning-color)
 			background: none
 
 		.btn
@@ -77,8 +82,8 @@
 		align-items: center
 
 	&-trigger 
-		padding: $app-md-spacing
-		border: 1.5px dotted $app-light-color
+		padding: var(--app-md-spacing)
+		border: 1.5px dotted var(--app-light-color)
 		position: relative
 
 		&:nth-child(1) 

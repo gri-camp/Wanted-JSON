@@ -1,42 +1,38 @@
-$app-dark-color: #2d302d
-$app-white-color: #fff
-$app-darken-color: #444644
-$app-danger-color: #d84961
-$app-warning-color: #cfbf21
-$app-purple-color: #9216a8
-$app-success-color: #1c963c
-$app-light-color: #e8e2e2
-$app-teal-color: rgb(14, 96, 100)
-$app-pink-color: #ff0095
-$app-dark-secondary-color: #29333D
+:root
+	--app-dark-color: #2d302d
+	--app-white-color: #fff
+	--app-darken-color: #444644
+	--app-danger-color: #d84961
+	--app-warning-color: #cfbf21
+	--app-purple-color: #9216a8
+	--app-success-color: #1c963c
+	--app-light-color: #e8e2e2
+	--app-teal-color: rgb(14, 96, 100)
+	--app-pink-color: #ff0095
+	--app-dark-secondary-color: #29333D
 
-$app-request-card-bg: linear-gradient(
-    to right top,
-    $app-teal-color 65%,
-    $app-dark-color
-  )
+	--app-sm-spacing: 0.25rem
+	--app-md-spacing: 0.5rem
+	--app-lg-spacing: 0.75rem
+	--app-xl-spacing: 1.25rem
+	--app-xxl-spacing: 1.5rem
+	--app-card-offset: 40%  
 
 $app-features-card-bg: linear-gradient(
-    to right bottom,
-    $app-dark-color 60%,
-    $app-darken-color
+	to right bottom,
+	var(--app-dark-color) 60%,
+	var(--app-darken-color)
 )
 
 $app-danger-card-bg: linear-gradient(
-    to right top,
-    $app-purple-color 10%,    
-    $app-danger-color 50%,
-    $app-pink-color 90%
-  )
+	to right top,
+	var(--app-purple-color) 10%,    
+	var(--app-danger-color) 50%,
+	var(--app-pink-color) 90%
+	)
 
-  
-$app-sm-spacing: 0.25rem
-$app-md-spacing: 0.5rem
-$app-lg-spacing: 0.75rem
-$app-xl-spacing: 1.25rem
-$app-xxl-spacing: 1.5rem
+	
+$app-light-card-shadow: 0.5px 0.5px 3px, -0.5px -0.5px 3px 
+$app-danger-shadow: 0.5px 0.5px 3px, -0.5px -0.5px 3px 
 
-$app-light-card-shadow: 0.5px 0.5px 3px $app-light-color, -0.5px -0.5px 3px $app-light-color
-$app-danger-shadow: 0.5px 0.5px 3px $app-danger-color, -0.5px -0.5px 3px $app-danger-color
 
-$app-card-offset: 40%

@@ -48,7 +48,7 @@ class Components {
     <div>
         <p class="note">
             <span class="danger">&#10071;</span>Переменная \${endpoint} представляет
-            доступные в API ресурсы:<span class="warning">
+            доступные в API ресурсы:<span class="danger">
             'athletes', 'books', 'videoGames', ...</span>.
         </p>
         <p class="note">
@@ -78,9 +78,12 @@ class Components {
         </button>        
     </a>
     `;
-  EXAMPLES_LINK = ({ href, text }) => `
+  EXAMPLES_LINK = ({ href, example }) => `
     <li class="request-card-url doca">
-        <a href="${href}" rel="noopener noreferrer">${text}</a>
+        <a href="${href}" rel="noopener noreferrer">
+          <div class="icon-box"><span class="material-icons-round">cloud</span></div>
+          <span class='example'>${example}</span>
+        </a>
     </li>
     `;
   DOCUMENTATION_LINK = ({ href, text }) => `
@@ -190,7 +193,7 @@ class Components {
             )} </code>
         </div> 
         <p class='note'>
-            <span class="danger">&#10071;</span>Наименования полей у разных сущностей отличаются! Для передачи корректных значений <a href="#getEntities" class='warning'>см. схему</a>.
+            <span class="danger">&#10071;</span>Наименования полей у разных сущностей отличаются! Для передачи корректных значений <a href="#getEntities" class='danger'>см. схему</a>.
         </p>
         <p class='note'>
             <span class="danger">&#10071;</span>Значением параметра <strong>select</strong> является строка без пробелов, содержащая: название запрашиваемого поля или нескольких полей, разделенных запятыми.
@@ -261,7 +264,7 @@ class Components {
   ADD_ENTITY_DOCA(host, endpoint) {
     return `
         <p class='section-text'>
-          POST-запрос к API имитирует добавление новой сущности на сервер. В случае успеха, сервер вернет объект, содержащий <strong class='success'>валидные</strong> поля, переданные в запросе <a href="#addEntity" class='warning'>(см. схему)</a>:
+          POST-запрос к API имитирует добавление новой сущности на сервер. В случае успеха, сервер вернет объект, содержащий <strong class='success'>валидные</strong> поля, переданные в запросе <a href="#addEntity" class='danger'>(см. схему)</a>:
         </p>
         <div>
             <code class='request-card-url doca'>${URLS.addEntity(
@@ -281,7 +284,7 @@ class Components {
   DELETE_ENTITY_DOCA(host, endpoint) {
     return `
         <p class='section-text'>
-          DELETE-запрос к API имитирует удаление конкретной сущности на сервере. В случае успеха, сервер вернет объект с идентификатором, переданным в запросе <a href="#deleteEntity" class='warning'>(см. схему)</a>:
+          DELETE-запрос к API имитирует удаление конкретной сущности на сервере. В случае успеха, сервер вернет объект с идентификатором, переданным в запросе <a href="#deleteEntity" class='danger'>(см. схему)</a>:
         </p>
         <div>
             <code class='request-card-url doca'>${URLS.deleteEntity(
