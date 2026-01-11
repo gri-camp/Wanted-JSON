@@ -393,7 +393,7 @@ const DOCUMENTATION_LIST = [
   },
   {
     href: `./auth.html?endpoint=auth`,
-    text: `<div class="icon-box"><span class="material-icons-round">description</span></div> <em style="font-weight:bold;">auth</em>`,
+    text: `<div class="icon-box"><span class="material-icons-round">login</span></div> <em style="font-weight:bold;">auth</em>`,
   },
 ];
 
