@@ -81,7 +81,7 @@ class Components {
   EXAMPLES_LINK = ({ href, example }) => `
     <li class="request-card-url doca">
         <a href="${href}" rel="noopener noreferrer">
-          <div class='icon-box'><span class="material-icons-round warning">cloud</span></div>
+          <div class="icon-box"><span class="material-icons-round">api</span></div>
           <span class='example'>${example}</span>
         </a>
     </li>
@@ -193,7 +193,7 @@ class Components {
             )} </code>
         </div> 
         <p class='note'>
-            <span class="danger">&#10071;</span>Наименования полей у разных сущностей отличаются! Для передачи корректных значений <a href="#getEntities" class='danger'>см. схему</a>.
+            <span class="danger">&#10071;</span>Наименования полей у разных сущностей отличаются! Для передачи корректных значений <a href="#getEntities" class='danger'>(см. схему)</a>.
         </p>
         <p class='note'>
             <span class="danger">&#10071;</span>Значением параметра <strong>select</strong> является строка без пробелов, содержащая: название запрашиваемого поля или нескольких полей, разделенных запятыми.
@@ -272,7 +272,7 @@ class Components {
               endpoint
             )}</code>
         </div>
-        <p class='note'><span class="danger">&#10071;</span>Минимально требуемые поля в теле запроса (<strong> body </strong>):</p>
+        <p class='note'><span class="danger">&#10071;</span>Минимально требуемые поля в теле запроса (<strong>body</strong>):</p>
         <ul class='white-list'> 
           ${getHTMLFromList(
             POST_REQUIRED_FIELDS[endpoint],
