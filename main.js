@@ -108,10 +108,10 @@ try {
   );
 
   // ! getSingleEntity -----------
-  // (async function (endPoint, id) {
-  //   let res = await Api.getSingleEntity(endPoint, id);
-  //   console.log(res);
-  // })(API_CONSTS.MOVIES, '22');
+  (async function (endPoint, id) {
+    let res = await Api.getSingleEntity(endPoint, id);
+    console.log(res);
+  })(API_CONSTS.MOVIES, '22');
 
   // ! getSearchedEntity -----------
   // (async function (endPoint, q) {
@@ -146,10 +146,10 @@ try {
   // );
 
   //  ! refresh-----------
-  (async function (endPoint, token) {
-    let res = await Api.refresh(endPoint, token);
-    console.log(res);
-  })(API_CONSTS.REFRESH, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEzLCJsb2dpbiI6InRlc3QiLCJpYXQiOjE3NjcwODY5MTQsImV4cCI6MTc2NzY5MTcxNH0.07XU75gxFEfw1J2_C4qqpYL9tEEDJ8oP4clFzcgrKL8');
+  // (async function (endPoint) {
+  //   let res = await Api.refresh(endPoint);
+  //   console.log(res);
+  // })(API_CONSTS.REFRESH);
 } catch (error) {
   console.warn(error.message, error.name);
 }

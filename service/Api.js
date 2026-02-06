@@ -199,15 +199,14 @@ class Api {
     }
   }
 
-  static async refresh(endpoint = "refresh", refreshToken) {
+  static async refresh(endpoint = "refresh") {
     try {
       let res = await fetch(`${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${endpoint}`, {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${refreshToken}`,
+          "Content-Type": "application/json",          
         },
-        // credentials: "include",
+        credentials: "include",
       });
 
       if (!res.ok) {

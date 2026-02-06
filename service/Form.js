@@ -1,5 +1,10 @@
 // utils
-import { draw, getUserFromLS, setDataToLS } from "../helpers/helpers.js";
+import {
+  checkToken,
+  draw,
+  getUserFromLS,
+  setDataToLS,
+} from "../helpers/helpers.js";
 // service
 import Api from "./Api.js";
 
@@ -30,16 +35,15 @@ class Form {
     }
     this.submitBtnValue = this.getSubmitBtnValue(this.formType);
     this.passCompareError = new Error("пароли не совпадают!");
-    // ! FORM STATE (UX)
+    // ! FORM STATE
     this.state = this.getInitState(this.elements);
     // methods
     this.template(
       this.container,
       this.component,
       this.elements,
-      this.actionTrigger
+      this.actionTrigger,
     );
-    // if (Date.now() > getUserFromLS("user").expiresIn * 1000) this.logoutUser();
   }
 
   getSubmitBtnValue(formType) {
@@ -47,11 +51,12 @@ class Form {
   }
 
   template(container, component, elements, actionTrigger) {
+    checkToken();
     this.render(container, component, elements)
       .addInputListener()
       .addSubmitListener()
       .addClickListenerToContainer()
-      .addClickListenerToactionTrigger(actionTrigger);
+      .addClickListenerToActionTrigger(actionTrigger);
   }
 
   render(container, component, elements) {
@@ -128,7 +133,7 @@ class Form {
   addClickListenerToContainer() {
     this.container.addEventListener(
       "click",
-      this.addClickListenerToContainerHandler
+      this.addClickListenerToContainerHandler,
     );
     return this;
   }
@@ -149,18 +154,18 @@ class Form {
       login: res?.user?.login,
       token: res?.accessToken,
       action: "logout",
-      expiresIn: res?.expiresIn,
+      exp: res?.exp,
     });
   }
 
-  addClickListenerToactionTriggerHandler = () => {
+  addClickListenerToActionTriggerHandler = () => {
     if (this.actionTrigger.firstElementChild.textContent === "logout")
       return this.logoutUser();
     this.container.classList.toggle("active");
   };
 
-  addClickListenerToactionTrigger(icon) {
-    icon.addEventListener("click", this.addClickListenerToactionTriggerHandler);
+  addClickListenerToActionTrigger(icon) {
+    icon.addEventListener("click", this.addClickListenerToActionTriggerHandler);
     return this;
   }
 
