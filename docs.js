@@ -3,7 +3,7 @@ import {
   API_CONSTS,
   AUTH_ENDPOINTS,
   REQUEST_CARD_LIST,
-  ROOT
+  ROOT,
 } from "./models/models.js";
 // utils:
 import { draw } from "./helpers/helpers.js";
@@ -11,8 +11,8 @@ import { draw } from "./helpers/helpers.js";
 import Components from "./service/Components.js";
 import { Observer } from "./service/Observer.js";
 import { Request } from "./service/Request.js";
+import { Theme } from "./service/Theme.js";
 import { UpwardButton } from "./service/UpWardButton.js";
-import {Theme} from "./service/Theme.js"
 
 try {
   const endPoint = location.search.replace(/^\?endpoint=/, "");
@@ -36,7 +36,7 @@ try {
   // !Содержимое секции 'urls':
   new Request({
     list: REQUEST_CARD_LIST.filter(
-      (card) => !AUTH_ENDPOINTS.includes(card?.id)
+      (card) => !AUTH_ENDPOINTS.includes(card?.id),
     ),
     endPoint,
     Component: "REQUEST_CARD_DOCS_PAGE",
@@ -51,7 +51,7 @@ try {
   // !Содержимое секции 'selectedFields':
   draw(
     selectedFields,
-    Components.SELECTEDFIELDS_DOCA(API_CONSTS.HOST, endPoint)
+    Components.SELECTEDFIELDS_DOCA(API_CONSTS.HOST, endPoint),
   );
 
   // !Содержимое секции 'sorting':

@@ -262,6 +262,8 @@ class Components {
         `;
   }
   ADD_ENTITY_DOCA(host, endpoint) {
+    console.log(endpoint);
+    
     return `
         <p class='section-text'>
           POST-запрос к API имитирует добавление новой сущности на сервер. В случае успеха, сервер вернет объект, содержащий <strong class='success'>валидные</strong> поля, переданные в запросе <a href="#addEntity" class='danger'>(см. схему)</a>:

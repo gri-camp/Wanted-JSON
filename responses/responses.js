@@ -929,6 +929,109 @@ const Responses = {
 <strong class='purple'>}</strong>  
 </code>`,
   },
+  videoGamesComments: {
+    getEntities: `
+<code><span class='purple'>{</span> 
+    "data": <span class='purple'>[</span>
+    <span class='purple'>{</span>
+        id: 1,
+        login: 'Альтер-эго',
+        comment: 'Как понять, что игру делал не Бабадзака? Все правильно, в игре есть подробное обучение и к первому боссу можно прийти два раза. Наиграл 30+ часов и вот что я Вам скажу - это прекрасно...',
+        date: '2025-06-02',
+        gameId: 1,
+        userLevel: 71,
+        likes: 663,        
+    <span class='purple'>}</span>,
+    <span class='purple'>{</span>
+        id: 2,
+        login: 'kotek',
+        comment: 'Спустя 17 часов игровой сессии можно смело сказать, что больше нравится чем нет, естественно если судить об опыте в группе как игра и планируется. Минусики: Вариативность не велика, не факт, что игра затянет на долго, но у меня всех боссов убить желание точно вызвало...',
+        date: '2025-06-02',
+        gameId: 1,
+        userLevel: 227,
+        likes: 92,        
+    <span class='purple'>}</span>       
+    ...
+    <span class='purple'>]</span>,
+    "total": 88,
+    "page": 1,
+    "limit": 10,
+    "totalPages": 9,
+<span class='purple'>}</span></code>`,
+    getEntitiesQS: `
+<code><span class='purple'>{</span> 
+    "data": <span class='purple'>[</span>
+    <span class='purple'>{</span>
+        id: 6,
+        login: 'Prokopr',
+        comment: 'Я помню чудное мгновенье Цзшка, Молотов и флешка Тащить я должен на длине, Но тут выходит враг ко мне.А я мой друг не растерялся, Мой верный Молотов взорвался, Врагам на зло в коробе той...',
+        date: '2021-04-09',
+        gameId: 2,
+        userLevel: 16,
+        likes: 1778,        
+    <span class='purple'>}</span>,             
+    ...
+    <span class='purple'>]</span>,
+    "total": 88,
+    "page": 2,
+    "limit": 5,
+    "totalPages": 18,
+<span class='purple'>}</span></code>`,
+    getSingleEntity: `
+<code><span class='purple'>{</span>    
+    id: 2,
+    login: 'kotek',
+    comment: 'Спустя 17 часов игровой сессии можно смело сказать, что больше нравится чем нет, естественно если судить об опыте в группе как игра и планируется. Минусики: Вариативность не велика, не факт, что игра затянет на долго, но у меня всех боссов убить желание точно вызвало...',
+    date: '2025-06-02',
+    gameId: 1,
+    userLevel: 227,
+    likes: 92,              
+<span class='purple'>}</span></code>`,
+    getSearchedEntity: `
+<code><span class='purple'>{</span> 
+    "data": <span class='purple'>[</span>
+    <span class='purple'>{</span>
+        id: 2,
+        login: 'kotek',
+        comment: 'Спустя 17 часов игровой сессии можно смело сказать, что больше нравится чем нет, естественно если судить об опыте в группе как игра и планируется. Минусики: Вариативность не велика, не факт, что игра затянет на долго, но у меня всех боссов убить желание точно вызвало...',
+        date: '2025-06-02',
+        gameId: 1,
+        userLevel: 227,
+        likes: 92,         
+    <span class='purple'>}</span>,             
+    ...
+    <span class='purple'>]</span>,
+    "total": 1,
+    "page": 1,
+    "limit": 1,
+    "totalPages": 1,
+<span class='purple'>}</span></code>`,
+    addEntity: `
+<code> // Код ответа: <span class='success'>201</span>.
+
+<strong class='purple'>{</strong>    
+    id: 89,
+    login: "TECH_MAGNAT", <span class="danger">*</span> 
+    comment: "lorem ipsum...", <span class="danger">*</span>
+    gameId: 3, <span class="danger">*</span>
+    userLevel: 22, 
+    likes: 15,           
+    ...
+<strong class='purple'>}</strong>
+</code>`,
+    deleteEntity: `
+<code> // Код ответа: <span class='success'>200</span>.
+<strong class='purple'>{</strong> 
+    id: 6,
+    login: 'Prokopr',
+    comment: 'Я помню чудное мгновенье Цзшка, Молотов и флешка Тащить я должен на длине, Но тут выходит враг ко мне.А я мой друг не растерялся, Мой верный Молотов взорвался, Врагам на зло в коробе той...',
+    date: '2021-04-09',
+    gameId: 2,
+    userLevel: 16,
+    likes: 1778,        
+<strong class='purple'>}</strong>  
+</code>`,
+  },
   auth: {
     signin: `<code>    
 <strong class='purple'>{</strong>
@@ -957,9 +1060,7 @@ const Responses = {
     <strong class='purple'>}</strong>,
     "accessToken": "your accessToken (Base64)",
     "refreshToken": "your refreshToken (Base64)",
-<strong class='purple'>}</strong>
-
-</code>`,
+<strong class='purple'>}</strong>`,
   },
 };
 

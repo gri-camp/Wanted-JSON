@@ -4,6 +4,7 @@ const API_CONSTS = {
   BOOKS: "books",
   ATHLETES: "athletes",
   VIDEOGAMES: "videoGames",
+  VIDEOGAMESCOMMENTS: "videoGamesComments",
   CARS: "cars",
   MOVIES: "movies",
   DOCS: "docs",
@@ -15,7 +16,6 @@ const API_CONSTS = {
 };
 
 const ROOT = document.documentElement;
-
 
 const AUTH_ENDPOINTS = ["signin", "signup", "logout", "refresh"];
 
@@ -298,6 +298,11 @@ const ENTITIES_LIST = [
     icon: `<span class="material-icons-round">login</span>`,
   },
   {
+    href: `./docs.html?endpoint=${API_CONSTS.VIDEOGAMESCOMMENTS}`,
+    endpoint: API_CONSTS.VIDEOGAMESCOMMENTS,
+    icon: `<span class="material-icons-round">insert_comment</span>`,
+  },
+  {
     href: `${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.DOCS}`,
     endpoint: API_CONSTS.DOCS,
     icon: `<span class="material-icons-round" style='color: #1c963c;'>integration_instructions</span>`,
@@ -392,6 +397,10 @@ const DOCUMENTATION_LIST = [
     text: `<div class="icon-box"><span class="material-icons-round">directions_car</span></div> <em style="font-weight:bold;">cars</em>`,
   },
   {
+    href: `./docs.html?endpoint=videoGamesComments`,
+    text: `<div class="icon-box"><span class="material-icons-round">insert_comment</span></div> <em style="font-weight:bold;">videoGamesComments</em>`,
+  },
+  {
     href: `./auth.html?endpoint=auth`,
     text: `<div class="icon-box"><span class="material-icons-round">login</span></div> <em style="font-weight:bold;">auth</em>`,
   },
@@ -484,6 +493,15 @@ const SORTING_WHITE_LIST = {
     "headlights",
     "lastUpdated",
   ],
+  videoGamesComments: [
+    "id",
+    "login",
+    "comment",
+    "date",
+    "gameId",
+    "userLevel",
+    "likes",
+  ],
 };
 
 const FILTERING_WHITE_LIST = {
@@ -492,6 +510,7 @@ const FILTERING_WHITE_LIST = {
   videoGames: ["genre", "developer"],
   movies: ["genre", "country"],
   cars: ["brand", "country"],
+  videoGamesComments: ["login", "gameId"],
 };
 
 const POST_REQUIRED_FIELDS = {
@@ -510,7 +529,7 @@ const POST_REQUIRED_FIELDS = {
     },
     {
       field: "age",
-      type: "integer",
+      type: "number",
     },
   ],
   books: [
@@ -542,7 +561,7 @@ const POST_REQUIRED_FIELDS = {
     },
     {
       field: "price",
-      type: "integer",
+      type: "number",
     },
   ],
   movies: [
@@ -560,7 +579,7 @@ const POST_REQUIRED_FIELDS = {
     },
     {
       field: "releaseYear",
-      type: "integer",
+      type: "number",
     },
   ],
   cars: [
@@ -579,6 +598,20 @@ const POST_REQUIRED_FIELDS = {
     {
       field: "modelYear",
       type: "integer",
+    },
+  ],
+  videoGamesComments: [
+    {
+      field: "login",
+      type: "string",
+    },
+    {
+      field: "comment",
+      type: "string",
+    },
+    {
+      field: "gameId",
+      type: "number",
     },
   ],
 };
@@ -633,7 +666,8 @@ export {
   MENU_LIST,
   POST_REQUIRED_FIELDS,
   REQUEST_CARD_LIST,
+  resSchemes,
+  ROOT,
   SORTING_WHITE_LIST,
   URLS,
-  ROOT,
 };
