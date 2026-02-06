@@ -154,7 +154,7 @@ class Form {
       login: res?.user?.login,
       token: res?.accessToken,
       action: "logout",
-      exp: res?.exp,
+      exp: res?.exp ?? null,
     });
   }
 
