@@ -10,13 +10,16 @@ const getUserFromLS = (key) => JSON.parse(localStorage.getItem(key)) || null;
 
 async function checkToken() {
   const user = getUserFromLS("user");
-  if (Date.now() > user?.exp * 1000) {
+  if (Date.now() >= user?.expiresIn * 1000) {
     let res = await Api.refresh();
-    setDataToLS("user", {
-      ...user,
-      token: res?.accessToken,
-      exp: res?.exp,
-    });
+
+    res instanceof Object
+      ? setDataToLS("user", {
+          ...user,
+          token: res?.accessToken,
+          expiresIn: res?.expiresIn,
+        })
+      : console.error(res);
   }
 }
 

@@ -1039,7 +1039,8 @@ const Responses = {
         "id": 222,
         "login": "foo"
     <strong class='purple'>}</strong>,
-    "accessToken": "your accessToken (Base64)",    
+    "accessToken": "your accessToken",
+    "expiresIn": 1770542402,  // время окончания токена, сек.  
 <strong class='purple'>}</strong>           
 </code>`,
     signup: `<code>    
@@ -1048,7 +1049,7 @@ const Responses = {
         "id": 222,
         "login": "foo"
     <strong class='purple'>}</strong>,
-    "accessToken": "your accessToken (Base64)",    
+    "accessToken": "your accessToken", // время окончания токена, сек.      
 <strong class='purple'>}</strong>           
 </code>`,
     logout: ``,
@@ -1058,8 +1059,8 @@ const Responses = {
         "id": 13,
         "login": "test"
     <strong class='purple'>}</strong>,
-    "accessToken": "your accessToken (Base64)",
-    "refreshToken": "your refreshToken (Base64)",
+    "accessToken": "your accessToken",
+    "expiresIn": 1770542402, // время окончания токена, сек.  
 <strong class='purple'>}</strong>`,
   },
 };
