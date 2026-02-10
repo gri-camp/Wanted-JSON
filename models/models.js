@@ -1,6 +1,8 @@
 const API_CONSTS = {
   PROTOCOL: "https",
+  // PROTOCOL: "http",
   HOST: "dummy.chromiusj.ru",
+  // HOST: '185.104.248.25:3000',
   BOOKS: "books",
   ATHLETES: "athletes",
   VIDEOGAMES: "videoGames",
