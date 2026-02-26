@@ -370,7 +370,7 @@ const Responses = {
     <span class='purple'>}</span>,       
     ...
     <span class='purple'>]</span>,
-    "total": 28,
+    "total": 30,
     "page": 1,
     "limit": 10,
     "totalPages": 3,
@@ -400,7 +400,7 @@ const Responses = {
     <span class='purple'>}</span>,
     ...
     <span class='purple'>]</span>,
-    "total": 28,
+    "total": 30,
     "page": 2,
     "limit": 5,
     "totalPages": 6,
@@ -523,33 +523,6 @@ const Responses = {
         seasons: null,
         lastUpdated: '2025-12-25',
     <span class='purple'>}</span>,
-<<<<<<< Updated upstream
-    <span class='purple'>{</span>
-        id: 2,
-        title: 'Побег из Шоушенка',
-        originalTitle: 'The Shawshank Redemption',
-        releaseYear: 1994,
-        duration: 142,
-        country: 'США',
-        language: 'Английский,
-        director: 'Фрэнк Дарабонт',
-        mainActors: <span class='purple'>[</span>"Тим Роббинс", "Морган Фриман", "Боб Гантон"<span class='purple'>]</span>,
-        genre: <span class='purple'>[</span>"фантастика", "боевик", "триллер"<span class='purple'>]</span>,
-        ageRating: '16+',
-        budget: 25000000.00,
-        boxOffice: 73300000.00,
-        imdb: 9.3,
-        kinopoiskRating: 9.1,
-        awards: <span class='purple'>[</span>"Оскар (7 номинаций)"<span class='purple'>]</span>,
-        description: 'Бухгалтер Энди Дюфрейн оказывается в тюрьме Шоушенк по обвинению в убийстве жены и её любовника.',
-        location: <span class='purple'>[</span>"Мэн, США"<span class='purple'>]</span>,
-        studio: "Castle Rock Entertainment",
-        isSeries: false,
-        seasons: null,
-        lastUpdated: '2025-12-25',         
-    <span class='purple'>}</span>       
-=======
->>>>>>> Stashed changes
     ...
     <span class='purple'>]</span>,
     "total": 45,
