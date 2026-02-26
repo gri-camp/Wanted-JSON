@@ -1,6 +1,6 @@
 const API_CONSTS = {
   PROTOCOL: "https",
-  HOST: "dummy.chromiusj.ru",
+  HOST: "api.wantedjson.ru",
   BOOKS: "books",
   ATHLETES: "athletes",
   VIDEOGAMES: "videoGames",
@@ -8,6 +8,7 @@ const API_CONSTS = {
   CARS: "cars",
   MOVIES: "movies",
   DOCS: "docs",
+  CLIENT_INFO: 'client-info',
   AUTH: "auth",
   SIGNUP: "signup",
   SIGNIN: "signin",
@@ -306,6 +307,11 @@ const ENTITIES_LIST = [
     href: `${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.DOCS}`,
     endpoint: API_CONSTS.DOCS,
     icon: `<span class="material-icons-round" style='color: #1c963c;'>integration_instructions</span>`,
+  },
+  {
+    href: `${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.CLIENT_INFO}`,
+    endpoint: API_CONSTS.CLIENT_INFO,
+    icon: `<span class="material-icons-round" style='color: #1c963c;'>public</span>`,
   },
 ];
 
@@ -613,6 +619,10 @@ const POST_REQUIRED_FIELDS = {
       field: "gameId",
       type: "number",
     },
+    {
+      field: "date",
+      type: "string",
+    },
   ],
 };
 
@@ -667,6 +677,7 @@ export {
   POST_REQUIRED_FIELDS,
   REQUEST_CARD_LIST,
   ROOT,
+  SCHEMES,
   SORTING_WHITE_LIST,
   URLS,
 };
