@@ -919,7 +919,7 @@ const Responses = {
     signin: `<code>    
 <strong class='purple'>{</strong>
     "user": <strong class='purple'>{</strong>
-        "id": 222,
+        "id": 13,
         "login": "foo"
     <strong class='purple'>}</strong>,
     "accessToken": "your accessToken",
@@ -929,7 +929,7 @@ const Responses = {
     signup: `<code>    
 <strong class='purple'>{</strong>
     "user": <strong class='purple'>{</strong>
-        "id": 222,
+        "id": 13,
         "login": "foo"
     <strong class='purple'>}</strong>,         
 <strong class='purple'>}</strong>           
@@ -939,7 +939,7 @@ const Responses = {
 <strong class='purple'>{</strong>
     "user": <strong class='purple'>{</strong>
         "id": 13,
-        "login": "test"
+        "login": "foo"
     <strong class='purple'>}</strong>,
     "accessToken": "your accessToken",
     "expiresIn": 1770542402, // время окончания токена, сек.  

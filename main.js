@@ -103,8 +103,8 @@ try {
     let res = await Api.getEntities(endPoint, qs);
     console.log(res);
   })(
-    API_CONSTS.MOVIES,
-    "limit=100&select=title,id,director,title&sort=director:asc"
+    API_CONSTS.VIDEOGAMESCOMMENTS,
+    "limit=100"
   );
 
   // ! getSingleEntity -----------
