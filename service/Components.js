@@ -120,7 +120,7 @@ class Components {
         <div data-id="${id}" class="code">
           <textarea></textarea>
           <div class="request-card-copybar">
-            <button class='btn btn-outline-success'>
+            <button class='btn'>
               <span class="material-icons-round">content_copy</span>
             </button>
             <em class='copy-status'>копировать</em> 

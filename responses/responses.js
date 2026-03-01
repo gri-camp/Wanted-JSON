@@ -931,8 +931,7 @@ const Responses = {
     "user": <strong class='purple'>{</strong>
         "id": 222,
         "login": "foo"
-    <strong class='purple'>}</strong>,
-    "accessToken": "your accessToken", // время окончания токена, сек.      
+    <strong class='purple'>}</strong>,         
 <strong class='purple'>}</strong>           
 </code>`,
     logout: ``,
