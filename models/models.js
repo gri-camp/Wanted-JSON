@@ -44,10 +44,10 @@ const URLS = {
   deleteEntity: (host, ep = "${endpoint}") =>
     `${API_CONSTS.PROTOCOL}://${host}/${ep}/\${id}`,
   // ! Авторизация / регистрация
-  signup: (host, ep) => `${API_CONSTS.PROTOCOL}://${host}/${ep}`,
-  signin: (host, ep) => `${API_CONSTS.PROTOCOL}://${host}/${ep}`,
-  logout: (host, ep) => `${API_CONSTS.PROTOCOL}://${host}/${ep}`,
-  refresh: (host, ep) => `${API_CONSTS.PROTOCOL}://${host}/${ep}`,
+  signup: (host, ep) => `${API_CONSTS.PROTOCOL}://${host}/${API_CONSTS.AUTH}/${ep}`,
+  signin: (host, ep) => `${API_CONSTS.PROTOCOL}://${host}/${API_CONSTS.AUTH}/${ep}`,
+  logout: (host, ep) => `${API_CONSTS.PROTOCOL}://${host}/${API_CONSTS.AUTH}/${ep}`,
+  refresh: (host, ep) => `${API_CONSTS.PROTOCOL}://${host}/${API_CONSTS.AUTH}/${ep}`,
 };
 
 const REQUEST_CARD_LIST = [
@@ -676,8 +676,7 @@ export {
   MENU_LIST,
   POST_REQUIRED_FIELDS,
   REQUEST_CARD_LIST,
-  ROOT,
-  SCHEMES,
+  ROOT, 
   SORTING_WHITE_LIST,
   URLS,
 };

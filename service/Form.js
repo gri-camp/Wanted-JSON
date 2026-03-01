@@ -104,7 +104,7 @@ class Form {
 
     this.submitBtn.value = "Загрузка...";
 
-    let res = await Api[this.formType](this.formType, body);
+    let res = await Api[this.formType](body);
 
     if (!(res instanceof Object)) return this.reset(res);
 

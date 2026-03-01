@@ -93,9 +93,10 @@ class Api {
     }
   }
 
-  static async signup(endpoint, body) {
+
+  static async signup(body, endpoint = "signup") {
     try {
-      let res = await fetch(`${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${endpoint}`, {
+      let res = await fetch(`${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.AUTH}/${endpoint}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -114,51 +115,9 @@ class Api {
     }
   }
 
-  static async signin(endpoint, body) {
+  static async signin(body, endpoint = "signin") {
     try {
-      let res = await fetch(`${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${endpoint}`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(body),
-      });
-
-      if (!res.ok) {
-        const mess = await res.text();
-        throw new Error(mess);
-      }
-
-      return await res.json();
-    } catch (e) {
-      return e.message;
-    }
-  }
-
-  static async signin(endpoint = "signup", body) {
-    try {
-      let res = await fetch(`${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${endpoint}`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(body),
-      });
-
-      if (!res.ok) {
-        const mess = await res.text();
-        throw new Error(mess);
-      }
-
-      return await res.json();
-    } catch (e) {
-      return e.message;
-    }
-  }
-
-  static async signin(endpoint = "signin", body) {
-    try {
-      let res = await fetch(`${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${endpoint}`, {
+      let res = await fetch(`${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.AUTH}/${endpoint}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -179,7 +138,7 @@ class Api {
 
   static async logout(accessToken, endpoint = "logout") {
     try {
-      let res = await fetch(`${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${endpoint}`, {
+      let res = await fetch(`${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.AUTH}/${endpoint}`, {
         method: "POST",
 
         headers: {
@@ -201,7 +160,7 @@ class Api {
 
   static async refresh(endpoint = "refresh") {
     try {
-      let res = await fetch(`${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${endpoint}`, {
+      let res = await fetch(`${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.AUTH}/${endpoint}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",          
