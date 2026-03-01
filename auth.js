@@ -11,6 +11,7 @@ import { UpwardButton } from "./service/UpWardButton.js";
 try {
   const endPoint = location.search.replace(/^\?endpoint=/, "");
 
+  
   // Секции и контейнеры:  
   const FOOTER = document.querySelector(".footer");
  

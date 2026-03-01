@@ -45,7 +45,7 @@ class Request {
     const html = getHTMLFromList(list, (url_card) =>
       Components[Component](url_card, host, endPoint)
     );
-    draw(requestsContainer, `${html}${Components.NOTE_MAIN_PAGE()}`);
+    draw(requestsContainer, `${html}${endPoint !== 'auth' ? Components.NOTE_MAIN_PAGE() : ''}`);
     this.codeContainers = [...document.querySelectorAll(".code")];
     this.codeContainers.forEach((code) =>
       draw(code.querySelector("pre"), Requests[code.dataset.id](this.endPoint))
