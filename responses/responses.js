@@ -461,12 +461,12 @@ const Responses = {
 
 <strong class='purple'>{</strong>    
     id: 31,
-    title: "First Empire", <span class="danger">*</span>    
-    genre: 'Экшен-RPG, стратегия', <span class="danger">*</span>    
-    ageRating: '16+', <span class="danger">*</span>
-    price: 55.33, <span class="danger">*</span>
-    description: 'стратегия в реальном времени (RTS) в изометрической проекции со связанным сюжетом и элементами RPG',
-    setting: 'Мир основан на детально проработанной базе из одноимённой серии книг пана Сапковского',
+    title: "Half-Life", <span class="danger">*</span>    
+    genre: 'Science-fiction shooter', <span class="danger">*</span>    
+    ageRating: '18+', <span class="danger">*</span>
+    price: 5.33, <span class="danger">*</span>
+    description: 'революционная игра в жанре шутера от первого лица, разработанная компанией Valve и выпущенная в 1998 году. Она произвела настоящий фурор в игровой индустрии благодаря своей инновационной физике, реалистичной графике и захватывающему геймплею.',
+    setting: 'Гигантский сверхсекретный научно-исследовательский комплекс «Чёрная Меза», Нью-Мексико, США.',
     awards: null,         
     ...
 <strong class='purple'>}</strong>
