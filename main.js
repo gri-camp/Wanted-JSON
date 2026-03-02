@@ -99,13 +99,10 @@ try {
   });
 
   // ! getEntities -----------
-  (async function (endPoint, qs) {
-    let res = await Api.getEntities(endPoint, qs);
-    console.log(res);
-  })(
-    API_CONSTS.VIDEOGAMESCOMMENTS,
-    "limit=100"
-  );
+  // (async function (endPoint, qs) {
+  //   let res = await Api.getEntities(endPoint, qs);
+  //   console.log(res);
+  // })(API_CONSTS.MOVIES, "country=великобрит&select=id,title,description");
 
   // ! getSingleEntity -----------
   (async function (endPoint, id) {
@@ -123,11 +120,11 @@ try {
   // (async function (endPoint, body) {
   //   let res = await Api.addEntity(endPoint, body);
   //   console.log(res);
-  // })(API_CONSTS.BOOKS, {
-  //   title: "foo",
-  //   ageRating: "18+",
-  //   author: 25,
-  //   genre: 30,
+  // })(API_CONSTS.VIDEOGAMESCOMMENTS, {
+  //   login: "FOO",
+  //   gameId: "15",
+  //   comment: "роман, сатира",
+  //   date: "2026-02-22",
   // });
 
   //  ! deleteEntity-----------

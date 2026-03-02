@@ -1,10 +1,13 @@
+import { API_CONSTS } from "../models/models.js";
+
+
 const Requests = {
   getEntities: (endpoint) => `
 <code>const getEntities = <span class='danger'>async</span>(<span class='success'>endpoint</span>) => {
 
     <span class='danger'>try</span> {
 
-        <span class='danger'>let</span> res = <span class='danger'>await</span> <span class='primary'>fetch</span>(\`https://hostname/<span class='success'>\${endpoint}</span>\`, {
+        <span class='danger'>let</span> res = <span class='danger'>await</span> <span class='primary'>fetch</span>(\`https://${API_CONSTS.HOST}/<span class='success'>\${endpoint}</span>\`, {
 
             headers: {
                 "Content-Type": "application/json",
@@ -32,7 +35,7 @@ getEntities(<span class='success'>'${endpoint}'</span>);
 
     <span class='danger'>try</span> {
 
-        <span class='danger'>let</span> res = <span class='danger'>await</span> <span class='primary'>fetch</span>(\`https://hostname/<span class='success'>\${endpoint}</span>?<span class='success'>\${qs}</span>\`, {
+        <span class='danger'>let</span> res = <span class='danger'>await</span> <span class='primary'>fetch</span>(\`https://${API_CONSTS.HOST}/<span class='success'>\${endpoint}</span>?<span class='success'>\${qs}</span>\`, {
             headers: {
                 "Content-Type": "application/json",
             },
@@ -59,7 +62,7 @@ getEntities(<span class='success'>'${endpoint}'</span>, <span class='success'>'p
 
     <span class='danger'>try</span> {
 
-        <span class='danger'>let</span> res = <span class='danger'>await</span> <span class='primary'>fetch</span>(\`https://hostname/<span class='success'>\${endpoint}</span>?q=<span class='success'>\${q}</span>\`, {
+        <span class='danger'>let</span> res = <span class='danger'>await</span> <span class='primary'>fetch</span>(\`https://${API_CONSTS.HOST}/<span class='success'>\${endpoint}</span>?q=<span class='success'>\${q}</span>\`, {
             headers: {
                 "Content-Type": "application/json",
             },
@@ -86,7 +89,7 @@ getSearchedEntity(<span class='success'>'${endpoint}'</span>, <span class='succe
 
     <span class='danger'>try</span> {
 
-        <span class='danger'>let</span> res = <span class='danger'>await</span> <span class='primary'>fetch</span>(\`https://hostname/<span class='success'>\${endpoint}</span>\`, {
+        <span class='danger'>let</span> res = <span class='danger'>await</span> <span class='primary'>fetch</span>(\`https://${API_CONSTS.HOST}/<span class='success'>\${endpoint}</span>\`, {
 
             method: "POST",
 
@@ -119,7 +122,7 @@ addEntity(<span class='success'>'${endpoint}'</span>, <span class='success'>newE
 
     <span class='danger'>try</span> {
 
-        <span class='danger'>let</span> res = <span class='danger'>await</span> <span class='primary'>fetch</span>(\`https://hostname/<span class='success'>\${endpoint}</span>/<span class='success'>\${id}</span>\`, {
+        <span class='danger'>let</span> res = <span class='danger'>await</span> <span class='primary'>fetch</span>(\`https://${API_CONSTS.HOST}/<span class='success'>\${endpoint}</span>/<span class='success'>\${id}</span>\`, {
 
             method: "DELETE",
 
@@ -150,7 +153,7 @@ deleteEntity(<span class='success'>'${endpoint}'</span>, <span class='success'>6
 
     <span class='danger'>try</span> {
 
-        <span class='danger'>let</span> res = <span class='danger'>await</span> <span class='primary'>fetch</span>(\`https://hostname/<span class='success'>\${endpoint}</span>/<span class='success'>\${id}</span>\`, {            
+        <span class='danger'>let</span> res = <span class='danger'>await</span> <span class='primary'>fetch</span>(\`https://${API_CONSTS.HOST}/<span class='success'>\${endpoint}</span>/<span class='success'>\${id}</span>\`, {            
             headers: {
                 "Content-Type": "application/json",
             }            

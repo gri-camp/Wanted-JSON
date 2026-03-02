@@ -221,8 +221,8 @@ const FEATURES_CARD_LIST = [
   },
   {
     icon: `<span class="material-icons-round">model_training</span>`,
-    text: `Практикуйся и изучай основные <abbr title="Create, Read, Update and Delete operations"
-    >CRUD</abbr>-операции: <strong">GET, POST, DELETE</strong>.`,
+    text: `Доступ к основным <abbr title="Create, Read, Update and Delete operations"
+    >CRUD</abbr> операциям: <strong">GET, POST, DELETE</strong>.`,
     title: "Практика и изучение",
   },
   {
@@ -231,15 +231,10 @@ const FEATURES_CARD_LIST = [
     title: "JSON-данные",
   },
   {
-    icon: `<span class="material-icons-round">no_accounts</span>`,
-    text: `Получай доступ ко всем данным без API-ключа и регистрации!`,
+    icon: `<strong class="material-icons-round success">money_off</strong>`,
+    text: `Бесплатный доступ к данным без API-ключа и регистрации!`,
     title: "Старт без регистрации",
-  },
-  {
-    icon: `<span class="material-icons-round">html</span>`,
-    text: `Возможность быстро протестировать внешний вид приложения, используя <abbr>API</abbr>.`,
-    title: `Тестирование <abbrss>UI</abbrss> Вашего приложения`,
-  },
+  },  
   {
     icon: `<span class="material-icons-round">monitor_heart</span>`,
     text: `Способность сервиса выдерживать высокие нагрузки 24 часа в сутки.`,
@@ -257,7 +252,7 @@ const FEATURES_CARD_LIST = [
   },
   {
     icon: `<span class="material-icons-round">settings</span>`,
-    text: `Поддержка query-параметров для фильтрации, сортировки, пагинации, лимитирования, поиска и выборки данных!`,
+    text: `Поддержка query-параметров для <em class='success'> фильтрации, сортировки, пагинации, лимитирования, поиска </em> данных!`,
     title: "Настраиваемые данные",
   },
   {
