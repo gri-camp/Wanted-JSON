@@ -104,7 +104,7 @@ class Request {
     try {
       copyStatus.textContent = "скопировано";
       copyStatus.classList.toggle("success");
-      await navigator.Clipboard.writeText(codeExample);
+      await navigator.clipboard.writeText(codeExample);
     } catch (error) {
       const range = document.createRange();
       range.selectNodeContents(codeElem);
