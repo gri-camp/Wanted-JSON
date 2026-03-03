@@ -8,19 +8,19 @@ import {
   FORM_ELEMS_LIST,
   MENU_LIST,
   REQUEST_CARD_LIST,
-  ROOT
+  ROOT,
 } from "./models/models.js";
 // utils:
 import { draw, getHTMLFromList } from "./helpers/helpers.js";
 // service classes:
-import Components from "./service/Components.js";
 import Api from "./service/Api.js";
+import Components from "./service/Components.js";
 import { Form } from "./service/Form.js";
 import { Menu } from "./service/Menu.js";
 import { Observer } from "./service/Observer.js";
 import { Request } from "./service/Request.js";
+import { Theme } from "./service/Theme.js";
 import { UpwardButton } from "./service/UpWardButton.js";
-import {Theme} from "./service/Theme.js"
 
 try {
   const FEATURES = document.querySelector("#features");
@@ -40,13 +40,13 @@ try {
 
   // !Содержимое секции 'FEATURES':
   const FEATURES_HTML = getHTMLFromList(FEATURES_CARD_LIST, (card) =>
-    Components.FEATURES_CARD(card)
+    Components.FEATURES_CARD(card),
   );
   draw(FEATURES, FEATURES_HTML);
 
   // !Содержимое секции 'ENTITIES':
   const ENTITIES_HTML = getHTMLFromList(ENTITIES_LIST, (card) =>
-    Components.ENTITIES_LINK(card)
+    Components.ENTITIES_LINK(card),
   );
   draw(ENTITIES, ENTITIES_HTML);
 
@@ -55,13 +55,13 @@ try {
 
   // !Содержимое секции 'EXAMPLES':
   const EXAMPLES_HTML = getHTMLFromList(EXAMPLES_LIST, (card) =>
-    Components.EXAMPLES_LINK(card)
+    Components.EXAMPLES_LINK(card),
   );
   draw(EXAMPLES, EXAMPLES_HTML);
 
   // !Содержимое секции 'DOCUMENTATION':
   const DOCUMENTATION_HTML = getHTMLFromList(DOCUMENTATION_LIST, (card) =>
-    Components.DOCUMENTATION_LINK(card)
+    Components.DOCUMENTATION_LINK(card),
   );
   draw(DOCUMENTATION, DOCUMENTATION_HTML);
 
@@ -78,7 +78,7 @@ try {
   new Observer(
     null,
     document.querySelectorAll(".features-card"),
-    document.querySelectorAll(".request-card")
+    document.querySelectorAll(".request-card"),
   );
 
   // !Отрисовка формы регистрации:
@@ -99,12 +99,35 @@ try {
   });
 
   // ! getSingleEntity -----------
-  (async function (endPoint, id) {
-    let res = await Api.getEntities(endPoint, id);
-    console.log(res);
-  })(API_CONSTS.VIDEOGAMESCOMMENTS, 'limit=100');
+  // (async function (endPoint, id) {
+  //   let res = await Api.getEntities(endPoint, id);
+  //   console.log(res);
+  // })(API_CONSTS.VIDEOGAMESCOMMENTS, `5`);
 
+  //! Множественный запрос:
 
+  const gameId = 30;
+
+  const pl = [
+    GetGameById(API_CONSTS.VIDEOGAMES, gameId),
+    GetCommentsById(API_CONSTS.VIDEOGAMESCOMMENTS, `gameId=${gameId}`),
+  ];
+
+  async function GetCommentsById(endPoint, query) {
+    let res = await Api.getEntities(endPoint, query);
+    return res;
+  }
+
+  async function GetGameById(endPoint, id) {
+    let res = await Api.getSingleEntity(endPoint, id);
+    return res;
+  }
+
+  // (function Concurrency(pl) {
+  //   Promise.all(pl)
+  //     .then(([g, c]) => console.log(g, c))
+  //     .catch((e) => console.log(e));
+  // })(pl);
 } catch (error) {
   console.warn(error.message, error.name);
 }

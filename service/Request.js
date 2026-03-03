@@ -30,7 +30,7 @@ class Request {
       this.list,
       this.endPoint,
       this.host,
-      this.Component
+      this.Component,
     );
   }
 
@@ -43,12 +43,15 @@ class Request {
 
   render(requestsContainer, list, endPoint, host, Component) {
     const html = getHTMLFromList(list, (url_card) =>
-      Components[Component](url_card, host, endPoint)
+      Components[Component](url_card, host, endPoint),
     );
-    draw(requestsContainer, `${html}${endPoint !== 'auth' ? Components.NOTE_MAIN_PAGE() : ''}`);
+    draw(
+      requestsContainer,
+      `${html}${endPoint !== "auth" ? Components.NOTE_MAIN_PAGE() : ""}`,
+    );
     this.codeContainers = [...document.querySelectorAll(".code")];
     this.codeContainers.forEach((code) =>
-      draw(code.querySelector("pre"), Requests[code.dataset.id](this.endPoint))
+      draw(code.querySelector("pre"), Requests[code.dataset.id](this.endPoint)),
     );
     this.triggers = requestsContainer.querySelectorAll(".request-card-trigger");
   }
@@ -67,7 +70,7 @@ class Request {
       const { id, scheme } = trigger.dataset;
 
       const codeContainer = this.codeContainers.find(
-        (bl) => bl.dataset.id === id
+        (bl) => bl.dataset.id === id,
       );
 
       if (!codeContainer.offsetHeight) {
@@ -75,8 +78,8 @@ class Request {
           scheme === "запрос"
             ? Requests[id](this.endPoint)
             : scheme === "ответ"
-            ? Responses[this.endPoint][id]
-            : Errors[id];
+              ? Responses[this.endPoint][id]
+              : Errors[id];
         codeContainer.querySelector("pre").innerHTML = html;
         codeContainer.style.maxHeight =
           codeContainer.firstElementChild.offsetHeight +
@@ -92,20 +95,28 @@ class Request {
     }
 
     const codeElem = e.target.closest(".code").querySelector("code");
-    const code = codeElem.textContent;
-    const textArea = e.target.closest(".code").querySelector("textarea");
+    const codeExample = codeElem.textContent;
+    // const textArea = e.target.closest(".code").querySelector("textarea");
+    const selection = document.getSelection();
     const copyStatus = e.target.closest(".code").querySelector(".copy-status");
+    selection.removeAllRanges();
 
     try {
       copyStatus.textContent = "скопировано";
       copyStatus.classList.toggle("success");
-      await navigator?.clipboard?.writeText(code);
+      await navigator.Clipboard.writeText(codeExample);
     } catch (error) {
-      textArea.value = code;
-      textArea.select();
+      const range = document.createRange();
+      range.selectNodeContents(codeElem);
+      selection.addRange(range);
+
+      // textArea.value = codeExample;
+      // textArea.select();
+
       document.execCommand("copy");
     } finally {
       setTimeout(() => {
+        selection.removeAllRanges();
         copyStatus.textContent = "копировать";
         copyStatus.classList.toggle("success");
       }, 1500);
@@ -115,7 +126,7 @@ class Request {
   addListenerToAppContainer(appContainer) {
     appContainer.addEventListener(
       "click",
-      this.addListenerToAppContainerHandler
+      this.addListenerToAppContainerHandler,
     );
   }
 
@@ -123,20 +134,22 @@ class Request {
 
   addListenerToTriggersHandler(e) {
     const t = e.target;
-    t.querySelector('.tooltip').classList.toggle('active');
+    t.querySelector(".tooltip").classList.toggle("active");
   }
 
   addEnterListenerToTriggers(triggers) {
     triggers.forEach((t) =>
-      t.addEventListener("mouseenter", this.addListenerToTriggersHandler)
+      t.addEventListener("mouseenter", this.addListenerToTriggersHandler),
     );
   }
 
   addLeaveListenerToTriggers(triggers) {
     triggers.forEach((t) =>
-      t.addEventListener("mouseleave", this.addListenerToTriggersHandler)
+      t.addEventListener("mouseleave", this.addListenerToTriggersHandler),
     );
   }
 }
 
 export { Request };
+
+
