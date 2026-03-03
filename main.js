@@ -98,55 +98,13 @@ try {
     actionTrigger: ".signin-icon",
   });
 
-  // ! getEntities -----------
-  // (async function (endPoint, qs) {
-  //   let res = await Api.getEntities(endPoint, qs);
-  //   console.log(res);
-  // })(API_CONSTS.MOVIES, "country=великобрит&select=id,title,description");
-
   // ! getSingleEntity -----------
   (async function (endPoint, id) {
-    let res = await Api.getSingleEntity(endPoint, id);
+    let res = await Api.getEntities(endPoint, id);
     console.log(res);
-  })(API_CONSTS.MOVIES, '22');
+  })(API_CONSTS.VIDEOGAMESCOMMENTS, 'limit=100');
 
-  // ! getSearchedEntity -----------
-  // (async function (endPoint, q) {
-  //   let res = await Api.getSearchedEntity(endPoint, q);
-  //   console.log(res);
-  // })(API_CONSTS.BOOKS, "преступление");
 
-  // ! addEntity -----------
-  // (async function (endPoint, body) {
-  //   let res = await Api.addEntity(endPoint, body);
-  //   console.log(res);
-  // })(API_CONSTS.VIDEOGAMESCOMMENTS, {
-  //   login: "FOO",
-  //   gameId: "15",
-  //   comment: "роман, сатира",
-  //   date: "2026-02-22",
-  // });
-
-  //  ! deleteEntity-----------
-  // (async function (endPoint, id) {
-  //   let res = await Api.deleteEntity(endPoint, id);
-  //   console.log(res);
-  // })(API_CONSTS.VIDEOGAMES, 16);
-
-  //  ! logout-----------
-  // (async function (endPoint, token) {
-  //   let res = await Api.logout(endPoint, token);
-  //   console.log(res);
-  // })(
-  //   API_CONSTS.LOGOUT,
-  //   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEzLCJsb2dpbiI6InRlc3QiLCJpYXQiOjE3NjY1OTM5MDEsImV4cCI6MTc2NjU5NDgwMX0.UYbI-zSoXpFfLhdaYt9so1BZJKWQqXdLqzT7l_82Q7c"
-  // );
-
-  //  ! refresh-----------
-  // (async function (endPoint) {
-  //   let res = await Api.refresh(endPoint);
-  //   console.log(res);
-  // })(API_CONSTS.REFRESH);
 } catch (error) {
   console.warn(error.message, error.name);
 }

@@ -1,3 +1,5 @@
+import Api from "../service/Api.js";
+
 const draw = (container, html) =>
   container.insertAdjacentHTML("beforeend", html);
 
@@ -10,17 +12,17 @@ const getUserFromLS = (key) => JSON.parse(localStorage.getItem(key)) || null;
 
 async function checkToken() {
   const user = getUserFromLS("user");
-  if (Date.now() >= user?.expiresIn * 1000) {
+  if (Date.now() >= user?.exp * 1000) {
     let res = await Api.refresh();
-
-    res instanceof Object
+    return res instanceof Object
       ? setDataToLS("user", {
           ...user,
           token: res?.accessToken,
-          expiresIn: res?.expiresIn,
+          exp: res?.exp,
         })
       : console.error(res);
   }
+  user?.exp && console.log("Not dead Yet, AccessToken death time: ", new Date(user.exp * 1000).toLocaleTimeString());  
 }
 
 export { checkToken, draw, getHTMLFromList, getUserFromLS, setDataToLS };

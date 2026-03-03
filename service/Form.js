@@ -1,5 +1,5 @@
 // utils
-import { draw, getUserFromLS, setDataToLS } from "../helpers/helpers.js";
+import { draw, getUserFromLS, setDataToLS, checkToken } from "../helpers/helpers.js";
 // service
 import Api from "./Api.js";
 
@@ -47,7 +47,7 @@ class Form {
 
   template(container, component, elements, actionTrigger) {
     // ! асинхронно проверяем протухание токена
-    // checkToken();
+    this.formType === 'signin' && checkToken();
     this.render(container, component, elements)
       .addInputListener()
       .addSubmitListener()
@@ -150,7 +150,7 @@ class Form {
       login: res?.user?.login,
       token: res?.accessToken,
       action: "logout",
-      expiresIn: res?.expiresIn ?? null,
+      exp: res.exp || null,
     });
   }
 

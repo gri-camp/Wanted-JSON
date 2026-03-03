@@ -923,7 +923,7 @@ const Responses = {
         "login": "foo"
     <strong class='purple'>}</strong>,
     "accessToken": "your accessToken",
-    "expiresIn": 1770542402,  // время окончания токена, сек.  
+    "exp": 1770542402,  // время окончания токена, сек.  
 <strong class='purple'>}</strong>           
 </code>`,
     signup: `<code>    
@@ -934,7 +934,11 @@ const Responses = {
     <strong class='purple'>}</strong>,         
 <strong class='purple'>}</strong>           
 </code>`,
-    logout: ``,
+    logout: `<code>    
+<strong class='purple'>{</strong>
+    "message":"Logged out successfully"         
+<strong class='purple'>}</strong>           
+</code>`,
     refresh: `<code>    
 <strong class='purple'>{</strong>
     "user": <strong class='purple'>{</strong>
@@ -942,9 +946,11 @@ const Responses = {
         "login": "foo"
     <strong class='purple'>}</strong>,
     "accessToken": "your accessToken",
-    "expiresIn": 1770542402, // время окончания токена, сек.  
+    "exp": 1770542402, // время окончания токена, сек.  
 <strong class='purple'>}</strong>`,
   },
 };
 
 export { Responses };
+
+
