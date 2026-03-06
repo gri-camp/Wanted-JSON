@@ -1,5 +1,5 @@
 // consts:
-import { 
+import {
   DOCUMENTATION_LIST,
   ENTITIES_LIST,
   EXAMPLES_LIST,
@@ -12,7 +12,6 @@ import {
 // utils:
 import { draw, getHTMLFromList } from "./helpers/helpers.js";
 // service classes:
-import Api from "./service/Api.js";
 import Components from "./service/Components.js";
 import { Form } from "./service/Form.js";
 import { Menu } from "./service/Menu.js";
@@ -102,31 +101,6 @@ try {
   //   let res = await Api.getEntities(endPoint, id);
   //   console.log(res);
   // })(API_CONSTS.VIDEOGAMESCOMMENTS, `5`);
-
-  //! Множественный запрос:
-
-  const gameId = 30;
-
-  const pl = [
-    GetGameById(API_CONSTS.VIDEOGAMES, gameId),
-    GetCommentsById(API_CONSTS.VIDEOGAMESCOMMENTS, `gameId=${gameId}`),
-  ];
-
-  async function GetCommentsById(endPoint, query) {
-    let res = await Api.getEntities(endPoint, query);
-    return res;
-  }
-
-  async function GetGameById(endPoint, id) {
-    let res = await Api.getSingleEntity(endPoint, id);
-    return res;
-  }
-
-  // (function Concurrency(pl) {
-  //   Promise.all(pl)
-  //     .then(([g, c]) => console.log(g, c))
-  //     .catch((e) => console.log(e));
-  // })(pl);
 } catch (error) {
   console.warn(error.message, error.name);
 }
