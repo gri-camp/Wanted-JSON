@@ -170,7 +170,7 @@ class Components {
     return `
         <p class='section-text'>
           Получение порции данных осуществляется GET-запросом с передачей
-          параметров: <strong>limit, page</strong>:
+          параметров <strong>limit, page</strong>:
         </p>
         <div>
             <code class='request-card-url doca'> ${URLS.getPaginatedEntities(
@@ -229,7 +229,7 @@ class Components {
     return `
         <p class='section-text'>
           Получение данных осуществляется GET-запросом с передачей уникальных для каждой сущности
-          параметров (см. ниже):
+          параметров.
         </p>
         <div>
             <code class='request-card-url doca'> ${URLS.getFilteredEntities(
@@ -312,7 +312,7 @@ class Components {
             <span class="danger">&#10071;</span>Переменная \${id} - идентификатор обновлемой сущности!            
         </p>
         <p class='note'>
-            <span class="danger">&#10071;</span> Передаваемый объект (body) должен содержать обновляемые поля конкретной сущности: <a href="#patchEntity" class='danger'>(см. схему)</a>.
+            <span class="danger">&#10071;</span> Передаваемый объект (body) должен содержать обновляемые поля конкретной сущности <a href="#getEntities" class='danger'>(см. схему)</a>.
         </p> 
         `;
   }

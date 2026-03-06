@@ -1,6 +1,5 @@
 // consts:
-import {
-  API_CONSTS,
+import { 
   DOCUMENTATION_LIST,
   ENTITIES_LIST,
   EXAMPLES_LIST,
