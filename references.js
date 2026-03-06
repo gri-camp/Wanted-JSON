@@ -1,5 +1,8 @@
 // consts:
-import { ROOT } from "./models/models.js";
+import {
+    ROOT
+} from "./models/models.js";
+
 // utils:
 import { draw } from "./helpers/helpers.js";
 // service classes:
@@ -8,10 +11,8 @@ import { Theme } from "./service/Theme.js";
 
 const FOOTER = document.querySelector(".footer");
 
-//! Подключаем тему:
+// Подключаем тему:
 new Theme({ trigger: ".theme", root: ROOT });
 
 // !Отрисовка Подвала:
 draw(FOOTER, Components.FOOTER());
-
-console.log("Друзья, спасибо что Вы с нами!");

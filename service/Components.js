@@ -18,7 +18,7 @@ class Components {
           list,
           ({ href, text }) =>
             `<li class="li"><a ${
-              href === "customers" ? `href='./${href}.html'` : `id="${href}"`
+              (href === "customers" | href === "references") ? `href='./${href}.html'` : `id="${href}"`
             } class="menu-link" rel="noopener noreferrer">${text}</a></li>`
         )}
         
@@ -193,10 +193,10 @@ class Components {
             )} </code>
         </div> 
         <p class='note'>
-            <span class="danger">&#10071;</span>Наименования полей у разных сущностей отличаются! Для передачи корректных значений <a href="#getEntities" class='danger'>(см. схему)</a>.
+            <span class="danger">&#10071;</span>Названия выбираемых полей смотрите <a href="#getEntities" class='danger'>в схеме ответа</a>.
         </p>
         <p class='note'>
-            <span class="danger">&#10071;</span>Значением параметра <strong>select</strong> является строка без пробелов, содержащая: название запрашиваемого поля или нескольких полей, разделенных запятыми.
+            <span class="danger">&#10071;</span>Значением параметра является строка без пробелов, содержащая требуемые поля.
         </p>
         `;
   }
@@ -264,7 +264,7 @@ class Components {
   ADD_ENTITY_DOCA(host, endpoint) {    
     return `
         <p class='section-text'>
-          POST-запрос к API имитирует добавление новой сущности на сервер. В случае успеха, сервер вернет объект, содержащий <strong class='success'>валидные</strong> поля, переданные в запросе <a href="#addEntity" class='danger'>(см. схему)</a>:
+          POST-запрос имитирует добавление новой сущности на сервер. В случае успеха, сервер вернет объект, содержащий <strong class='success'>валидные</strong> поля, переданные в запросе <a href="#addEntity" class='danger'>(см. схему)</a>:
         </p>
         <div>
             <code class='request-card-url doca'>${URLS.addEntity(
@@ -284,7 +284,7 @@ class Components {
   DELETE_ENTITY_DOCA(host, endpoint) {
     return `
         <p class='section-text'>
-          DELETE-запрос к API имитирует удаление конкретной сущности на сервере. В случае успеха, сервер вернет объект с идентификатором, переданным в запросе <a href="#deleteEntity" class='danger'>(см. схему)</a>:
+          DELETE-запрос имитирует удаление конкретной сущности на сервере. В случае успеха, сервер вернет объект с идентификатором, переданным в запросе <a href="#deleteEntity" class='danger'>(см. схему)</a>:
         </p>
         <div>
             <code class='request-card-url doca'>${URLS.deleteEntity(
@@ -294,6 +294,25 @@ class Components {
         </div>
         <p class='note'>
             <span class="danger">&#10071;</span>Переменная \${id} - идентификатор удаляемой сущности!            
+        </p> 
+        `;
+  }
+  PATCH_ENTITY_DOCA(host, endpoint) {
+    return `
+        <p class='section-text'>
+          PATCH-запрос имитирует обновление конкретной сущности на сервере. В случае успеха, сервер вернет обновленный объект с идентификатором, переданным в запросе:
+        </p>
+        <div>
+            <code class='request-card-url doca'>${URLS.patchEntity(
+              host,
+              endpoint
+            )}</code>
+        </div>
+        <p class='note'>
+            <span class="danger">&#10071;</span>Переменная \${id} - идентификатор обновлемой сущности!            
+        </p>
+        <p class='note'>
+            <span class="danger">&#10071;</span> Передаваемый объект (body) должен содержать названия обновляемых полей конкретной сущности: <a href="#patchEntity" class='danger'>(см. схему)</a>.
         </p> 
         `;
   }
@@ -327,7 +346,7 @@ class Components {
           <span class="material-icons-round"> mail_outline </span>
           <span>mail@wantedjson.ru</span>
         </address>
-      </a>
+      </a>        
     `;
   }
   FORM(elements, formType, submitValue) {

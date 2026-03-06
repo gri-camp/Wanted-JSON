@@ -25,6 +25,7 @@ try {
   const filtering = document.querySelector("#filtering");
   const addEntity = document.querySelector("#addEntity");
   const deleteEntity = document.querySelector("#deleteEntity");
+  const patchEntity = document.querySelector("#patchEntity");
   const FOOTER = document.querySelector(".footer");
 
   const endPointName = document.querySelector(".endpoint");
@@ -54,17 +55,20 @@ try {
     Components.SELECTEDFIELDS_DOCA(API_CONSTS.HOST, endPoint),
   );
 
-  // !Содержимое секции 'sorting':
+  // !Отрисовка секции 'sorting':
   draw(sorting, Components.SORTING_DOCA(API_CONSTS.HOST, endPoint));
 
-  // !Содержимое секции 'filterEntity':
+  // !Отрисовка секции 'filterEntity':
   draw(filtering, Components.FILTERING_DOCA(API_CONSTS.HOST, endPoint));
 
-  // !Содержимое секции 'addEntity':
+  // !Отрисовка секции 'addEntity':
   draw(addEntity, Components.ADD_ENTITY_DOCA(API_CONSTS.HOST, endPoint));
 
-  // !Содержимое секции 'deleteEntity':
+  // !Отрисовка секции 'deleteEntity':
   draw(deleteEntity, Components.DELETE_ENTITY_DOCA(API_CONSTS.HOST, endPoint));
+
+  // !Отрисовка секции 'patchEntity':
+  draw(patchEntity, Components.PATCH_ENTITY_DOCA(API_CONSTS.HOST, endPoint));
 
   // ! Отрисовка навигационной кнопки:
   new UpwardButton({ Component: Components.UPWARD_BTN });

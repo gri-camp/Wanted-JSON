@@ -91,7 +91,17 @@ logout: `
     "timestamp": "2025-12-23T14:30:18.959Z",
     "path": "/logout"
 <strong class='purple'>}</strong>           
-</code>`
+</code>`,
+patchEntity: `
+<code><strong class='purple'>{</strong> 
+    statusCode: 400,
+    message: 'Ошибка валидации данных',
+    timestamp: "2025-11-25T09:02:34.843Z",
+    path: "<span class='danger'>/\${endpoint}/\${id}</span>",
+    errors: <span class='purple'>[</span>"property <strong>foo</strong> should not exist"<span class='purple'>]</span>,
+<strong class='purple'>}</strong>           
+</code>
+`,
 };
 
 export { Errors };

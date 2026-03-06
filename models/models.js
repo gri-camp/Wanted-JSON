@@ -8,7 +8,7 @@ const API_CONSTS = {
   CARS: "cars",
   MOVIES: "movies",
   DOCS: "docs",
-  CLIENT_INFO: 'client-info',
+  CLIENT_INFO: "client-info",
   AUTH: "auth",
   SIGNUP: "signup",
   SIGNIN: "signin",
@@ -34,7 +34,7 @@ const URLS = {
   getPaginatedEntities: (host, ep = "${endpoint}") =>
     `${API_CONSTS.PROTOCOL}://${host}/${ep}?page=2&limit=10`,
   getSelectedEntities: (host, ep = "${endpoint}") =>
-    `${API_CONSTS.PROTOCOL}://${host}/${ep}?select=value1,value2`,
+    `${API_CONSTS.PROTOCOL}://${host}/${ep}?select=field1,field2`,
   getSortedEntities: (host, ep = "${endpoint}") =>
     `${API_CONSTS.PROTOCOL}://${host}/${ep}?sort=\${field}:\${dir}`,
   getFilteredEntities: (host, ep = "${endpoint}") =>
@@ -44,10 +44,16 @@ const URLS = {
   deleteEntity: (host, ep = "${endpoint}") =>
     `${API_CONSTS.PROTOCOL}://${host}/${ep}/\${id}`,
   // ! Авторизация / регистрация
-  signup: (host, ep) => `${API_CONSTS.PROTOCOL}://${host}/${API_CONSTS.AUTH}/${ep}`,
-  signin: (host, ep) => `${API_CONSTS.PROTOCOL}://${host}/${API_CONSTS.AUTH}/${ep}`,
-  logout: (host, ep) => `${API_CONSTS.PROTOCOL}://${host}/${API_CONSTS.AUTH}/${ep}`,
-  refresh: (host, ep) => `${API_CONSTS.PROTOCOL}://${host}/${API_CONSTS.AUTH}/${ep}`,
+  signup: (host, ep) =>
+    `${API_CONSTS.PROTOCOL}://${host}/${API_CONSTS.AUTH}/${ep}`,
+  signin: (host, ep) =>
+    `${API_CONSTS.PROTOCOL}://${host}/${API_CONSTS.AUTH}/${ep}`,
+  logout: (host, ep) =>
+    `${API_CONSTS.PROTOCOL}://${host}/${API_CONSTS.AUTH}/${ep}`,
+  refresh: (host, ep) =>
+    `${API_CONSTS.PROTOCOL}://${host}/${API_CONSTS.AUTH}/${ep}`,
+  patchEntity: (host, ep = "${endpoint}") =>
+    `${API_CONSTS.PROTOCOL}://${host}/${ep}/\${id}`,
 };
 
 const REQUEST_CARD_LIST = [
@@ -148,6 +154,22 @@ const REQUEST_CARD_LIST = [
     note: false,
   },
   {
+    id: "patchEntity",
+    title: "изменение сущности по ID:",
+    method: "patch",
+    url: (host, ep) => URLS.patchEntity(host, ep),
+    cls: "btn-success",
+    scheme: {
+      req: "запрос",
+      res: "ответ",
+      err: "ошибка",
+    },
+    ReqBtn: '<span class="material-icons-round">rocket_launch</span>',
+    ResBtn: '<span class="material-icons-round">data_object</span>',
+    ErrBtn: '<span class="material-icons-round">error</span>',
+    note: false,
+  },
+  {
     id: "signup",
     title: "регистрация пользователя",
     method: "post",
@@ -222,7 +244,7 @@ const FEATURES_CARD_LIST = [
   {
     icon: `<span class="material-icons-round">model_training</span>`,
     text: `Доступ к основным <abbr title="Create, Read, Update and Delete operations"
-    >CRUD</abbr> операциям: <strong">GET, POST, DELETE</strong>.`,
+    >CRUD</abbr> операциям: <strong">GET, POST, DELETE, UPDATE</strong>.`,
     title: "Практика и изучение",
   },
   {
@@ -234,7 +256,7 @@ const FEATURES_CARD_LIST = [
     icon: `<strong class="material-icons-round success">money_off</strong>`,
     text: `Бесплатный доступ к данным без API-ключа и регистрации!`,
     title: "Старт без регистрации",
-  },  
+  },
   {
     icon: `<span class="material-icons-round">monitor_heart</span>`,
     text: `Способность сервиса выдерживать высокие нагрузки 24 часа в сутки.`,
@@ -373,6 +395,10 @@ const MENU_LIST = [
   {
     href: `customers`,
     text: `партнерам`,
+  },
+  {
+    href: `references`,
+    text: `отсылки`,
   },
 ];
 
@@ -671,7 +697,7 @@ export {
   MENU_LIST,
   POST_REQUIRED_FIELDS,
   REQUEST_CARD_LIST,
-  ROOT, 
+  ROOT,
   SORTING_WHITE_LIST,
   URLS,
 };

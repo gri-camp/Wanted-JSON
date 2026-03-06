@@ -148,7 +148,39 @@ addEntity(<span class='success'>'${endpoint}'</span>, <span class='success'>newE
     
 deleteEntity(<span class='success'>'${endpoint}'</span>, <span class='success'>6</span>)
 </code>`,
-  getSingleEntity: (endpoint) => `
+patchEntity: (endpoint, styles = "") => `
+<code>const patchEntity = <span class='danger'>async</span>(<span class='success'>endpoint</span>, <span class='success'>id</span>, <span class='success'>body</span>) => {
+
+    <span class='danger'>try</span> {
+
+        <span class='danger'>let</span> res = <span class='danger'>await</span> <span class='primary'>fetch</span>(\`https://${API_CONSTS.HOST}/<span class='success'>\${endpoint}</span>/<span class='success'>\${id}</span>\`, {
+
+            method: "PATCH",
+
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(<span class='success'>body</span>),  
+
+        });
+
+        <span class='danger'>if</span> (!res.<span class='primary'>ok</span>) {
+            <span class='danger'>throw new</span> <span class='purple'>Error</span>('Something went wrong...');
+        }
+
+        <span class='danger'>return</span> <span class='danger'>await</span> res.<span class='primary'>json()</span>;
+    } 
+
+    <span class='danger'>catch</span> (e) { 
+
+        <span class='danger'>return</span> e.message;
+
+    }
+}
+    
+patchEntity(<span class='success'>'${endpoint}'</span>, <span class='success'>6</span>, <span class='success'>changedData</span>)
+</code>`,
+  getSingleEntity: (endpoint, styles = "") => `
 <code>const getSingleEntity = <span class='danger'>async</span>(<span class='success'>endpoint</span>, <span class='success'>id</span>) => {
 
     <span class='danger'>try</span> {

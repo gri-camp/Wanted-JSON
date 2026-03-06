@@ -166,6 +166,17 @@ const Responses = {
     lastUpdated : "2025-10-22",    
 <strong class='purple'>}</strong>
 </code>`,
+patchEntity: `
+<code> // Код ответа: <span class='success'>200</span>.
+
+<strong class='purple'>{</strong>
+    id: 6,
+    title: <strong>"Обновленное название"</strong>,
+    author: <strong>"Обновленный автор"</strong>,
+    ...,
+    lastUpdated : "2025-10-22",    
+<strong class='purple'>}</strong>
+</code>`
   },
   athletes: {
     getEntities: `
@@ -344,6 +355,17 @@ const Responses = {
     lastUpdated: '2025-10-28',  
 <strong class='purple'>}</strong>
 </code>`,
+patchEntity: `
+<code> // Код ответа: <span class='success'>200</span>.
+
+<strong class='purple'>{</strong>    
+    id: 6,
+    fullName: <strong>'Обновленное имя'</strong>,
+    sport: <strong>'Обновленный вид спорта'</strong>,    
+    ...,
+    lastUpdated: '2025-10-28',  
+<strong class='purple'>}</strong>
+</code>`
   },
   videoGames: {
     getEntities: `
@@ -494,6 +516,17 @@ const Responses = {
     lastUpdated: '2025-12-06',  
 <strong class='purple'>}</strong>
 </code>`,
+patchEntity: `
+<code> // Код ответа: <span class='success'>200</span>.
+
+<strong class='purple'>{</strong>    
+    id: 6,
+    title: <strong>"Обновленное название"</strong>,
+    developer: <strong>"Обновленный разработчик"</strong>,
+    ...,
+    lastUpdated: '2025-12-06',  
+<strong class='purple'>}</strong>
+</code>`
   },
   movies: {
     getEntities: `
@@ -666,6 +699,16 @@ const Responses = {
     seasons: null,
     lastUpdated: '2025-12-25',
 <strong class='purple'>}</strong></code>`,
+patchEntity: `
+<code> // Код ответа: <span class='success'>200</span>.
+
+<strong class='purple'>{</strong> 
+    id: 6,
+    title: <strong>'Обновленный заголовок'</strong>,    
+    director: <strong>'Обновленный режиссер'</strong>,
+    ...,
+    lastUpdated: '2025-12-25',
+<strong class='purple'>}</strong></code>`
   },
   cars: {
     getEntities: `
@@ -819,6 +862,17 @@ const Responses = {
     lastUpdated: '2025-12-27',
 <strong class='purple'>}</strong>  
 </code>`,
+patchEntity: `
+<code> // Код ответа: <span class='success'>200</span>.
+
+<strong class='purple'>{</strong> 
+    id: 6,
+    brand: <strong>'Обновленный бренд'</strong>,
+    model: <strong>'Обновленная модель'</strong>,
+    ...,
+    lastUpdated: '2025-12-27',
+<strong class='purple'>}</strong>  
+</code>`
   },
   videoGamesComments: {
     getEntities: `
@@ -912,6 +966,15 @@ const Responses = {
     gameId: 2,
     userLevel: 16,
     likes: 1778,            
+<strong class='purple'>}</strong>  
+</code>`,
+    patchEntity: `
+<code> // Код ответа: <span class='success'>200</span>.
+<strong class='purple'>{</strong> 
+    id: 6,
+    login: <strong>'Обновленный логин'</strong>,
+    comment: <strong>'Обновленный комментарий'</strong>,
+    ...          
 <strong class='purple'>}</strong>  
 </code>`,
   },
