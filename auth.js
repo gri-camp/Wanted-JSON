@@ -9,9 +9,8 @@ import { Observer } from "./service/Observer.js";
 import { Request } from "./service/Request.js";
 import { UpwardButton } from "./service/UpWardButton.js";
 
-// try {
+try {
   const endPoint = location.search.replace(/^\?endpoint=/, "");
-
   
   // Секции и контейнеры:  
   const FOOTER = document.querySelector(".footer");
@@ -34,6 +33,6 @@ import { UpwardButton } from "./service/UpWardButton.js";
 
   // !Запуск декоратора наблюдателя:
   new Observer(null, document.querySelectorAll(".request-card"));
-// } catch (error) {
-//   console.warn(error.message, error.name);
-// }
+} catch (error) {
+  console.warn(error.message, error.name);
+}
