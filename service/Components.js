@@ -312,7 +312,7 @@ class Components {
             <span class="danger">&#10071;</span>Переменная \${id} - идентификатор обновлемой сущности!            
         </p>
         <p class='note'>
-            <span class="danger">&#10071;</span> Передаваемый объект (body) должен содержать названия обновляемых полей конкретной сущности: <a href="#patchEntity" class='danger'>(см. схему)</a>.
+            <span class="danger">&#10071;</span> Передаваемый объект (body) должен содержать обновляемые поля конкретной сущности: <a href="#patchEntity" class='danger'>(см. схему)</a>.
         </p> 
         `;
   }
