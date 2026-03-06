@@ -9,7 +9,7 @@ import { Theme } from "./service/Theme.js";
 const FOOTER = document.querySelector(".footer");
 
 //! Подключаем тему:
-new Theme({ trigger: ".theme", root: ROOT });
+new Theme({ root: ROOT });
 
 // !Отрисовка Подвала:
 draw(FOOTER, Components.FOOTER());

@@ -4,6 +4,7 @@ class Theme {
     this.trigger = document.querySelector(trigger);
     this.currTheme = this.getTheme();
     this.setRootTheme(this.currTheme);
+    if(!trigger) return
     this.setThemeIcon(this.currTheme);
     this.addListenerToTrigger(this.trigger);
   }

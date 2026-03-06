@@ -9,7 +9,7 @@ import { Observer } from "./service/Observer.js";
 import { Request } from "./service/Request.js";
 import { UpwardButton } from "./service/UpWardButton.js";
 
-try {
+// try {
   const endPoint = location.search.replace(/^\?endpoint=/, "");
 
   
@@ -17,7 +17,7 @@ try {
   const FOOTER = document.querySelector(".footer");
 
   // Подключаем тему:
-  new Theme({ trigger: ".theme", root: ROOT });
+  new Theme({ root: ROOT });
  
   // !Содержимое секции 'urls':
   new Request({
@@ -34,6 +34,6 @@ try {
 
   // !Запуск декоратора наблюдателя:
   new Observer(null, document.querySelectorAll(".request-card"));
-} catch (error) {
-  console.warn(error.message, error.name);
-}
+// } catch (error) {
+//   console.warn(error.message, error.name);
+// }
