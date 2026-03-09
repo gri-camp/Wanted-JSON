@@ -148,8 +148,8 @@ addEntity(<span class='success'>'${endpoint}'</span>, <span class='success'>newE
     
 deleteEntity(<span class='success'>'${endpoint}'</span>, <span class='success'>6</span>)
 </code>`,
-patchEntity: (endpoint, styles = "") => `
-<code>const patchEntity = <span class='danger'>async</span>(<span class='success'>endpoint</span>, <span class='success'>id</span>, <span class='success'>body</span>) => {
+updateEntity: (endpoint, styles = "") => `
+<code>const updateEntity = <span class='danger'>async</span>(<span class='success'>endpoint</span>, <span class='success'>id</span>, <span class='success'>body</span>) => {
 
     <span class='danger'>try</span> {
 
@@ -178,7 +178,7 @@ patchEntity: (endpoint, styles = "") => `
     }
 }
     
-patchEntity(<span class='success'>'${endpoint}'</span>, <span class='success'>6</span>, <span class='success'>changedData</span>)
+updateEntity(<span class='success'>'${endpoint}'</span>, <span class='success'>6</span>, <span class='success'>changedData</span>)
 </code>`,
   getSingleEntity: (endpoint, styles = "") => `
 <code>const getSingleEntity = <span class='danger'>async</span>(<span class='success'>endpoint</span>, <span class='success'>id</span>) => {

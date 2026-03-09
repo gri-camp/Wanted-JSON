@@ -1,3 +1,5 @@
+import { getSchemesToolbarConfig } from "../helpers/helpers.js";
+
 const API_CONSTS = {
   PROTOCOL: "https",
   HOST: "api.wantedjson.ru",
@@ -43,6 +45,8 @@ const URLS = {
     `${API_CONSTS.PROTOCOL}://${host}/${ep}`,
   deleteEntity: (host, ep = "${endpoint}") =>
     `${API_CONSTS.PROTOCOL}://${host}/${ep}/\${id}`,
+  updateEntity: (host, ep = "${endpoint}") =>
+    `${API_CONSTS.PROTOCOL}://${host}/${ep}/\${id}`,
   // ! Авторизация / регистрация
   signup: (host, ep) =>
     `${API_CONSTS.PROTOCOL}://${host}/${API_CONSTS.AUTH}/${ep}`,
@@ -52,8 +56,6 @@ const URLS = {
     `${API_CONSTS.PROTOCOL}://${host}/${API_CONSTS.AUTH}/${ep}`,
   refresh: (host, ep) =>
     `${API_CONSTS.PROTOCOL}://${host}/${API_CONSTS.AUTH}/${ep}`,
-  patchEntity: (host, ep = "${endpoint}") =>
-    `${API_CONSTS.PROTOCOL}://${host}/${ep}/\${id}`,
 };
 
 const REQUEST_CARD_LIST = [
@@ -62,15 +64,7 @@ const REQUEST_CARD_LIST = [
     title: "получение всех сущностей:",
     method: "get",
     url: (host, ep) => URLS.getEntities(host, ep),
-    cls: "btn-success",
-    scheme: {
-      req: "запрос",
-      res: "ответ",
-      err: "ошибка",
-    },
-    ReqBtn: '<span class="material-icons-round">rocket_launch</span>',
-    ResBtn: '<span class="material-icons-round">data_object</span>',
-    ErrBtn: '<span class="material-icons-round">error</span>',
+    ...getSchemesToolbarConfig(),
     note: false,
   },
   {
@@ -78,15 +72,7 @@ const REQUEST_CARD_LIST = [
     title: "получение сущностей c передачей query-параметров:",
     method: "get",
     url: (host, ep) => URLS.getEntitiesQS(host, ep),
-    cls: "btn-success",
-    scheme: {
-      req: "запрос",
-      res: "ответ",
-      err: "ошибка",
-    },
-    ReqBtn: '<span class="material-icons-round">rocket_launch</span>',
-    ResBtn: '<span class="material-icons-round">data_object</span>',
-    ErrBtn: '<span class="material-icons-round">error</span>',
+    ...getSchemesToolbarConfig(),
     note: false,
   },
   {
@@ -94,15 +80,7 @@ const REQUEST_CARD_LIST = [
     title: "получение сущности по ID:",
     method: "get",
     url: (host, ep) => URLS.getSingleEntity(host, ep),
-    cls: "btn-success",
-    scheme: {
-      req: "запрос",
-      res: "ответ",
-      err: "ошибка",
-    },
-    ReqBtn: '<span class="material-icons-round">rocket_launch</span>',
-    ResBtn: '<span class="material-icons-round">data_object</span>',
-    ErrBtn: '<span class="material-icons-round">error</span>',
+    ...getSchemesToolbarConfig(),
     note: false,
   },
   {
@@ -110,15 +88,7 @@ const REQUEST_CARD_LIST = [
     title: "поиск сущностей:",
     method: "get",
     url: (host, ep) => URLS.getSearchedEntity(host, ep),
-    cls: "btn-success",
-    scheme: {
-      req: "запрос",
-      res: "ответ",
-      err: "ошибка",
-    },
-    ReqBtn: '<span class="material-icons-round">rocket_launch</span>',
-    ResBtn: '<span class="material-icons-round">data_object</span>',
-    ErrBtn: '<span class="material-icons-round">error</span>',
+    ...getSchemesToolbarConfig(),
     note: false,
   },
   {
@@ -126,15 +96,7 @@ const REQUEST_CARD_LIST = [
     title: "добавление новой сущности:",
     method: "post",
     url: (host, ep) => URLS.addEntity(host, ep),
-    cls: "btn-success",
-    scheme: {
-      req: "запрос",
-      res: "ответ",
-      err: "ошибка",
-    },
-    ReqBtn: '<span class="material-icons-round">rocket_launch</span>',
-    ResBtn: '<span class="material-icons-round">data_object</span>',
-    ErrBtn: '<span class="material-icons-round">error</span>',
+    ...getSchemesToolbarConfig(),
     note: true,
   },
   {
@@ -142,31 +104,15 @@ const REQUEST_CARD_LIST = [
     title: "удаление сущности по ID:",
     method: "delete",
     url: (host, ep) => URLS.deleteEntity(host, ep),
-    cls: "btn-success",
-    scheme: {
-      req: "запрос",
-      res: "ответ",
-      err: "ошибка",
-    },
-    ReqBtn: '<span class="material-icons-round">rocket_launch</span>',
-    ResBtn: '<span class="material-icons-round">data_object</span>',
-    ErrBtn: '<span class="material-icons-round">error</span>',
+    ...getSchemesToolbarConfig(),
     note: false,
   },
   {
-    id: "patchEntity",
+    id: "updateEntity",
     title: "изменение сущности по ID:",
     method: "patch",
-    url: (host, ep) => URLS.patchEntity(host, ep),
-    cls: "btn-success",
-    scheme: {
-      req: "запрос",
-      res: "ответ",
-      err: "ошибка",
-    },
-    ReqBtn: '<span class="material-icons-round">rocket_launch</span>',
-    ResBtn: '<span class="material-icons-round">data_object</span>',
-    ErrBtn: '<span class="material-icons-round">error</span>',
+    url: (host, ep) => URLS.updateEntity(host, ep),
+    ...getSchemesToolbarConfig(),
     note: false,
   },
   {
@@ -174,15 +120,7 @@ const REQUEST_CARD_LIST = [
     title: "регистрация пользователя",
     method: "post",
     url: (host, ep) => URLS.signup(host, ep),
-    cls: "btn-success",
-    scheme: {
-      req: "запрос",
-      res: "ответ",
-      err: "ошибка",
-    },
-    ReqBtn: '<span class="material-icons-round">rocket_launch</span>',
-    ResBtn: '<span class="material-icons-round">data_object</span>',
-    ErrBtn: '<span class="material-icons-round">error</span>',
+    ...getSchemesToolbarConfig(),
     note: false,
   },
   {
@@ -190,15 +128,7 @@ const REQUEST_CARD_LIST = [
     title: "авторизация пользователя",
     method: "post",
     url: (host, ep) => URLS.signin(host, ep),
-    cls: "btn-success",
-    scheme: {
-      req: "запрос",
-      res: "ответ",
-      err: "ошибка",
-    },
-    ReqBtn: '<span class="material-icons-round">rocket_launch</span>',
-    ResBtn: '<span class="material-icons-round">data_object</span>',
-    ErrBtn: '<span class="material-icons-round">error</span>',
+    ...getSchemesToolbarConfig(),
     note: false,
   },
   {
@@ -206,15 +136,7 @@ const REQUEST_CARD_LIST = [
     title: "выход из системы",
     method: "post",
     url: (host, ep) => URLS.logout(host, ep),
-    cls: "btn-success",
-    scheme: {
-      req: "запрос",
-      res: "ответ",
-      err: "ошибка",
-    },
-    ReqBtn: '<span class="material-icons-round">rocket_launch</span>',
-    ResBtn: '<span class="material-icons-round">data_object</span>',
-    ErrBtn: '<span class="material-icons-round">error</span>',
+    ...getSchemesToolbarConfig(),
     note: false,
   },
   {
@@ -222,15 +144,7 @@ const REQUEST_CARD_LIST = [
     title: "обновления токена",
     method: "post",
     url: (host, ep) => URLS.refresh(host, ep),
-    cls: "btn-success",
-    scheme: {
-      req: "запрос",
-      res: "ответ",
-      err: "ошибка",
-    },
-    ReqBtn: '<span class="material-icons-round">rocket_launch</span>',
-    ResBtn: '<span class="material-icons-round">data_object</span>',
-    ErrBtn: '<span class="material-icons-round">error</span>',
+    ...getSchemesToolbarConfig(),
     note: false,
   },
 ];
@@ -371,7 +285,7 @@ const EXAMPLES_LIST = [
   },
 ];
 
-const MENU_LIST = [
+const HOMEPAGE_MENU_LIST = [
   {
     href: `#features`,
     text: `особенности`,
@@ -399,6 +313,37 @@ const MENU_LIST = [
   {
     href: `references`,
     text: `отсылки`,
+  },
+];
+
+const DOCSPAGE_MENU_LIST = [
+  {
+    href: `#pagination`,
+    text: `пагинация`,
+  },
+  {
+    href: `#selectedFields`,
+    text: `выборка`,
+  },
+  {
+    href: `#sorting`,
+    text: `сортировка`,
+  },
+  {
+    href: `#filtering`,
+    text: `фильтр`,
+  },
+  {
+    href: `#addEntityDesc`,
+    text: `добавление`,
+  },
+  {
+    href: `#deleteEntityDesc`,
+    text: `удаление`,
+  },
+  {
+    href: `#updateEntityDesc`,
+    text: `обновление`,
   },
 ];
 
@@ -694,7 +639,8 @@ export {
   FEATURES_CARD_LIST,
   FILTERING_WHITE_LIST,
   FORM_ELEMS_LIST,
-  MENU_LIST,
+  HOMEPAGE_MENU_LIST,
+  DOCSPAGE_MENU_LIST,
   POST_REQUIRED_FIELDS,
   REQUEST_CARD_LIST,
   ROOT,

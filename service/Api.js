@@ -93,6 +93,26 @@ class Api {
     }
   }
 
+  static async updateEntity(endpoint, id, body) {
+    try {
+      let res = await fetch(`${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.AUTH}/${endpoint}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(body),
+      });
+
+      if (!res.ok) {
+        const mess = await res.text();
+        throw new Error(mess);
+      }
+
+      return await res.json();
+    } catch (e) {
+      return e.message;
+    }
+  }
 
   static async signup(body, endpoint = "signup") {
     try {

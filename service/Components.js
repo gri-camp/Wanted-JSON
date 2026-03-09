@@ -303,7 +303,7 @@ class Components {
           PATCH-запрос имитирует обновление конкретной сущности на сервере. В случае успеха, сервер вернет обновленный объект с идентификатором, переданным в запросе:
         </p>
         <div>
-            <code class='request-card-url doca'>${URLS.patchEntity(
+            <code class='request-card-url doca'>${URLS.updateEntity(
               host,
               endpoint
             )}</code>

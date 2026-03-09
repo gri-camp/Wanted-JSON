@@ -30,15 +30,12 @@
 
 		&:hover 
 			transform: translateY(-0.5rem)			
-			box-shadow: none
+			box-shadow: none			
 
 		&-hr 
-			height: 3px
+			@include hr-base
 			width: 50%
-			border: none
-			background-color: var(--app-dark-color)
-			border-radius: var(--app-sm-spacing)		
-			opacity: .17
+			background-color: var(--app-dark-color)			
 
 		&-text 
 			margin: var(--app-md-spacing) 0px
@@ -47,9 +44,7 @@
 
 		&-icon span 
 			font-size: 1.25em
-
-		.material-icons-round 
-			font-size: 2rem		
+	
 		
 		
 			

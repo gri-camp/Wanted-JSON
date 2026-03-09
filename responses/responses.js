@@ -166,7 +166,7 @@ const Responses = {
     lastUpdated : "2025-10-22",    
 <strong class='purple'>}</strong>
 </code>`,
-patchEntity: `
+updateEntity: `
 <code> // Код ответа: <span class='success'>200</span>.
 
 <strong class='purple'>{</strong>
@@ -355,7 +355,7 @@ patchEntity: `
     lastUpdated: '2025-10-28',  
 <strong class='purple'>}</strong>
 </code>`,
-patchEntity: `
+updateEntity: `
 <code> // Код ответа: <span class='success'>200</span>.
 
 <strong class='purple'>{</strong>    
@@ -516,7 +516,7 @@ patchEntity: `
     lastUpdated: '2025-12-06',  
 <strong class='purple'>}</strong>
 </code>`,
-patchEntity: `
+updateEntity: `
 <code> // Код ответа: <span class='success'>200</span>.
 
 <strong class='purple'>{</strong>    
@@ -699,7 +699,7 @@ patchEntity: `
     seasons: null,
     lastUpdated: '2025-12-25',
 <strong class='purple'>}</strong></code>`,
-patchEntity: `
+updateEntity: `
 <code> // Код ответа: <span class='success'>200</span>.
 
 <strong class='purple'>{</strong> 
@@ -862,7 +862,7 @@ patchEntity: `
     lastUpdated: '2025-12-27',
 <strong class='purple'>}</strong>  
 </code>`,
-patchEntity: `
+updateEntity: `
 <code> // Код ответа: <span class='success'>200</span>.
 
 <strong class='purple'>{</strong> 
@@ -968,7 +968,7 @@ patchEntity: `
     likes: 1778,            
 <strong class='purple'>}</strong>  
 </code>`,
-    patchEntity: `
+    updateEntity: `
 <code> // Код ответа: <span class='success'>200</span>.
 <strong class='purple'>{</strong> 
     id: 6,

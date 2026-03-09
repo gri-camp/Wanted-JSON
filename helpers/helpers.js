@@ -22,7 +22,57 @@ async function checkToken() {
         })
       : console.error(res);
   }
-  user?.exp && console.log("Not dead Yet, AccessToken death time: ", new Date(user.exp * 1000).toLocaleTimeString());  
+  user?.exp &&
+    console.log(
+      "Not dead Yet, AccessToken death time: ",
+      new Date(user.exp * 1000).toLocaleTimeString(),
+    );
 }
 
-export { checkToken, draw, getHTMLFromList, getUserFromLS, setDataToLS };
+const generateResByid = (id, resSchemes) => {
+  const s = resSchemes[id];
+
+  return `
+    <strong class='purple'>{</strong>
+${Object.keys(s)
+  .map((key) => {
+    switch (true) {
+      case s[key] instanceof Array:
+        return `\t${key}: <span class='purple'>[</span>${s[key]
+          .map((str) => `"${str}"`)
+          .join(", ")}<span class='purple'>]</span>`;
+      case s[key] instanceof Object && s[key] !== null:
+        return `\t${key}: <span class='purple'>{</span>${Object.keys(s[key])
+          .map((k) => `"${[k]}": "${s[key][k]}"`)
+          .join(", ")}<span class='purple'>}</span>`;
+      default:
+        return `\t${key}: ${typeof s[key] === "string" ? `'${s[key]}'` : s[key]}`;
+    }
+  })
+  .join(",\n")}
+    <strong class='purple'>}</strong>`;
+};
+
+const getSchemesToolbarConfig = () => {
+  return {
+    cls: "btn-success",
+    scheme: {
+      req: "запрос",
+      res: "ответ",
+      err: "ошибка",
+    },
+    ReqBtn: '<span class="material-icons-round">rocket_launch</span>',
+    ResBtn: '<span class="material-icons-round">data_object</span>',
+    ErrBtn: '<span class="material-icons-round">error</span>',
+  };
+};
+
+export {
+  checkToken,
+  draw,
+  generateResByid,
+  getHTMLFromList,
+  getSchemesToolbarConfig,
+  getUserFromLS,
+  setDataToLS
+};

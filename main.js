@@ -5,7 +5,7 @@ import {
   EXAMPLES_LIST,
   FEATURES_CARD_LIST,
   FORM_ELEMS_LIST,
-  MENU_LIST,
+  HOMEPAGE_MENU_LIST,  
   REQUEST_CARD_LIST,
   ROOT,
 } from "./models/models.js";
@@ -34,7 +34,7 @@ try {
   new Theme({ trigger: ".theme", root: ROOT });
 
   // !Отрисовка главного меню:
-  new Menu({ list: MENU_LIST, Component: Components.MENU });
+  new Menu({ list: HOMEPAGE_MENU_LIST, Component: Components.MENU });
 
   // !Содержимое секции 'FEATURES':
   const FEATURES_HTML = getHTMLFromList(FEATURES_CARD_LIST, (card) =>

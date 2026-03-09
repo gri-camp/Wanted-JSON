@@ -46,8 +46,10 @@
 	font-weight: 400
 	line-height: 150%	
 	margin: var(--app-md-spacing)
-
-/* Информационные секции  страниц  */
+	font-size: 1.1em
+	
+	
+/* Информационные секции на странице docs.html */
 
 .app-section 
 	margin-bottom: 3.5rem
@@ -77,6 +79,20 @@
 	border-radius: var(--app-sm-spacing)
 	background: $app-features-card-bg  
 	width: max-content
+	user-select: none
+
+.burger 
+	display: none
+
+.theme 
+	cursor: pointer
+	@include flex-default
+	padding: var(--app-md-spacing)
+
+.burger	
+	.material-icons-round  
+		font-size: 2rem
+
 
 /* Секция кнопки назад */
 
@@ -90,10 +106,7 @@
 		width: max-content
 		
 		&:hover 			
-			color: var(--app-warning-color)
-
-	.material-icons-round 
-		font-size: 2em	
+			color: var(--app-success-color)
 
 .white-list 
 	padding: 0px var(--app-sm-spacing)
@@ -122,9 +135,7 @@
 	border-radius: 50%
 	width: 45px
 	height: 45px
-	display: flex
-	align-items: center
-	justify-content: center
+	@include flex-default
 	cursor: pointer
 	box-shadow: $app-card-shadow
 	transition: 0.25s all ease-out

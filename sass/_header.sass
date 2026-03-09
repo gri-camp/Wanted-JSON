@@ -1,21 +1,15 @@
 .header 
 	display: flex
-	align-items: center	
-	background: var(--app-default-bg)
+	align-items: center
 	padding: var(--app-md-spacing)
 	border-radius: var(--app-md-spacing)
 	position: relative
 	margin: 0 0 1.5rem 0
 	gap: 0.5rem
 
-	.material-icons-round 
-		font-size: 2em	
-
 	&-logo 
 		padding: var(--app-sm-spacing)
-		display: flex		
-		align-items: center
-		justify-content: center		
+		@include flex-default
 		cursor: pointer
 		width: 60px
 		height: 60px
@@ -29,17 +23,18 @@
 
 	&-menu 
 		display: flex
-		list-style-type: none
-		
+		list-style-type: none		
 
 		li			
 			font-family: inherit
 			letter-spacing: 1px
 			font-variant: small-caps
 
-.menu-link.active 
-	font-weight: 700
-	color: var(--app-danger-color)		
+.menu-link
+	
+	.active 
+		font-weight: 700
+		color: var(--app-danger-color)		
 
 		
 .burger 
@@ -53,12 +48,11 @@
 	justify-content: center
 	padding: var(--app-md-spacing) 0px
 
-.burger, .theme  
-	
+.burger	
 	.material-icons-round  
 		font-size: 2rem	
 
-.auth, .home
+.home
 	cursor: pointer
 	border-radius: 50%
 	box-shadow: $app-card-shadow

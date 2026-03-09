@@ -3,25 +3,25 @@ import { draw } from "../helpers/helpers.js";
 
 class Menu {
   constructor({ list, Component }) {
-    this.$menuContainer = document.querySelector(".header");
-    this.$burger = this.$menuContainer.querySelector(".burger");
-    this.$nav = null;
+    this.$header_el = document.querySelector(".header");
+    this.$burger = this.$header_el.querySelector(".burger");
+    this.Nav_el = null;
     this.list = list;
     this.Component = Component;
     this.menuLinks = null;
     // Methods:
     this.render(
-      this.$menuContainer,
+      this.$header_el,
       this.list,
       this.Component
-    ).addListenerToHeader(this.$menuContainer, this.list);
+    ).addListenerToHeader(this.$header_el, this.list);
   }
 
-  render(menuContainer, list, Component) {
+  render(header_el, list, Component) {
     const html = Component(list);
-    draw(menuContainer, html);
-    this.menuLinks = menuContainer.querySelectorAll(".menu-link");
-    this.$nav = menuContainer.querySelector(".header-nav");
+    draw(header_el, html);
+    this.menuLinks = header_el.querySelectorAll(".menu-link");
+    this.Nav_el = header_el.querySelector(".header-nav");    
     return this;
   }
 
@@ -29,9 +29,9 @@ class Menu {
     if (e.target.href) {
       return;
     } else if (e.target.closest(".burger")) {
-      this.$nav.classList.toggle("active");
+      this.Nav_el.classList.toggle("active");
     } else if (!e.target.matches(".menu-link")) {
-      this.$nav.classList.remove("active");
+      this.Nav_el.classList.remove("active");
     } else {
       const { id } = e.target;
       document.querySelector(id).scrollIntoView({
@@ -40,7 +40,7 @@ class Menu {
         inline: "nearest",
       });
       this.hilightChosenLink(this.menuLinks, e.target);
-      this.$nav.classList.toggle("active");
+      this.Nav_el.classList.toggle("active");
     }
   };
 

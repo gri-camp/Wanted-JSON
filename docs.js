@@ -2,6 +2,7 @@
 import {
   API_CONSTS,
   AUTH_ENDPOINTS,
+  DOCSPAGE_MENU_LIST,
   REQUEST_CARD_LIST,
   ROOT,
 } from "./models/models.js";
@@ -9,6 +10,7 @@ import {
 import { draw } from "./helpers/helpers.js";
 // service classes:
 import Components from "./service/Components.js";
+import { Menu } from "./service/Menu.js";
 import { Observer } from "./service/Observer.js";
 import { Request } from "./service/Request.js";
 import { Theme } from "./service/Theme.js";
@@ -23,9 +25,9 @@ try {
   const selectedFields = document.querySelector("#selectedFields");
   const sorting = document.querySelector("#sorting");
   const filtering = document.querySelector("#filtering");
-  const addEntity = document.querySelector("#addEntity");
-  const deleteEntity = document.querySelector("#deleteEntity");
-  const patchEntity = document.querySelector("#patchEntity");
+  const addEntityDesc = document.querySelector("#addEntityDesc");
+  const deleteEntityDesc = document.querySelector("#deleteEntityDesc");
+  const updateEntityDesc = document.querySelector("#updateEntityDesc");
   const FOOTER = document.querySelector(".footer");
 
   const endPointName = document.querySelector(".endpoint");
@@ -34,7 +36,10 @@ try {
   // Подключаем тему:
   new Theme({ trigger: ".theme", root: ROOT });
 
-  // !Содержимое секции 'urls':
+  //! Отрисовка главного меню:
+  new Menu({ list: DOCSPAGE_MENU_LIST, Component: Components.MENU });
+
+  // !Отрисовка секции 'urls':
   new Request({
     list: REQUEST_CARD_LIST.filter(
       (card) => !AUTH_ENDPOINTS.includes(card?.id),
@@ -43,13 +48,13 @@ try {
     Component: "REQUEST_CARD_DOCS_PAGE",
   });
 
-  // !Содержимое секции 'limiting':
+  // !Отрисовка секции 'limiting':
   draw(limiting, Components.LIMITING_DOCA(API_CONSTS.HOST, endPoint));
 
-  // !Содержимое секции 'pagination':
+  // !Отрисовка секции 'pagination':
   draw(pagination, Components.PAGINATION_DOCA(API_CONSTS.HOST, endPoint));
 
-  // !Содержимое секции 'selectedFields':
+  // !Отрисовка секции 'selectedFields':
   draw(
     selectedFields,
     Components.SELECTEDFIELDS_DOCA(API_CONSTS.HOST, endPoint),
@@ -62,13 +67,19 @@ try {
   draw(filtering, Components.FILTERING_DOCA(API_CONSTS.HOST, endPoint));
 
   // !Отрисовка секции 'addEntity':
-  draw(addEntity, Components.ADD_ENTITY_DOCA(API_CONSTS.HOST, endPoint));
+  draw(addEntityDesc, Components.ADD_ENTITY_DOCA(API_CONSTS.HOST, endPoint));
 
   // !Отрисовка секции 'deleteEntity':
-  draw(deleteEntity, Components.DELETE_ENTITY_DOCA(API_CONSTS.HOST, endPoint));
+  draw(
+    deleteEntityDesc,
+    Components.DELETE_ENTITY_DOCA(API_CONSTS.HOST, endPoint),
+  );
 
-  // !Отрисовка секции 'patchEntity':
-  draw(patchEntity, Components.PATCH_ENTITY_DOCA(API_CONSTS.HOST, endPoint));
+  // !Отрисовка секции 'updateEntity':
+  draw(
+    updateEntityDesc,
+    Components.PATCH_ENTITY_DOCA(API_CONSTS.HOST, endPoint),
+  );
 
   // ! Отрисовка навигационной кнопки:
   new UpwardButton({ Component: Components.UPWARD_BTN });
@@ -81,4 +92,3 @@ try {
 } catch (error) {
   console.warn(error.message, error.name);
 }
-
