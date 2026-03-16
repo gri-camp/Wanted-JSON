@@ -80,7 +80,6 @@ try {
     document.querySelectorAll(".request-card"),
   );
 
-<<<<<<< Updated upstream
   // !Отрисовка формы регистрации:
   new Form({
     container: SIGN_UP_POPUP,
@@ -97,7 +96,6 @@ try {
     formType: "signin",
     actionTrigger: ".signin-icon",
   });
-=======
   // ! Отрисовка уведомления:
   new Notice({
     msg: "Уважаемые пользователи! \t В ближайшее время на нашем сервисе появятся новые эндпоинты для авторизации: '/signIn', '/signUp'.",
@@ -105,56 +103,7 @@ try {
     trigger: '.noticeIcon'
   });
 
-  // ! getEntities -----------
-  // (async function (endPoint, qs) {
-  //   let res = await Api.getEntities(endPoint, qs);
-  //   console.log(res);
-  // })(API_CONSTS.MOVIES, "country=великобрит&select=id,title,description");
->>>>>>> Stashed changes
-
-  // ! getSingleEntity -----------
-  // (async function (endPoint, id) {
-  //   let res = await Api.getEntities(endPoint, id);
-  //   console.log(res);
-<<<<<<< Updated upstream
-  // })(API_CONSTS.VIDEOGAMESCOMMENTS, `5`);
-=======
-  // })(API_CONSTS.MOVIES, '455');
-
-  // ! getSearchedEntity -----------
-  // (async function (endPoint, q) {
-  //   let res = await Api.getSearchedEntity(endPoint, q);
-  //   console.log(res);
-  // })(API_CONSTS.MOVIES, "Тарковский");
-
-  // ! addEntity -----------
-  // (async function (endPoint, body) {
-  //   let res = await Api.addEntity(endPoint, body);
-  //   console.log(res);
-  // })(API_CONSTS.VIDEOGAMESCOMMENTS, {
-  //   login: "FOO",
-  //   gameId: "15",
-  //   comment: "роман, сатира",
-  //   date: "2026-02-22",
-  // });
-
-  //  ! deleteEntity-----------
-  // (async function (endPoint, id) {
-  //   let res = await Api.deleteEntity(endPoint, id);
-  //   console.log(res);
-  // })(API_CONSTS.MOVIES, 45);
-
-  //  ! updateEntity-----------
-  (async function (endPoint, id, body) {
-    let res = await Api.updateEntity(endPoint, id, body);
-    console.log(res);
-  })(API_CONSTS.MOVIES, 45, {
-    title: "title",
-    director: "director",
-    studio: "some-studio",
-    duration: "357",
-  });
->>>>>>> Stashed changes
+  
 } catch (error) {
   console.warn(error.message, error.name);
 }
