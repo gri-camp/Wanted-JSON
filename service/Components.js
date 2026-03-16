@@ -353,6 +353,10 @@ class Components {
   FORM(elements, formType, submitValue) {
     return `
     <form class='${formType}'>
+      <div class="form-logo">
+        <img src="./icons/logo.svg" alt="LOGO" />
+      </div>
+      <h2 class='form-title'>wanted json</h2>
       ${getHTMLFromList(
         elements,
         ({ type, placeholder, name, errorMsg, tabindex }) => `

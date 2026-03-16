@@ -1,31 +1,50 @@
 .signin, .signup
-    width: 45%
+    width: 42%
     margin: auto
     color: var(--app-dark-color)
     overflow: hidden
     background: var(--app-dark-secondary-color)
-    padding: var(--app-xl-spacing)
-    padding-top: 2rem
+    padding: var(--app-lg-spacing)  
     border-radius: var(--app-lg-spacing)
+    box-shadow: 0.5px 0.5px 1.5px var(--app-darken-color) 
+
+    input 
+        font-size: 1.1em
+        box-shadow: 0.5px 0.5px 1.5px var(--app-darken-color), -0.5px -0.5px 1.5px var(--app-darken-color)         
+
+    
+.form
+
+    &-logo
+        width: 50px
+        height: 50px
+        margin: 1rem auto
+
+        img
+            width: 100%
+            height: 100%
+
+    &-title
+        margin: var(--app-lg-spacing) 0px
+        position: relative
+        top: -0.5rem              
+    
+    &-error
+        margin: var(--app-md-spacing) 0px
+        display: inline-block
+        width: 100%
+        color: var(--app-danger-color)        
+        opacity: 0
+        font-size: 0.8em
+        text-align: center
+        font-weight: 500
+        min-height: 45px
+        font-weight: 500 
+
+        &.active
+            opacity: 0.92
 
     p
         position: relative                
 
-    input 
-        font-size: 1.1em
-        box-shadow: 0.5px 0.5px 3px var(--app-dark-color), -0.5px -0.5px 3px var(--app-dark-color)
-
-.form-error
-    margin: var(--app-md-spacing) 0px
-    display: inline-block
-    width: 100%
-    color: var(--app-danger-color)        
-    opacity: 0
-    font-size: 0.8em
-    text-align: center
-    font-weight: 500
-    min-height: 45px
-    font-weight: 500 
-
-    &.active
-        opacity: 0.92          
+    
