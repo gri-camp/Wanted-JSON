@@ -83,17 +83,21 @@ class Request {
         codeContainer.querySelector("pre").innerHTML = html;
         codeContainer.style.maxHeight =
           codeContainer.firstElementChild.offsetHeight +
-          codeContainer.querySelector("pre").offsetHeight + "px";
+          codeContainer.querySelector("pre").offsetHeight +
+          "px";
         trigger.classList.add("btn-danger");
         return;
       }
-      codeContainer.style.maxHeight = "0px";      
-      document.querySelectorAll('.trggr').forEach(tr => tr.classList.remove("btn-danger"))      
+      codeContainer.style.maxHeight = "0px";
+      const triggersBar = e.target.closest(".request-card-triggers");
+      triggersBar
+        .querySelectorAll(".trggr")
+        .forEach((tr) => tr.classList.remove("btn-danger"));
       return;
     }
 
     const codeElem = e.target.closest(".code").querySelector("code");
-    const codeExample = codeElem.textContent;    
+    const codeExample = codeElem.textContent;
     const selection = document.getSelection();
     const copyStatus = e.target.closest(".code").querySelector(".copy-status");
     selection.removeAllRanges();
@@ -144,5 +148,3 @@ class Request {
 }
 
 export { Request };
-
-     
