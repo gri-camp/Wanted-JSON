@@ -87,7 +87,7 @@ class Request {
         trigger.classList.add("btn-danger");
         return;
       }
-      codeContainer.style.maxHeight = "0px";
+      codeContainer.style.maxHeight = "0px";      
       document.querySelectorAll('.trggr').forEach(tr => tr.classList.remove("btn-danger"))      
       return;
     }
