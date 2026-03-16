@@ -99,7 +99,7 @@ try {
   // ! Отрисовка уведомления:
   new Notice({
     msg: "Уважаемые пользователи! \t В ближайшее время на нашем сервисе появятся новые эндпоинты для авторизации: '/signIn', '/signUp'.",
-    Component: Components.NOTICE_MODAL,
+    Component: Components.NOTICE_MODAL(),
     trigger: '.noticeIcon'
   });
 
