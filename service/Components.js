@@ -1,8 +1,8 @@
 import {
   AUTH_ENDPOINTS,
+  FILTERING_WHITE_LIST,
   POST_REQUIRED_FIELDS,
   SORTING_WHITE_LIST,
-  FILTERING_WHITE_LIST,
   URLS,
 } from "../models/models.js";
 // helpers:
@@ -18,8 +18,10 @@ class Components {
           list,
           ({ href, text }) =>
             `<li class="li"><a ${
-              (href === "customers" | href === "references") ? `href='./${href}.html'` : `id="${href}"`
-            } class="menu-link" rel="noopener noreferrer">${text}</a></li>`
+              (href === "customers") | (href === "references")
+                ? `href='./${href}.html'`
+                : `id="${href}"`
+            } class="menu-link" rel="noopener noreferrer">${text}</a></li>`,
         )}
         
       </ul>
@@ -29,7 +31,7 @@ class Components {
   REQUEST_CARD_MAIN_PAGE = (
     { id, title, method, url, cls = "" },
     host,
-    endpoint
+    endpoint,
   ) => `
         <article id="${id}" class="request-card">
             <h3>
@@ -97,7 +99,7 @@ class Components {
   REQUEST_CARD_DOCS_PAGE(
     { id, title, method, url, cls = "", scheme, ReqBtn, ResBtn, ErrBtn, note },
     host,
-    endpoint
+    endpoint,
   ) {
     return `
     <article id="${id}" class="request-card">
@@ -117,8 +119,7 @@ class Components {
           ResBtn,
           ErrBtn,
         })}        
-        <div data-id="${id}" class="code">
-          <textarea></textarea>
+        <div data-id="${id}" class="code">          
           <div class="request-card-copybar">
             <button class='btn'>
               <span class="material-icons-round">content_copy</span>
@@ -175,7 +176,7 @@ class Components {
         <div>
             <code class='request-card-url doca'> ${URLS.getPaginatedEntities(
               host,
-              endpoint
+              endpoint,
             )} </code>
         </div> 
         `;
@@ -189,7 +190,7 @@ class Components {
         <div>
             <code class='request-card-url doca'>${URLS.getSelectedEntities(
               host,
-              endpoint
+              endpoint,
             )} </code>
         </div> 
         <p class='note'>
@@ -209,14 +210,14 @@ class Components {
         <div>
             <code class='request-card-url doca'>${URLS.getSortedEntities(
               host,
-              endpoint
+              endpoint,
             )}</code>
         </div> 
         <p class='note'>
             <span class="danger">&#10071;</span>Переменная \${field} принимает значения:
             <ul class='white-list'>${getHTMLFromList(
               SORTING_WHITE_LIST[endpoint],
-              (sortValue) => `<li class=' btn'> ${sortValue} </li>`
+              (sortValue) => `<li class=' btn'> ${sortValue} </li>`,
             )}
             </ul>            
         </p>
@@ -234,14 +235,14 @@ class Components {
         <div>
             <code class='request-card-url doca'> ${URLS.getFilteredEntities(
               host,
-              endpoint
+              endpoint,
             )} </code>
         </div>
         <p class='note'>
             <span class="danger">&#10071;</span>Переменная \${field} принимает значения: 
             <ul class='white-list'>${getHTMLFromList(
               FILTERING_WHITE_LIST[endpoint],
-              (filterValue) => `<li class=' btn'> ${filterValue} </li>`
+              (filterValue) => `<li class=' btn'> ${filterValue} </li>`,
             )}
             </ul>
         </p> 
@@ -256,12 +257,12 @@ class Components {
         <div>
             <code class='request-card-url doca'>${URLS.getLimitedEntities(
               host,
-              endpoint
+              endpoint,
             )}</code>
         </div> 
         `;
   }
-  ADD_ENTITY_DOCA(host, endpoint) {    
+  ADD_ENTITY_DOCA(host, endpoint) {
     return `
         <p class='section-text'>
           POST-запрос имитирует добавление новой сущности на сервер. В случае успеха, сервер вернет объект, содержащий <strong class='success'>валидные</strong> поля, переданные в запросе <a href="#addEntity" class='danger'>(см. схему)</a>:
@@ -269,14 +270,14 @@ class Components {
         <div>
             <code class='request-card-url doca'>${URLS.addEntity(
               host,
-              endpoint
+              endpoint,
             )}</code>
         </div>
         <p class='note'><span class="danger">&#10071;</span>Минимально требуемые поля в теле запроса (<strong>body</strong>):</p>
         <ul class='white-list'> 
           ${getHTMLFromList(
             POST_REQUIRED_FIELDS[endpoint],
-            ({ field, type }) => `<li class='btn'>${field}</li>`
+            ({ field, type }) => `<li class='btn'>${field}</li>`,
           )}
           </ul>        
         `;
@@ -289,7 +290,7 @@ class Components {
         <div>
             <code class='request-card-url doca'>${URLS.deleteEntity(
               host,
-              endpoint
+              endpoint,
             )}</code>
         </div>
         <p class='note'>
@@ -305,7 +306,7 @@ class Components {
         <div>
             <code class='request-card-url doca'>${URLS.updateEntity(
               host,
-              endpoint
+              endpoint,
             )}</code>
         </div>
         <p class='note'>
@@ -364,9 +365,19 @@ class Components {
           />
           <span class="form-error">${errorMsg}</span>
       </p>
-        `
+        `,
       )}      
     </form>`;
+  }
+  NOTICE_MODAL(style) {
+    return `
+    <section class="noticeModal" id="noticeModal">      
+      <div class="noticeModal-close danger">
+        <span class="material-icons-round">close</span>
+      </div>
+      
+      <p class="section-text noticeModal-text"></p>
+    </section>`;
   }
 }
 

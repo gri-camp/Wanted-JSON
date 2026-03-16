@@ -109,7 +109,7 @@ const REQUEST_CARD_LIST = [
   },
   {
     id: "updateEntity",
-    title: "изменение сущности по ID:",
+    title: "обновление сущности по ID:",
     method: "patch",
     url: (host, ep) => URLS.updateEntity(host, ep),
     ...getSchemesToolbarConfig(),

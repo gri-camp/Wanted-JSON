@@ -1,0 +1,35 @@
+.noticeModal
+    position: fixed
+    padding: var(--app-md-spacing)
+    top: var(--app-xl-spacing)
+    right: var(--app-lg-spacing)
+    min-height: 2rem
+    background: var(--app-default-bg)
+    font-size: 0.85em
+    width: 75%
+    font-family: 'FiraCode', serif
+    display: none
+    border: 1px dotted
+    border-top: none
+        
+    &.active
+        display: block    
+    
+    &-close
+        @include flex-default        
+        width: max-content
+        position: absolute
+        top: -0.5rem
+        right: 0px
+        font-size: inherit
+        cursor: pointer
+
+        &:hover
+            color: var(--app-success-color)
+
+
+    &-text
+        margin: 0px 
+        margin-bottom: 0px   
+        font-weight: 300 
+        margin-top: var(--app-md-spacing)     

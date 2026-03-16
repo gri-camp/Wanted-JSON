@@ -84,10 +84,15 @@
 .burger 
 	display: none
 
-.theme 
+.theme, .noticeIcon 
 	cursor: pointer
 	@include flex-default
-	padding: var(--app-md-spacing)
+	padding: var(--app-sm-spacing)
+
+.noticeIcon
+	&.active
+		color: var(--app-danger-color)
+
 
 .burger	
 	.material-icons-round  

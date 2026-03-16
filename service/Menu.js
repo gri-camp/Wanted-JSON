@@ -5,7 +5,7 @@ class Menu {
   constructor({ list, Component }) {
     this.$header_el = document.querySelector(".header");
     this.$burger = this.$header_el.querySelector(".burger");
-    this.Nav_el = null;
+    this.$nav_el = null;
     this.list = list;
     this.Component = Component;
     this.menuLinks = null;
@@ -21,7 +21,7 @@ class Menu {
     const html = Component(list);
     draw(header_el, html);
     this.menuLinks = header_el.querySelectorAll(".menu-link");
-    this.Nav_el = header_el.querySelector(".header-nav");    
+    this.$nav_el = header_el.querySelector(".header-nav");    
     return this;
   }
 
@@ -29,9 +29,9 @@ class Menu {
     if (e.target.href) {
       return;
     } else if (e.target.closest(".burger")) {
-      this.Nav_el.classList.toggle("active");
+      this.$nav_el.classList.toggle("active");
     } else if (!e.target.matches(".menu-link")) {
-      this.Nav_el.classList.remove("active");
+      this.$nav_el.classList.remove("active");
     } else {
       const { id } = e.target;
       document.querySelector(id).scrollIntoView({
@@ -40,7 +40,7 @@ class Menu {
         inline: "nearest",
       });
       this.hilightChosenLink(this.menuLinks, e.target);
-      this.Nav_el.classList.toggle("active");
+      this.$nav_el.classList.toggle("active");
     }
   };
 
