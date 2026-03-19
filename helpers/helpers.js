@@ -3,12 +3,13 @@ import Api from "../service/Api.js";
 const draw = (container, html) =>
   container.insertAdjacentHTML("beforeend", html);
 
-const getHTMLFromList = (list, callback) => list.map(callback).join("");
+const getHTMLFromList = (list, callback) => {
+  return list.map(callback).join("");
+};
 
-const setDataToLS = (key, data) =>
-  localStorage.setItem(key, JSON.stringify(data));
+const getDataFromLS = (key) => JSON.parse(localStorage.getItem(key)) || null;
 
-const getUserFromLS = (key) => JSON.parse(localStorage.getItem(key)) || null;
+const setDataToLS = (key, data) => localStorage.setItem(key, JSON.stringify(data));
 
 async function checkToken() {
   const user = getUserFromLS("user");
@@ -71,8 +72,8 @@ export {
   checkToken,
   draw,
   generateResByid,
+  getDataFromLS,
   getHTMLFromList,
   getSchemesToolbarConfig,
-  getUserFromLS,
-  setDataToLS
+  setDataToLS,
 };

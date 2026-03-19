@@ -331,7 +331,7 @@ class Components {
     `<a href="./customers.html" rel="noopener noreferrer">
       <button class="btn">
         <span class="material-icons-round"> free_breakfast </span>
-        <span>поддержать нас...</span>
+        <span>поддержать</span>
       </button>
     </a>`;
 
@@ -385,6 +385,49 @@ class Components {
       
       <p class="section-text noticeModal-text"></p>
     </section>`;
+  }
+
+  QUIZ_ITEM({ id, q, correct, answers }, userAnswers, checkUserAnswer, isDone) {
+    const color = checkUserAnswer(correct, userAnswers[id])
+      ? "success"
+      : "danger";
+
+    return `
+    <article class='quizItem' title='${`Вопрос № ${id}`}'>
+      <h3>${id + ".  " + q}</h3>
+      <ul class='quizItem-ul ${isDone ? color : ""}'>
+        ${getHTMLFromList(
+          answers,
+          (answer, i) => `
+          <li class='quizItem-li'>            
+              <input 
+              type="${correct.length > 1 ? "checkbox" : "radio"}"
+              name="${correct.length === 1 && id}"
+              ${userAnswers[id]?.includes(i) ? "checked" : ""} 
+              value='${i}' 
+              id='${id}' 
+              class='quizItem-input'              
+              />               
+                             
+            <div class='quizItem-answer'>
+              ${answer}
+            </div>            
+          </li>`,
+        )}
+      </ul>
+    </article>`;
+  }
+
+  QUIZ_RESULT(userResult, list) {
+    return `<output>
+Количество верных ответов: ${userResult.t} 
+Количество неверных ответов: ${userResult.f} 
+Общий процент выполнения: ${((userResult.t / list.length) * 100).toFixed(2)}%
+
+<strong>Правильные ответы:</strong> 
+${list.map(({ correct, id }) => `Вопрос ${id}: ответы ${correct.map((d) => d + 1).join(", ")};\n`).join("")}
+<strong class='success'>Нажмите рестарт, чтобы начать тест заново!</strong>
+</output>`;
   }
 }
 

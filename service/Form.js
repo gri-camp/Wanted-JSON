@@ -1,5 +1,5 @@
 // utils
-import { draw, getUserFromLS, setDataToLS, checkToken } from "../helpers/helpers.js";
+import { draw, getDataFromLS, setDataToLS, checkToken } from "../helpers/helpers.js";
 // service
 import Api from "./Api.js";
 
@@ -24,9 +24,9 @@ class Form {
     this.formType = formType;
     if (this.formType === "signin") {
       this.login = document.querySelector(".login");
-      this.login.textContent = getUserFromLS("user")?.login ?? "guest";
+      this.login.textContent = getDataFromLS("user")?.login ?? "guest";
       this.actionTrigger.firstElementChild.textContent =
-        getUserFromLS("user")?.action ?? "login";
+        getDataFromLS("user")?.action ?? "login";
     }
     this.submitBtnValue = this.getSubmitBtnValue(this.formType);
     this.passCompareError = new Error("пароли не совпадают!");
@@ -138,7 +138,7 @@ class Form {
     this.actionTrigger.firstElementChild.textContent = "login";
     this.login.classList.toggle("active");
     this.login.textContent = "guest";
-    await Api.logout(getUserFromLS("user").token);
+    await Api.logout(getDataFromLS("user").token);
     setDataToLS("user", null);
   }
 
