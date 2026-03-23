@@ -75,8 +75,8 @@ export class Quiz {
       this.inputs.forEach((i) => (i.checked = false));
       Object.keys(this.userResult).forEach((k) => (this.userResult[k] = 0));
       this.container
-        .querySelectorAll("ul")
-        .forEach((ul) => (ul.className = "quizItem-ul"));
+        .querySelectorAll(".quizItem-answer")
+        .forEach((ans) => (ans.className = "quizItem-answer"));
       this.isDone = false;
       setDataToLS("userAnswers", null);
       this.printResult("");
