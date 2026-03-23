@@ -388,14 +388,10 @@ class Components {
   }
 
   QUIZ_ITEM({ id, q, correct, answers }, userAnswers, checkUserAnswer, isDone) {
-    const color = checkUserAnswer(correct, userAnswers[id])
-      ? "success"
-      : "danger";
-
     return `
-    <article class='quizItem' title='${`Вопрос № ${id}`}'>
+    <article class='quizItem' title='${`Вопрос № ${id}`}' id='${id}'>
       <h3>${id + ".  " + q}</h3>
-      <ul class='quizItem-ul ${isDone ? color : ""}'>
+      <ul class='quizItem-ul'>
         ${getHTMLFromList(
           answers,
           (answer, i) => `
@@ -407,9 +403,8 @@ class Components {
               value='${i}' 
               id='${id}' 
               class='quizItem-input'              
-              />               
-                             
-            <div class='quizItem-answer'>
+              />                            
+            <div class='quizItem-answer ${correct.includes(i) && isDone && "success"}'>
               ${answer}
             </div>            
           </li>`,
@@ -420,12 +415,19 @@ class Components {
 
   QUIZ_RESULT(userResult, list) {
     return `<output>
-Количество верных ответов: ${userResult.t} 
-Количество неверных ответов: ${userResult.f} 
-Общий процент выполнения: ${((userResult.t / list.length) * 100).toFixed(2)}%
+Количество верных ответов: <span class='success'>${userResult.t}</span>
+Количество неверных ответов: <span class='danger'>${userResult.f}</span> 
+<strong>Процент выполнения: ${((userResult.t / list.length) * 100).toFixed(2)}% </strong>
 
 <strong>Правильные ответы:</strong> 
-${list.map(({ correct, id }) => `Вопрос ${id}: ответы ${correct.map((d) => d + 1).join(", ")};\n`).join("")}
+${getHTMLFromList(
+  list,
+  ({ correct, id }) => `
+<a 
+rel='noopener' 
+href='${`#${id}`}'
+>Вопрос ${id}: ответы ${correct.map((d) => d + 1).join(", ")}</a>;\n`,
+)}
 <strong class='success'>Нажмите рестарт, чтобы начать тест заново!</strong>
 </output>`;
   }
