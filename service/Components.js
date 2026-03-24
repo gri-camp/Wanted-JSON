@@ -26,6 +26,7 @@ class Components {
         
       </ul>
     </nav>
+    <hr class='header-hr'/>
         `;
   }
   REQUEST_CARD_MAIN_PAGE = (
@@ -337,6 +338,7 @@ class Components {
 
   FOOTER() {
     return `
+      <hr class='footer-hr'/>
       <a href="mailto:mail@wantedjson.ru?body=привет" class="footer-link" rel="noopener noreferrer">
         <div class='footer-link-tasks'>
           <p>
@@ -376,9 +378,10 @@ class Components {
       )}      
     </form>`;
   }
-  NOTICE_MODAL(style) {
+
+  NOTICE_MODAL(style = "") {
     return `
-    <section class="noticeModal" id="noticeModal">      
+    <section class="noticeModal" id="noticeModal" style='${style}'>      
       <div class="noticeModal-close danger">
         <span class="material-icons-round">close</span>
       </div>

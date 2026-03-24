@@ -1,11 +1,9 @@
-.footer 	
-	// padding: var(--app-lg-spacing)
-	border-radius: var(--app-md-spacing) var(--app-md-spacing)  0px  0px 
+.footer 		
+	border-radius: var(--app-md-spacing)  var(--app-md-spacing)  0px  0px 
 	position: relative	
 	font-size: 0.95em	
 	position: relative
-	z-index: 1
-	background: var(--app-default-bg)	
+	z-index: 1	
 	font-weight: 300
 	line-height: 150%
 	
@@ -31,7 +29,7 @@
 					height: 1px
 					display: block
 					width: 100%
-					background: var(--app-white-color)
+					background: var(--app-default-color)
 					opacity: .07 				
 	
 	address
@@ -41,6 +39,10 @@
 
 	.material-icons-round 
 		font-size: 1.65em
+
+	&-hr
+		@include hr-base
+
 		
 
 

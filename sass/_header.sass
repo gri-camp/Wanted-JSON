@@ -6,6 +6,7 @@
 	position: relative
 	margin: 0 0 1.5rem 0
 	gap: 0.5rem
+	flex-wrap: wrap
 
 	&-logo 
 		padding: var(--app-sm-spacing)
@@ -30,11 +31,13 @@
 			letter-spacing: 1px
 			font-variant: small-caps
 
-.menu-link
-	
-	.active 
-		font-weight: 700
-		color: var(--app-danger-color)		
+	&-hr
+		@include hr-base
+		width: 100%		
+
+.menu-link.active 
+	font-weight: 700
+	color: var(--app-danger-color)			
 
 		
 .burger 
@@ -51,15 +54,6 @@
 .burger	
 	.material-icons-round  
 		font-size: 2rem	
-
-.home
-	cursor: pointer
-	border-radius: 50%
-	box-shadow: $app-card-shadow
-	padding: var(--app-sm-spacing)	
-
-.home
-	margin-left: var(--app-md-spacing)	
 
 .auth
 	background: var(--app-default-bg)	

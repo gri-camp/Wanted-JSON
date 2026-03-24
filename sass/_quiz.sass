@@ -1,5 +1,59 @@
-.appContainer.quizContainer
+.quizContainer
     font-family: 'FiraCode'
+
+.quizItem
+    margin: 3rem 0px    
+
+    &-ul
+        padding: 0px
+
+    &-li
+        width: 100%
+        @include flex-default
+        justify-content: flex-start
+        gap: var(--app-md-spacing)
+        font-size: 1.1em
+        margin: var(--app-lg-spacing) 0px
+        font-weight: 500
+   
+    &-answer      
+        overflow: auto
+        width: 90%
+
+    &-label
+        display: inline-block
+        width: 25px
+        height: 25px
+        background: var(--app-default-color)
+        box-shadow: $app-card-shadow        
+
+    &-input
+        width: 25px
+        height: 25px
+        cursor: pointer
+        accent-color: var(--app-danger-color)
+
+.quizControlBar
+    @include flex-default
+    justify-content: flex-start
+    margin: var(--app-xl-spacing) 0px
+    gap: 1rem
+        
+    button
+        @include flex-default
+        gap: 0.25rem
+        text-transform: uppercase
+        border: 1px solid
+        padding: 0.35rem
+        border-radius: var(--app-md-spacing)
+        font-weight: bold    
+
+        &:hover
+            color: var(--app-success-color) 
+
+    .material-icons-round
+        font-size: 2rem             
+
 
 .output
     
@@ -26,84 +80,3 @@
                 transform: scale(1.01)        
 
 
-.quizItem
-    margin: 3rem 0px
-    
-
-    &-ul
-        padding: 0px
-
-    &-li
-        width: 100%
-        @include flex-default
-        justify-content: flex-start
-        gap: var(--app-md-spacing)
-        font-size: 1.1em
-        margin: var(--app-lg-spacing) 0px
-        font-weight: 500        
-
-   
-    &-answer      
-        overflow: auto
-        width: 90%
-
-    &-label
-        display: inline-block
-        width: 25px
-        height: 25px
-        background: var(--app-default-color)
-        box-shadow: $app-card-shadow
-
-        &::after            
-            color: var(--app-success-color) 
-            content: '✔'
-            display: none
-            position: absolute
-            left: 50%
-            top: 50%
-            width: 19px
-            height: 19px
-            transform: translate(-50%, -50%)            
-
-    &-input
-        width: 25px
-        height: 25px
-        cursor: pointer
-        accent-color: var(--app-danger-color)
-
-        &:checked + .quizItem-label::after
-            display: block            
- 
-
-
-
-.quizControlBar
-    @include flex-default
-    justify-content: flex-start
-    margin: var(--app-xl-spacing) 0px
-    gap: 1rem
-        
-    button
-        @include flex-default
-        gap: 0.25rem
-        text-transform: uppercase
-        border: 1px solid
-        padding: 0.35rem
-        border-radius: var(--app-md-spacing)
-        font-weight: bold    
-
-        &:hover
-            color: var(--app-success-color) 
-
-    .material-icons-round
-        font-size: 2rem
-
-
-.quiz-link-section
-    font-size: 1.1em
-    text-align: center
-
-    a
-        text-decoration: underline
-
-             
