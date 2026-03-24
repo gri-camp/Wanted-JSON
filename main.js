@@ -28,7 +28,6 @@ try {
   const DOCUMENTATION = document.querySelector("#documentation ul");
   const SUPPORT = document.querySelector(".support");
   const FOOTER = document.querySelector(".footer");
-  const SIGN_UP_POPUP = document.querySelector("#signup");
   const SIGN_IN_POPUP = document.querySelector("#signin");
 
   // Подключаем тему:
@@ -80,14 +79,6 @@ try {
     document.querySelectorAll(".request-card"),
   );
 
-  // !Отрисовка формы регистрации:
-  new Form({
-    container: SIGN_UP_POPUP,
-    component: Components.FORM,
-    elements: FORM_ELEMS_LIST,
-    actionTrigger: ".signup-icon",
-  });
-
   // !Отрисовка формы авторизации:
   new Form({
     container: SIGN_IN_POPUP,
@@ -96,6 +87,7 @@ try {
     formType: "signin",
     actionTrigger: ".signin-icon",
   });
+  
   // ! Отрисовка уведомления:
   new Notice({
     msg: "Уважаемые пользователи! \t В ближайшее время на нашем сервисе появятся новые эндпоинты для авторизации: '/signIn', '/signUp'.",

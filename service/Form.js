@@ -1,5 +1,10 @@
 // utils
-import { draw, getDataFromLS, setDataToLS, checkToken } from "../helpers/helpers.js";
+import {
+  checkToken,
+  draw,
+  getDataFromLS,
+  setDataToLS,
+} from "../helpers/helpers.js";
 // service
 import Api from "./Api.js";
 
@@ -9,24 +14,27 @@ class Form {
     component,
     elements,
     formType = "signup",
-    actionTrigger,
+    actionTrigger = null,
   }) {
     if (!((formType === "signin") | (formType === "signup")))
       throw new Error("Invalid 'formType' param!");
     // ! DOM ELEMENTS
     this.container = container;
     this.component = component;
-    this.actionTrigger = document.querySelector(actionTrigger);
+    this.actionTrigger = actionTrigger && document.querySelector(actionTrigger);
     this.form = null;
     this.submitBtn = null;
+    this.userLogout = document.querySelector(".user-logout");
     // ! LOGIC PROPS -----
     this.elements = elements;
     this.formType = formType;
     if (this.formType === "signin") {
-      this.login = document.querySelector(".login");
-      this.login.textContent = getDataFromLS("user")?.login ?? "guest";
-      this.actionTrigger.firstElementChild.textContent =
-        getDataFromLS("user")?.action ?? "login";
+      this.userLogin = document.querySelector(".user-login");
+      this.userLogin.textContent = getDataFromLS("user")?.login ?? "";
+      this.actionTrigger.firstElementChild.textContent = getDataFromLS("user")
+        ?.login
+        ? ""
+        : "login";
     }
     this.submitBtnValue = this.getSubmitBtnValue(this.formType);
     this.passCompareError = new Error("пароли не совпадают!");
@@ -47,17 +55,18 @@ class Form {
 
   template(container, component, elements, actionTrigger) {
     // ! асинхронно проверяем протухание токена
-    this.formType === 'signin' && checkToken();
+    this.formType === "signin" && checkToken();
     this.render(container, component, elements)
       .addInputListener()
       .addSubmitListener()
-      .addClickListenerToContainer()
-      .addClickListenerToActionTrigger(actionTrigger);
+      .addClickListenerToContainer();
+      
+    actionTrigger && this.addClickListenerToActionTrigger(actionTrigger).addClickListenerToUserLogout();
   }
 
   render(container, component, elements) {
     draw(container, component(elements, this.formType, this.submitBtnValue));
-    this.form = container.querySelector(`form`);
+    this.form = container.querySelector(`.authForm`);
     this.submitBtn = this.form.submit;
     return this;
   }
@@ -108,11 +117,12 @@ class Form {
 
     if (!(res instanceof Object)) return this.reset(res);
 
-    if (this.formType === "signin") this.registerUser(res);
-
-    this.reset("действие успешно!");
-
-    this.container.classList.toggle("active");
+    if (this.formType === "signin") {
+      this.signIn(res);
+      this.reset("действие успешно!");
+      return this.container.classList.toggle("active");
+    }
+    location.replace("./main.html");
   };
 
   addSubmitListener() {
@@ -134,34 +144,32 @@ class Form {
     return this;
   }
 
-  async logoutUser() {
+  async logout() {
     this.actionTrigger.firstElementChild.textContent = "login";
-    this.login.classList.toggle("active");
-    this.login.textContent = "guest";
+    this.userLogin.textContent = "";
     await Api.logout(getDataFromLS("user").token);
     setDataToLS("user", null);
   }
 
-  registerUser(res) {
-    this.actionTrigger.firstElementChild.textContent = "logout";
-    this.login.classList.toggle("active");
-    this.login.textContent = res?.user?.login;
+  signIn(res) {
+    this.actionTrigger.firstElementChild.textContent = "";
+    this.userLogin.textContent = res?.user?.login;
     setDataToLS("user", {
       login: res?.user?.login,
       token: res?.accessToken,
-      action: "logout",
       exp: res.exp || null,
     });
   }
 
   addClickListenerToActionTriggerHandler = () => {
-    if (this.actionTrigger.firstElementChild.textContent === "logout")
-      return this.logoutUser();
     this.container.classList.toggle("active");
   };
 
-  addClickListenerToActionTrigger(icon) {
-    icon.addEventListener("click", this.addClickListenerToActionTriggerHandler);
+  addClickListenerToActionTrigger(actionTrigger) {
+    actionTrigger.addEventListener(
+      "click",
+      this.addClickListenerToActionTriggerHandler,
+    );
     return this;
   }
 
@@ -179,6 +187,10 @@ class Form {
       .slice(0, -1)
       .reduce((acc, el) => ({ ...acc, [el.name]: "" }), {});
   }
+
+  addClickListenerToUserLogout = () => {
+    this.userLogout.onclick = () => this.logout();
+  };
 }
 
 export { Form };

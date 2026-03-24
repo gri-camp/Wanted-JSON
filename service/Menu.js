@@ -20,7 +20,7 @@ class Menu {
   render(header_el, list, Component) {
     const html = Component(list);
     draw(header_el, html);
-    this.menuLinks = header_el.querySelectorAll(".menu-link");
+    this.menuLinks = header_el.querySelectorAll(".header-menu-link");
     this.$nav_el = header_el.querySelector(".header-nav");    
     return this;
   }
@@ -30,7 +30,7 @@ class Menu {
       return;
     } else if (e.target.closest(".burger")) {
       this.$nav_el.classList.toggle("active");
-    } else if (!e.target.matches(".menu-link")) {
+    } else if (!e.target.matches(".header-menu-link")) {
       this.$nav_el.classList.remove("active");
     } else {
       const { id } = e.target;

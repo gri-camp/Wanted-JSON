@@ -21,7 +21,7 @@ class Components {
               (href === "customers") | (href === "references")
                 ? `href='./${href}.html'`
                 : `id="${href}"`
-            } class="menu-link" rel="noopener noreferrer">${text}</a></li>`,
+            } class="header-menu-link" rel="noopener noreferrer">${text}</a></li>`,
         )}
         
       </ul>
@@ -357,11 +357,11 @@ class Components {
   }
   FORM(elements, formType, submitValue) {
     return `
-    <form class='${formType}'>
-      <div class="form-logo">
+    <form class='authForm'>
+      <div class="authForm-logo">
         <img src="./icons/logo.svg" alt="LOGO" />
       </div>
-      <h2 class='form-title'>wanted json</h2>
+      <h2 class='authForm-title'>wanted json</h2>
       ${getHTMLFromList(
         elements,
         ({ type, placeholder, name, errorMsg, tabindex }) => `
@@ -372,7 +372,7 @@ class Components {
           ${type === "text" ? "autocomplete='username'" : ""}
           tabindex="${tabindex}"        
           />
-          <span class="form-error">${errorMsg}</span>
+          <span class="authForm-error">${errorMsg}</span>
       </p>
         `,
       )}      

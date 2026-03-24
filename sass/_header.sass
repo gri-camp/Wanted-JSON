@@ -14,7 +14,6 @@
 		cursor: pointer
 		width: 60px
 		height: 60px
-
 		img
 			width: 100%
 			height: 100%
@@ -35,32 +34,65 @@
 		@include hr-base
 		width: 100%		
 
-.menu-link.active 
-	font-weight: 700
-	color: var(--app-danger-color)			
-
+	&-menu-link
 		
+		&.active 
+			font-weight: 700
+			color: var(--app-danger-color)			
+
+	
 .burger 
 	display: none
 	margin-left: auto
 
-.theme 
-	cursor: pointer
-	display: flex
-	align-items: center
-	justify-content: center
-	padding: var(--app-md-spacing) 0px
-
-.burger	
 	.material-icons-round  
-		font-size: 2rem	
+		font-size: 2rem
 
-.auth
-	background: var(--app-default-bg)	
-	color: var(--app-default-color)
-	cursor: pointer	
-	padding: 0px	
+.theme, .auth 
+	cursor: pointer
+	@include flex-default
+	padding: 0px
 
+.user
+	position: relative
+
+	&-menu
+		position: absolute
+		width: max-content
+		left: 0px
+		top: 100%
+		z-index: 4
+		color: var(--app-dark-color)
+		background: var(--app-dark-bg)
+		display: none
+		list-style-type: none		
+		border-radius: 0px var(--app-sm-spacing) var(--app-sm-spacing) 0px
+			
+
+	&-login		
+		font-size: 1.1em	
+		height: max-content
+		cursor: pointer
+		transition: all linear 0.2s
+
+		&:hover 
+			color: var(--app-success-color)
+			transform: scale(1.02)
+	
+	&-logout
+		cursor: pointer
+		display: flex
+		align-items: center
+		gap: 0.5rem
+
+	&:hover	.user-menu
+		display: block		
+
+	
+
+		
+	
+	
 
 
 		

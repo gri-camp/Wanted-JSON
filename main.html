@@ -26,16 +26,23 @@
         </div>
       </a>
 
-      <div class="icon-box signup-icon auth" title="регистрация">
-        <span class="material-icons-round">account_circle</span>
-      </div>
+      <a class="auth" title="регистрация" href="./signup.html">
+        <span class="material-icons-round">app_registration</span>
+      </a>
 
-      <div class="icon-box signin-icon auth" title="авторизация">
+      <div class="signin-icon auth" title="войти">
         <span class="material-icons-round"><!-- Render --></span>
       </div>
 
-      <div class="login">
+      <div class="user">
         <!-- Render -->
+        <div class="user-login"></div>
+        <ul class="user-menu">
+          <li class="user-logout">
+            <span class="material-icons-round"> logout </span>
+            выйти
+          </li>
+        </ul>
       </div>
 
       <div class="theme">
@@ -61,9 +68,13 @@
         </blockquote>
         <p class="section-text">
           <strong>Добро пожаловать</strong> на
-          <strong>бесплатный онлайн-сервис сервис</strong> для тестирования и
-          макетирования <abbr>WEB</abbr>-приложений. Ресурс работает как настоящий <abbr>RESTful API</abbr>,
-          <em>предоставляя открытые данные в JSON-формате и помогая практиковаться начинающим разработчикам</em>.
+          <strong>бесплатный онлайн-сервис</strong> для тестирования и
+          макетирования <abbr>WEB</abbr>-приложений. Ресурс работает как
+          настоящий <abbr>RESTful API</abbr>,
+          <em
+            >предоставляя открытые данные в JSON-формате и помогая
+            практиковаться начинающим разработчикам</em
+          >.
         </p>
       </section>
 
@@ -103,22 +114,18 @@
 
       <section class="quiz-link-section app-section" id="quiz-link">
         <a href="./quiz.html" class="danger" rel="noopener">
-        <h2>
-          Насколько хорошо Вы знаете основы
-          <abbr
-            title="англ. Hypertext Transfer Protocol - протокол передачи гипертекста"
-            >HTTP</abbr
-          >-протокола?
-        </h2>
-        </a>        
+          <h2>
+            Насколько хорошо Вы знаете основы
+            <abbr
+              title="англ. Hypertext Transfer Protocol - протокол передачи гипертекста"
+              >HTTP</abbr
+            >-протокола?
+          </h2>
+        </a>
       </section>
     </main>
 
-    <!-- SECTIONS OF AUTH_FORM:  ////////////////////// -->
-    <section class="popup-section" id="signup">
-      <!-- JS RENDER  -->
-    </section>
-
+    <!-- AUTH_POPUP SECTION:  ////////////////////// -->
     <section class="popup-section" id="signin">
       <!-- JS RENDER  -->
     </section>
