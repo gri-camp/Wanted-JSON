@@ -25,8 +25,7 @@ export class Quiz {
       this.container,
       this.list,
       this.Component,
-      this.userAnswers,
-      this.checkUserAnswer.bind(this),
+      this.userAnswers,      
       this.isDone,
     );
     this.addChangeListenerToContainer(this.container);
@@ -34,9 +33,9 @@ export class Quiz {
     this.addEventListenerToFinish(this.finish);
   }
 
-  render(Container, list, Component, userAnswers, checkUserAnswer, isDone) {    
+  render(Container, list, Component, userAnswers, isDone) {
     const html = getHTMLFromList(list, (i) =>
-      Component(i, userAnswers, checkUserAnswer, isDone),
+      Component(i, userAnswers, isDone),
     );
     draw(Container, html);
     this.inputs = Container.querySelectorAll("input");
@@ -56,9 +55,6 @@ export class Quiz {
       this.userAnswers[id] = this.userAnswers[id].filter((a) => a !== +value);
       !this.userAnswers[id].length && delete this.userAnswers[id];
     }
-
-    console.log(this.userAnswers);
-
     setDataToLS("userAnswers", this.userAnswers);
   };
 
@@ -80,16 +76,28 @@ export class Quiz {
       this.isDone = false;
       setDataToLS("userAnswers", null);
       this.printResult("");
-      // this.restart.disabled = true;
     };
   }
 
   addEventListenerToFinish(finish) {
     finish.onclick = () => {
       if (this.isDone) return false;
-      if (!this.list.every(({ id }) => this.userAnswers[id])) return this.printResult("Пожалуйста, ответьте на все вопросы...");
+      
+      const skipped = this.list.find(({ id }) => !this.userAnswers[id]);
+      if (skipped) {        
+        setTimeout(
+          () =>
+            this.container.querySelector(`#item-${skipped.id}`).scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+              inline: "nearest",
+            }),
+          1000,
+        );
+        return this.printResult("Пожалуйста, ответьте на все вопросы...");
+      }
+
       this.isDone = true;
-      // this.restart.disabled = false;
       this.analyzeAnswers();
     };
   }
@@ -118,8 +126,7 @@ export class Quiz {
       this.container,
       this.list,
       this.Component,
-      this.userAnswers,
-      this.checkUserAnswer,
+      this.userAnswers,      
       this.isDone,
     );
     this.printResult(Components.QUIZ_RESULT(this.userResult, this.list));

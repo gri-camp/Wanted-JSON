@@ -390,9 +390,9 @@ class Components {
     </section>`;
   }
 
-  QUIZ_ITEM({ id, q, correct, answers }, userAnswers, checkUserAnswer, isDone) {
+  QUIZ_ITEM({ id, q, correct, answers }, userAnswers, isDone) {
     return `
-    <article class='quizItem' title='${`Вопрос № ${id}`}' id='${id}'>
+    <article class='quizItem' title='${`Вопрос № ${id}`}' id='item-${id}'>
       <h3>${id + ".  " + q}</h3>
       <ul class='quizItem-ul'>
         ${getHTMLFromList(

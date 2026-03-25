@@ -34,15 +34,27 @@
         color: var(--app-danger-color)        
         opacity: 0
         font-size: 0.8em
-        text-align: center
+        text-align: center  
         font-weight: 500
-        min-height: 45px
-        font-weight: 500 
+        white-space: nowrap
+        overflow: auto 
 
         &.active
             opacity: 0.92
 
+
     p
-        position: relative                
+        position: relative
+
+        &:last-child
+            
+            span
+                white-space: normal
+                word-break: break-all             
+                overflow: visible
+                
+                
+                  
+
 
     

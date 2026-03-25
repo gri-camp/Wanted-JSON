@@ -131,7 +131,7 @@ class Form {
   }
 
   addClickListenerToContainerHandler = (e) => {
-    if (!e.target.closest("form")) this.container.classList.toggle("active");
+    if (!e.target.closest("form") && this.formType === 'signin') this.container.classList.toggle("active");
     this.submitBtn.nextElementSibling.classList.toggle("active");
     this.submitBtn.nextElementSibling.textContent = "";
   };
