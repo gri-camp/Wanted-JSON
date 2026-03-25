@@ -428,7 +428,7 @@ ${getHTMLFromList(
   ({ correct, id }) => `
 <a 
 rel='noopener' 
-href='${`#${id}`}'
+href='${`#item-${id}`}'
 >Вопрос ${id}: ответы ${correct.map((d) => d + 1).join(", ")}</a>;\n`,
 )}
 <strong class='success'>Нажмите рестарт, чтобы начать тест заново!</strong>
