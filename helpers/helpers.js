@@ -9,25 +9,21 @@ const getHTMLFromList = (list, callback) => {
 
 const getDataFromLS = (key) => JSON.parse(localStorage.getItem(key)) || null;
 
-const setDataToLS = (key, data) => localStorage.setItem(key, JSON.stringify(data));
+const setDataToLS = (key, data) =>
+  localStorage.setItem(key, JSON.stringify(data));
 
-async function checkToken() {
+async function getToken() {
   const user = getDataFromLS("user");
   if (Date.now() >= user?.exp * 1000) {
     let res = await Api.refresh();
-    return res instanceof Object
-      ? setDataToLS("user", {
-          ...user,
-          token: res?.accessToken,
-          exp: res?.exp,
-        })
-      : console.error(res);
+    setDataToLS("user", {
+      ...user,
+      token: res?.accessToken,
+      exp: res?.exp,
+    });
+    return user.token;
   }
-  user?.exp &&
-    console.log(
-      "Not dead Yet, AccessToken death time: ",
-      new Date(user.exp * 1000).toLocaleTimeString(),
-    );
+  return user.token;
 }
 
 const generateResByid = (id, resSchemes) => {
@@ -69,11 +65,11 @@ const getSchemesToolbarConfig = () => {
 };
 
 export {
-  checkToken,
   draw,
   generateResByid,
   getDataFromLS,
   getHTMLFromList,
   getSchemesToolbarConfig,
+  getToken,
   setDataToLS,
 };

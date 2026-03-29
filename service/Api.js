@@ -160,7 +160,6 @@ class Api {
     try {
       let res = await fetch(`${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.AUTH}/${endpoint}`, {
         method: "POST",
-
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${accessToken}`,
@@ -185,7 +184,7 @@ class Api {
         headers: {
           "Content-Type": "application/json",          
         },
-        credentials: "include"
+        credentials: "include",
       });
 
       if (!res.ok) {

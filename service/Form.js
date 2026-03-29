@@ -1,10 +1,5 @@
 // utils
-import {
-  checkToken,
-  draw,
-  getDataFromLS,
-  setDataToLS,
-} from "../helpers/helpers.js";
+import { draw, getDataFromLS, setDataToLS, getToken } from "../helpers/helpers.js";
 // service
 import Api from "./Api.js";
 
@@ -29,6 +24,7 @@ class Form {
     this.elements = elements;
     this.formType = formType;
     if (this.formType === "signin") {
+      getDataFromLS("user") && getToken();
       this.userLogin = document.querySelector(".user-login");
       this.userLogin.textContent = getDataFromLS("user")?.login ?? "";
       this.actionTrigger.firstElementChild.textContent = getDataFromLS("user")
@@ -54,14 +50,15 @@ class Form {
   }
 
   template(container, component, elements, actionTrigger) {
-    // ! асинхронно проверяем протухание токена
-    this.formType === "signin" && checkToken();
     this.render(container, component, elements)
       .addInputListener()
       .addSubmitListener()
       .addClickListenerToContainer();
-      
-    actionTrigger && this.addClickListenerToActionTrigger(actionTrigger).addClickListenerToUserLogout();
+
+    actionTrigger &&
+      this.addClickListenerToActionTrigger(
+        actionTrigger,
+      ).addClickListenerToUserLogout();
   }
 
   render(container, component, elements) {
@@ -122,7 +119,10 @@ class Form {
       this.reset("действие успешно!");
       return this.container.classList.toggle("active");
     }
-    location.replace("./main.html");
+    this.reset("действие успешно!");
+    setTimeout(() => {
+      location.replace("./main.html");
+    }, 2000);
   };
 
   addSubmitListener() {
@@ -131,7 +131,8 @@ class Form {
   }
 
   addClickListenerToContainerHandler = (e) => {
-    if (!e.target.closest("form") && this.formType === 'signin') this.container.classList.toggle("active");
+    if (!e.target.closest("form") && this.formType === "signin")
+      this.container.classList.toggle("active");
     this.submitBtn.nextElementSibling.classList.toggle("active");
     this.submitBtn.nextElementSibling.textContent = "";
   };
