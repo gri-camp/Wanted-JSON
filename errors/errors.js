@@ -71,7 +71,7 @@ const Errors = {
     "statusCode": 401,
     "message": "Неверный логин или пароль",
     "timestamp": "2025-12-23T14:26:23.421Z",
-    "path": "auth/signin",
+    "path": "/auth/signin",
     "errors": "Unauthorized"
 <strong class='purple'>}</strong>           
 </code>
@@ -91,7 +91,7 @@ const Errors = {
     "statusCode": 409,
     "message": "Логин уже занят",
     "timestamp": "2025-12-23T14:24:55.336Z",
-    "path": "auth/signup",
+    "path": "/auth/signup",
     "errors": "Conflict"    
 <strong class='purple'>}</strong>           
 </code>
@@ -111,7 +111,7 @@ const Errors = {
     "statusCode": 401,
     "message": "Unauthorized",
     "timestamp": "2025-12-23T14:28:44.877Z",
-    "path": "/refresh"
+    "path": "/auth/refresh"
 <strong class='purple'>}</strong>           
 </code>`,
   logout: `
@@ -119,10 +119,9 @@ const Errors = {
     "statusCode": 401,
     "message": "Unauthorized",
     "timestamp": "2025-12-23T14:30:18.959Z",
-    "path": "/logout"
+    "path": "/auth/logout"
 <strong class='purple'>}</strong>           
 </code>`,
 };
-
 
 export { Errors };
