@@ -22,7 +22,7 @@ const Errors = {
     statusCode: 400,
     message: '<span class='danger'>Entity with ID 999 not found</span>',
     timestamp: "2025-11-25T09:02:34.843Z",
-    path: "<span class='danger'>/\${endpoint}</span>",
+    path: "<span class='danger'>/\${endpoint}/\${id}</span>",
     errors: "Not Found",
 <strong class='purple'>}</strong>           
 </code>`,
@@ -51,7 +51,7 @@ const Errors = {
     statusCode: 400,
     message: '<span class='danger'>Entity with ID 999 not found</span>',
     timestamp: "2025-11-25T09:02:34.843Z",
-    path: "<span class='danger'>/\${endpoint}</span>",
+    path: "<span class='danger'>/\${endpoint}/\${id}</span>",
     errors: "Not Found",
 <strong class='purple'>}</strong>           
 </code>
@@ -76,16 +76,6 @@ const Errors = {
 <strong class='purple'>}</strong>           
 </code>
 `,
-  fakeSignin: `
-<code><strong class='purple'>{</strong> 
-    "statusCode": 401,
-    "message": "Пользователь не найден или срок действия токена истек. Зарегистрируйтесь.",
-    "timestamp": "2026-03-29T11:35:32.497Z",
-    "path": "/fakeAuth/signin",
-    "errors": "Unauthorized"
-<strong class='purple'>}</strong>           
-</code>
-`,
   signup: `
 <code><strong class='purple'>{</strong> 
     "statusCode": 409,
@@ -93,16 +83,6 @@ const Errors = {
     "timestamp": "2025-12-23T14:24:55.336Z",
     "path": "/auth/signup",
     "errors": "Conflict"    
-<strong class='purple'>}</strong>           
-</code>
-`,
-  fakeSignup: `
-<code><strong class='purple'>{</strong> 
-    "statusCode": 409,
-    "message": "Логин уже занят",
-    "timestamp": "2026-03-29T11:32:19.389Z",
-    "path": "/fakeAuth/signup",
-    "errors": "Conflict"
 <strong class='purple'>}</strong>           
 </code>
 `,
@@ -122,6 +102,26 @@ const Errors = {
     "path": "/auth/logout"
 <strong class='purple'>}</strong>           
 </code>`,
+  fakeSignin: `
+<code><strong class='purple'>{</strong> 
+    "statusCode": 401,
+    "message": "Пользователь не найден или срок действия токена истек. Зарегистрируйтесь.",
+    "timestamp": "2026-03-29T11:35:32.497Z",
+    "path": "/fakeAuth/signin",
+    "errors": "Unauthorized"
+<strong class='purple'>}</strong>           
+</code>
+`,
+  fakeSignup: `
+<code><strong class='purple'>{</strong> 
+    "statusCode": 409,
+    "message": "Логин уже занят",
+    "timestamp": "2026-03-29T11:32:19.389Z",
+    "path": "/fakeAuth/signup",
+    "errors": "Conflict"
+<strong class='purple'>}</strong>           
+</code>
+`,
 };
 
 export { Errors };
