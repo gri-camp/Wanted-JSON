@@ -12,7 +12,7 @@ const Errors = {
     statusCode: 400,
     message: '<span class='danger'>Ошибка валидации данных</span>',
     timestamp: "2025-11-25T09:02:34.843Z",
-    path: "<span class='danger'>/\${endpoint}limit=foo&page=bazz</span>",
+    path: "<span class='danger'>/\${endpoint}?limit=foo&page=bazz</span>",
     errors: <span class='purple'>[</span>"page must be an integer number","limit must be an integer number"<span class='purple'>]</span>,
 <strong class='purple'>}</strong>           
 </code>
