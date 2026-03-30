@@ -148,7 +148,8 @@ class Form {
   async logout() {
     this.actionTrigger.firstElementChild.textContent = "login";
     this.userLogin.textContent = "";
-    await Api.logout(getDataFromLS("user").token);
+    const token = await getToken();
+    await Api.logout(token);
     setDataToLS("user", null);
   }
 

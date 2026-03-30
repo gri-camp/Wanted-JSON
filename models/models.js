@@ -16,6 +16,7 @@ const API_CONSTS = {
   SIGNIN: "signin",
   LOGOUT: "logout",
   REFRESH: "refresh",
+  FAKE_AUTH: "fakeAuth",
 };
 
 const ROOT = document.documentElement;
@@ -56,6 +57,10 @@ const URLS = {
     `${API_CONSTS.PROTOCOL}://${host}/${API_CONSTS.AUTH}/${ep}`,
   refresh: (host, ep) =>
     `${API_CONSTS.PROTOCOL}://${host}/${API_CONSTS.AUTH}/${ep}`,
+  fakeSignin: (host) =>
+    `${API_CONSTS.PROTOCOL}://${host}/${API_CONSTS.FAKE_AUTH}/${API_CONSTS.SIGNIN}`,
+  fakeSignup: (host) =>
+    `${API_CONSTS.PROTOCOL}://${host}/${API_CONSTS.FAKE_AUTH}/${API_CONSTS.SIGNUP}`,
 };
 
 const REQUEST_CARD_LIST = [
@@ -122,7 +127,7 @@ const REQUEST_CARD_LIST = [
     url: (host, ep) => URLS.signup(host, ep),
     ...getSchemesToolbarConfig(),
     note: false,
-  },
+  },  
   {
     id: "signin",
     title: "авторизация пользователя",
@@ -144,6 +149,22 @@ const REQUEST_CARD_LIST = [
     title: "обновления токена",
     method: "post",
     url: (host, ep) => URLS.refresh(host, ep),
+    ...getSchemesToolbarConfig(),
+    note: false,
+  },
+  {
+    id: "fakeSignup",
+    title: "Моковая регистрация:",
+    method: "post",
+    url: (host, ep) => URLS.fakeSignup(host, ep),
+    ...getSchemesToolbarConfig(),
+    note: false,
+  },
+  {
+    id: "fakeSignin",
+    title: "Моковая авторизация:",
+    method: "post",
+    url: (host, ep) => URLS.fakeSignin(host, ep),
     ...getSchemesToolbarConfig(),
     note: false,
   },
@@ -191,11 +212,11 @@ const FEATURES_CARD_LIST = [
     text: `Поддержка query-параметров для <em class='success'> фильтрации, сортировки, пагинации, лимитирования, поиска </em> данных!`,
     title: "Настраиваемые данные",
   },
-  {
-    icon: `<span class="material-icons-round" style='color: #1c963c;'>integration_instructions</span>`,
-    text: `Наглядный единый источник описания всех сущностей API`,
-    title: "Swagger Документация",
-  },
+  // {
+  //   icon: `<span class="material-icons-round" style='color: #1c963c;'>integration_instructions</span>`,
+  //   text: `Наглядный единый источник описания всех сущностей API`,
+  //   title: "Swagger Документация",
+  // },
 ];
 
 const ENTITIES_LIST = [
@@ -234,15 +255,20 @@ const ENTITIES_LIST = [
     endpoint: API_CONSTS.VIDEOGAMESCOMMENTS,
     icon: `<span class="material-icons-round">insert_comment</span>`,
   },
-  {
-    href: `${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.DOCS}`,
-    endpoint: API_CONSTS.DOCS,
-    icon: `<span class="material-icons-round" style='color: #1c963c;'>integration_instructions</span>`,
-  },
+  // {
+  //   href: `${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.DOCS}`,
+  //   endpoint: API_CONSTS.DOCS,
+  //   icon: `<span class="material-icons-round" style='color: #1c963c;'>integration_instructions</span>`,
+  // },
   {
     href: `${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.CLIENT_INFO}`,
     endpoint: API_CONSTS.CLIENT_INFO,
     icon: `<span class="material-icons-round" style='color: #1c963c;'>public</span>`,
+  },
+  {
+    href: `./fakeAuth.html?endpoint=${API_CONSTS.FAKE_AUTH}`,
+    endpoint: API_CONSTS.FAKE_AUTH,
+    icon: `<span class="material-icons-round">app_registration</span>`,
   },
 ];
 
@@ -375,6 +401,10 @@ const DOCUMENTATION_LIST = [
   {
     href: `./auth.html?endpoint=auth`,
     text: `<div class="icon-box"><span class="material-icons-round">login</span></div> <em style="font-weight:bold;">auth</em>`,
+  },
+  {
+    href: `./fakeAuth.html?endpoint=fakeAuth`,
+    text: `<div class="icon-box"><span class="material-icons-round">app_registration</span></div> <em style="font-weight:bold;">fakeAuth</em>`,
   },
 ];
 
@@ -829,21 +859,15 @@ const QUIZ_LIST = [
   {
     id: "20",
     q: "какой статус-код указывает на ошибку 'неавторизованный'?",
-    answers: [
-      "403",
-      "501",
-      "401",
-      "301",
-    ],
+    answers: ["403", "501", "401", "301"],
     correct: [2],
   },
 ];
 
-
-
 export {
   API_CONSTS,
   AUTH_ENDPOINTS,
+  DOCSPAGE_MENU_LIST,
   DOCUMENTATION_LIST,
   ENTITIES_LIST,
   EXAMPLES_LIST,
@@ -851,7 +875,6 @@ export {
   FILTERING_WHITE_LIST,
   FORM_ELEMS_LIST,
   HOMEPAGE_MENU_LIST,
-  DOCSPAGE_MENU_LIST,
   POST_REQUIRED_FIELDS,
   QUIZ_LIST,
   REQUEST_CARD_LIST,

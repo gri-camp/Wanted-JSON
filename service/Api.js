@@ -142,6 +142,7 @@ class Api {
         headers: {
           "Content-Type": "application/json",
         },
+        credentials: "include",
         body: JSON.stringify(body),
       });
 
@@ -192,6 +193,43 @@ class Api {
         throw new Error(mess);
       }
 
+      return await res.json();
+    } catch (e) {
+      return e.message;
+    }
+  }
+
+  static async fakeSignIn(endpoint, body) {
+    try {
+      let res = await fetch(`${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.FAKE_AUTH}/${endpoint}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(body)
+      });
+      if (!res.ok) {
+        const mess = await res.text();
+        throw new Error(mess);
+      }
+      return await res.json();
+    } catch (e) {
+      return e.message;
+    }
+  }
+  static async fakeSignUp(endpoint, body) {
+    try {
+      let res = await fetch(`${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.FAKE_AUTH}/${endpoint}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(body)
+      });
+      if (!res.ok) {
+        const mess = await res.text();
+        throw new Error(mess);
+      }
       return await res.json();
     } catch (e) {
       return e.message;

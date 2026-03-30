@@ -166,7 +166,7 @@ const Responses = {
     lastUpdated : "2025-10-22",    
 <strong class='purple'>}</strong>
 </code>`,
-updateEntity: `
+    updateEntity: `
 <code> // Код ответа: <span class='success'>200</span>.
 
 <strong class='purple'>{</strong>
@@ -176,7 +176,7 @@ updateEntity: `
     ...,
     lastUpdated : "2025-10-22",    
 <strong class='purple'>}</strong>
-</code>`
+</code>`,
   },
   athletes: {
     getEntities: `
@@ -355,7 +355,7 @@ updateEntity: `
     lastUpdated: '2025-10-28',  
 <strong class='purple'>}</strong>
 </code>`,
-updateEntity: `
+    updateEntity: `
 <code> // Код ответа: <span class='success'>200</span>.
 
 <strong class='purple'>{</strong>    
@@ -365,7 +365,7 @@ updateEntity: `
     ...,
     lastUpdated: '2025-10-28',  
 <strong class='purple'>}</strong>
-</code>`
+</code>`,
   },
   videoGames: {
     getEntities: `
@@ -516,7 +516,7 @@ updateEntity: `
     lastUpdated: '2025-12-06',  
 <strong class='purple'>}</strong>
 </code>`,
-updateEntity: `
+    updateEntity: `
 <code> // Код ответа: <span class='success'>200</span>.
 
 <strong class='purple'>{</strong>    
@@ -526,7 +526,7 @@ updateEntity: `
     ...,
     lastUpdated: '2025-12-06',  
 <strong class='purple'>}</strong>
-</code>`
+</code>`,
   },
   movies: {
     getEntities: `
@@ -699,7 +699,7 @@ updateEntity: `
     seasons: null,
     lastUpdated: '2025-12-25',
 <strong class='purple'>}</strong></code>`,
-updateEntity: `
+    updateEntity: `
 <code> // Код ответа: <span class='success'>200</span>.
 
 <strong class='purple'>{</strong> 
@@ -708,7 +708,7 @@ updateEntity: `
     director: <strong>'Обновленный режиссер'</strong>,
     ...,
     lastUpdated: '2025-12-25',
-<strong class='purple'>}</strong></code>`
+<strong class='purple'>}</strong></code>`,
   },
   cars: {
     getEntities: `
@@ -862,7 +862,7 @@ updateEntity: `
     lastUpdated: '2025-12-27',
 <strong class='purple'>}</strong>  
 </code>`,
-updateEntity: `
+    updateEntity: `
 <code> // Код ответа: <span class='success'>200</span>.
 
 <strong class='purple'>{</strong> 
@@ -872,7 +872,7 @@ updateEntity: `
     ...,
     lastUpdated: '2025-12-27',
 <strong class='purple'>}</strong>  
-</code>`
+</code>`,
   },
   videoGamesComments: {
     getEntities: `
@@ -979,7 +979,7 @@ updateEntity: `
 </code>`,
   },
   auth: {
-    signin: `<code>    
+    signin: `<code>  
 <strong class='purple'>{</strong>
     "user": <strong class='purple'>{</strong>
         "id": 13,
@@ -994,7 +994,8 @@ updateEntity: `
     "user": <strong class='purple'>{</strong>
         "id": 13,
         "login": "foo"
-    <strong class='purple'>}</strong>,         
+    <strong class='purple'>}</strong>,
+    "message": "Пользователь успешно зарегистрирован. Теперь можно войти в систему."         
 <strong class='purple'>}</strong>           
 </code>`,
     logout: `<code>    
@@ -1002,15 +1003,37 @@ updateEntity: `
     "message":"Logged out successfully"         
 <strong class='purple'>}</strong>           
 </code>`,
-    refresh: `<code>    
+    refresh: `<code>
+<strong class='purple'>{</strong>
+    "user": <strong class='purple'>{</strong>
+        "id": 8,
+        "login": "user_123"
+    <strong class='purple'>}</strong>,
+    "accessToken": "your accessToken",         
+    "exp": 1770542402,  // время окончания токена, сек.  
+<strong class='purple'>}</strong>           
+</code>`,
+},
+fakeAuth: {
+    fakeSignin: `<code>    
 <strong class='purple'>{</strong>
     "user": <strong class='purple'>{</strong>
         "id": 13,
         "login": "foo"
     <strong class='purple'>}</strong>,
     "accessToken": "your accessToken",
-    "exp": 1770542402, // время окончания токена, сек.  
-<strong class='purple'>}</strong>`,
+    "exp": 1770542402,  // время окончания токена, сек.  
+<strong class='purple'>}</strong>           
+</code>`,
+    fakeSignup: `<code>    
+<strong class='purple'>{</strong>
+    "user": <strong class='purple'>{</strong>
+        "id": 13,
+        "login": "foo"
+    <strong class='purple'>}</strong>,
+    "message": "Фейковый пользователь создан. Будет доступен в течение 1 часа.",       
+<strong class='purple'>}</strong>           
+</code>`,
   },
 };
 

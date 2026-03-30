@@ -41,9 +41,7 @@ try {
 
   // !Отрисовка секции 'urls':
   new Request({
-    list: REQUEST_CARD_LIST.filter(
-      (card) => !AUTH_ENDPOINTS.includes(card?.id),
-    ),
+    list: REQUEST_CARD_LIST.filter(({id}) => !(id.includes("fake") || AUTH_ENDPOINTS.includes(id))),
     endPoint,
     Component: "REQUEST_CARD_DOCS_PAGE",
   });

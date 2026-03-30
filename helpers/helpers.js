@@ -14,14 +14,16 @@ const setDataToLS = (key, data) =>
 
 async function getToken() {
   const user = getDataFromLS("user");
-  if (Date.now() >= user?.exp * 1000) {
+  if (Date.now() >= user.exp * 1000) {
     let res = await Api.refresh();
+    console.log(res);
+    
     setDataToLS("user", {
       ...user,
       token: res?.accessToken,
-      exp: res?.exp,
+      exp: res.exp || null,
     });
-    return user.token;
+    return res.accessToken;
   }
   return user.token;
 }

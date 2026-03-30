@@ -5,7 +5,7 @@ import {
   EXAMPLES_LIST,
   FEATURES_CARD_LIST,
   FORM_ELEMS_LIST,
-  HOMEPAGE_MENU_LIST,  
+  HOMEPAGE_MENU_LIST,
   REQUEST_CARD_LIST,
   ROOT,
 } from "./models/models.js";
@@ -87,15 +87,13 @@ try {
     formType: "signin",
     actionTrigger: ".signin-icon",
   });
-  
+
   // ! Отрисовка уведомления:
   new Notice({
-    msg: "Уважаемые пользователи! \t В ближайшее время на нашем сервисе появятся новые эндпоинты для авторизации: '/signIn', '/signUp'.",
+    msg: "Уважаемые пользователи! \n\t В ближайшее время на нашем сервисе появятся новые эндпоинты для авторизации: '/fakeAuth/signin', '/fakeAuth/signup'.",
     Component: Components.NOTICE_MODAL(),
-    trigger: '.noticeIcon'
+    trigger: ".noticeIcon",
   });
-
-  
 } catch (error) {
   console.warn(error.message, error.name);
 }
