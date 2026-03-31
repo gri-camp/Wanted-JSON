@@ -1,5 +1,10 @@
 // utils
-import { draw, getDataFromLS, setDataToLS, getToken } from "../helpers/helpers.js";
+import {
+  draw,
+  getDataFromLS,
+  getToken,
+  setDataToLS,
+} from "../helpers/helpers.js";
 // service
 import Api from "./Api.js";
 
@@ -116,10 +121,12 @@ class Form {
 
     if (this.formType === "signin") {
       this.signIn(res);
-      this.reset("действие успешно!");
-      return this.container.classList.toggle("active");
+      this.reset("Вход прошел успешно!");
+      return setTimeout(() => {
+        this.container.classList.toggle("active");
+      }, 2000);
     }
-    this.reset("действие успешно!");
+    this.reset("Пользователь зарегистрирован. Требуется вход в систему!");
     setTimeout(() => {
       location.replace("./main.html");
     }, 2000);

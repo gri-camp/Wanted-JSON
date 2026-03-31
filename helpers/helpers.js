@@ -15,9 +15,7 @@ const setDataToLS = (key, data) =>
 async function getToken() {
   const user = getDataFromLS("user");
   if (Date.now() >= user.exp * 1000) {
-    let res = await Api.refresh();
-    console.log(res);
-    
+    let res = await Api.refresh();     
     setDataToLS("user", {
       ...user,
       token: res?.accessToken,

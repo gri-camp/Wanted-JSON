@@ -354,6 +354,8 @@ fakeSignIn(<span class='success'>'signin'</span>, <span class='success'>{login: 
 
                 "Authorization": \`Bearer <span class='success'>\${accessToken}</span>\`,
             },
+
+            credentials: "include",
                     
         });
 
