@@ -7,16 +7,17 @@ import {
 import Components from "./Components.js";
 
 export class Quiz {
-  constructor({ list, Component }) {
+  constructor({ list, Component, key }) {
     this.container = document.querySelector(".quiz");
     this.restart = document.body.querySelector(".restart");
     this.finish = document.body.querySelector(".done");
+    this.key = key;
     this.isDone = false;
     this.output = document.body.querySelector("pre");
     this.inputs = null;
     this.list = list;
     this.Component = Component;
-    this.userAnswers = getDataFromLS("userAnswers") ?? {};
+    this.userAnswers = getDataFromLS(this.key) ?? {};
     this.userResult = {
       t: 0,
       f: 0,
@@ -55,7 +56,7 @@ export class Quiz {
       this.userAnswers[id] = this.userAnswers[id].filter((a) => a !== +value);
       !this.userAnswers[id].length && delete this.userAnswers[id];
     }
-    setDataToLS("userAnswers", this.userAnswers);
+    setDataToLS(this.key, this.userAnswers);
   };
 
   addChangeListenerToContainer = (Container) => {
@@ -74,7 +75,7 @@ export class Quiz {
         .querySelectorAll(".quizItem-answer")
         .forEach((ans) => (ans.className = "quizItem-answer"));
       this.isDone = false;
-      setDataToLS("userAnswers", null);
+      setDataToLS(this.key, null);
       this.printResult("");
     };
   }

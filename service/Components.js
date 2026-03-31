@@ -399,14 +399,14 @@ class Components {
           answers,
           (answer, i) => `
           <li class='quizItem-li'>            
-              <input 
+            <input 
               type="${correct.length > 1 ? "checkbox" : "radio"}"
               name="${correct.length === 1 && id}"
               ${userAnswers[id]?.includes(i) ? "checked" : ""} 
               value='${i}' 
               id='${id}' 
               class='quizItem-input'              
-              />                            
+            />                            
             <div class='quizItem-answer ${correct.includes(i) && isDone && "success"}'>
               ${answer}
             </div>            
