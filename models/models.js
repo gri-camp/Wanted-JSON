@@ -622,6 +622,43 @@ const POST_REQUIRED_FIELDS = {
   ],
 };
 
+const FORM_ELEMS_LIST = [
+  {
+    type: "text",
+    placeholder: "имя пользователя:",
+    name: "login",
+    errorMsg:
+      "логин должен начинаться с буквы и включать прописные и строчные латинские буквы, цифры, знаки: '-', '_' ",
+    regExp: /^[A-Z][A-Z0-9-_]{1,20}$/i,
+    tabindex: 1,
+  },
+  {
+    type: "text",
+    placeholder: "пароль:",
+    name: "password",
+    errorMsg:
+      "пароль должен содержать не менее 8 символов и включать прописные и строчные латинские буквы, цифры, знаки: '-', '_'",
+    regExp: /^[A-Z0-9_-]{8,}$/i,
+    tabindex: 2,
+  },
+  {
+    type: "text",
+    placeholder: "подтвердить пароль:",
+    name: "password2",
+    errorMsg:
+      "пароль должен содержать не менее 8 символов и включать прописные и строчные латинские буквы, цифры, знаки: '-', '_'",
+    regExp: /^[A-Z0-9_-]{8,}$/i,
+    tabindex: 3,
+  },
+  {
+    type: "submit",
+    placeholder: null,
+    name: "submit",
+    errorMsg: null,
+    regExp: null,
+    tabindex: 4,
+  },
+];
 
 export {
   API_CONSTS,
