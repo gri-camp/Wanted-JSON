@@ -4,7 +4,7 @@ import { Responses } from "../responses/responses.js";
 // classes
 import Components from "./Components.js";
 // utils
-import { draw, getHTMLFromList } from "../helpers/helpers.js";
+import { copy, draw, getHTMLFromList } from "../helpers/helpers.js";
 // consts:
 import { API_CONSTS } from "../models/models.js";
 
@@ -22,7 +22,7 @@ class Request {
     this.host = host;
     this.Component = Component;
     this.codeContainers = null;
-    this.triggers = null;    
+    this.triggers = null;
     // methods
     this.templator(
       this.$appContainer,
@@ -44,10 +44,13 @@ class Request {
   render(requestsContainer, list, endPoint, host, Component) {
     const html = getHTMLFromList(list, (url_card) =>
       Components[Component](url_card, host, endPoint),
-    );      
-    draw(requestsContainer, `${html}${endPoint === 'fakeAuth' || endPoint === 'auth' ? '' : Components.NOTE_MAIN_PAGE()}`);
+    );
+    draw(
+      requestsContainer,
+      `${html}${endPoint === "fakeAuth" || endPoint === "auth" ? "" : Components.NOTE_MAIN_PAGE()}`,
+    );
     this.codeContainers = [...document.querySelectorAll(".code")];
-        
+
     this.codeContainers.forEach((code) =>
       draw(code.querySelector("pre"), Requests[code.dataset.id](this.endPoint)),
     );
@@ -55,7 +58,6 @@ class Request {
   }
 
   // ! Listeners -------
-
   addListenerToAppContainerHandler = async (e) => {
     if (
       !(e.target.closest(".trggr") || e.target.closest(".request-card-copybar"))
@@ -94,28 +96,10 @@ class Request {
       return;
     }
 
-    const codeElem = e.target.closest(".code").querySelector("code");
-    const codeExample = codeElem.textContent;
-    const selection = document.getSelection();
+    const codeElem = e.target.closest(".code").querySelector("code");    
     const copyStatus = e.target.closest(".code").querySelector(".copy-status");
-    selection.removeAllRanges();
-
-    try {
-      copyStatus.textContent = "скопировано";
-      copyStatus.classList.toggle("success");
-      await navigator.clipboard.writeText(codeExample);
-    } catch (error) {
-      const range = document.createRange();
-      range.selectNodeContents(codeElem);
-      selection.addRange(range);
-      document.execCommand("copy");
-    } finally {
-      setTimeout(() => {
-        selection.removeAllRanges();
-        copyStatus.textContent = "копировать";
-        copyStatus.classList.toggle("success");
-      }, 1500);
-    }
+   
+    copy(codeElem, copyStatus);
   };
 
   addListenerToAppContainer(appContainer) {

@@ -240,7 +240,7 @@ signUp(<span class='success'>'signup'</span>, <span class='success'>{login: 'foo
 </code>`,
 
   fakeSignup: (endpoint = "") => `
-<code><strong><span class="danger">&#10071;</span>Важно. Пароль должен быть не короче 6 символов </strong>
+<code> // <strong><span class="danger">&#10071;</span>Важно. Пароль должен быть не короче 6 символов </strong>
 
 const fakeSignUp = <span class='danger'>async</span>(<span class='success'>endpoint</span>, <span class='success'>body</span>) => {
 

@@ -13,7 +13,7 @@ import {
 import { draw, getHTMLFromList } from "./helpers/helpers.js";
 // service classes:
 import Components from "./service/Components.js";
-import { Form } from "./service/Form.js";
+import { Auth } from "./service/Auth.js";
 import { Menu } from "./service/Menu.js";
 import { Notice } from "./service/Notice.js";
 import { Observer } from "./service/Observer.js";
@@ -80,7 +80,7 @@ try {
   );
 
   // !Отрисовка формы авторизации:
-  new Form({
+  new Auth({
     container: SIGN_IN_POPUP,
     component: Components.FORM,
     elements: FORM_ELEMS_LIST.filter((el) => el.name !== "password2"),

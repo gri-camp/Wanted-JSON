@@ -57,16 +57,33 @@
 	position: relative
 
 	&-menu
-		position: absolute
-		width: max-content
-		left: 0px
-		top: 100%
+		position: fixed
+		width: 10%
+		left: var(--app-lg-spacing)
+		top: var(--app-lg-spacing)
 		z-index: 4
 		color: var(--app-dark-color)
 		background: var(--app-dark-bg)
 		display: none
 		list-style-type: none		
 		border-radius: 0px var(--app-sm-spacing) var(--app-sm-spacing) 0px
+		box-shadow: $app-card-shadow
+
+	
+		&-link
+			cursor: pointer
+			display: flex
+			align-items: center
+			gap: var(--app-lg-spacing)
+			margin: var(--app-lg-spacing) 0
+
+			&:hover 
+				color: var(--app-success-color)
+				transform: scale(1.02)
+
+	&:hover	
+		.user-menu
+			display: block			
 			
 
 	&-login		
@@ -74,19 +91,16 @@
 		height: max-content
 		cursor: pointer
 		transition: all linear 0.2s
+		font-weight: 700
+		letter-spacing: 1.5px
 
 		&:hover 
 			color: var(--app-success-color)
 			transform: scale(1.02)
 	
-	&-logout
-		cursor: pointer
-		display: flex
-		align-items: center
-		gap: 0.5rem
+		
 
-	&:hover	.user-menu
-		display: block		
+		
 
 	
 

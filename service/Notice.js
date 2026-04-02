@@ -36,7 +36,6 @@ class Notice {
 
     addstyleStringToNoticeModal(styleString, noticeModal) {
         noticeModal.setAttribute('style', styleString);
-        // console.log(noticeModal.style);        
         return this;
     }
 

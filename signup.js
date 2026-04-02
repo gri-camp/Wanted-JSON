@@ -4,7 +4,7 @@ import { ROOT, FORM_ELEMS_LIST } from "./models/models.js";
 import { draw } from "./helpers/helpers.js";
 // service classes:
 import Components from "./service/Components.js";
-import { Form } from "./service/Form.js";
+import { Auth } from "./service/Auth.js";
 import { Theme } from "./service/Theme.js";
 import { UpwardButton } from "./service/UpWardButton.js";
 
@@ -15,7 +15,7 @@ const APP_CONTAINER = document.querySelector(".appContainer");
 new Theme({ root: ROOT });
 
 // !Отрисовка формы регистрации:
-new Form({
+new Auth({
   container: APP_CONTAINER,
   component: Components.FORM,
   elements: FORM_ELEMS_LIST,  

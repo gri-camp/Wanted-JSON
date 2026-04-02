@@ -15,11 +15,11 @@ const setDataToLS = (key, data) =>
 async function getToken() {
   const user = getDataFromLS("user");
   if (Date.now() >= user.exp * 1000) {
-    let res = await Api.refresh();     
+    let res = await Api.refresh();
     setDataToLS("user", {
       ...user,
       token: res?.accessToken,
-      exp: res.exp || null,
+      exp: res.exp || null,      
     });
     return res.accessToken;
   }
@@ -50,26 +50,38 @@ ${Object.keys(s)
     <strong class='purple'>}</strong>`;
 };
 
-const getSchemesToolbarConfig = () => {
-  return {
-    cls: "btn-success",
-    scheme: {
-      req: "запрос",
-      res: "ответ",
-      err: "ошибка",
-    },
-    ReqBtn: '<span class="material-icons-round">rocket_launch</span>',
-    ResBtn: '<span class="material-icons-round">data_object</span>',
-    ErrBtn: '<span class="material-icons-round">error</span>',
-  };
+const copy = async (target, copyStatus) => {
+  const codeExample = target.textContent;
+  const selection = document.getSelection();
+  selection.removeAllRanges();
+
+  try {
+    copyStatus.textContent = "скопировано";
+    copyStatus.classList.toggle("success");
+    await navigator.clipboard.writeText(codeExample);
+  } catch (error) {
+    const range = document.createRange();
+    range.selectNodeContents(target);
+    selection.addRange(range);
+    document.execCommand("copy");
+  } finally {
+    setTimeout(() => {
+      selection.removeAllRanges();
+      copyStatus.textContent = "копировать";
+      copyStatus.classList.toggle("success");
+    }, 1500);
+  }
 };
 
 export {
+  copy,
   draw,
   generateResByid,
   getDataFromLS,
   getHTMLFromList,
-  getSchemesToolbarConfig,
   getToken,
   setDataToLS,
 };
+
+
+

@@ -1,5 +1,3 @@
-import { getSchemesToolbarConfig } from "../helpers/helpers.js";
-
 const API_CONSTS = {
   PROTOCOL: "https",
   HOST: "api.wantedjson.ru",
@@ -169,6 +167,20 @@ const REQUEST_CARD_LIST = [
     note: false,
   },
 ];
+
+function getSchemesToolbarConfig() {
+  return {
+    cls: "btn-success",
+    scheme: {
+      req: "запрос",
+      res: "ответ",
+      err: "ошибка",
+    },
+    ReqBtn: '<span class="material-icons-round">rocket_launch</span>',
+    ResBtn: '<span class="material-icons-round">data_object</span>',
+    ErrBtn: '<span class="material-icons-round">error</span>',
+  };
+};
 
 const FEATURES_CARD_LIST = [
   {
@@ -676,4 +688,5 @@ export {
   ROOT,
   SORTING_WHITE_LIST,
   URLS,
+  getSchemesToolbarConfig
 };

@@ -120,16 +120,22 @@ class Components {
           ResBtn,
           ErrBtn,
         })}        
-        <div data-id="${id}" class="code">          
-          <div class="request-card-copybar">
-            <button class='btn'>
-              <span class="material-icons-round">content_copy</span>
-            </button>
-            <em class='copy-status'>копировать</em> 
-          </div>
+        <div data-id="${id}" class="code">
+          ${this.COPY_BAR()}          
           <pre></pre>
         </div>                  
     </article>`;
+  }
+
+  COPY_BAR() {
+    return `
+      <div class="request-card-copybar">
+        <button class='btn'>
+          <span class="material-icons-round">content_copy</span>
+        </button>
+        <em class='copy-status'>копировать</em> 
+      </div>
+    `;
   }
 
   URL_CARD_TRIGGERS({ id, req, res, err, ReqBtn, ResBtn, ErrBtn }) {
@@ -437,3 +443,5 @@ href='${`#item-${id}`}'
 }
 
 export default new Components();
+
+
