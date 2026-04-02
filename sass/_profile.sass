@@ -1,0 +1,33 @@
+.tokenSection
+
+    li
+        @include flex-default
+        justify-content: flex-start
+
+    &-value
+        color: var(--app-danger-color)
+        font-weight: 500
+        letter-spacing: 1.5px
+        user-select: text
+        border: 1px dotted var(--app-default-color)
+        padding: var(--app-md-spacing)
+        white-space: nowrap
+        cursor: grab
+        font-size: 1.1em 
+
+    .request-card-copybar
+        padding: 0px    
+
+.userSection
+    p
+        @include flex-default
+        gap: 0.75rem
+        justify-content: flex-start
+        margin: var(--app-md-spacing) 0px
+
+        code
+            font-weight: 700
+            color: var(--app-danger-color)
+            font-size: 1.1em        
+        
+
