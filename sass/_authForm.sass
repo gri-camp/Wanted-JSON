@@ -10,7 +10,8 @@
 
     input 
         font-size: 1.1em
-        box-shadow: 0.5px 0.5px 1.5px var(--app-darken-color), -0.5px -0.5px 1.5px var(--app-darken-color)         
+        box-shadow: 0.5px 0.5px 1.5px var(--app-darken-color), -0.5px -0.5px 1.5px var(--app-darken-color) 
+        margin: var(--app-lg-spacing) 0px        
 
 
     &-logo
@@ -27,32 +28,21 @@
         position: relative
         top: -0.5rem              
     
-    &-error
-        margin: var(--app-md-spacing) 0px
+    &-error  
         display: inline-block
         width: 100%
         color: var(--app-danger-color)        
-        opacity: 0
-        font-size: 0.8em
+        display: none
+        font-size: 0.77em
         text-align: center  
         font-weight: 500
-        white-space: nowrap
-        overflow: auto 
+        height: auto
 
         &.active
-            opacity: 0.92
+            display: block
 
 
-    p
-        position: relative
-
-        &:last-child
-            
-            span
-                white-space: normal
-                word-break: break-all             
-                overflow: visible
-                
+    
                 
                   
 

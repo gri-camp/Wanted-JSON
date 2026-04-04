@@ -1,21 +1,24 @@
 .noticeModal
     position: fixed
-    padding: var(--app-md-spacing)
+    padding: var(--app-lg-spacing)
     top: var(--app-xl-spacing)
     right: var(--app-lg-spacing)
+    transform: translateX(110%)
+    opacity: 0.1
     min-height: 2rem
     background: var(--app-default-bg)
     font-size: 0.85em
     width: 75%
-    font-family: 'FiraCode', serif
-    display: none
+    font-family: 'FiraCode', serif    
     border: 1px dotted
     border-top: none
+    transition: 0.4s all linear
             
     &.active
-        display: block    
+        transform: translateX(0%)
+        opacity: 1
     
-    &-close
+    &-exit
         @include flex-default        
         width: max-content
         position: absolute

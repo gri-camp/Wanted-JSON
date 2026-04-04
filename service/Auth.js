@@ -17,7 +17,8 @@ class Auth {
     actionTrigger = null,
   }) {
     getDataFromLS("user") && getToken();
-    if (!((formType === "signin") | (formType === "signup"))) throw new Error("Invalid 'formType' param!");
+    if (!((formType === "signin") | (formType === "signup")))
+      throw new Error("Invalid 'formType' param!");
     // ! DOM ELEMENTS
     this.container = container;
     this.component = component;
@@ -154,19 +155,23 @@ class Auth {
   async logout() {
     this.actionTrigger.firstElementChild.textContent = "login";
     this.userLogin.textContent = "";
-    const token = await getToken();
-    await Api.logout(token);
+    Auth.cleanUserData();
+  }
+
+  static async cleanUserData() {
+    const accessToken = await getToken();
+    await Api.logout(accessToken);
     setDataToLS("user", null);
   }
 
-  signIn(res) {
+  signIn({ user, accessToken, exp }) {
     this.actionTrigger.firstElementChild.textContent = "";
-    this.userLogin.textContent = res?.user?.login;
+    this.userLogin.textContent = user?.login;
     setDataToLS("user", {
-      login: res?.user?.login,
-      token: res?.accessToken,
-      exp: res.exp || null,
-      id: res?.user?.id || null
+      login: user?.login,
+      accessToken,
+      exp: exp || null,
+      id: user?.id || null,
     });
   }
 

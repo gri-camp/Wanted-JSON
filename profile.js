@@ -1,10 +1,11 @@
 // consts:
 import { ROOT } from "./models/models.js";
 // utils:
-import { copy, draw, getDataFromLS, getToken } from "./helpers/helpers.js";
+import { copy, draw, getDataFromLS, getToken, getTokenDeathTimeValue } from "./helpers/helpers.js";
 // service classes:
 import Components from "./service/Components.js";
 import { Theme } from "./service/Theme.js";
+import { Auth } from "./service/Auth.js";
 
 const FOOTER = document.querySelector(".footer");
 
@@ -16,44 +17,36 @@ draw(FOOTER, Components.FOOTER());
 
 const profileState = {
   container: document.querySelector(".appContainer"),
-  tokenSection: document.querySelector(".tokenSection"),  
-  TOKEN_VALUE: null,
+  accessTokenSection: document.querySelector(".accessTokenSection"),
+  accessTokenDeathTimeElem: null,
+  refreshButton: null,
+  accessTokenValueElem: null,
+  logoutButton: null,
   subscribers: [],
   user: getDataFromLS("user"),
-  token: getDataFromLS("user")?.token ?? null,
-  login: getDataFromLS("user")?.login ?? '',
-  userId: getDataFromLS("user")?.id ?? '',
 
   template() {
-    this.observer()
-      .render(this.container)
-      .addListenerToContainer()
-      .getActualToken();
+    this.observer().getActualUserParams();
   },
 
-  render(container) {
-    const html = `
-      <section class="app-section tokenSection">    
-        <h3>Текущий токен:</h3>
-        ${Components.COPY_BAR()}
-        <li class="tokenSection-li">
-          <code class="tokenSection-value"></code>
-        </li>
-      </section>
-      <section class="app-section userSection">
-        <h3>Данные пользователя:</h3>        
-        <p>Имя пользователя: <code>${this?.user?.login}</code></p>
-        <p>ID пользователя: <code>${this?.user?.id}</code></p>
-      </section>  
-    `;   
+  render(container, user) {
+    const html = Components.PROFILE_PAGE(user);
     draw(container, html);
-    this.TOKEN_VALUE = document.querySelector(".tokenSection-value");
-    this.tokenSection = document.querySelector(".tokenSection");
-    return this;
+    this.accessTokenSection = document.querySelector(".accessTokenSection");
+    this.accessTokenValueElem = this.accessTokenSection.querySelector(
+      ".accessTokenSection-value",
+    );
+    this.refreshButton = this.accessTokenSection.querySelector(".refresh");
+    this.accessTokenDeathTimeElem = this.accessTokenSection.querySelector(
+      ".accessTokenSection-form strong",
+    );
+    this.logoutButton = this.container.querySelector('.logout')
+    this.addListenerToContainer();
+    this.addListenerToLogoutButton()   
   },
 
   isUserSignedIn() {
-    if (!this.token) {
+    if (!this?.user?.accessToken) {
       this.container.innerHTML = `<h1 class='h1'>Вы не вошли в систему</h1>`;
       window.setTimeout(() => location.replace("./main.html"), 2000);
       return false;
@@ -61,22 +54,25 @@ const profileState = {
     return true;
   },
 
-  async getActualToken() {
-    this.token = await getToken();
-    this.subscribers.forEach((fn) => fn(this.TOKEN_VALUE, this.token));
-    return this;
+  async getActualUserParams() {
+    await getToken();
+    this.user = getDataFromLS("user");
+    this.render(this.container, this.user);
   },
 
-  observer() {
-    this.subscribers.push(draw);
-    return this;
-  },
-
-  addListenerToContainerHandler(e) {
+  async addListenerToContainerHandler(e) {
     if (e.target.closest(".request-card-copybar")) {
-      let tokenContainer = this.tokenSection.querySelector("code"),      
-      copyStatus = this.tokenSection.querySelector(".copy-status");
-      copy(tokenContainer, copyStatus);
+      let accessTokenValueElem = this.accessTokenSection.querySelector("code"),
+        copyStatus = this.accessTokenSection.querySelector(".copy-status");
+      copy(accessTokenValueElem, copyStatus);
+    }
+    if (e.target.closest(".refresh")) {
+      e.preventDefault();
+      await getToken();
+      this.user = getDataFromLS("user");
+      this.subscribers.forEach((fn) =>
+        fn(this.accessTokenValueElem, this.accessTokenDeathTimeElem, this.user),
+      );
     }
   },
 
@@ -87,7 +83,25 @@ const profileState = {
     );
     return this;
   },
+
+  observer() {
+    this.subscribers.push(
+      (accessTokenValueElem, accessTokenDeathTimeElem, user) => {
+        accessTokenValueElem.textContent = user?.accessToken;
+        accessTokenDeathTimeElem.textContent = getTokenDeathTimeValue(
+          user?.exp,
+        );
+      },
+    );
+    return this;
+  },
+
+  addListenerToLogoutButton() {
+    this.logoutButton.onclick = () => {
+      Auth.cleanUserData()
+      location.replace('./main.html')
+    }
+  }
 };
 
 profileState.isUserSignedIn() && profileState.template();
-

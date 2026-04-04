@@ -1,4 +1,10 @@
-.tokenSection
+.profileContainer
+
+    .btn
+        @include flex-default
+        gap: 0.25rem
+    
+.accessTokenSection
 
     li
         @include flex-default
@@ -16,7 +22,23 @@
         font-size: 1.1em 
 
     .request-card-copybar
-        padding: 0px    
+        padding: 0px
+        background: var(--app-darken-color)
+
+    &-form
+        margin: var(--app-md-spacing) 0px
+        
+        fieldset
+            padding: var(--app-md-spacing)
+            border: none
+            border: 1px dashed
+
+        legend
+            padding: 0px var(--app-sm-spacing)
+            display: inline-block
+            background: var(--app-default-bg)
+    p
+        padding: var(--app-md-spacing) 0px                  
 
 .userSection
     p

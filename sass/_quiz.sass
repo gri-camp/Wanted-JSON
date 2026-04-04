@@ -1,6 +1,10 @@
 .quizContainer
     font-family: 'FiraCode'
 
+    .btn
+        @include flex-default
+        gap: 0.25rem
+
 .quizItem
     margin: 3rem 0px    
 
@@ -33,22 +37,10 @@
     @include flex-default
     justify-content: flex-start
     margin: var(--app-xl-spacing) 0px
-    gap: 1rem
-        
-    button
-        @include flex-default
-        gap: 0.25rem
-        text-transform: uppercase
-        border: 1px solid
-        padding: 0.35rem
-        border-radius: var(--app-md-spacing)
-        font-weight: bold    
-
-        &:hover
-            color: var(--app-success-color) 
+    gap: 1rem        
 
     .material-icons-round
-        font-size: 2rem             
+        font-size: 2rem       
 
 
 .output

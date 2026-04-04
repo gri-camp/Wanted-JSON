@@ -19,6 +19,21 @@ const API_CONSTS = {
 
 const ROOT = document.documentElement;
 
+const MONTHS = [
+  "Январь",
+  "Февраль",
+  "Март",
+  "Апрель",
+  "Май",
+  "Июнь",
+  "Июль",
+  "Август",
+  "Сентябрь",
+  "Октябрь",
+  "Ноябрь",
+  "Декабрь",
+];
+
 const AUTH_ENDPOINTS = ["signin", "signup", "logout", "refresh"];
 
 const URLS = {
@@ -125,7 +140,7 @@ const REQUEST_CARD_LIST = [
     url: (host, ep) => URLS.signup(host, ep),
     ...getSchemesToolbarConfig(),
     note: false,
-  },  
+  },
   {
     id: "signin",
     title: "авторизация пользователя",
@@ -180,7 +195,7 @@ function getSchemesToolbarConfig() {
     ResBtn: '<span class="material-icons-round">data_object</span>',
     ErrBtn: '<span class="material-icons-round">error</span>',
   };
-};
+}
 
 const FEATURES_CARD_LIST = [
   {
@@ -682,11 +697,12 @@ export {
   FEATURES_CARD_LIST,
   FILTERING_WHITE_LIST,
   FORM_ELEMS_LIST,
+  getSchemesToolbarConfig,
   HOMEPAGE_MENU_LIST,
-  POST_REQUIRED_FIELDS,  
+  POST_REQUIRED_FIELDS,
   REQUEST_CARD_LIST,
   ROOT,
   SORTING_WHITE_LIST,
   URLS,
-  getSchemesToolbarConfig
+  MONTHS,
 };

@@ -12,8 +12,8 @@ import {
 // utils:
 import { draw, getHTMLFromList } from "./helpers/helpers.js";
 // service classes:
-import Components from "./service/Components.js";
 import { Auth } from "./service/Auth.js";
+import Components from "./service/Components.js";
 import { Menu } from "./service/Menu.js";
 import { Notice } from "./service/Notice.js";
 import { Observer } from "./service/Observer.js";
@@ -91,8 +91,7 @@ try {
   // ! Отрисовка уведомления:
   new Notice({
     msg: "Уважаемые пользователи! \n\t В ближайшее время на нашем сервисе появятся новые эндпоинты для авторизации: '/fakeAuth/signin', '/fakeAuth/signup'.",
-    Component: Components.NOTICE_MODAL(),
-    trigger: ".noticeIcon",
+    Component: Components.NOTICE_MODAL,
   });
 } catch (error) {
   console.warn(error.message, error.name);

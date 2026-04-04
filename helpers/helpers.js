@@ -1,4 +1,5 @@
 import Api from "../service/Api.js";
+import { MONTHS } from "../models/models.js";
 
 const draw = (container, html) =>
   container.insertAdjacentHTML("beforeend", html);
@@ -17,13 +18,14 @@ async function getToken() {
   if (Date.now() >= user.exp * 1000) {
     let res = await Api.refresh();
     setDataToLS("user", {
-      ...user,
-      token: res?.accessToken,
-      exp: res.exp || null,      
+      login: res?.user?.login,
+      id: res?.user?.id,
+      accessToken: res?.accessToken,
+      exp: res.exp || null,
     });
     return res.accessToken;
   }
-  return user.token;
+  return user.accessToken;
 }
 
 const generateResByid = (id, resSchemes) => {
@@ -73,6 +75,11 @@ const copy = async (target, copyStatus) => {
   }
 };
 
+const getTokenDeathTimeValue = (exp) => {
+  const accessTokenDeathTime = new Date(exp * 1000);
+  return `${accessTokenDeathTime.toLocaleTimeString()} часов, ${accessTokenDeathTime.getDate()} ${MONTHS[accessTokenDeathTime.getMonth()]} ${accessTokenDeathTime.getFullYear()} г.`;
+};
+
 export {
   copy,
   draw,
@@ -80,8 +87,6 @@ export {
   getDataFromLS,
   getHTMLFromList,
   getToken,
+  getTokenDeathTimeValue,
   setDataToLS,
 };
-
-
-

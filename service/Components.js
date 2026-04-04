@@ -6,7 +6,7 @@ import {
   URLS,
 } from "../models/models.js";
 // helpers:
-import { getHTMLFromList } from "../helpers/helpers.js";
+import { getHTMLFromList, getTokenDeathTimeValue } from "../helpers/helpers.js";
 
 class Components {
   //! компоненты main.html
@@ -385,14 +385,13 @@ class Components {
     </form>`;
   }
 
-  NOTICE_MODAL(style = "") {
+  NOTICE_MODAL(msg, style = "") {
     return `
     <section class="noticeModal" id="noticeModal" style='${style}'>      
-      <div class="noticeModal-close danger">
+      <div class="noticeModal-exit danger">
         <span class="material-icons-round">close</span>
-      </div>
-      
-      <p class="section-text noticeModal-text"></p>
+      </div>      
+      <p class="section-text noticeModal-text">${msg}</p>
     </section>`;
   }
 
@@ -440,8 +439,48 @@ href='${`#item-${id}`}'
 <strong class='success'>Нажмите рестарт, чтобы начать тест заново!</strong>
 </output>`;
   }
+
+  PROFILE_PAGE(user) {
+    return `
+      <section class="app-section accessTokenSection">    
+        <h3>Текущий токен:</h3>
+        ${this.COPY_BAR()}
+        <li class="accessTokenSection-li">
+          <code class="accessTokenSection-value"> ${user.accessToken}</code>
+        </li>
+        <form action="" class='accessTokenSection-form'>
+          <fieldset>
+            <legend>Время истечения токена:</legend>
+            <p>
+              <strong>
+              ${getTokenDeathTimeValue(user?.exp)} 
+              </strong>
+            </p>
+            <p>              
+              <button class="btn btn-success refresh" title="перезапустить">
+                <div class="">
+                  <span class="material-icons-round"> restart_alt </span>
+                </div>
+                обновить
+              </button>              
+            </p>
+          </fieldset>
+        </form>
+      </section>
+      <section class="app-section userSection">
+        <h3>Данные пользователя:</h3>        
+        <p>Имя пользователя: <code>${user?.login}</code></p>
+        <p>ID пользователя: <code>${user?.id}</code></p>
+      </section>
+      <section class="app-section userSection">
+      <button class="btn btn-danger logout" title="перезапустить">
+        <div class="">
+         <span class="material-icons-round"> logout </span></div>
+          выйти
+        </button>
+      </section>   
+    `;
+  }
 }
 
 export default new Components();
-
-

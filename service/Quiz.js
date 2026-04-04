@@ -10,7 +10,7 @@ export class Quiz {
   constructor({ list, Component, key }) {
     this.container = document.querySelector(".quiz");
     this.restart = document.body.querySelector(".restart");
-    this.finish = document.body.querySelector(".done");
+    this.finish = document.body.querySelector(".finish");
     this.key = key;
     this.isDone = false;
     this.output = document.body.querySelector("pre");
@@ -137,3 +137,5 @@ export class Quiz {
     this.output.innerHTML = msg;
   }
 }
+
+

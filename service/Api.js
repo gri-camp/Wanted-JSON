@@ -125,7 +125,7 @@ class Api {
       });
 
       if (!res.ok) {
-        const mess = await res.text();
+        const mess = (await res.json())?.message;
         throw new Error(mess);
       }
 
@@ -147,7 +147,7 @@ class Api {
       });
 
       if (!res.ok) {
-        const mess = await res.text();
+        const mess = (await res.json())?.message;
         throw new Error(mess);
       }
 
@@ -169,7 +169,7 @@ class Api {
       });
 
       if (!res.ok) {
-        const mess = await res.text();
+        const mess = await res.json();
         throw new Error(mess);
       }
 
