@@ -2,7 +2,7 @@
 import {
   draw,
   getDataFromLS,
-  getToken,
+  getActualUserAuthParams,
   setDataToLS,
 } from "../helpers/helpers.js";
 // service
@@ -16,7 +16,7 @@ class Auth {
     formType = "signup",
     actionTrigger = null,
   }) {
-    getDataFromLS("user") && getToken();
+    getDataFromLS("user") && getActualUserAuthParams();
     if (!((formType === "signin") | (formType === "signup")))
       throw new Error("Invalid 'formType' param!");
     // ! DOM ELEMENTS
@@ -159,8 +159,8 @@ class Auth {
   }
 
   static async cleanUserData() {
-    const accessToken = await getToken();
-    await Api.logout(accessToken);
+    const actualUserParams = await getActualUserAuthParams();
+    await Api.logout(actualUserParams.accessToken);
     setDataToLS("user", null);
   }
 

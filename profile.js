@@ -4,8 +4,8 @@ import { ROOT } from "./models/models.js";
 import {
   copy,
   draw,
+  getActualUserAuthParams,
   getDataFromLS,
-  getToken,
   getTokenDeathTimeValue,
 } from "./helpers/helpers.js";
 // service classes:
@@ -61,7 +61,7 @@ const profileState = {
   },
 
   async getActualUserParams() {
-    await getToken();
+    await getActualUserAuthParams();
     this.user = getDataFromLS("user");
     this.render(this.container, this.user);
   },
@@ -74,7 +74,7 @@ const profileState = {
     }
     if (e.target.closest(".refresh")) {
       e.preventDefault();
-      await getToken();
+      await getActualUserAuthParams();
       this.user = getDataFromLS("user");
       this.subscribers.forEach((fn) =>
         fn(this.accessTokenValueElem, this.accessTokenDeathTimeElem, this.user),

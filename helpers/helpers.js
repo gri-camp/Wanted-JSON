@@ -13,19 +13,19 @@ const getDataFromLS = (key) => JSON.parse(localStorage.getItem(key)) || null;
 const setDataToLS = (key, data) =>
   localStorage.setItem(key, JSON.stringify(data));
 
-async function getToken() {
-  const user = getDataFromLS("user");
-  if (Date.now() >= user.exp * 1000) {
-    let res = await Api.refresh();
+async function getActualUserAuthParams() {
+  const currentUserParams = getDataFromLS("user");
+  if (Date.now() >= currentUserParams.exp * 1000) {
+    let actualUserParams = await Api.refresh();
     setDataToLS("user", {
-      login: res?.user?.login,
-      id: res?.user?.id,
-      accessToken: res?.accessToken,
-      exp: res.exp || null,
+      login: actualUserParams?.user?.login,
+      id: actualUserParams?.user?.id,
+      accessToken: actualUserParams?.accessToken,
+      exp: actualUserParams.exp || null,
     });
-    return res.accessToken;
+    return actualUserParams;
   }
-  return user.accessToken;
+  return currentUserParams;
 }
 
 const generateResByid = (id, resSchemes) => {
@@ -86,7 +86,7 @@ export {
   generateResByid,
   getDataFromLS,
   getHTMLFromList,
-  getToken,
+  getActualUserAuthParams,
   getTokenDeathTimeValue,
   setDataToLS,
 };
