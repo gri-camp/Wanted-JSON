@@ -440,6 +440,9 @@ href='${`#item-${id}`}'
   }
 
   PROFILE_PAGE(user) {
+
+    const isAccessTokenExpired = Date.now() > new Date(user.exp * 1000);
+
     return `
       <section class="app-section accessTokenSection">    
         <h3>Текущий токен:</h3>
@@ -456,7 +459,7 @@ href='${`#item-${id}`}'
               </strong>
             </p>
             <p>              
-              <button class="btn btn-success refresh" title="перезапустить">
+              <button class="btn btn-success refresh" title="перезапустить" ${isAccessTokenExpired ? '' : 'disabled'}>
                 <div class="">
                   <span class="material-icons-round"> restart_alt </span>
                 </div>
