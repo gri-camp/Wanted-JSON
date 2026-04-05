@@ -25,8 +25,7 @@ class Components {
         )}
         
       </ul>
-    </nav>
-    <hr class='header-hr'/>
+    </nav>    
         `;
   }
   REQUEST_CARD_MAIN_PAGE = (

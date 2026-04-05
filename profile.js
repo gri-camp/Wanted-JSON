@@ -1,11 +1,17 @@
 // consts:
 import { ROOT } from "./models/models.js";
 // utils:
-import { copy, draw, getDataFromLS, getToken, getTokenDeathTimeValue } from "./helpers/helpers.js";
+import {
+  copy,
+  draw,
+  getDataFromLS,
+  getToken,
+  getTokenDeathTimeValue,
+} from "./helpers/helpers.js";
 // service classes:
+import { Auth } from "./service/Auth.js";
 import Components from "./service/Components.js";
 import { Theme } from "./service/Theme.js";
-import { Auth } from "./service/Auth.js";
 
 const FOOTER = document.querySelector(".footer");
 
@@ -40,9 +46,9 @@ const profileState = {
     this.accessTokenDeathTimeElem = this.accessTokenSection.querySelector(
       ".accessTokenSection-form strong",
     );
-    this.logoutButton = this.container.querySelector('.logout')
+    this.logoutButton = this.container.querySelector(".logout");
     this.addListenerToContainer();
-    this.addListenerToLogoutButton()   
+    this.addListenerToLogoutButton();
   },
 
   isUserSignedIn() {
@@ -98,10 +104,10 @@ const profileState = {
 
   addListenerToLogoutButton() {
     this.logoutButton.onclick = () => {
-      Auth.cleanUserData()
-      location.replace('./main.html')
-    }
-  }
+      Auth.cleanUserData();
+      location.replace("./main.html");
+    };
+  },
 };
 
 profileState.isUserSignedIn() && profileState.template();

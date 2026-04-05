@@ -16,7 +16,7 @@ try {
   const FOOTER = document.querySelector(".footer");
 
   // Подключаем тему:
-  new Theme({ root: ROOT });
+  new Theme({ trigger: ".theme", root: ROOT });
  
   // !Содержимое секции 'urls':
   new Request({

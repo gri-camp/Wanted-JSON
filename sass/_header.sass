@@ -8,6 +8,15 @@
 	gap: 0.5rem
 	flex-wrap: wrap
 
+	&::after
+		content: '',
+		@include hr-base
+		width: 100%
+		margin-top: var(--app-lg-spacing)
+
+	&-mainPage::after
+		margin-top: 0px	
+
 	&-logo 
 		padding: var(--app-sm-spacing)
 		@include flex-default
@@ -30,9 +39,6 @@
 			letter-spacing: 1px
 			font-variant: small-caps
 
-	&-hr
-		@include hr-base
-		width: 100%		
 
 	&-menu-link
 		
