@@ -649,13 +649,13 @@ const POST_REQUIRED_FIELDS = {
   ],
 };
 
-const FORM_ELEMS_LIST = [
+const SIGN_UP_FORM_ELEMS_LIST = [
   {
     type: "text",
     placeholder: "имя пользователя:",
     name: "login",
     errorMsg:
-      "логин должен начинаться с буквы и включать прописные и строчные латинские буквы, цифры, знаки: '-', '_' ",
+      "не менее 2 символов: латинские буквы, цифры, '-', '_'",
     regExp: /^[A-Z][A-Z0-9-_]{1,20}$/i,
     tabindex: 1,
   },
@@ -664,7 +664,7 @@ const FORM_ELEMS_LIST = [
     placeholder: "пароль:",
     name: "password",
     errorMsg:
-      "пароль должен содержать не менее 8 символов и включать прописные и строчные латинские буквы, цифры, знаки: '-', '_'",
+      "не менее 8 символов: латинские буквы, цифры, '-', '_'",
     regExp: /^[A-Z0-9_-]{8,}$/i,
     tabindex: 2,
   },
@@ -673,9 +673,17 @@ const FORM_ELEMS_LIST = [
     placeholder: "подтвердить пароль:",
     name: "password2",
     errorMsg:
-      "пароль должен содержать не менее 8 символов и включать прописные и строчные латинские буквы, цифры, знаки: '-', '_'",
+      "не менее 8 символов: латинские буквы, цифры, '-', '_'",
     regExp: /^[A-Z0-9_-]{8,}$/i,
     tabindex: 3,
+  },
+  {
+    type: "checkbox",
+    placeholder: null,
+    name: "agreement",
+    errorMsg: "подтвердите на обработку данных!",
+    regExp: null,
+    tabindex: 4,
   },
   {
     type: "submit",
@@ -683,7 +691,34 @@ const FORM_ELEMS_LIST = [
     name: "submit",
     errorMsg: null,
     regExp: null,
-    tabindex: 4,
+    tabindex: 5,
+  },
+];
+
+const SIGN_IN_FORM_ELEMS_LIST = [
+  {
+    type: "text",
+    placeholder: "имя пользователя:",
+    name: "login",
+    errorMsg: "не менее 2 символов: латинские буквы, цифры, '-', '_'",
+    regExp: /^[A-Z][A-Z0-9-_]{1,20}$/i,
+    tabindex: 1,
+  },
+  {
+    type: "text",
+    placeholder: "пароль:",
+    name: "password",
+    errorMsg: "не менее 8 символов: латинские буквы, цифры, '-', '_'",
+    regExp: /^[A-Z0-9_-]{8,}$/i,
+    tabindex: 2,
+  },
+  {
+    type: "submit",
+    placeholder: null,
+    name: "submit",
+    errorMsg: null,
+    regExp: null,
+    tabindex: 5,
   },
 ];
 
@@ -696,13 +731,14 @@ export {
   EXAMPLES_LIST,
   FEATURES_CARD_LIST,
   FILTERING_WHITE_LIST,
-  FORM_ELEMS_LIST,
   getSchemesToolbarConfig,
   HOMEPAGE_MENU_LIST,
+  MONTHS,
   POST_REQUIRED_FIELDS,
   REQUEST_CARD_LIST,
   ROOT,
+  SIGN_UP_FORM_ELEMS_LIST,
+  SIGN_IN_FORM_ELEMS_LIST,
   SORTING_WHITE_LIST,
   URLS,
-  MONTHS,
 };

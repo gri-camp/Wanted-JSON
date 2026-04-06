@@ -1,9 +1,10 @@
 // utils
 import {
   draw,
-  getDataFromLS,
   getActualUserAuthParams,
+  getDataFromLS,
   setDataToLS,
+  fetchAuthRequest
 } from "../helpers/helpers.js";
 // service
 import Api from "./Api.js";
@@ -25,6 +26,7 @@ class Auth {
     this.actionTrigger = actionTrigger && document.querySelector(actionTrigger);
     this.form = null;
     this.submitBtn = null;
+    this.spinner = null
     this.userLogout = document.querySelector(".user-menu-logout");
     // ! LOGIC PROPS -----
     this.elements = elements;
@@ -37,16 +39,21 @@ class Auth {
         ? ""
         : "login";
     }
+    if (this.formType === "signup") {
+      this.agreementPopup = null;
+    }
     this.submitBtnValue = this.getSubmitBtnValue(this.formType);
     this.passCompareError = new Error("пароли не совпадают!");
     // ! FORM STATE
     this.state = this.getInitState(this.elements);
+
     // methods
     this.template(
       this.container,
       this.component,
       this.elements,
       this.actionTrigger,
+      this.formType,
     );
   }
 
@@ -54,9 +61,9 @@ class Auth {
     return formType === "signup" ? "регистрация" : "войти";
   }
 
-  template(container, component, elements, actionTrigger) {
+  template(container, component, elements, actionTrigger, formType) {
     this.render(container, component, elements)
-      .addInputListener()
+      .addChangeListener()
       .addSubmitListener()
       .addClickListenerToContainer();
 
@@ -64,21 +71,30 @@ class Auth {
       this.addClickListenerToActionTrigger(
         actionTrigger,
       ).addClickListenerToUserLogout();
+
+    formType === "signup" &&
+      this.addClickListenerToAgreementPopup(this.agreementPopup);
   }
 
-  render(container, component, elements) {
-    draw(container, component(elements, this.formType, this.submitBtnValue));
+  render(container, component, elements) {    
+    draw(container, component(elements, this.submitBtnValue));
     this.form = container.querySelector(`.authForm`);
     this.submitBtn = this.form.submit;
+    this.spinner = this.form.querySelector('.authForm-spinner')
+    if (this.formType === "signup") {
+      this.agreementPopup = document.querySelector(".authForm-agreemеntPopup");
+    }
     return this;
   }
 
-  addInputListenerHandler = (e) => {
+  addChangeListenerHandler = (e) => {
     const { name, value } = e.target;
 
     const elemData = this.elements.find((ed) => ed.name === name);
 
-    if (elemData.regExp.test(value)) {
+    if (elemData?.type === "checkbox") {
+      this.state[name] = !this.state[name];
+    } else if (elemData.regExp.test(value)) {
       this.state[name] = value;
       e.target.nextElementSibling.classList.remove("active");
     } else {
@@ -89,10 +105,12 @@ class Auth {
     Object.values(this.state).every((v) => v)
       ? (this.submitBtn.disabled = false)
       : (this.submitBtn.disabled = true);
+
+    console.log(this.state);
   };
 
-  addInputListener() {
-    this.form?.addEventListener("input", this.addInputListenerHandler);
+  addChangeListener() {
+    this.form?.addEventListener("change", this.addChangeListenerHandler);
     return this;
   }
 
@@ -115,9 +133,9 @@ class Auth {
 
     this.submitBtn.value = "Загрузка...";
 
-    let res = await Api[this.formType](body);
+    let res = await fetchAuthRequest(this.spinner, this.formType, body)
 
-    if (!(res instanceof Object)) return this.reset(res);
+   if (!(res instanceof Object)) return this.reset(res);
 
     if (this.formType === "signin") {
       this.signIn(res);
@@ -138,6 +156,9 @@ class Auth {
   }
 
   addClickListenerToContainerHandler = (e) => {
+    if (e.target.matches(".authForm-agreementTrigger"))
+      return this.agreementPopup.classList.toggle("active");
+
     if (!e.target.closest("form") && this.formType === "signin")
       this.container.classList.toggle("active");
     this.submitBtn.nextElementSibling.classList.toggle("active");
@@ -152,6 +173,17 @@ class Auth {
     return this;
   }
 
+  signIn({ user, accessToken, exp }) {
+    this.actionTrigger.firstElementChild.textContent = "";
+    this.userLogin.textContent = user?.login;
+    setDataToLS("user", {
+      login: user?.login,
+      accessToken,
+      exp: exp || null,
+      id: user?.id || null,
+    });
+  }
+
   async logout() {
     this.actionTrigger.firstElementChild.textContent = "login";
     this.userLogin.textContent = "";
@@ -164,16 +196,9 @@ class Auth {
     setDataToLS("user", null);
   }
 
-  signIn({ user, accessToken, exp }) {
-    this.actionTrigger.firstElementChild.textContent = "";
-    this.userLogin.textContent = user?.login;
-    setDataToLS("user", {
-      login: user?.login,
-      accessToken,
-      exp: exp || null,
-      id: user?.id || null,
-    });
-  }
+  addClickListenerToUserLogout = () => {
+    this.userLogout.onclick = () => this.logout();
+  };
 
   addClickListenerToActionTriggerHandler = () => {
     this.container.classList.toggle("active");
@@ -187,6 +212,12 @@ class Auth {
     return this;
   }
 
+  addClickListenerToAgreementPopup(agreementPopup) {
+    agreementPopup.addEventListener("click", function () {
+      this.classList.toggle("active");
+    });
+  }
+
   reset(res) {
     this.form.reset();
     this.state = this.getInitState(this.elements);
@@ -197,14 +228,14 @@ class Auth {
   }
 
   getInitState(elements) {
-    return elements
-      .slice(0, -1)
-      .reduce((acc, el) => ({ ...acc, [el.name]: "" }), {});
+    return elements.slice(0, -1).reduce(
+      (acc, { name, type }) => ({
+        ...acc,
+        [name]: type === "checkbox" ? false : "",
+      }),
+      {},
+    );
   }
-
-  addClickListenerToUserLogout = () => {
-    this.userLogout.onclick = () => this.logout();
-  };
 }
 
 export { Auth };

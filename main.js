@@ -4,7 +4,7 @@ import {
   ENTITIES_LIST,
   EXAMPLES_LIST,
   FEATURES_CARD_LIST,
-  FORM_ELEMS_LIST,
+  SIGN_IN_FORM_ELEMS_LIST,
   HOMEPAGE_MENU_LIST,
   REQUEST_CARD_LIST,
   ROOT,
@@ -28,7 +28,7 @@ try {
   const DOCUMENTATION = document.querySelector("#documentation ul");
   const SUPPORT = document.querySelector(".support");
   const FOOTER = document.querySelector(".footer");
-  const SIGN_IN_POPUP = document.querySelector("#signin");
+  const SIGN_IN_POPUP = document.querySelector(".authForm-popup");
 
   // Подключаем тему:
   new Theme({ trigger: ".theme", root: ROOT });
@@ -83,7 +83,7 @@ try {
   new Auth({
     container: SIGN_IN_POPUP,
     component: Components.FORM,
-    elements: FORM_ELEMS_LIST.filter((el) => el.name !== "password2"),
+    elements: SIGN_IN_FORM_ELEMS_LIST,
     formType: "signin",
     actionTrigger: ".signin-icon",
   });

@@ -1,5 +1,5 @@
-import Api from "../service/Api.js";
 import { MONTHS } from "../models/models.js";
+import Api from "../service/Api.js";
 
 const draw = (container, html) =>
   container.insertAdjacentHTML("beforeend", html);
@@ -80,13 +80,21 @@ const getTokenDeathTimeValue = (exp) => {
   return `${accessTokenDeathTime.toLocaleTimeString()} часов, ${accessTokenDeathTime.getDate()} ${MONTHS[accessTokenDeathTime.getMonth()]} ${accessTokenDeathTime.getFullYear()} г.`;
 };
 
+const fetchAuthRequest = async (spinner, method, payload) => {
+  spinner.classList.toggle("active");
+  let res = await Api[method](payload);
+  spinner.classList.toggle("active");
+  return res;
+};
+
 export {
   copy,
   draw,
+  fetchAuthRequest,
   generateResByid,
+  getActualUserAuthParams,
   getDataFromLS,
   getHTMLFromList,
-  getActualUserAuthParams,
   getTokenDeathTimeValue,
   setDataToLS,
 };

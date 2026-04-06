@@ -1,5 +1,5 @@
 // const:
-import { ROOT, FORM_ELEMS_LIST } from "./models/models.js";
+import { ROOT, SIGN_UP_FORM_ELEMS_LIST } from "./models/models.js";
 // utils:
 import { draw } from "./helpers/helpers.js";
 // service classes:
@@ -18,7 +18,7 @@ new Theme({ root: ROOT });
 new Auth({
   container: APP_CONTAINER,
   component: Components.FORM,
-  elements: FORM_ELEMS_LIST,  
+  elements: SIGN_UP_FORM_ELEMS_LIST,  
 });
 
 // !Отрисовка Подвала:

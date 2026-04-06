@@ -360,7 +360,8 @@ class Components {
       </a>        
     `;
   }
-  FORM(elements, formType, submitValue) {
+  FORM(elements, submitValue) {
+        
     return `
     <form class='authForm'>
       <div class="authForm-logo">
@@ -371,16 +372,35 @@ class Components {
         elements,
         ({ type, placeholder, name, errorMsg, tabindex }) => `
         <p>
-          <input type='${type}' name="${name}" placeholder="${placeholder}" 
-          ${type === "submit" ? `value='${submitValue}' disabled readonly` : ""}
-          ${type === "password" ? "autocomplete='new-password'" : ""}
-          ${type === "text" ? "autocomplete='username'" : ""}
-          tabindex="${tabindex}"        
-          />
+          ${
+            type === "checkbox"
+              ? `
+              <div class='authForm-agreementTrigger'>
+                <input type='${type}' name="${name}" placeholder="${placeholder}" 
+                ${type === "submit" ? `value='${submitValue}' disabled readonly` : ""}
+                ${type === "password" ? "autocomplete='new-password'" : ""}
+                ${type === "text" ? "autocomplete='username'" : ""}
+                tabindex="${tabindex}"/>
+                Согласие на обработку персональных данных
+              </div>
+            `
+              : `
+            <input type='${type}' name="${name}" placeholder="${placeholder}" 
+              ${type === "submit" ? `value='${submitValue}' disabled readonly` : ""}
+              ${type === "password" ? "autocomplete='new-password'" : ""}
+              ${type === "text" ? "autocomplete='username'" : ""}
+              tabindex="${tabindex}"/>
+            `
+          }          
           <span class="authForm-error">${errorMsg}</span>
-      </p>
+        </p>
         `,
-      )}      
+      )}
+      <div class='authForm-spinner'>
+        <div class='authForm-spinner-circle1'></div>
+        <div class='authForm-spinner-circle2'></div>
+        <div class='authForm-spinner-circle3'></div>
+      </div>      
     </form>`;
   }
 
@@ -440,7 +460,6 @@ href='${`#item-${id}`}'
   }
 
   PROFILE_PAGE(user) {
-
     const isAccessTokenExpired = Date.now() > new Date(user.exp * 1000);
 
     return `
@@ -459,7 +478,7 @@ href='${`#item-${id}`}'
               </strong>
             </p>
             <p>              
-              <button class="btn btn-success refresh" title="перезапустить" ${isAccessTokenExpired ? '' : 'disabled'}>
+              <button class="btn btn-success refresh" title="перезапустить" ${isAccessTokenExpired ? "" : "disabled"}>
                 <div class="">
                   <span class="material-icons-round"> restart_alt </span>
                 </div>
