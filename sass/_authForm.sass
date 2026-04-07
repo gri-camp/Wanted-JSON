@@ -12,8 +12,7 @@
     input 
         font-size: 1.1em
         box-shadow: 0.5px 0.5px 1.5px var(--app-darken-color), -0.5px -0.5px 1.5px var(--app-darken-color) 
-        margin: var(--app-lg-spacing) 0px      
-
+        margin: var(--app-lg-spacing) 0px   
 
     &-logo
         width: 50px
@@ -43,24 +42,15 @@
             display: block
 
     &-popup
-        @include popup
+        @include popup(flex)
 
-        &.active
-            display: flex 
-
-
-        
+         
     &-agreemеntPopup
-        @include popup
+        @include popup(flex)
         overflow: auto 
         padding: var(--app-lg-spacing)        
-        background: rgba(0, 0, 0, 0.9)
-        z-index: 2
-        line-height: 150%
-        color: var(--app-dark-color)
-
-        &.active
-            display: flex 
+        z-index: 2       
+        color: var(--app-dark-color)   
 
         p
             margin: var(--app-lg-spacing)  
@@ -78,109 +68,5 @@
 
         &:hover 
             color: var(--app-success-color)
-
-    &-spinner
-        z-index: 2
-        position: absolute
-        top: 50%
-        left: 50%
-        transform: translate(-50%, -50%)
-        display: none
-        width: 120px
-        height: 20px
-        margin: 20px
-        --size: 20px
-        --largeSize: 40px
-        --color: var(--app-danger-color)
-        --speed: 1.5s
-        --padding: 10px
-
-        div 
-            position: absolute
-            background: var(--color)
-            border-radius: 50%
-            width: var(--largeSize)
-            height: var(--largeSize)
-            top: -10px
-
-        &-circle1 
-            animation: var(--speed) ease-in-out 0s infinite inlarge1
-            left: 0
-
-
-        &-circle2 
-            animation: var(--speed) ease-in-out infinite inlarge2
-            left: calc(var(--largeSize) + var(--padding))
-
-
-        &-circle3 
-            animation: var(--speed) ease-in-out infinite inlarge3
-            left: calc(var(--largeSize) * 2 + var(--padding) * 2)
-
-        &.active
-            display: flex
-        
-
-@keyframes inlarge1 
-    0%, 10%, 30%, 100% 
-        width: var(--size)
-        height: var(--size)
-        top: 0
-        left: 0
-  
-    20% 
-        width: var(--largeSize)
-        height: var(--largeSize)
-        top: -10px
-        left: -10px
-  
-
-
-
-@keyframes inlarge2 
-    0%, 40%, 60%, 100% 
-        width: var(--size)
-        height: var(--size)
-        top: 0
-        left: calc(var(--largeSize) + var(--padding))
-    
-    50% 
-        width: var(--largeSize)
-        height: var(--largeSize)
-        top: -10px
-        left: calc(var(--largeSize) + var(--padding) - 10px)
-  
-
-
-
-@keyframes inlarge3 
-    0%, 70%, 90%, 100% 
-        width: var(--size)
-        height: var(--size)
-        top: 0
-        left: calc(var(--largeSize) * 2 + var(--padding) * 2)
-  
-    80% 
-        width: var(--largeSize)
-        height: var(--largeSize)
-        top: -10px
-        left: calc(var(--largeSize) * 2 + var(--padding) * 2 - 10px)
-  
-
-
-
-        			    
-
-
-
-       
-
-
-
-
-    
-                
-                  
-
 
     

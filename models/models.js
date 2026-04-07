@@ -654,17 +654,16 @@ const SIGN_UP_FORM_ELEMS_LIST = [
     type: "text",
     placeholder: "имя пользователя:",
     name: "login",
-    errorMsg:
-      "не менее 2 символов: латинские буквы, цифры, '-', '_'",
-    regExp: /^[A-Z][A-Z0-9-_]{1,20}$/i,
+    errorMsg: "разрешенные символы: латинские буквы, цифры, '-', '_', '.', '@'",
+    regExp: /^[A-Z0-9-_\.@]+$/i,
+    // regExp: /^[A-Z][A-Z0-9-_]{2,20}$/i,
     tabindex: 1,
   },
   {
     type: "text",
     placeholder: "пароль:",
     name: "password",
-    errorMsg:
-      "не менее 8 символов: латинские буквы, цифры, '-', '_'",
+    errorMsg: "не менее 8 символов: латинские буквы, цифры, '-', '_'",
     regExp: /^[A-Z0-9_-]{8,}$/i,
     tabindex: 2,
   },
@@ -672,8 +671,7 @@ const SIGN_UP_FORM_ELEMS_LIST = [
     type: "text",
     placeholder: "подтвердить пароль:",
     name: "password2",
-    errorMsg:
-      "не менее 8 символов: латинские буквы, цифры, '-', '_'",
+    errorMsg: "не менее 8 символов: латинские буквы, цифры, '-', '_'",
     regExp: /^[A-Z0-9_-]{8,}$/i,
     tabindex: 3,
   },
@@ -700,8 +698,8 @@ const SIGN_IN_FORM_ELEMS_LIST = [
     type: "text",
     placeholder: "имя пользователя:",
     name: "login",
-    errorMsg: "не менее 2 символов: латинские буквы, цифры, '-', '_'",
-    regExp: /^[A-Z][A-Z0-9-_]{1,20}$/i,
+    errorMsg: "разрешенные символы: латинские буквы, цифры, '-', '_', '.', '@'",
+    regExp: /^[A-Z0-9-_\.@]+$/i,
     tabindex: 1,
   },
   {
@@ -718,7 +716,7 @@ const SIGN_IN_FORM_ELEMS_LIST = [
     name: "submit",
     errorMsg: null,
     regExp: null,
-    tabindex: 5,
+    tabindex: 3,
   },
 ];
 
@@ -737,8 +735,8 @@ export {
   POST_REQUIRED_FIELDS,
   REQUEST_CARD_LIST,
   ROOT,
-  SIGN_UP_FORM_ELEMS_LIST,
   SIGN_IN_FORM_ELEMS_LIST,
+  SIGN_UP_FORM_ELEMS_LIST,
   SORTING_WHITE_LIST,
   URLS,
 };

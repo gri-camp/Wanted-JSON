@@ -9,6 +9,10 @@
 	transition: 0.15s all linear
 	display: flex
 
+	&:disabled
+		opacity: 0.5
+		cursor: default
+
 	&.btn-success 
 		background-color: var(--app-success-color)
 		color: var(--app-dark-color)

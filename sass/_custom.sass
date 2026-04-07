@@ -36,9 +36,7 @@
 		width: 100%
 		display: inline-block	
 
-		&:hover 
-			color: var(--app-danger-color)
-			transform: scale(1.01)
+		@include linkHover
 
 /* параграфы секций */
 
@@ -52,7 +50,7 @@
 /* Информационные секции на странице docs.html */
 
 .app-section 
-	margin-bottom: 3.5rem
+	@include mb(3.5rem)
 
 /* контейнер для иконок */
 .icon-box 

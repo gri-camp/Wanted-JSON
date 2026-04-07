@@ -31,8 +31,12 @@ const profileState = {
   subscribers: [],
   user: getDataFromLS("user"),
 
-  template() {
-    this.observer().getActualUserParams();
+  async template() {
+    this.observer()
+    await this.getActualUserParams();
+    this.render(this.container, this.user);
+    this.addListenerToContainer();
+    this.addListenerToLogoutButton();
   },
 
   render(container, user) {
@@ -47,8 +51,8 @@ const profileState = {
       ".accessTokenSection-form strong",
     );
     this.logoutButton = this.container.querySelector(".logout");
-    this.addListenerToContainer();
-    this.addListenerToLogoutButton();
+    // this.addListenerToContainer();
+    // this.addListenerToLogoutButton();
   },
 
   isUserSignedIn() {
@@ -63,7 +67,7 @@ const profileState = {
   async getActualUserParams() {
     await getActualUserAuthParams();
     this.user = getDataFromLS("user");
-    this.render(this.container, this.user);
+    // this.render(this.container, this.user);
   },
 
   async addListenerToContainerHandler(e) {
@@ -111,3 +115,6 @@ const profileState = {
 };
 
 profileState.isUserSignedIn() && profileState.template();
+
+
+

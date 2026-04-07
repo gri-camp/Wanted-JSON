@@ -396,10 +396,10 @@ class Components {
         </p>
         `,
       )}
-      <div class='authForm-spinner'>
-        <div class='authForm-spinner-circle1'></div>
-        <div class='authForm-spinner-circle2'></div>
-        <div class='authForm-spinner-circle3'></div>
+      <div class='spinner'>
+        <div class='spinner-circle1'></div>
+        <div class='spinner-circle2'></div>
+        <div class='spinner-circle3'></div>
       </div>      
     </form>`;
   }
@@ -493,7 +493,7 @@ href='${`#item-${id}`}'
         <p>Имя пользователя: <code>${user?.login}</code></p>
         <p>ID пользователя: <code>${user?.id}</code></p>
       </section>
-      <section class="app-section userSection">
+      <section class="app-section logoutSection">
       <button class="btn btn-danger logout" title="перезапустить">
         <div class="">
          <span class="material-icons-round"> logout </span></div>

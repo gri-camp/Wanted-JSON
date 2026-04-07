@@ -48,11 +48,8 @@
 			border-radius: var(--app-sm-spacing)			
 			
 			a
-				width: 100%
-				
-				&:hover
-					color: var(--app-success-color)
-					transform: scale(1.01)
+				width: 100%				
+				@include linkHover
 
 			
 	&-copybar 
@@ -68,8 +65,7 @@
 		color: var(--app-dark-color)
 
 		&:hover   
-			color: var(--app-success-color)
-			// background: none
+			color: var(--app-success-color)			
 
 		.btn
 			border: none

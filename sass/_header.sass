@@ -10,7 +10,7 @@
 
 	&::after
 		content: '',
-		@include hr-base
+		@include hr-base(var(--app-default-color), 0.1)
 		width: 100%
 		margin-top: var(--app-lg-spacing)
 
@@ -39,7 +39,6 @@
 			letter-spacing: 1px
 			font-variant: small-caps
 
-
 	&-menu-link
 		
 		&.active 
@@ -64,7 +63,7 @@
 
 	&-menu
 		position: fixed
-		width: 10%
+		width: 12.5%
 		left: var(--app-lg-spacing)
 		top: var(--app-lg-spacing)
 		z-index: 4
@@ -75,22 +74,26 @@
 		border-radius: 0px var(--app-sm-spacing) var(--app-sm-spacing) 0px
 		box-shadow: $app-card-shadow
 
-	
-		&-link
-			cursor: pointer
-			display: flex
-			align-items: center
-			gap: var(--app-lg-spacing)
-			margin: var(--app-lg-spacing) 0
-
-			&:hover 
-				color: var(--app-success-color)
-				transform: scale(1.02)
-
-	&:hover	
-		.user-menu
-			display: block			
+		li
+			padding: var(--app-sm-spacing) 0
 			
+			&:first-child
+				margin-top: 2.8rem
+
+				&::before
+					content: '',
+					@include hr-base(var(--app-dark-color), 0.2)					
+						
+			div
+				width: max-content
+				cursor: pointer
+				display: flex
+				align-items: center
+				gap: var(--app-lg-spacing)
+				margin: var(--app-md-spacing) 0	
+
+				@include linkHover
+				
 
 	&-login		
 		font-size: 1.1em	
@@ -100,9 +103,12 @@
 		font-weight: 700
 		letter-spacing: 1.5px
 
-		&:hover 
-			color: var(--app-success-color)
-			transform: scale(1.02)
+	&:hover .user-menu
+		display: block
+
+	
+
+			
 	
 		
 

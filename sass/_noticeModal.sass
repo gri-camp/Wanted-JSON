@@ -1,6 +1,6 @@
 .noticeModal
     position: fixed
-    padding: var(--app-lg-spacing)
+    padding: var(--app-md-spacing)
     top: var(--app-xl-spacing)
     right: var(--app-lg-spacing)
     transform: translateX(110%)
@@ -13,6 +13,7 @@
     border: 1px dotted
     border-top: none
     transition: 0.4s all linear
+    text-align: right
             
     &.active
         transform: translateX(0%)
@@ -20,19 +21,15 @@
     
     &-exit
         @include flex-default        
-        width: max-content
-        position: absolute
-        top: -0.1rem
-        right: 0px
+        width: max-content 
         font-size: inherit
         cursor: pointer
+        margin-left: auto
 
         &:hover
             color: var(--app-success-color)
 
-
     &-text
-        margin: 0px 
-        margin-bottom: 0px   
-        font-weight: 700 
-        margin-top: var(--app-md-spacing)     
+        margin: var(--app-sm-spacing) 0px 0px 0px       
+        font-weight: 700         
+        text-align: left    

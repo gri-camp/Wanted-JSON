@@ -1,13 +1,15 @@
 // utils
 import {
   draw,
+  fetchAuthRequest,
   getActualUserAuthParams,
   getDataFromLS,
   setDataToLS,
-  fetchAuthRequest
 } from "../helpers/helpers.js";
 // service
 import Api from "./Api.js";
+import Components from "./Components.js";
+import { Notice } from "./Notice.js";
 
 class Auth {
   constructor({
@@ -21,17 +23,23 @@ class Auth {
     if (!((formType === "signin") | (formType === "signup")))
       throw new Error("Invalid 'formType' param!");
     // ! DOM ELEMENTS
+    this.notice = new Notice({
+      msg: "AccessToken действует 90 мин. Далее, обновите токен!",
+      Component: Components.NOTICE_MODAL,
+    });
     this.container = container;
     this.component = component;
     this.actionTrigger = actionTrigger && document.querySelector(actionTrigger);
     this.form = null;
     this.submitBtn = null;
-    this.spinner = null
+    this.spinner = null;
     this.userLogout = document.querySelector(".user-menu-logout");
     // ! LOGIC PROPS -----
     this.elements = elements;
     this.formType = formType;
     if (this.formType === "signin") {
+      this.userLogout = document.querySelector(".user-menu-logout");
+      this.userProfile = document.querySelector(".user-menu-profile");
       this.userLogin = document.querySelector(".user-login");
       this.userLogin.textContent = getDataFromLS("user")?.login ?? "";
       this.actionTrigger.firstElementChild.textContent = getDataFromLS("user")
@@ -68,19 +76,19 @@ class Auth {
       .addClickListenerToContainer();
 
     actionTrigger &&
-      this.addClickListenerToActionTrigger(
-        actionTrigger,
-      ).addClickListenerToUserLogout();
+      this.addClickListenerToActionTrigger(actionTrigger)
+        .addClickListenerToUserLogout()
+        .addClickListenerToUserProfile();
 
     formType === "signup" &&
       this.addClickListenerToAgreementPopup(this.agreementPopup);
   }
 
-  render(container, component, elements) {    
+  render(container, component, elements) {
     draw(container, component(elements, this.submitBtnValue));
     this.form = container.querySelector(`.authForm`);
     this.submitBtn = this.form.submit;
-    this.spinner = this.form.querySelector('.authForm-spinner')
+    this.spinner = this.form.querySelector(".spinner");
     if (this.formType === "signup") {
       this.agreementPopup = document.querySelector(".authForm-agreemеntPopup");
     }
@@ -133,18 +141,19 @@ class Auth {
 
     this.submitBtn.value = "Загрузка...";
 
-    let res = await fetchAuthRequest(this.spinner, this.formType, body)
+    let response = await fetchAuthRequest(this.spinner, this.formType, body);
 
-   if (!(res instanceof Object)) return this.reset(res);
+    if (!(response instanceof Object)) return this.reset(response);
 
     if (this.formType === "signin") {
-      this.signIn(res);
+      this.signIn(response);
       this.reset("Вход прошел успешно!");
       return setTimeout(() => {
         this.container.classList.toggle("active");
+        this.notice.noticeModalShow(3000);
       }, 2000);
     }
-    this.reset("Пользователь зарегистрирован. Требуется вход в систему!");
+    this.reset(response?.message);
     setTimeout(() => {
       location.replace("./main.html");
     }, 2000);
@@ -198,6 +207,14 @@ class Auth {
 
   addClickListenerToUserLogout = () => {
     this.userLogout.onclick = () => this.logout();
+    return this;
+  };
+
+  addClickListenerToUserProfile = () => {
+    this.userProfile.onclick = (e) => {     
+      location.replace("./profile.html");
+    };
+    return this;
   };
 
   addClickListenerToActionTriggerHandler = () => {
