@@ -51,8 +51,6 @@ const profileState = {
       ".accessTokenSection-form strong",
     );
     this.logoutButton = this.container.querySelector(".logout");
-    // this.addListenerToContainer();
-    // this.addListenerToLogoutButton();
   },
 
   isUserSignedIn() {
@@ -67,7 +65,6 @@ const profileState = {
   async getActualUserParams() {
     await getActualUserAuthParams();
     this.user = getDataFromLS("user");
-    // this.render(this.container, this.user);
   },
 
   async addListenerToContainerHandler(e) {
