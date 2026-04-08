@@ -27,6 +27,7 @@ class Auth {
       msg: "AccessToken действует 90 мин. Далее, обновите токен!",
       Component: Components.NOTICE_MODAL,
     });
+    this.textSliceValue = 13;
     this.container = container;
     this.component = component;
     this.actionTrigger = actionTrigger && document.querySelector(actionTrigger);
@@ -41,7 +42,8 @@ class Auth {
       this.userLogout = document.querySelector(".user-menu-logout");
       this.userProfile = document.querySelector(".user-menu-profile");
       this.userLogin = document.querySelector(".user-login");
-      this.userLogin.textContent = getDataFromLS("user")?.login ?? "";
+      this.userLogin.textContent =
+        getDataFromLS("user")?.login?.slice(0, this.textSliceValue) ?? "";
       this.actionTrigger.firstElementChild.textContent = getDataFromLS("user")
         ?.login
         ? ""
@@ -184,7 +186,7 @@ class Auth {
 
   signIn({ user, accessToken, exp }) {
     this.actionTrigger.firstElementChild.textContent = "";
-    this.userLogin.textContent = user?.login;
+    this.userLogin.textContent = (user?.login).slice(0, this.textSliceValue);
     setDataToLS("user", {
       login: user?.login,
       accessToken,
@@ -203,6 +205,7 @@ class Auth {
     const actualUserParams = await getActualUserAuthParams();
     await Api.logout(actualUserParams.accessToken);
     setDataToLS("user", null);
+    return;
   }
 
   addClickListenerToUserLogout = () => {
@@ -211,7 +214,7 @@ class Auth {
   };
 
   addClickListenerToUserProfile = () => {
-    this.userProfile.onclick = (e) => {     
+    this.userProfile.onclick = (e) => {
       location.replace("./profile.html");
     };
     return this;

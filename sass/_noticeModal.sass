@@ -1,6 +1,6 @@
 .noticeModal
     position: fixed
-    padding: var(--app-md-spacing)
+    padding: var(--app-md-spacing)    
     top: var(--app-xl-spacing)
     right: var(--app-lg-spacing)
     transform: translateX(110%)
@@ -8,10 +8,10 @@
     min-height: 2rem
     background: var(--app-default-bg)
     font-size: 0.93em
-    width: 75%
+    width: 70%
     font-family: 'FiraCode', serif    
-    border: 1px dotted
-    border-top: none
+    box-shadow: $app-card-shadow
+    border-radius: var(--app-md-spacing)
     transition: 0.4s all linear
     text-align: right
             
@@ -30,6 +30,6 @@
             color: var(--app-success-color)
 
     &-text
-        margin: var(--app-sm-spacing) 0px 0px 0px       
+        margin: 0px       
         font-weight: 700         
         text-align: left    

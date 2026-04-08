@@ -80,7 +80,7 @@ const getTokenDeathTimeValue = (exp) => {
   return `${accessTokenDeathTime.toLocaleTimeString()} часов, ${accessTokenDeathTime.getDate()} ${MONTHS[accessTokenDeathTime.getMonth()]} ${accessTokenDeathTime.getFullYear()} г.`;
 };
 
-const fetchAuthRequest = async (spinner, method, payload) => {
+async function fetchAuthRequest(spinner, method, payload) {
   spinner.classList.toggle("active");
   let res = await Api[method](payload);
   spinner.classList.toggle("active");

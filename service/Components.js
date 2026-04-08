@@ -361,7 +361,6 @@ class Components {
     `;
   }
   FORM(elements, submitValue) {
-        
     return `
     <form class='authForm'>
       <div class="authForm-logo">
@@ -463,20 +462,16 @@ href='${`#item-${id}`}'
     const isAccessTokenExpired = Date.now() > new Date(user.exp * 1000);
 
     return `
-      <section class="app-section accessTokenSection">    
+      <section class="app-section accessToken-section">    
         <h3>Текущий токен:</h3>
         ${this.COPY_BAR()}
-        <li class="accessTokenSection-li">
-          <code class="accessTokenSection-value"> ${user.accessToken}</code>
+        <li class="accessToken-section-li">
+          <code class="accessToken-section-value"> ${user.accessToken}</code>
         </li>
-        <form action="" class='accessTokenSection-form'>
+        <form action="" class='accessToken-section-form'>
           <fieldset>
             <legend>Время истечения токена:</legend>
-            <p>
-              <strong>
-              ${getTokenDeathTimeValue(user?.exp)} 
-              </strong>
-            </p>
+            <p> ${getTokenDeathTimeValue(user?.exp)} </p>
             <p>              
               <button class="btn btn-success refresh" title="перезапустить" ${isAccessTokenExpired ? "" : "disabled"}>
                 <div class="">
@@ -488,18 +483,26 @@ href='${`#item-${id}`}'
           </fieldset>
         </form>
       </section>
-      <section class="app-section userSection">
-        <h3>Данные пользователя:</h3>        
-        <p>Имя пользователя: <code>${user?.login}</code></p>
-        <p>ID пользователя: <code>${user?.id}</code></p>
+      <section class="app-section user-section">
+        <h3>Данные пользователя:</h3>
+        <div class="user-section-data">
+          <p>Имя пользователя: <code>${user?.login}</code></p>
+          <p>ID пользователя: <code>${user?.id}</code></p>
+        </div>       
       </section>
-      <section class="app-section logoutSection">
-      <button class="btn btn-danger logout" title="перезапустить">
-        <div class="">
-         <span class="material-icons-round"> logout </span></div>
-          выйти
-        </button>
-      </section>   
+      <section class="app-section logout-section">
+        <p class="logout-section-logoutBtn">
+          <button class="btn btn-danger" title="перезапустить">        
+            <span class="material-icons-round"> logout </span>
+            выйти
+          </button>
+        </p>      
+      </section>
+      <div class='spinner'>
+        <div class='spinner-circle1'></div>
+        <div class='spinner-circle2'></div>
+        <div class='spinner-circle3'></div>
+      </div>         
     `;
   }
 }

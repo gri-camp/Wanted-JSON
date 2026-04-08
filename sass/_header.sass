@@ -63,22 +63,28 @@
 
 	&-menu
 		position: fixed
-		width: 12.5%
+		width: max-content
 		left: var(--app-lg-spacing)
 		top: var(--app-lg-spacing)
 		z-index: 4
 		color: var(--app-dark-color)
-		background: var(--app-dark-bg)
+		background: $app-features-card-bg
 		display: none
 		list-style-type: none		
 		border-radius: 0px var(--app-sm-spacing) var(--app-sm-spacing) 0px
 		box-shadow: $app-card-shadow
-
+		font-size: 1.2em
+		padding: var(--app-lg-spacing)
+		
 		li
 			padding: var(--app-sm-spacing) 0
+			font-variant: small-caps
+
+			span
+				font-variant: normal
 			
 			&:first-child
-				margin-top: 2.8rem
+				margin-top: 2.5rem
 
 				&::before
 					content: '',
@@ -101,7 +107,7 @@
 		cursor: pointer
 		transition: all linear 0.2s
 		font-weight: 700
-		letter-spacing: 1.5px
+		letter-spacing: 1px
 
 	&:hover .user-menu
 		display: block

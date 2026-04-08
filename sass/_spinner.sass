@@ -9,7 +9,7 @@
     height: 20px
     margin: 20px
     --size: 20px
-    --largeSize: 40px
+    --largeSize: 30px
     --color: var(--app-danger-color)
     --speed: 1.5s
     --padding: 10px
@@ -21,6 +21,10 @@
         width: var(--largeSize)
         height: var(--largeSize)
         top: -10px
+
+    
+    &.active
+        display: flex    
 
     &-circle1 
         animation: var(--speed) ease-in-out 0s infinite inlarge1
@@ -36,8 +40,6 @@
         animation: var(--speed) ease-in-out infinite inlarge3
         left: calc(var(--largeSize) * 2 + var(--padding) * 2)
 
-    &.active
-        display: flex
         
 
 @keyframes inlarge1 
