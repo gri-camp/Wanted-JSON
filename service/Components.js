@@ -471,7 +471,7 @@ href='${`#item-${id}`}'
         <form action="" class='accessToken-section-form'>
           <fieldset>
             <legend>Время истечения токена:</legend>
-            <p> ${getTokenDeathTimeValue(user?.exp)} </p>
+            <p class='accessToken-section-tokenDeathTimeElem'> ${getTokenDeathTimeValue(user?.exp)} </p>
             <p>              
               <button class="btn btn-success refresh" title="перезапустить" ${isAccessTokenExpired ? "" : "disabled"}>
                 <div class="">

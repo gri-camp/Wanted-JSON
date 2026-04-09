@@ -43,7 +43,7 @@ class Profile {
     );
     this.refreshButton = this.accessTokenSection.querySelector(".refresh");
     this.accessTokenDeathTimeElem = this.accessTokenSection.querySelector(
-      ".accessToken-section-form strong",
+      ".accessToken-section-tokenDeathTimeElem",
     );
     this.logoutButton = container.querySelector(".logout-section button");
     this.spinner = container.querySelector(".spinner");
@@ -91,7 +91,7 @@ class Profile {
 
   observer() {
     this.subscribers.push(
-      (accessTokenValueElem, accessTokenDeathTimeElem, user) => {
+      (accessTokenValueElem, accessTokenDeathTimeElem, user) => {        
         accessTokenValueElem.textContent = user?.accessToken;
         accessTokenDeathTimeElem.textContent = getTokenDeathTimeValue(
           user?.exp,
