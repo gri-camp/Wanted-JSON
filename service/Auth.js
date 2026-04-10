@@ -1,5 +1,6 @@
 // utils
 import {
+  debouncer,
   draw,
   fetchAuthRequest,
   getActualUserAuthParams,
@@ -36,6 +37,7 @@ class Auth {
     this.spinner = null;
     this.userLogout = document.querySelector(".user-menu-logout");
     // ! LOGIC PROPS -----
+    this.debouncedFormFilling = debouncer(this.formFilling, 300);
     this.elements = elements;
     this.formType = formType;
     if (this.formType === "signin") {
@@ -73,7 +75,7 @@ class Auth {
 
   template(container, component, elements, actionTrigger, formType) {
     this.render(container, component, elements)
-      .addChangeListener()
+      .addInputListener()
       .addSubmitListener()
       .addClickListenerToContainer();
 
@@ -97,7 +99,7 @@ class Auth {
     return this;
   }
 
-  addChangeListenerHandler = (e) => {
+  formFilling = (e) => {
     const { name, value } = e.target;
 
     const elemData = this.elements.find((ed) => ed.name === name);
@@ -117,10 +119,10 @@ class Auth {
       : (this.submitBtn.disabled = true);
 
     console.log(this.state);
-  };
+  }
 
-  addChangeListener() {
-    this.form?.addEventListener("change", this.addChangeListenerHandler);
+  addInputListener() {
+    this.form?.addEventListener("input", (e) => this.debouncedFormFilling(e));
     return this;
   }
 

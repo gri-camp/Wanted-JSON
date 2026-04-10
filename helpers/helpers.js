@@ -85,10 +85,22 @@ async function fetchAuthRequest(spinner, method, payload) {
   let res = await Api[method](payload);
   spinner.classList.toggle("active");
   return res;
+}
+
+const debouncer = (cb, delay) => {
+  let timer = null;
+
+  return (...args) => {
+    if (timer) {
+      clearTimeout(timer);
+    }
+    timer = setTimeout(() => cb(...args), delay)
+  };
 };
 
 export {
   copy,
+  debouncer,
   draw,
   fetchAuthRequest,
   generateResByid,
