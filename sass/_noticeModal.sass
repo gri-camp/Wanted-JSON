@@ -12,8 +12,10 @@
     font-family: 'FiraCode', serif    
     box-shadow: $app-card-shadow
     border-radius: var(--app-md-spacing)
-    transition: 0.4s all linear
-    text-align: right
+    transition: 0.4s all linear  
+    @include flex-default
+    justify-content: space-between
+    gap: 0.5rem
             
     &.active
         transform: translateX(0%)
@@ -23,8 +25,7 @@
         @include flex-default        
         width: max-content 
         font-size: inherit
-        cursor: pointer
-        margin-left: auto
+        cursor: pointer        
 
         &:hover
             color: var(--app-success-color)
@@ -32,4 +33,5 @@
     &-text
         margin: 0px       
         font-weight: 700         
-        text-align: left    
+        text-align: left
+        width: 95%    

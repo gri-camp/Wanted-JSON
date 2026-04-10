@@ -17,3 +17,5 @@ draw(FOOTER, Components.FOOTER());
 
 // !Отрисовка Профайла пользователя:
 Profile.isUserSignedIn() && Profile.template();
+
+

@@ -20,7 +20,7 @@ class Profile {
     this.accessTokenDeathTimeElem = null;
     this.refreshButton = null;
     this.accessTokenValueElem = null;
-    this.spinner = null;
+    this.spinner = this.container.querySelector(".spinner");
     this.logoutButton = null;
     this.subscribers = [];
     this.user = getDataFromLS("user");
@@ -28,7 +28,9 @@ class Profile {
 
   async template() {
     this.observer();
-    // await this.getActualUserParams();
+    this.spinner.classList.toggle("active");
+    await this.getActualUserParams();
+    this.spinner.classList.toggle("active");
     this.render(this.container, this.user);
     this.addListenerToContainer();
     this.addListenerToLogoutButton();
@@ -46,7 +48,6 @@ class Profile {
       ".accessToken-section-tokenDeathTimeElem",
     );
     this.logoutButton = container.querySelector(".logout-section button");
-    this.spinner = container.querySelector(".spinner");
   }
 
   isUserSignedIn() {
@@ -78,6 +79,7 @@ class Profile {
       this.subscribers.forEach((fn) =>
         fn(this.accessTokenValueElem, this.accessTokenDeathTimeElem, this.user),
       );
+      this.refreshButton.disabled = true;
     }
   }
 
@@ -91,7 +93,7 @@ class Profile {
 
   observer() {
     this.subscribers.push(
-      (accessTokenValueElem, accessTokenDeathTimeElem, user) => {        
+      (accessTokenValueElem, accessTokenDeathTimeElem, user) => {
         accessTokenValueElem.textContent = user?.accessToken;
         accessTokenDeathTimeElem.textContent = getTokenDeathTimeValue(
           user?.exp,
@@ -106,7 +108,7 @@ class Profile {
       this.spinner.classList.toggle("active");
       await Auth.cleanUserData();
       this.spinner.classList.toggle("active");
-      location.replace("./main.html");
+      setTimeout(() => location.replace("./main.html"), 1000);
     };
   }
 }

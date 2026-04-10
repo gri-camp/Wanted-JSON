@@ -2,7 +2,9 @@ import { API_CONSTS } from "../models/models.js";
 
 const Requests = {
   getEntities: (endpoint) => `
-<code>const getEntities = <span class='danger'>async</span>(<span class='success'>endpoint</span>) => {
+<code>const <span class='danger'>accessToken</span> = localStorage.getItem('access_token');
+
+const getEntities = <span class='danger'>async</span>(<span class='success'>endpoint</span>) => {
 
     <span class='danger'>try</span> {
 
@@ -10,6 +12,8 @@ const Requests = {
 
             headers: {
                 "Content-Type": "application/json",
+
+                "Authorization": \`Bearer <span class='danger'>\${accessToken}</span>\`,
             },
         });
 
@@ -29,14 +33,14 @@ const Requests = {
     
 getEntities(<span class='success'>'${endpoint}'</span>);
 </code>`,
-  getEntitiesQS: (endpoint) => `
+  getEntitiesQS: (endpoint) => `  
 <code>const getEntities = <span class='danger'>async</span>(<span class='success'>endpoint</span>, <span class='success'>qs</span>) => {
 
     <span class='danger'>try</span> {
 
         <span class='danger'>let</span> res = <span class='danger'>await</span> <span class='primary'>fetch</span>(\`https://${API_CONSTS.HOST}/<span class='success'>\${endpoint}</span>?<span class='success'>\${qs}</span>\`, {
             headers: {
-                "Content-Type": "application/json",
+                "Content-Type": "application/json",                
             },
         });
 
@@ -56,14 +60,14 @@ getEntities(<span class='success'>'${endpoint}'</span>);
     
 getEntities(<span class='success'>'${endpoint}'</span>, <span class='success'>'page=2&limit=5'</span>);
 </code>`,
-  getSearchedEntity: (endpoint) => `
+  getSearchedEntity: (endpoint) => `  
 <code>const getSearchedEntity = <span class='danger'>async</span>(<span class='success'>endpoint</span>, <span class='success'>q</span>) => {
 
     <span class='danger'>try</span> {
 
         <span class='danger'>let</span> res = <span class='danger'>await</span> <span class='primary'>fetch</span>(\`https://${API_CONSTS.HOST}/<span class='success'>\${endpoint}</span>?q=<span class='success'>\${q}</span>\`, {
             headers: {
-                "Content-Type": "application/json",
+                "Content-Type": "application/json",                
             },
         });
 
@@ -93,7 +97,7 @@ getSearchedEntity(<span class='success'>'${endpoint}'</span>, <span class='succe
             method: "POST",
 
             headers: {
-                "Content-Type": "application/json",
+                "Content-Type": "application/json",                
             },
 
             body: JSON.stringify(<span class='success'>body</span>),
@@ -126,7 +130,7 @@ addEntity(<span class='success'>'${endpoint}'</span>, <span class='success'>newE
             method: "DELETE",
 
             headers: {
-                "Content-Type": "application/json",
+                "Content-Type": "application/json",                
             }  
 
         });
@@ -157,7 +161,7 @@ deleteEntity(<span class='success'>'${endpoint}'</span>, <span class='success'>6
             method: "PATCH",
 
             headers: {
-                "Content-Type": "application/json",
+                "Content-Type": "application/json",                
             },
             body: JSON.stringify(<span class='success'>body</span>),  
 
@@ -179,14 +183,14 @@ deleteEntity(<span class='success'>'${endpoint}'</span>, <span class='success'>6
     
 updateEntity(<span class='success'>'${endpoint}'</span>, <span class='success'>6</span>, <span class='success'>changedData</span>)
 </code>`,
-  getSingleEntity: (endpoint, styles = "") => `
+  getSingleEntity: (endpoint, styles = "") => `  
 <code>const getSingleEntity = <span class='danger'>async</span>(<span class='success'>endpoint</span>, <span class='success'>id</span>) => {
 
     <span class='danger'>try</span> {
 
         <span class='danger'>let</span> res = <span class='danger'>await</span> <span class='primary'>fetch</span>(\`https://${API_CONSTS.HOST}/<span class='success'>\${endpoint}</span>/<span class='success'>\${id}</span>\`, {            
             headers: {
-                "Content-Type": "application/json",
+                "Content-Type": "application/json",                
             }            
         });
 
@@ -350,9 +354,7 @@ fakeSignIn(<span class='success'>'signin'</span>, <span class='success'>{login: 
             method: 'POST',
 
             headers: {
-                "Content-Type": "application/json",
-
-                "Authorization": \`Bearer <span class='success'>\${accessToken}</span>\`,
+                "Content-Type": "application/json",                
             },
 
             credentials: "include",
@@ -410,3 +412,4 @@ refresh()
 };
 
 export { Requests };
+

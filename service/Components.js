@@ -375,20 +375,15 @@ class Components {
             type === "checkbox"
               ? `
               <div class='authForm-agreementTrigger'>
-                <input type='${type}' name="${name}" placeholder="${placeholder}" 
-                ${type === "submit" ? `value='${submitValue}' disabled readonly` : ""}
-                ${type === "password" ? "autocomplete='new-password'" : ""}
-                ${type === "text" ? "autocomplete='username'" : ""}
+                <input type='${type}' name="${name}" id='${name}' placeholder="${placeholder}" 
                 tabindex="${tabindex}"/>
                 Согласие на обработку персональных данных
               </div>
             `
               : `
-            <input type='${type}' name="${name}" placeholder="${placeholder}" 
-              ${type === "submit" ? `value='${submitValue}' disabled readonly` : ""}
-              ${type === "password" ? "autocomplete='new-password'" : ""}
-              ${type === "text" ? "autocomplete='username'" : ""}
-              tabindex="${tabindex}"/>
+            <input type='${type}' name="${name}" placeholder="${placeholder}" id='${name}' autocomplete='on'
+            ${type === "submit" ? `value='${submitValue}' disabled readonly` : ""} 
+            tabindex="${tabindex}"/>
             `
           }          
           <span class="authForm-error">${errorMsg}</span>
@@ -405,11 +400,11 @@ class Components {
 
   NOTICE_MODAL(msg, style = "") {
     return `
-    <section class="noticeModal" id="noticeModal" style='${style}'>      
+    <section class="noticeModal" id="noticeModal" style='${style}'>        
+      <p class="section-text noticeModal-text">${msg}</p>
       <div class="noticeModal-exit danger">
         <span class="material-icons-round">close</span>
-      </div>      
-      <p class="section-text noticeModal-text">${msg}</p>
+      </div>    
     </section>`;
   }
 
@@ -498,11 +493,7 @@ href='${`#item-${id}`}'
           </button>
         </p>      
       </section>
-      <div class='spinner'>
-        <div class='spinner-circle1'></div>
-        <div class='spinner-circle2'></div>
-        <div class='spinner-circle3'></div>
-      </div>         
+            
     `;
   }
 }
