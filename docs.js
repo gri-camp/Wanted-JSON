@@ -29,9 +29,9 @@ try {
   const deleteEntityDesc = document.querySelector("#deleteEntityDesc");
   const updateEntityDesc = document.querySelector("#updateEntityDesc");
   const FOOTER = document.querySelector(".footer");
-
-  const endPointName = document.querySelector(".endpoint");
-  endPointName.textContent = endPoint;
+  
+  const endPointElem = document.querySelector(".endpoint");
+  endPointElem.textContent = endPoint;
 
   // Подключаем тему:
   new Theme({ trigger: ".theme", root: ROOT });

@@ -28,6 +28,17 @@ class Components {
     </nav>    
         `;
   }
+  USER_MENU({ icon, text, cls }) {
+    return `
+      <li>
+        <div class="${cls}">
+          <span class="material-icons-round"> ${icon} </span>
+          ${text}
+        </div>
+      </li>    
+        `;
+  }
+
   REQUEST_CARD_MAIN_PAGE = (
     { id, title, method, url, cls = "" },
     host,
@@ -71,6 +82,27 @@ class Components {
         <p class="features-card-text">${text}</p>
     </article>
     `;
+
+  QUIZ_LINK = ({ href, header }) => `
+    <a href="${href}" class="danger quiz-link" rel="noopener">
+      <article>
+        <h3>
+          ${header}
+        </h3>
+      </article>
+    </a>
+    `;
+
+  GETTING_STARTED_CARD = ({ icon, text, title }) => `
+    <article class="gettingStarted-card">
+        <div class="gettingStarted-flex">
+          <div class="icon-box">${icon}</div>
+          <p class="gettingStarted-card-title">${title}</p>   
+        </div>             
+        <p class="gettingStarted-card-text">${text}</p>
+    </article>
+    `;
+
   ENTITIES_LINK = ({ href, endpoint, icon }) => `
     <a class="entities-card" href="${href}" rel="noopener noreferrer">
         <button class="btn btn-entity">

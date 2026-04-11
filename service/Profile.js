@@ -29,7 +29,7 @@ class Profile {
   async template() {
     this.observer();
     this.spinner.classList.toggle("active");
-    await this.getActualUserParams();
+    // await this.getActualUserParams();
     this.spinner.classList.toggle("active");
     this.render(this.container, this.user);
     this.addListenerToContainer();

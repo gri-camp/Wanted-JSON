@@ -18,6 +18,8 @@ const API_CONSTS = {
 };
 
 const ROOT = document.documentElement;
+const ARROW =
+  '<div class="icon-box"><span class="material-icons-round arrow">east</span></div>';
 
 const MONTHS = [
   "Январь",
@@ -246,6 +248,35 @@ const FEATURES_CARD_LIST = [
   // },
 ];
 
+const GETTING_STARTED_CARD_LIST = [
+  {
+    icon: `<span class="material-icons-round">app_registration</span>`,
+    text: `Зарегистрируйся, заполнив простую форму!`,
+    title: "1. Регистрирация",
+  },
+  {
+    icon: `<span class="material-icons-round">login</span>`,
+    text: `Пройди авторизацию и перейди в свой профиль`,
+    title: "2. Авторизация",
+  },
+  {
+    icon: `<span class="material-icons-round">token</span>`,
+    text: `Скопируй токен доступа для совершения запросов к REST API - <a href='#documentation' rel="noopener noreferrer"> раздел документация </a>`,
+    title: "3. Access-токен",
+  },
+];
+
+const QUIZ_LINK_LIST = [
+  {
+    href: `./quiz.html#http`,
+    header: `основы <abbr title="англ. Hypertext Transfer Protocol - протокол передачи гипертекста">HTTP</abbr>-протокола?`,
+  },
+  {
+    href: `./quiz.html#js`,
+    header: `базовый <abbr title="англ. JavaScript - мультипарадигменный язык программирования с динамической типизацией">JavaScript</abbr>?`,
+  },
+];
+
 const ENTITIES_LIST = [
   {
     href: `./docs.html?endpoint=${API_CONSTS.BOOKS}`,
@@ -356,8 +387,8 @@ const HOMEPAGE_MENU_LIST = [
     text: `примеры`,
   },
   {
-    href: `#documentation`,
-    text: `дока`,
+    href: `#quiz`,
+    text: `тестирование`,
   },
   {
     href: `customers`,
@@ -399,6 +430,19 @@ const DOCSPAGE_MENU_LIST = [
     text: `обновление`,
   },
 ];
+
+const USER_MENU_LIST = [
+  {
+    icon: `face`,
+    text: `профиль`,
+    cls: 'user-menu-profile'
+  },
+  {
+    icon: `logout`,
+    text: `выйти`,
+    cls: 'user-menu-logout'
+  },
+]
 
 const DOCUMENTATION_LIST = [
   {
@@ -722,16 +766,20 @@ const SIGN_IN_FORM_ELEMS_LIST = [
 
 export {
   API_CONSTS,
+  ARROW,
   AUTH_ENDPOINTS,
   DOCSPAGE_MENU_LIST,
   DOCUMENTATION_LIST,
+  QUIZ_LINK_LIST,
   ENTITIES_LIST,
   EXAMPLES_LIST,
   FEATURES_CARD_LIST,
   FILTERING_WHITE_LIST,
   getSchemesToolbarConfig,
+  GETTING_STARTED_CARD_LIST,
   HOMEPAGE_MENU_LIST,
   MONTHS,
+  USER_MENU_LIST,
   POST_REQUIRED_FIELDS,
   REQUEST_CARD_LIST,
   ROOT,

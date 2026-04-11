@@ -1,0 +1,53 @@
+.gettingStarted
+
+	&-container
+		@include flex-default
+		font-size: 1.1em
+		flex-direction: column
+		gap: 1rem		
+
+	&-card
+		width: 60%
+		padding: var(--app-lg-spacing)
+		border-radius: var(--app-md-spacing)		
+		display: flex
+		flex-direction: column
+		justify-content: space-between
+		position: relative
+		transition: all 0.25s linear
+		height: 110px		
+		row-gap: var(--app-md-spacing)		
+		border: 1px dotted		
+		color: var(--app-default-color)
+		hyphens: manual
+
+		a
+			color: var(--app-danger-color)
+			cursor: pointer
+			@include linkHover
+
+		
+		&:hover 
+			transform: translateY(-0.5rem)			
+			box-shadow: none
+
+		&-title			
+			text-transform: uppercase			
+			font-weight: 700
+
+		&-text
+
+	.icon-box
+		color: var(--app-success-color)
+		background: none
+		border: 1px dotted inherit
+		padding: 0px		
+			
+
+	&-flex
+		@include flex-default
+		justify-content: flex-start
+		column-gap: var(--app-md-spacing)
+		
+.arrow
+	transform: rotateZ(90deg)						

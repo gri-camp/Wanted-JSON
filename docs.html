@@ -33,14 +33,24 @@
       <section class="app-section">
         <h1 class="h1">Документация для работы с REST API.</h1>
         <p class="section-text">
-          Ниже описаны схемы <strong>запросов, ответов и ошибок</strong> по
-          эндпоинту <q class="endpoint"></q>. Пример кода для запроса
+          Ниже описаны схемы запросов
+          <span class="material-icons-round schemes-icon">rocket_launch</span>,
+          ответов
+          <span class="material-icons-round schemes-icon">data_object</span> и
+          ошибок <span class="material-icons-round schemes-icon">error</span> по
+          эндпоинту: <em class="endpoint"></em>. Пример кода для запроса
           представлен на
           <dfn
             title="язык программирования, в основном используемый для веб-разработки. Позволяет создавать динамичные и интерактивные веб-страницы"
             >JavaScript</dfn
           >, но Вы можете использовать любой язык для обращения к сервису по
           протоколу HTTP.
+        </p>
+        <p class="section-text">
+          Скопируйте <em>accessToken</em> вида:
+          <span class="accessToken">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQ3...</span> на
+          странице профиля пользователя и добавьте его в настройки метода
+          выполнения HTTP-запросов - ниже показаны примеры с <dfn class="success" title="современный способ выполнения HTTP‑запросов в JavaScript. Он пришёл на смену XMLHttpRequest и работает на основе промисов, что делает код асинхронным и читаемым."> Fetch API </dfn>:
         </p>
       </section>
       <!-- SECTION URLS  ////////////////////// -->

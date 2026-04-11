@@ -14,6 +14,10 @@ try {
   
   // Секции и контейнеры:  
   const FOOTER = document.querySelector(".footer");
+  const endPointElem = document.querySelector(".endpoint");
+  
+  
+  endPointElem.textContent = endPoint;
 
   // Подключаем тему:
   new Theme({ trigger: ".theme", root: ROOT });

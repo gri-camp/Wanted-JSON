@@ -31,7 +31,6 @@ class Auth {
     this.textSliceValue = 13;
     this.container = container;
     this.component = component;
-    this.actionTrigger = actionTrigger && document.querySelector(actionTrigger);
     this.form = null;
     this.submitBtn = null;
     this.spinner = null;
@@ -41,15 +40,17 @@ class Auth {
     this.elements = elements;
     this.formType = formType;
     if (this.formType === "signin") {
+      this.actionTrigger = document.querySelector(actionTrigger);
       this.userLogout = document.querySelector(".user-menu-logout");
       this.userProfile = document.querySelector(".user-menu-profile");
       this.userLogin = document.querySelector(".user-login");
-      this.userLogin.textContent =
-        getDataFromLS("user")?.login?.slice(0, this.textSliceValue) ?? "";
-      this.actionTrigger.firstElementChild.textContent = getDataFromLS("user")
-        ?.login
-        ? ""
-        : "login";
+      getDataFromLS("user")?.login
+        ? this.showRegisteredUser(
+            "",
+            getDataFromLS("user").login.slice(0, this.textSliceValue),
+            "add",
+          )
+        : this.showRegisteredUser("login", "", "remove");
     }
     if (this.formType === "signup") {
       this.agreementPopup = null;
@@ -79,7 +80,7 @@ class Auth {
       .addSubmitListener()
       .addClickListenerToContainer();
 
-    actionTrigger &&
+    formType === "signin" &&
       this.addClickListenerToActionTrigger(actionTrigger)
         .addClickListenerToUserLogout()
         .addClickListenerToUserProfile();
@@ -119,7 +120,7 @@ class Auth {
       : (this.submitBtn.disabled = true);
 
     console.log(this.state);
-  }
+  };
 
   addInputListener() {
     this.form?.addEventListener("input", (e) => this.debouncedFormFilling(e));
@@ -187,8 +188,11 @@ class Auth {
   }
 
   signIn({ user, accessToken, exp }) {
-    this.actionTrigger.firstElementChild.textContent = "";
-    this.userLogin.textContent = (user?.login).slice(0, this.textSliceValue);
+    this.showRegisteredUser(
+      "",
+      user.login.slice(0, this.textSliceValue),
+      "add",
+    );
     setDataToLS("user", {
       login: user?.login,
       accessToken,
@@ -198,8 +202,7 @@ class Auth {
   }
 
   async logout() {
-    this.actionTrigger.firstElementChild.textContent = "login";
-    this.userLogin.textContent = "";
+    this.showRegisteredUser("login", "", "remove");
     Auth.cleanUserData();
   }
 
@@ -214,6 +217,12 @@ class Auth {
     this.userLogout.onclick = () => this.logout();
     return this;
   };
+
+  showRegisteredUser(actionTriggerContent, userLoginContent, action) {
+    this.actionTrigger.firstElementChild.textContent = actionTriggerContent;
+    this.userLogin.classList[action]("active");
+    this.userLogin.textContent = userLoginContent;
+  }
 
   addClickListenerToUserProfile = () => {
     this.userProfile.onclick = (e) => {
@@ -261,3 +270,5 @@ class Auth {
 }
 
 export { Auth };
+
+

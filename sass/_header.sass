@@ -107,9 +107,13 @@
 		transition: all linear 0.2s
 		font-weight: 700
 		letter-spacing: 1px
-		// padding: 0.25rem		
+		padding: 0.25rem		
 		border-radius: 0.25rem
 		box-shadow: $app-card-shadow
+		display: none
+
+		&.active
+			display: block
 
 	&:hover .user-menu
 		display: block
