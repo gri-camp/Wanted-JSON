@@ -10,12 +10,10 @@ import Profile from "./service/Profile.js";
 const FOOTER = document.querySelector(".footer");
 
 // Подключаем тему:
-new Theme({ root: ROOT });
+new Theme({ trigger: ".theme", root: ROOT });
 
 // !Отрисовка Подвала:
 draw(FOOTER, Components.FOOTER());
 
 // !Отрисовка Профайла пользователя:
 Profile.isUserSignedIn() && Profile.template();
-
-

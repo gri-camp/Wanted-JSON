@@ -25,7 +25,7 @@ class Auth {
       throw new Error("Invalid 'formType' param!");
     // ! DOM ELEMENTS
     this.notice = new Notice({
-      msg: "AccessToken действует 90 мин. Далее, обновите токен!",
+      msg: "AccessToken действует 90 мин. По истечении этого времени, Вы можете вручную обновить токен, находясь в профиле.",
       Component: Components.NOTICE_MODAL,
     });
     this.textSliceValue = 13;
