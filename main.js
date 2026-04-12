@@ -16,6 +16,7 @@ import {
 // utils:
 import { draw, getHTMLFromList } from "./helpers/helpers.js";
 // service classes:
+import Api from "./service/Api.js";
 import { Auth } from "./service/Auth.js";
 import Components from "./service/Components.js";
 import { Menu } from "./service/Menu.js";
@@ -112,6 +113,9 @@ try {
     formType: "signin",
     actionTrigger: ".signin-icon",
   });
+
+  // Api.getEntities('athletes', 'country=россия')
+  //   .then(a => console.log(a))
 } catch (error) {
   console.warn(error.message, error.name);
 }
