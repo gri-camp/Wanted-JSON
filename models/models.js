@@ -261,7 +261,7 @@ const GETTING_STARTED_CARD_LIST = [
   },
   {
     icon: `<span class="material-icons-round">token</span>`,
-    text: `Скопируй токен доступа для совершения запросов к REST API - <a href='#documentation' rel="noopener noreferrer"> раздел документация </a>`,
+    text: `Скопируй токен доступа для совершения запросов к REST API - пример запроса на странице с <a href='#documentation' rel="noopener noreferrer"> документацией </a>`,
     title: "3. Access-токен",
   },
 ];

@@ -31,7 +31,7 @@ try {
   const FOOTER = document.querySelector(".footer");
   
   const endPointElem = document.querySelector(".endpoint");
-  endPointElem.textContent = endPoint;
+  endPointElem.textContent = "/" + endPoint;
 
   // Подключаем тему:
   new Theme({ trigger: ".theme", root: ROOT });

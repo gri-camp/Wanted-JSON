@@ -11,12 +11,11 @@ import { UpwardButton } from "./service/UpWardButton.js";
 
 try {
   const endPoint = location.search.replace(/^\?endpoint=/, "");
-
   // Секции и контейнеры:
   const FOOTER = document.querySelector(".footer");
 
   const endPointName = document.querySelector(".endpoint");
-  endPointName.textContent = endPoint;
+  endPointName.textContent = "/" + endPoint;
 
   // Подключаем тему:
   new Theme({ trigger: ".theme", root: ROOT });
