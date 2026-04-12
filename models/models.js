@@ -256,7 +256,7 @@ const GETTING_STARTED_CARD_LIST = [
   },
   {
     icon: `<span class="material-icons-round">login</span>`,
-    text: `Пройди авторизацию и перейди в свой профиль`,
+    text: `Пройди авторизацию и перейди в свой профиль ⬆️`,
     title: "2. Авторизация",
   },
   {
