@@ -229,7 +229,7 @@ const Responses = {
         gender: "мужской",
         height: 188,
         nationality: 'Серб',
-        position: 'shooting guard',
+        position: null,
         currentTeam: null,
         mainAchievements: <span class='purple'>[</span>"24 титула Большого шлема", "100 побед на турнирах АТР", "10 побед на Australian Open", "40 титулов на «Мастерсах»", "7 побед на Уимблдоне"<span class='purple'>]</span>,          
         annualSalary: 32000000.00,
@@ -315,9 +315,9 @@ const Responses = {
 
 <strong class='purple'>{</strong>    
     id: 33,        
-    fullName: "A.T. Reaves", <span class="danger">*</span>
-    sport: "basketball", <span class="danger">*</span>
-    country: 'USA', <span class="danger">*</span>
+    fullName: "Остин Ривз", <span class="danger">*</span>
+    sport: "баскетбол", <span class="danger">*</span>
+    country: 'США', <span class="danger">*</span>
     age: 27, <span class="danger">*</span>                
     olympics: null,
     brandAmbassador: 'TravisMathew, Rigorer',
@@ -342,7 +342,7 @@ const Responses = {
     gender: "мужской",
     height: 188,
     nationality: 'Серб',
-    position: 'shooting guard',
+    position: null,
     currentTeam: null,
     mainAchievements: <span class='purple'>[</span>"24 титула Большого шлема", "100 побед на турнирах АТР", "10 побед на Australian Open", "40 титулов на «Мастерсах»", "7 побед на Уимблдоне"<span class='purple'>]</span>,          
     annualSalary: 32000000.00,
