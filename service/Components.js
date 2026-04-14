@@ -401,30 +401,24 @@ class Components {
       <h2 class='authForm-title'>wanted json</h2>
       ${getHTMLFromList(
         elements,
-        ({ type, placeholder, name, errorMsg, tabindex }, i) => `
-        <p>
-          ${
-            type === "checkbox"
-              ? `
-              <div class='${name}'>
-                <input type='${type}' name="${name}" id='${name}' placeholder="${placeholder}" 
-                tabindex="${tabindex}"/>
-                ${placeholder}
-              </div>
-            ` : `
-            ${
-              name === "password"
-                ? `<span class="material-icons-round authForm-visibility">visibility</span>`
-                : ""
-            }
-            <input type='${type}' name="${name}" placeholder="${placeholder}" id='${name}' autocomplete='on'
-            ${type === "submit" ? `value='${submitValue}' disabled readonly` : ""}            
-            tabindex="${tabindex}" ${!i && "autofocus"}/>             
-            `
-          }          
-          <span class="authForm-error">${errorMsg}</span>
-        </p>
-        `,
+        ({ type, placeholder, name, errorMsg, tabindex }, i) =>
+          type === "checkbox"
+            ? `<div class='${name}'>
+                  <input type='${type}' name="${name}" id='${name}' placeholder="${placeholder}" 
+                  tabindex="${tabindex}">
+                  <span class="${name === 'agreement' ? 'agreement-trigger' : ''}">${placeholder}</span>
+                </div>`
+            : `<div>
+                ${
+                  name === "password"
+                    ? `<span class="material-icons-round authForm-visibility">visibility</span>`
+                    : ""
+                }
+                <input type='${type}' name="${name}" placeholder="${placeholder}" id='${name}' autocomplete='on'
+                ${type === "submit" ? `value='${submitValue}' disabled readonly` : ""}            
+                tabindex="${tabindex}" ${!i && "autofocus"}/>                  
+                <span class="authForm-error">${errorMsg}</span>
+              </div>`,
       )}
       <div class='spinner'>
         <div class='spinner-circle1'></div>

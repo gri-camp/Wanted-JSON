@@ -173,7 +173,7 @@ class Auth {
   }
 
   addClickListenerToContainerHandler = (e) => {
-    if (e.target.matches(".agreement"))
+    if (e.target.matches(".agreement-trigger"))
       return this.agreementPopup.classList.toggle("active");
 
     if (!e.target.closest("form") && this.formType === "signin")

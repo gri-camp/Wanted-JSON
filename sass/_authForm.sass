@@ -9,10 +9,13 @@
     box-shadow: 0.5px 0.5px 1.5px var(--app-darken-color) 
     position: relative
 
+    div
+        position: relative
+        margin-bottom: calc(var(--app-lg-spacing) * 2.8)
+
     input 
         font-size: 1.1em
-        box-shadow: 0.5px 0.5px 1.5px var(--app-darken-color), -0.5px -0.5px 1.5px var(--app-darken-color) 
-        margin: var(--app-lg-spacing) 0px   
+        box-shadow: 0.5px 0.5px 1.5px var(--app-darken-color), -0.5px -0.5px 1.5px var(--app-darken-color)         
 
     &-logo
         width: 50px
@@ -28,7 +31,8 @@
         position: relative
         top: -0.5rem              
     
-    &-error  
+    &-error
+        line-height: 130%  
         display: inline-block
         width: 100%
         color: var(--app-danger-color)        
@@ -37,6 +41,9 @@
         text-align: center  
         font-weight: 500
         height: auto
+        position: absolute
+        left: 0px
+        top: 107.5%        
 
         &.active
             display: block
@@ -61,16 +68,17 @@
         justify-content: flex-start
         font-size: 0.8em
         cursor: pointer
+        margin-bottom: var(--app-lg-spacing)
+
+        span
+            width: 92%
 
         input
             @include checkbox
             box-shadow: none
 
         &:hover 
-            color: var(--app-success-color)
-
-    p
-        position: relative        
+            color: var(--app-success-color)        
 
     &-visibility
         position: absolute
