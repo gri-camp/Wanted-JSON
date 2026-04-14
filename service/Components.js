@@ -401,21 +401,25 @@ class Components {
       <h2 class='authForm-title'>wanted json</h2>
       ${getHTMLFromList(
         elements,
-        ({ type, placeholder, name, errorMsg, tabindex }) => `
+        ({ type, placeholder, name, errorMsg, tabindex }, i) => `
         <p>
           ${
             type === "checkbox"
               ? `
-              <div class='authForm-agreementTrigger'>
+              <div class='${name}'>
                 <input type='${type}' name="${name}" id='${name}' placeholder="${placeholder}" 
                 tabindex="${tabindex}"/>
-                Согласие на обработку персональных данных
+                ${placeholder}
               </div>
-            `
-              : `
+            ` : `
+            ${
+              name === "password"
+                ? `<span class="material-icons-round authForm-visibility">visibility</span>`
+                : ""
+            }
             <input type='${type}' name="${name}" placeholder="${placeholder}" id='${name}' autocomplete='on'
-            ${type === "submit" ? `value='${submitValue}' disabled readonly` : ""} 
-            tabindex="${tabindex}"/>
+            ${type === "submit" ? `value='${submitValue}' disabled readonly` : ""}            
+            tabindex="${tabindex}" ${!i && "autofocus"}/>             
             `
           }          
           <span class="authForm-error">${errorMsg}</span>
@@ -500,7 +504,7 @@ href='${`#item-${id}`}'
             <legend>Время истечения токена:</legend>
             <p class='accessToken-section-tokenDeathTimeElem'> ${getTokenDeathTimeValue(user?.exp)} </p>
             <p>              
-              <button class="btn btn-success refresh" title="перезапустить" ${isAccessTokenExpired ? "" : "disabled"}>
+              <button class="btn btn-success refresh" title="обновить токен" ${isAccessTokenExpired ? "" : "disabled"}>
                 <div class="">
                   <span class="material-icons-round"> restart_alt </span>
                 </div>
@@ -519,7 +523,7 @@ href='${`#item-${id}`}'
       </section>
       <section class="app-section logout-section">
         <p class="logout-section-logoutBtn">
-          <button class="btn btn-danger" title="перезапустить">        
+          <button class="btn btn-danger" title="выйти из системы">        
             <span class="material-icons-round"> logout </span>
             выйти
           </button>

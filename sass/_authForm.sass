@@ -33,7 +33,7 @@
         width: 100%
         color: var(--app-danger-color)        
         display: none
-        font-size: 0.77em
+        font-size: 0.8em
         text-align: center  
         font-weight: 500
         height: auto
@@ -55,11 +55,11 @@
         p
             margin: var(--app-lg-spacing)  
 
-    &-agreementTrigger            
+    .agreement, .notification         
         @include flex-default
         gap: 0.75rem
         justify-content: flex-start
-        font-size: 0.93em
+        font-size: 0.8em
         cursor: pointer
 
         input
@@ -68,5 +68,18 @@
 
         &:hover 
             color: var(--app-success-color)
+
+    p
+        position: relative        
+
+    &-visibility
+        position: absolute
+        top: 50%
+        transform: translateY(-50%)
+        right: var(--app-lg-spacing)        
+        cursor: pointer
+
+        &.active
+            color: var(--app-success-color) 
 
     

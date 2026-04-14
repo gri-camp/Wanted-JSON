@@ -273,7 +273,7 @@ const QUIZ_LINK_LIST = [
   },
   {
     href: `./quiz.html#js`,
-    header: `базовый <abbr title="англ. JavaScript - мультипарадигменный язык программирования с динамической типизацией">JavaScript</abbr>?`,
+    header: `основы языка <abbr title="англ. JavaScript - мультипарадигменный язык программирования с динамической типизацией">JavaScript</abbr>?`,
   },
 ];
 
@@ -435,14 +435,14 @@ const USER_MENU_LIST = [
   {
     icon: `face`,
     text: `профиль`,
-    cls: 'user-menu-profile'
+    cls: "user-menu-profile",
   },
   {
     icon: `logout`,
     text: `выйти`,
-    cls: 'user-menu-logout'
+    cls: "user-menu-logout",
   },
-]
+];
 
 const DOCUMENTATION_LIST = [
   {
@@ -696,15 +696,16 @@ const POST_REQUIRED_FIELDS = {
 const SIGN_UP_FORM_ELEMS_LIST = [
   {
     type: "text",
-    placeholder: "имя пользователя:",
+    placeholder: "электронная почта:",
     name: "login",
-    errorMsg: "не менее 5 символов: латинские буквы, цифры, '-', '_', '.', '@'",
-    regExp: /^[A-Z0-9-_\.@]{5,}$/i,
-    // regExp: /^[A-Z][A-Z0-9-_]{2,20}$/i,
+    // errorMsg: "не менее 5 символов: латинские буквы, цифры, '-', '_', '.', '@'",
+    errorMsg: "введите корректный адрес электронной почты",
+    // regExp: /^[A-Z0-9-_\.@]{5,}$/i,
+    regExp: /^[A-Z0-9\._-]+@[A-Z0-9-\.]+\.[A-Z]{2,4}$/i,
     tabindex: 1,
   },
   {
-    type: "text",
+    type: "password",
     placeholder: "пароль:",
     name: "password",
     errorMsg: "не менее 8 символов: латинские буквы, цифры, '-', '_'",
@@ -712,20 +713,28 @@ const SIGN_UP_FORM_ELEMS_LIST = [
     tabindex: 2,
   },
   {
-    type: "text",
+    type: "password",
     placeholder: "подтвердить пароль:",
-    name: "password2",
+    name: "confirm_password",
     errorMsg: "не менее 8 символов: латинские буквы, цифры, '-', '_'",
     regExp: /^[A-Z0-9_-]{8,}$/i,
     tabindex: 3,
   },
   {
     type: "checkbox",
-    placeholder: null,
+    placeholder: 'согласие на обработку персональных данных!',
     name: "agreement",
-    errorMsg: "подтвердите на обработку данных!",
+    errorMsg: "подтвердите согласие на обработку персональных данных!",
     regExp: null,
     tabindex: 4,
+  },
+  {
+    type: "checkbox",
+    placeholder: 'согласие на получение уведомлений!',
+    name: "notification",
+    errorMsg: "подтвердите согласие на получение уведомлений!",
+    regExp: null,
+    tabindex: 5,
   },
   {
     type: "submit",
@@ -733,21 +742,23 @@ const SIGN_UP_FORM_ELEMS_LIST = [
     name: "submit",
     errorMsg: null,
     regExp: null,
-    tabindex: 5,
+    tabindex: 6,
   },
 ];
 
 const SIGN_IN_FORM_ELEMS_LIST = [
   {
     type: "text",
-    placeholder: "имя пользователя:",
+    placeholder: "электронная почта:",
     name: "login",
-    errorMsg: "не менее 5 символов: латинские буквы, цифры, '-', '_', '.', '@'",
-    regExp: /^[A-Z0-9-_\.@]{5,}$/i,
+    // errorMsg: "не менее 5 символов: латинские буквы, цифры, '-', '_', '.', '@'",
+    errorMsg: "введите корректный адрес электронной почты",
+    // regExp: /^[A-Z0-9-_\.@]{5,}$/i,
+    regExp: /^[A-Z0-9\._-]+@[A-Z0-9-\.]+\.[A-Z]{2,4}$/i,
     tabindex: 1,
   },
   {
-    type: "text",
+    type: "password",
     placeholder: "пароль:",
     name: "password",
     errorMsg: "не менее 8 символов: латинские буквы, цифры, '-', '_'",
@@ -770,7 +781,6 @@ export {
   AUTH_ENDPOINTS,
   DOCSPAGE_MENU_LIST,
   DOCUMENTATION_LIST,
-  QUIZ_LINK_LIST,
   ENTITIES_LIST,
   EXAMPLES_LIST,
   FEATURES_CARD_LIST,
@@ -779,12 +789,13 @@ export {
   GETTING_STARTED_CARD_LIST,
   HOMEPAGE_MENU_LIST,
   MONTHS,
-  USER_MENU_LIST,
   POST_REQUIRED_FIELDS,
+  QUIZ_LINK_LIST,
   REQUEST_CARD_LIST,
   ROOT,
   SIGN_IN_FORM_ELEMS_LIST,
   SIGN_UP_FORM_ELEMS_LIST,
   SORTING_WHITE_LIST,
   URLS,
+  USER_MENU_LIST,
 };

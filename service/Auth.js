@@ -39,6 +39,7 @@ class Auth {
     this.debouncedFormFilling = debouncer(this.formFilling, 300);
     this.elements = elements;
     this.formType = formType;
+    this.visibility = null;
     if (this.formType === "signin") {
       this.actionTrigger = document.querySelector(actionTrigger);
       this.userLogout = document.querySelector(".user-menu-logout");
@@ -78,7 +79,8 @@ class Auth {
     this.render(container, component, elements)
       .addInputListener()
       .addSubmitListener()
-      .addClickListenerToContainer();
+      .addClickListenerToContainer()
+      .addClickListenerToVisibility(this.visibility);
 
     formType === "signin" &&
       this.addClickListenerToActionTrigger(actionTrigger)
@@ -94,6 +96,7 @@ class Auth {
     this.form = container.querySelector(`.authForm`);
     this.submitBtn = this.form.submit;
     this.spinner = this.form.querySelector(".spinner");
+    this.visibility = this.form.querySelector(".authForm-visibility");
     if (this.formType === "signup") {
       this.agreementPopup = document.querySelector(".authForm-agreemеntPopup");
     }
@@ -131,7 +134,7 @@ class Auth {
     e.preventDefault();
 
     if (
-      this.state.password !== this.state.password2 &&
+      this.state.password !== this.state.confirm_password &&
       this.formType === "signup"
     ) {
       this.submitBtn.nextElementSibling.textContent =
@@ -170,7 +173,7 @@ class Auth {
   }
 
   addClickListenerToContainerHandler = (e) => {
-    if (e.target.matches(".authForm-agreementTrigger"))
+    if (e.target.matches(".agreement"))
       return this.agreementPopup.classList.toggle("active");
 
     if (!e.target.closest("form") && this.formType === "signin")
@@ -249,6 +252,14 @@ class Auth {
     });
   }
 
+  addClickListenerToVisibility(visibility) {
+    visibility.addEventListener("click", function () {      
+      this.nextElementSibling.type =
+        this.nextElementSibling.type === "password" ? "text" : "password";
+      this.classList.toggle('active')  
+    });
+  }
+
   reset(res) {
     this.form.reset();
     this.state = this.getInitState(this.elements);
@@ -270,5 +281,3 @@ class Auth {
 }
 
 export { Auth };
-
-

@@ -16,7 +16,6 @@ import {
 // utils:
 import { draw, getHTMLFromList } from "./helpers/helpers.js";
 // service classes:
-import Api from "./service/Api.js";
 import { Auth } from "./service/Auth.js";
 import Components from "./service/Components.js";
 import { Menu } from "./service/Menu.js";
@@ -119,4 +118,5 @@ try {
 } catch (error) {
   console.warn(error.message, error.name);
 }
+
 
