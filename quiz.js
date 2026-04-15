@@ -14,9 +14,8 @@ const FOOTER = document.querySelector(".footer");
 
 const key = window.location.hash.replace(/^#/, '');
 
-
 //! Подключаем тему:
-new Theme({ root: ROOT });
+new Theme({ root: ROOT, trigger: '.theme' });
 
 // !Отрисовка Теста:
 new Quiz({ list: QUIZ[key], Component: Components.QUIZ_ITEM, key });

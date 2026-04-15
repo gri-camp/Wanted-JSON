@@ -8,6 +8,8 @@ import Components from "./Components.js";
 
 export class Quiz {
   constructor({ list, Component, key }) {
+    this.user = getDataFromLS("user");
+    if (!this.isUserSignedIn()) return false;
     this.container = document.querySelector(".quiz");
     this.restart = document.body.querySelector(".restart");
     this.finish = document.body.querySelector(".finish");
@@ -26,12 +28,21 @@ export class Quiz {
       this.container,
       this.list,
       this.Component,
-      this.userAnswers,      
+      this.userAnswers,
       this.isDone,
     );
     this.addChangeListenerToContainer(this.container);
     this.addEventListenerToRestart(this.restart);
     this.addEventListenerToFinish(this.finish);
+  }
+
+  isUserSignedIn() {
+    if (!this?.user?.accessToken) {
+      document.querySelector('.appContainer').innerHTML = `<h1 class='h1'>Вы не вошли в систему</h1>`;
+      window.setTimeout(() => location.replace("./main.html"), 2000);
+      return false;
+    }
+    return true;
   }
 
   render(Container, list, Component, userAnswers, isDone) {
@@ -83,9 +94,9 @@ export class Quiz {
   addEventListenerToFinish(finish) {
     finish.onclick = () => {
       if (this.isDone) return false;
-      
+
       const skipped = this.list.find(({ id }) => !this.userAnswers[id]);
-      if (skipped) {        
+      if (skipped) {
         setTimeout(
           () =>
             this.container.querySelector(`#item-${skipped.id}`).scrollIntoView({
@@ -127,7 +138,7 @@ export class Quiz {
       this.container,
       this.list,
       this.Component,
-      this.userAnswers,      
+      this.userAnswers,
       this.isDone,
     );
     this.printResult(Components.QUIZ_RESULT(this.userResult, this.list));
@@ -137,5 +148,3 @@ export class Quiz {
     this.output.innerHTML = msg;
   }
 }
-
-
