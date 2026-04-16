@@ -275,6 +275,10 @@ const QUIZ_LINK_LIST = [
     href: `./quiz.html#js`,
     header: `основы языка <abbr title="англ. JavaScript - мультипарадигменный язык программирования с динамической типизацией">JavaScript</abbr>?`,
   },
+  {
+    href: `./quiz.html#css`,
+    header: `основы языка <abbr title="англ. Cascading Style Sheets - язык стилей, используемый для описания внешнего вида веб‑страниц">CSS</abbr>?`,
+  },
 ];
 
 const ENTITIES_LIST = [
