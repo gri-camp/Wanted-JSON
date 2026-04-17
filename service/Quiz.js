@@ -4,12 +4,14 @@ import {
   getHTMLFromList,
   setDataToLS,
 } from "../helpers/helpers.js";
+// services
 import Components from "./Components.js";
+import { Profile } from "./Profile.js";
 
 export class Quiz {
   constructor({ list, Component, key }) {
     this.user = getDataFromLS("user");
-    if (!this.isUserSignedIn()) return false;
+    if (!Profile.isUserSignedIn(document.querySelector('.appContainer'), 'quiz')) return false;
     this.container = document.querySelector(".quiz");
     this.restart = document.body.querySelector(".restart");
     this.finish = document.body.querySelector(".finish");
@@ -36,14 +38,6 @@ export class Quiz {
     this.addEventListenerToFinish(this.finish);
   }
 
-  isUserSignedIn() {
-    if (!this?.user?.accessToken) {
-      document.querySelector('.appContainer').innerHTML = `<h1 class='h1'>Вы не вошли в систему</h1>`;
-      window.setTimeout(() => location.replace("./main.html"), 2000);
-      return false;
-    }
-    return true;
-  }
 
   render(Container, list, Component, userAnswers, isDone) {
     const html = getHTMLFromList(list, (i) =>

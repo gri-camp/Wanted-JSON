@@ -241,11 +241,11 @@ const FEATURES_CARD_LIST = [
     text: `Поддержка query-параметров для <em class='success'> фильтрации, сортировки, пагинации, лимитирования, поиска </em> данных!`,
     title: "Настраиваемые данные",
   },
-  // {
-  //   icon: `<span class="material-icons-round" style='color: #1c963c;'>integration_instructions</span>`,
-  //   text: `Наглядный единый источник описания всех сущностей API`,
-  //   title: "Swagger Документация",
-  // },
+  {
+    icon: `<span class="material-icons-round" style='color: #1c963c;'>integration_instructions</span>`,
+    text: `Наглядный единый источник описания всех сущностей API`,
+    title: "Swagger Документация",
+  },
 ];
 
 const GETTING_STARTED_CARD_LIST = [
@@ -317,11 +317,6 @@ const ENTITIES_LIST = [
     endpoint: API_CONSTS.VIDEOGAMESCOMMENTS,
     icon: `<span class="material-icons-round">insert_comment</span>`,
   },
-  // {
-  //   href: `${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.DOCS}`,
-  //   endpoint: API_CONSTS.DOCS,
-  //   icon: `<span class="material-icons-round" style='color: #1c963c;'>integration_instructions</span>`,
-  // },
   {
     href: `${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.CLIENT_INFO}`,
     endpoint: API_CONSTS.CLIENT_INFO,
@@ -331,6 +326,11 @@ const ENTITIES_LIST = [
     href: `./fakeAuth.html?endpoint=${API_CONSTS.FAKE_AUTH}`,
     endpoint: API_CONSTS.FAKE_AUTH,
     icon: `<span class="material-icons-round">app_registration</span>`,
+  },
+  {
+    href: `${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.DOCS}`,
+    endpoint: API_CONSTS.DOCS,
+    icon: `<span class="material-icons-round" style='color: #1c963c;'>integration_instructions</span>`,
   },
 ];
 
@@ -726,7 +726,7 @@ const SIGN_UP_FORM_ELEMS_LIST = [
   },
   {
     type: "checkbox",
-    placeholder: 'согласие на обработку персональных данных!',
+    placeholder: "согласие на обработку персональных данных!",
     name: "agreement",
     errorMsg: null,
     regExp: null,
@@ -734,7 +734,7 @@ const SIGN_UP_FORM_ELEMS_LIST = [
   },
   {
     type: "checkbox",
-    placeholder: 'согласие на получение уведомлений!',
+    placeholder: "согласие на получение уведомлений!",
     name: "notification",
     errorMsg: null,
     regExp: null,

@@ -13,10 +13,8 @@ import Components from "./Components.js";
 
 class Profile {
   constructor() {
-    ((this.container = document.querySelector(".appContainer")),
-      (this.accessTokenSection = document.querySelector(
-        ".accessTokenSection",
-      )));
+    this.container = document.querySelector(".appContainer");
+    this.accessTokenSection = document.querySelector(".accessTokenSection");
     this.accessTokenDeathTimeElem = null;
     this.refreshButton = null;
     this.accessTokenValueElem = null;
@@ -50,13 +48,17 @@ class Profile {
     this.logoutButton = container.querySelector(".logout-section button");
   }
 
-  isUserSignedIn() {
-    if (!this?.user?.accessToken) {
-      this.container.innerHTML = `<h1 class='h1'>Вы не вошли в систему</h1>`;
-      window.setTimeout(() => location.replace("./main.html"), 2000);
+  static isUserSignedIn(container, page) {
+    if (!getDataFromLS("user")?.accessToken) {
+      page !== 'index' ? this.showUnregisteredHTML(container, page) : ''
       return false;
     }
     return true;
+  }
+
+  static showUnregisteredHTML(container) {
+    container.innerHTML = `<h1 class='h1'>Вы не вошли в систему</h1>`;
+    window.setTimeout(() => location.replace("./main.html"), 2000);
   }
 
   async getActualUserParams() {
@@ -113,4 +115,5 @@ class Profile {
   }
 }
 
-export default new Profile();
+export { Profile };
+
