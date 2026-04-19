@@ -20,7 +20,6 @@ import { Auth } from "./service/Auth.js";
 import Components from "./service/Components.js";
 import { Menu } from "./service/Menu.js";
 import { Observer } from "./service/Observer.js";
-import { Profile } from "./service/Profile.js";
 import { Request } from "./service/Request.js";
 import { Theme } from "./service/Theme.js";
 import { UpwardButton } from "./service/UpWardButton.js";
@@ -53,35 +52,16 @@ try {
   const GETTING_STARTED_HTML = GETTING_STARTED_CARD_LIST.map((card) =>
     Components.GETTING_STARTED_CARD(card),
   ).join(ARROW);
-
   draw(GETTING_STARTED, GETTING_STARTED_HTML);
 
   // !Содержимое секции 'FEATURES':
-  const CHECKED_FEATURES_CARD_LIST = Profile.isUserSignedIn(
-    document.querySelector(".appContainer"),
-    "index",
-  )
-    ? FEATURES_CARD_LIST
-    : FEATURES_CARD_LIST.filter(
-        ({ icon }) => !icon.includes("integration_instructions"),
-      );
-
-  const FEATURES_HTML = getHTMLFromList(CHECKED_FEATURES_CARD_LIST, (card) =>
-    Components.FEATURES_CARD(card),
+  const FEATURES_HTML = getHTMLFromList(FEATURES_CARD_LIST, (c) =>
+    Components.FEATURES_CARD(c),
   );
   draw(FEATURES, FEATURES_HTML);
 
   // !Содержимое секции 'ENTITIES':
-  const CHECKED_ENTITIES_LIST = Profile.isUserSignedIn(
-    document.querySelector(".appContainer"),
-    "index",
-  )
-    ? ENTITIES_LIST
-    : ENTITIES_LIST.filter(
-        ({ icon }) => !icon.includes("integration_instructions"),
-      );
-
-  const ENTITIES_HTML = getHTMLFromList(CHECKED_ENTITIES_LIST, (card) =>
+  const ENTITIES_HTML = getHTMLFromList(ENTITIES_LIST, (card) =>
     Components.ENTITIES_LINK(card),
   );
   draw(ENTITIES, ENTITIES_HTML);
