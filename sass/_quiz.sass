@@ -49,7 +49,7 @@
         height: auto
         width: 100%
         display: inline-block
-        padding: 0.5rem
+        padding: var(--app-md-spacing)
         border-radius: 0px 
 
     output
@@ -65,8 +65,21 @@
                 transform: scale(1.01)
 
 .quiz-link
+<<<<<<< Updated upstream
     width: 100%    
     @include linkHover                    
+=======
+    width: 100%
+
+    @include linkHover
+
+    h3
+        @include flex-default
+        justify-content: flex-start
+        column-gap: var(--app-md-spacing)
+        padding: var(--app-md-spacing)
+        margin: 0px                    
+>>>>>>> Stashed changes
 
  
 

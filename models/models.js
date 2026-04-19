@@ -241,11 +241,11 @@ const FEATURES_CARD_LIST = [
     text: `Поддержка query-параметров для <em class='success'> фильтрации, сортировки, пагинации, лимитирования, поиска </em> данных!`,
     title: "Настраиваемые данные",
   },
-  {
-    icon: `<span class="material-icons-round" style='color: #1c963c;'>integration_instructions</span>`,
-    text: `Наглядный единый источник описания всех сущностей API`,
-    title: "Swagger Документация",
-  },
+  // {
+  //   icon: `<span class="material-icons-round" style='color: #1c963c;'>integration_instructions</span>`,
+  //   text: `Наглядный единый источник описания всех сущностей API`,
+  //   title: "Swagger Документация",
+  // },
 ];
 
 const GETTING_STARTED_CARD_LIST = [
@@ -269,15 +269,23 @@ const GETTING_STARTED_CARD_LIST = [
 const QUIZ_LINK_LIST = [
   {
     href: `./quiz.html#http`,
-    header: `основы <abbr title="англ. Hypertext Transfer Protocol - протокол передачи гипертекста">HTTP</abbr>-протокола?`,
+    header: `основы <abbr title="англ. Hypertext Transfer Protocol - протокол передачи гипертекста">HTTP</abbr>-протокола`,
+    icon: `<span class="material-icons-round">quiz</span>`
   },
   {
     href: `./quiz.html#js`,
-    header: `основы языка <abbr title="англ. JavaScript - мультипарадигменный язык программирования с динамической типизацией">JavaScript</abbr>?`,
+    header: `основы языка <abbr title="англ. JavaScript - мультипарадигменный язык программирования с динамической типизацией">JavaScript</abbr>`,
+    icon: `<span class="material-icons-round">quiz</span>`
   },
   {
     href: `./quiz.html#css`,
-    header: `основы языка <abbr title="англ. Cascading Style Sheets - язык стилей, используемый для описания внешнего вида веб‑страниц">CSS</abbr>?`,
+    header: `основы языка <abbr title="англ. Cascading Style Sheets - язык стилей, используемый для описания внешнего вида веб‑страниц">CSS</abbr>`,
+    icon: `<span class="material-icons-round">quiz</span>`
+  },
+  {
+    href: `./quiz.html#html`,
+    header: `основы языка <abbr title="англ. HyperText Markup Language - стандартизированный язык гипертекстовой разметки документов для просмотра веб-страниц в браузере">HTML</abbr>`,
+    icon: `<span class="material-icons-round">quiz</span>`
   },
 ];
 
@@ -327,11 +335,11 @@ const ENTITIES_LIST = [
     endpoint: API_CONSTS.FAKE_AUTH,
     icon: `<span class="material-icons-round">app_registration</span>`,
   },
-  {
-    href: `${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.DOCS}`,
-    endpoint: API_CONSTS.DOCS,
-    icon: `<span class="material-icons-round" style='color: #1c963c;'>integration_instructions</span>`,
-  },
+  // {
+  //   href: `${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.DOCS}`,
+  //   endpoint: API_CONSTS.DOCS,
+  //   icon: `<span class="material-icons-round" style='color: #1c963c;'>integration_instructions</span>`,
+  // },
 ];
 
 const EXAMPLES_LIST = [

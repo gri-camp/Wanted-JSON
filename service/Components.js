@@ -83,11 +83,11 @@ class Components {
     </article>
     `;
 
-  QUIZ_LINK = ({ href, header }) => `
-    <a href="${href}" class="danger quiz-link" rel="noopener">
+  QUIZ_LINK = ({ href, header, icon }) => `
+    <a href="${href}" class="quiz-link" rel="noopener">
       <article>
         <h3>
-          ${header}
+          <span class="icon-box">${icon}</span>${header}
         </h3>
       </article>
     </a>
