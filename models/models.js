@@ -268,22 +268,22 @@ const GETTING_STARTED_CARD_LIST = [
 
 const QUIZ_LINK_LIST = [
   {
-    href: `./quiz.html#http`,
-    header: `основы <abbr title="англ. Hypertext Transfer Protocol - протокол передачи гипертекста">HTTP</abbr>-протокола`,
+    href: `./quiz.html?key=http`,
+    header: `основы <abbr title="англ. Hypertext Transfer Protocol - протокол передачи гипертекста">HTTP протокола</abbr>`,
     icon: `<span class="material-icons-round">quiz</span>`
   },
   {
-    href: `./quiz.html#js`,
+    href: `./quiz.html?key=js`,
     header: `основы языка <abbr title="англ. JavaScript - мультипарадигменный язык программирования с динамической типизацией">JavaScript</abbr>`,
     icon: `<span class="material-icons-round">quiz</span>`
   },
   {
-    href: `./quiz.html#css`,
+    href: `./quiz.html?key=css`,
     header: `основы языка <abbr title="англ. Cascading Style Sheets - язык стилей, используемый для описания внешнего вида веб‑страниц">CSS</abbr>`,
     icon: `<span class="material-icons-round">quiz</span>`
   },
   {
-    href: `./quiz.html#html`,
+    href: `./quiz.html?key=html`,
     header: `основы языка <abbr title="англ. HyperText Markup Language - стандартизированный язык гипертекстовой разметки документов для просмотра веб-страниц в браузере">HTML</abbr>`,
     icon: `<span class="material-icons-round">quiz</span>`
   },

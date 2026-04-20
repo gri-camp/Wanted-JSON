@@ -12,7 +12,7 @@ import QUIZ from "./json/quiz.json" with { type: "json" };
 
 const FOOTER = document.querySelector(".footer");
 
-const key = window.location.hash.replace(/^#/, '');
+const key = window.location?.search.replace(/^\?key=/i, '');
 
 //! Подключаем тему:
 new Theme({ root: ROOT, trigger: '.theme' });
