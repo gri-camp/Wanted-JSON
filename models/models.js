@@ -18,8 +18,7 @@ const API_CONSTS = {
 };
 
 const ROOT = document.documentElement;
-const ARROW =
-  '<div class="icon-box"><span class="material-icons-round arrow">east</span></div>';
+const ARROW = '<div class="icon-box"><span class="material-icons-round arrow">east</span></div>';
 
 const MONTHS = [
   "Январь",
@@ -42,21 +41,21 @@ const URLS = {
   getEntities: (host, ep = "${endpoint}") =>
     `${API_CONSTS.PROTOCOL}://${host}/${ep}`,
   getEntitiesQS: (host, ep = "${endpoint}") =>
-    `${API_CONSTS.PROTOCOL}://${host}/${ep}?page=\${value}&limit=\${value}`,
+    `${API_CONSTS.PROTOCOL}://${host}/${ep}<span class='danger'>?page=\${value}&limit=\${value}</span>`,
   getSingleEntity: (host, ep = "${endpoint}") =>
     `${API_CONSTS.PROTOCOL}://${host}/${ep}/\${id}`,
   getSearchedEntity: (host, ep = "${endpoint}") =>
-    `${API_CONSTS.PROTOCOL}://${host}/${ep}?q=\${value}`,
+    `${API_CONSTS.PROTOCOL}://${host}/${ep}<span class='danger'>?q=\${value}</span>`,
   getLimitedEntities: (host, ep = "${endpoint}") =>
-    `${API_CONSTS.PROTOCOL}://${host}/${ep}?limit=10`,
+    `${API_CONSTS.PROTOCOL}://${host}/${ep}<span class='danger'>?limit=10</span>`,
   getPaginatedEntities: (host, ep = "${endpoint}") =>
-    `${API_CONSTS.PROTOCOL}://${host}/${ep}?page=2&limit=10`,
+    `${API_CONSTS.PROTOCOL}://${host}/${ep}<span class='danger'>?page=2&limit=10</span>`,
   getSelectedEntities: (host, ep = "${endpoint}") =>
-    `${API_CONSTS.PROTOCOL}://${host}/${ep}?select=field1,field2`,
+    `${API_CONSTS.PROTOCOL}://${host}/${ep}<span class='danger'>?select=field1,field2</span>`,
   getSortedEntities: (host, ep = "${endpoint}") =>
-    `${API_CONSTS.PROTOCOL}://${host}/${ep}?sort=\${field}:\${dir}`,
+    `${API_CONSTS.PROTOCOL}://${host}/${ep}<span class='danger'>?sort=\${field}:\${dir}</span>`,
   getFilteredEntities: (host, ep = "${endpoint}") =>
-    `${API_CONSTS.PROTOCOL}://${host}/${ep}?\${field}=\${value}`,
+    `${API_CONSTS.PROTOCOL}://${host}/${ep}<span class='danger'>?\${field}=\${value}</span>`,
   addEntity: (host, ep = "${endpoint}") =>
     `${API_CONSTS.PROTOCOL}://${host}/${ep}`,
   deleteEntity: (host, ep = "${endpoint}") =>
@@ -89,7 +88,7 @@ const REQUEST_CARD_LIST = [
   },
   {
     id: "getEntitiesQS",
-    title: "получение сущностей c передачей query-параметров:",
+    title: "запрос с query-параметрами:",
     method: "get",
     url: (host, ep) => URLS.getEntitiesQS(host, ep),
     ...getSchemesToolbarConfig(),
@@ -113,7 +112,7 @@ const REQUEST_CARD_LIST = [
   },
   {
     id: "addEntity",
-    title: "добавление новой сущности:",
+    title: "добавление сущности:",
     method: "post",
     url: (host, ep) => URLS.addEntity(host, ep),
     ...getSchemesToolbarConfig(),
@@ -121,7 +120,7 @@ const REQUEST_CARD_LIST = [
   },
   {
     id: "deleteEntity",
-    title: "удаление сущности по ID:",
+    title: "удаление сущности:",
     method: "delete",
     url: (host, ep) => URLS.deleteEntity(host, ep),
     ...getSchemesToolbarConfig(),
@@ -129,7 +128,7 @@ const REQUEST_CARD_LIST = [
   },
   {
     id: "updateEntity",
-    title: "обновление сущности по ID:",
+    title: "обновление сущности:",
     method: "patch",
     url: (host, ep) => URLS.updateEntity(host, ep),
     ...getSchemesToolbarConfig(),
@@ -137,7 +136,7 @@ const REQUEST_CARD_LIST = [
   },
   {
     id: "signup",
-    title: "регистрация пользователя",
+    title: "регистрация",
     method: "post",
     url: (host, ep) => URLS.signup(host, ep),
     ...getSchemesToolbarConfig(),
@@ -145,7 +144,7 @@ const REQUEST_CARD_LIST = [
   },
   {
     id: "signin",
-    title: "авторизация пользователя",
+    title: "авторизация",
     method: "post",
     url: (host, ep) => URLS.signin(host, ep),
     ...getSchemesToolbarConfig(),
@@ -169,7 +168,7 @@ const REQUEST_CARD_LIST = [
   },
   {
     id: "fakeSignup",
-    title: "Моковая регистрация:",
+    title: "Тестовая регистрация:",
     method: "post",
     url: (host, ep) => URLS.fakeSignup(host, ep),
     ...getSchemesToolbarConfig(),
@@ -177,7 +176,7 @@ const REQUEST_CARD_LIST = [
   },
   {
     id: "fakeSignin",
-    title: "Моковая авторизация:",
+    title: "Тестовая авторизация:",
     method: "post",
     url: (host, ep) => URLS.fakeSignin(host, ep),
     ...getSchemesToolbarConfig(),
@@ -269,23 +268,23 @@ const GETTING_STARTED_CARD_LIST = [
 const QUIZ_LINK_LIST = [
   {
     href: `./quiz.html?key=http`,
-    header: `основы <abbr title="англ. Hypertext Transfer Protocol - протокол передачи гипертекста">HTTP протокола</abbr>`,
-    icon: `<span class="material-icons-round">quiz</span>`
+    header: `Основы <abbr title="англ. Hypertext Transfer Protocol - протокол передачи гипертекста">HTTP протокола</abbr>`,
+    icon: `<span class="material-icons-round">quiz</span>`,
   },
   {
     href: `./quiz.html?key=js`,
-    header: `основы языка <abbr title="англ. JavaScript - мультипарадигменный язык программирования с динамической типизацией">JavaScript</abbr>`,
-    icon: `<span class="material-icons-round">quiz</span>`
+    header: `Основы языка <abbr title="англ. JavaScript - мультипарадигменный язык программирования с динамической типизацией">JavaScript</abbr>`,
+    icon: `<span class="material-icons-round">quiz</span>`,
   },
   {
     href: `./quiz.html?key=css`,
-    header: `основы языка <abbr title="англ. Cascading Style Sheets - язык стилей, используемый для описания внешнего вида веб‑страниц">CSS</abbr>`,
-    icon: `<span class="material-icons-round">quiz</span>`
+    header: `Основы языка <abbr title="англ. Cascading Style Sheets - язык стилей, используемый для описания внешнего вида веб‑страниц">CSS</abbr>`,
+    icon: `<span class="material-icons-round">quiz</span>`,
   },
   {
     href: `./quiz.html?key=html`,
-    header: `основы языка <abbr title="англ. HyperText Markup Language - стандартизированный язык гипертекстовой разметки документов для просмотра веб-страниц в браузере">HTML</abbr>`,
-    icon: `<span class="material-icons-round">quiz</span>`
+    header: `Основы языка <abbr title="англ. HyperText Markup Language - стандартизированный язык гипертекстовой разметки документов для просмотра веб-страниц в браузере">HTML</abbr>`,
+    icon: `<span class="material-icons-round">quiz</span>`,
   },
 ];
 
@@ -344,40 +343,49 @@ const ENTITIES_LIST = [
 
 const EXAMPLES_LIST = [
   {
-    href: `${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.CARS}`,
-    example: ` ${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.CARS}`,
+    title: 'Получить все автомобили:',
+    // href: `${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.CARS}`,
+    text: ` ${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.CARS}`,
   },
   {
-    href: `${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.BOOKS}/5`,
-    example: ` ${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.BOOKS}/5`,
+    title: 'Получить книгу с ID 5:',
+    // href: `${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.BOOKS}/5`,
+    text: ` ${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.BOOKS}/5`,
   },
   {
-    href: `${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.ATHLETES}?q=Лионель Месси`,
-    example: ` ${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.ATHLETES}?q=Месси`,
+    title: 'Найти спортсмена по запросу:',
+    // href: `${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.ATHLETES}?q=Лионель Месси`,
+    text: ` ${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.ATHLETES}<span class='danger'>?q=Месси</span>`,
   },
   {
-    href: `${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.BOOKS}?select=title,author,pageCount`,
-    example: ` ${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.BOOKS}?select=title,author,pageCount`,
+    title: 'Получить книги с выбранными полями:',
+    // href: `${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.BOOKS}?select=title,author,pageCount`,
+    text: ` ${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.BOOKS}<span class='danger'>?select=title,author,pageCount</span>`,
   },
   {
-    href: `${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.BOOKS}?sort=pageCount:desc`,
-    example: ` ${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.BOOKS}?sort=pageCount:desc`,
+    title: 'Отсортировать книги по кол-ву страниц:',
+    // href: `${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.BOOKS}?sort=pageCount:desc`,
+    text: ` ${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.BOOKS}<span class='danger'>?sort=pageCount:desc</span>`,
   },
   {
-    href: `${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.VIDEOGAMES}?limit=20`,
-    example: ` ${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.VIDEOGAMES}?limit=20`,
+    title: 'Получить 20 видеоигр:',
+    // href: `${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.VIDEOGAMES}?limit=20`,
+    text: ` ${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.VIDEOGAMES}<span class='danger'>?limit=20</span>`,
   },
   {
-    href: `${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.MOVIES}?q=матрица`,
-    example: ` ${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.MOVIES}?q=матрица`,
+    title: 'Найти фильм по запросу:',
+    // href: `${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.MOVIES}?q=матрица`,
+    text: ` ${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.MOVIES}<span class='danger'>?q=матрица</span>`,
   },
   {
-    href: `${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.CARS}?country=ЯПОНИЯ`,
-    example: ` ${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.CARS}?country=ЯПОНИЯ`,
+    title: 'Найти все японские автомобили:',
+    // href: `${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.CARS}?country=ЯПОНИЯ`,
+    text: ` ${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.CARS}<span class='danger'>?country=ЯПОНИЯ</span>`,
   },
   {
-    href: `${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.BOOKS}?genre=фэнтези`,
-    example: `${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.BOOKS}?genre=фэнтези`,
+    title: 'Найти книги жанра "фэнтези":',
+    // href: `${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.BOOKS}?genre=фэнтези`,
+    text: `${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.BOOKS}<span class='danger'>?genre=фэнтези</span>`,
   },
 ];
 
@@ -459,35 +467,35 @@ const USER_MENU_LIST = [
 const DOCUMENTATION_LIST = [
   {
     href: `./docs.html?endpoint=books`,
-    text: `<div class="icon-box"><span class="material-icons-round">book</span></div> <em style="font-weight:bold;">books</em>`,
+    text: `<div class="icon-box"><span class="material-icons-round">book</span></div><em>/books</em>`,
   },
   {
     href: `./docs.html?endpoint=athletes`,
-    text: `<div class="icon-box"><span class="material-icons-round">sports_basketball</span></div> <em style="font-weight:bold;">athletes</em>`,
+    text: `<div class="icon-box"><span class="material-icons-round">sports_basketball</span></div><em>/athletes</em>`,
   },
   {
     href: `./docs.html?endpoint=videoGames`,
-    text: `<div class="icon-box"><span class="material-icons-round">gamepad</span></div> <em style="font-weight:bold;">videoGames</em>`,
+    text: `<div class="icon-box"><span class="material-icons-round">gamepad</span></div><em>/videoGames</em>`,
   },
   {
     href: `./docs.html?endpoint=movies`,
-    text: `<div class="icon-box"><span class="material-icons-round">movie_creation</span></div> <em style="font-weight:bold;">movies</em>`,
+    text: `<div class="icon-box"><span class="material-icons-round">movie_creation</span></div><em>/movies</em>`,
   },
   {
     href: `./docs.html?endpoint=cars`,
-    text: `<div class="icon-box"><span class="material-icons-round">directions_car</span></div> <em style="font-weight:bold;">cars</em>`,
+    text: `<div class="icon-box"><span class="material-icons-round">directions_car</span></div><em>/cars</em>`,
   },
   {
     href: `./docs.html?endpoint=videoGamesComments`,
-    text: `<div class="icon-box"><span class="material-icons-round">insert_comment</span></div> <em style="font-weight:bold;">videoGamesComments</em>`,
+    text: `<div class="icon-box"><span class="material-icons-round">insert_comment</span></div><em>/videoGamesComments</em>`,
   },
   {
     href: `./auth.html?endpoint=auth`,
-    text: `<div class="icon-box"><span class="material-icons-round">login</span></div> <em style="font-weight:bold;">auth</em>`,
+    text: `<div class="icon-box"><span class="material-icons-round">login</span></div><em>/auth</em>`,
   },
   {
     href: `./fakeAuth.html?endpoint=fakeAuth`,
-    text: `<div class="icon-box"><span class="material-icons-round">app_registration</span></div> <em style="font-weight:bold;">fakeAuth</em>`,
+    text: `<div class="icon-box"><span class="material-icons-round">app_registration</span></div><em>/fakeAuth</em>`,
   },
 ];
 

@@ -6,7 +6,11 @@
         gap: 0.25rem
 
 .quizItem
-    margin: 3rem 0px
+    margin: var(--app-xl-spacing) 0px
+    background: var(--app-default-card-bg)
+    padding: var(--app-md-spacing)
+    border-radius: var(--app-md-spacing)
+    box-shadow: var(--app-default-shadow)
 
     h3
         text-transform: none    
@@ -37,21 +41,15 @@
     gap: 1rem        
 
     .material-icons-round
-        font-size: 2rem       
+        font-size: 2rem    
 
-
-.output
+.output    
+    padding: var(--app-md-spacing)
+    max-height: 40vh
+    overflow-Y: auto
+    border: 1px dotted
+    border-radius: var(--app-md-spacing)
     
-    pre
-        font-weight: 700
-        font: inherit
-        border: 1px dotted   
-        height: auto
-        width: 100%
-        display: inline-block
-        padding: var(--app-md-spacing)
-        border-radius: 0px 
-
     output
         display: block
         width: 100%
@@ -59,24 +57,32 @@
 
         a
             cursor: pointer
+            margin: var(--app-sm-spacing) 0px
 
             &:hover
                 color: var(--app-success-color)
                 transform: scale(1.01)
 
+        strong
+            display: inline-block
+            margin: var(--app-sm-spacing) 0px            
+
 .quiz-link
     width: 100%
+    background: var(--app-default-card-bg)
+    margin-bottom: var(--app-xl-spacing)		
 
     @include linkHover
 
-    h3
+    &:last-child
+        margin-bottom: 0rem		
+
+    article
+        font-size: 1.1em
         @include flex-default
         justify-content: flex-start
-        column-gap: var(--app-md-spacing)
+        column-gap: var(--app-sm-spacing)
         padding: var(--app-md-spacing)
-        margin: 0px                    
-
- 
-
-
+        margin: 0px  
+        font-weight: 500
              

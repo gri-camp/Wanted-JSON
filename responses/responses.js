@@ -136,8 +136,17 @@ const Responses = {
     pageCount: 1110, 
     description: "Герой романа 'Гений', талантливый художник Юджин Витла, во многом сродни своему создателю – американскому писателю Теодору Драйзеру. Их сближают не только биографические совпадения, но и эстетические взгляды.",
     tags: <span class='purple'>[</span>"Американская классика", "Зарубежная классика", "Судьба человека"<span class='purple'>]</span>,                        
-    originalLanguage: "английский",
-    ...        
+    originalLanguage: "английский",    
+    publisher: null,
+    ageRating: '12+',
+    price: 1149.00,        
+    mainCharacters: [],
+    scene: null,
+    awards: null,       
+    goodreadsRating: null,        
+    movieAdaptation: null,            
+    movieTitle: null,
+    lastUpdated : null,        
 <strong class='purple'>}</strong>
 </code>`,
     deleteEntity: `
@@ -323,8 +332,19 @@ const Responses = {
     brandAmbassador: 'TravisMathew, Rigorer',
     firstVictory: '2023, Кубок НБА',
     hobbies: 'гольф, видеоигры',
-    isActive: true,             
-    ...
+    isActive: true,     
+    birthPlace: null,
+    birthDate: null,
+    zodiacSign: null,
+    gender: null,
+    height: 196,
+    nationality: 'Американец',
+    position: 'атакующий защитник',
+    currentTeam: 'Лос-Анджелес Лейкерс',
+    mainAchievements: <span class='purple'>[</span><span class='purple'>]</span>,          
+    annualSalary: null,
+    instagramFollowers: null,   
+    lastUpdated: null,   
 <strong class='purple'>}</strong>
 </code>`,
     deleteEntity: `
@@ -489,8 +509,16 @@ const Responses = {
     price: 5.33, <span class="danger">*</span>
     description: 'революционная игра в жанре шутера от первого лица, разработанная компанией Valve и выпущенная в 1998 году. Она произвела настоящий фурор в игровой индустрии благодаря своей инновационной физике, реалистичной графике и захватывающему геймплею.',
     setting: 'Гигантский сверхсекретный научно-исследовательский комплекс «Чёрная Меза», Нью-Мексико, США.',
-    awards: null,         
-    ...
+    awards: null,       
+    developer: "Valve Corporation",
+    publisher: 'Sierra On-Line',
+    releaseDate: '1998-11-19',       
+    platforms: <span class='purple'>[</span><span class='purple'>]</span>,        
+    tags: <span class='purple'>[</span><span class='purple'>]</span>,
+    hasSequel: true,          
+    sequelTitle: "Half-Life 2",
+    multiplayer: null,
+    lastUpdated: null,
 <strong class='purple'>}</strong>
 </code>`,
     deleteEntity: `
@@ -662,14 +690,26 @@ const Responses = {
 <strong class='purple'>{</strong>    
     id: 46,
     title: "Cчастливое число Слевина", <span class="danger">*</span> 
-    country: "CША", <span class="danger">*</span>
-    ageRating: '16+', <span class="danger">*</span>
-    releaseYear: 2006, <span class="danger">*</span>   
-    genre: <span class='purple'>[</span>"триллер", "драма", "преступление"<span class='purple'>]</span>,  
+    country: "CША, Канада, Великобритания, Германия", <span class="danger">*</span>
+    ageRating: '18+', <span class="danger">*</span>
+    releaseYear: 2005, <span class="danger">*</span>   
+    genre: <span class='purple'>[</span>"триллер", "драма", "криминал"<span class='purple'>]</span>,  
     description: 'Главный герой, Слевин, получает загадочное сообщение о том, что его жизнь может измениться благодаря некоему «счастливому числу». Однако вместо удачи он сталкивается с серией загадочных и опасных событий.',
-    awards: null,
+    awards: <span class='purple'>[</span>"MIFF Awards - Лучший фильм, лучший монтаж, приз зрительских симпатий" <span class='purple'>]</span>
     imdb: 7.7,         
-    ...
+    originalTitle: 'Lucky Number Slevin',        
+    duration: 110,        
+    language: 'Английский',
+    director: 'Пол Макгиган',
+    mainActors: <span class='purple'>[</span>"Джош Хартнетт", "Брюс Уиллис", "Бен Кингсли", "Люси Лью"<span class='purple'>]</span>,        
+    budget: 27000000.00,
+    boxOffice: 56308881.00,        
+    kinopoiskRating: 8.2,       
+    location: <span class='purple'>[</span>"Нью‑Йорк"<span class='purple'>]</span>,
+    studio: "The Weinstein Company",
+    isSeries: false,
+    seasons: null,
+    lastUpdated: null,
 <strong class='purple'>}</strong>
 </code>`,
     deleteEntity: `
@@ -831,11 +871,20 @@ const Responses = {
     brand: "Subaru", <span class="danger">*</span> 
     model: "Outback", <span class="danger">*</span>
     country: 'Япония', <span class="danger">*</span>
-    modelYear: 2024, <span class="danger">*</span>
+    modelYear: 2022, <span class="danger">*</span>
     licenseCategory: 'B',
     headlights: 'светодиодные',
-    bodyType: ["кроссовер"],         
-    ...
+    bodyType: ["кроссовер"],        
+    engineTypes: <span class='purple'>[</span>"атмосферный", "гибрид"<span class='purple'>]</span>,
+    transmissionType: 'вариатор Lineartronic® CVT',
+    basePrice: 26945.00,
+    enginePowerList: <span class='purple'>{</span>"Н·м": 239, "л.с.": 182<span class='purple'>}</span>, 
+    segment: 'среднеразмерный SUV',
+    annualProduction: null,
+    topSales: 'США',
+    euroStandart: 'Euro 5/Euro 6',
+    colors: <span class='purple'>[</span>"тёмно-синий", "коричневый", "серебристый", "белый", "глубокий чёрный"<span class='purple'>]</span>,
+    lastUpdated: null,
 <strong class='purple'>}</strong>
 </code>`,
     deleteEntity: `
@@ -952,8 +1001,7 @@ const Responses = {
     gameId: 3, <span class="danger">*</span>
     date: '2026-02-09', <span class="danger">*</span>
     userLevel: 22, 
-    likes: 15,           
-    ...
+    likes: 15   
 <strong class='purple'>}</strong>
 </code>`,
     deleteEntity: `

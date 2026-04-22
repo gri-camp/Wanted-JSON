@@ -4,9 +4,9 @@
 .request-card 
 	padding: var(--app-lg-spacing)
 	margin: 0px 0px var(--app-xl-spacing) 0px
-	background: none
+	background: var(--app-default-card-bg)
 	border-radius: var(--app-md-spacing)
-	box-shadow: $app-card-shadow
+	box-shadow: var(--app-default-shadow)
 	height: max-content
 	transform: translateX(-30%) 
 	opacity: 0
@@ -15,7 +15,6 @@
 	&.active 
 		opacity: 1 
 		transform: translateX(0%) 	
-	
 
 	h3
 		margin-bottom: 0px	
@@ -29,28 +28,31 @@
 
 		.btn 
 			cursor: default
+			padding: var(--app-md-spacing)
 
 	&-url 
 		display: inline-block
 		width: auto
 		font-weight: 300
 		font-size: 1.15em
-		width: 100%
-		text-shadow: 0.3px 0.3px 1px var(--app-light-color)
+		width: 100%		
 		overflow-x: auto
 		overflow-y: initial
 		white-space: nowrap 		
-		font-weight: 400
+		font-weight: 500
+		background: var(--app-default-card-bg)
+
+		&::-webkit-scrollbar-thumb 
+			background-color: var(--app-default-card-bg)					
 		
 		&.doca   
-			padding: var(--app-md-spacing)			
-			box-shadow: $app-card-shadow
+			padding: var(--app-md-spacing)				
+			box-shadow: var(--app-default-shadow)
 			border-radius: var(--app-sm-spacing)			
 			
 			a
 				width: 100%				
 				@include linkHover
-
 			
 	&-copybar 
 		padding: var(--app-md-spacing)
@@ -58,17 +60,19 @@
 		font-size: 1em
 		align-items: center		
 		border-radius: var(--app-md-spacing) var(--app-md-spacing) 0px 0px
-		cursor: pointer		
-		background: var(--app-darken-color)
+		cursor: pointer				
+		background: var(--app-default-bg)
 		opacity: 0.8		
 		transition: color 0.2s linear
-		color: var(--app-dark-color)
+		// color: var(--app-dark-color)
+		color: var(--app-default-color)
 
 		&:hover   
-			color: var(--app-success-color)			
+			color: var(--app-success-color)		
 
 		.btn
 			border: none
+			padding: 4px
 
 	&-triggers 
 		display: flex
@@ -106,13 +110,10 @@
 	max-height: 0px
 	overflow: hidden
 	transition: 0.2s max-height linear
-	
 
-	textarea 
-		position: absolute
-		bottom: 0px
-		right: 0px
-		visibility: hidden
+	code::-webkit-scrollbar-thumb 
+		background-color: var(--app-default-card-bg)  	
+
 
 
  

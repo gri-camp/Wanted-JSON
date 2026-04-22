@@ -46,7 +46,7 @@ class Components {
   ) => `
         <article id="${id}" class="request-card">
             <h3>
-                <strong class="request-card-title danger">${title}</strong>
+                <strong class="request-card-title">${title}</strong>
             </h3>
             <div class="request-card-info" data-id="${id}" data-method="${method}">
                 <button class='btn ${cls}'> ${method} </button>
@@ -61,8 +61,7 @@ class Components {
     <div>
         <p class="note">
             <span class="danger">&#10071;</span>Переменная \${endpoint} представляет
-            доступные в API ресурсы:<span class="danger">
-            'athletes', 'books', 'videoGames', ...</span>.
+            доступные в API ресурсы: <strong> 'athletes', 'books', 'videoGames', ...</strong>.
         </p>
         <p class="note">
             <span class="danger">&#10071;</span>Переменная \${value} представляет значения
@@ -85,10 +84,8 @@ class Components {
 
   QUIZ_LINK = ({ href, header, icon }) => `
     <a href="${href}" class="quiz-link" rel="noopener">
-      <article>
-        <h3>
-          <span class="icon-box">${icon}</span>${header}
-        </h3>
+      <article>        
+          <span class="icon-box">${icon}</span>${header}        
       </article>
     </a>
     `;
@@ -112,11 +109,12 @@ class Components {
         </button>        
     </a>
     `;
-  EXAMPLES_LINK = ({ href, example }) => `
-    <li class="request-card-url doca">
-        <a href="${href}" rel="noopener noreferrer">
+  EXAMPLES_LINK = ({ href, text, title }) => `
+    <em>${title}</em>
+    <li class="request-card-url doca">        
+        <a ${href ? `href=${href}` : ''} rel="noopener noreferrer">
           <div class="icon-box"><span class="material-icons-round">api</span></div>
-          <span class='example'>${example}</span>
+          <span class='example'>${text}</span>
         </a>
     </li>
     `;
@@ -136,7 +134,7 @@ class Components {
     return `
     <article id="${id}" class="request-card">
         <h3>
-            <strong class="request-card-title danger">${title}</strong>
+            <strong class="request-card-title">${title}</strong>
         </h3>
         <section class="request-card-info" data-id="${id}" data-method="${method}">
             <button class='btn ${cls}'> ${method} </button>
@@ -260,7 +258,13 @@ class Components {
             </ul>            
         </p>
         <p class='note'>
-            <span class="danger">&#10071;</span>Переменная \${dir} принимает значения:<strong> asc | desc</strong>.
+            <span class="danger">&#10071;</span>Переменная \${dir} принимает значения:
+            <ul class='white-list'>
+              ${getHTMLFromList(
+                ["asc", "desc"],
+                (dir) => `<li class=' btn'> ${dir} </li>`,
+              )}
+            </ul> 
         </p>
         `;
   }
@@ -306,7 +310,7 @@ class Components {
   ADD_ENTITY_DOCA(host, endpoint) {
     return `
         <p class='section-text'>
-          POST-запрос имитирует добавление новой сущности на сервер. В случае успеха, сервер вернет объект, содержащий <strong class='success'>валидные</strong> поля, переданные в запросе <a href="#addEntity" class='danger'>(см. схему)</a>:
+          POST-запрос имитирует добавление новой сущности на сервер. В случае успеха, сервер вернет объект, содержащий <strong class='success'>валидные</strong> поля, переданные в запросе <a href="#addEntity" class='danger'>(см. схему ответа)</a>:
         </p>
         <div>
             <code class='request-card-url doca'>${URLS.addEntity(
@@ -388,8 +392,9 @@ class Components {
         <address>
           <span class="material-icons-round"> mail_outline </span>
           <span>mail@wantedjson.ru</span>
-        </address>
-      </a>        
+        </address>        
+      </a>
+      <p class='footer-link-copyright'>&copy; wantedjson.ru Все права защищены.</p>        
     `;
   }
   FORM(elements, submitValue) {
@@ -406,7 +411,7 @@ class Components {
             ? `<div class='${name}'>
                   <input type='${type}' name="${name}" id='${name}' placeholder="${placeholder}" 
                   tabindex="${tabindex}">
-                  <span class="${name === 'agreement' ? 'agreement-trigger' : ''}">${placeholder}</span>
+                  <span class="${name === "agreement" ? "agreement-trigger" : ""}">${placeholder}</span>
                 </div>`
             : `<div>
                 ${
@@ -424,7 +429,8 @@ class Components {
         <div class='spinner-circle1'></div>
         <div class='spinner-circle2'></div>
         <div class='spinner-circle3'></div>
-      </div>      
+      </div>
+      ${submitValue === "войти" ? `<div id='authForm-signup-link'><a href="./signup.html">регистрация</a></div>` : ""}   
     </form>`;
   }
 
@@ -465,22 +471,23 @@ class Components {
   }
 
   QUIZ_RESULT(userResult, list) {
-    return `<output>
-Количество верных ответов: <span class='success'>${userResult.t}</span>
-Количество неверных ответов: <span class='danger'>${userResult.f}</span> 
-<strong>Процент выполнения: ${((userResult.t / list.length) * 100).toFixed(2)}% </strong>
-
-<strong>Правильные ответы:</strong> 
-${getHTMLFromList(
-  list,
-  ({ correct, id }) => `
-<a 
-rel='noopener' 
-href='${`#item-${id}`}'
->Вопрос ${id}: ответы ${correct.map((d) => d + 1).join(", ")}</a>;\n`,
-)}
-<strong class='success'>Нажмите рестарт, чтобы начать тест заново!</strong>
-</output>`;
+    return `
+  <output>      
+      <strong>Количество верных ответов: <span class='success'>${userResult.t}</span></strong> <br/>
+      <strong>Количество неверных ответов: <span class='danger'>${userResult.f}</span></strong> <br/> 
+      <strong>Процент выполнения: ${((userResult.t / list.length) * 100).toFixed(2)}% </strong> <br/>
+      <br/>
+      <strong>Правильные ответы:</strong> <br/>
+      ${getHTMLFromList(
+        list,
+        ({ correct, id }) =>
+          `<a rel='noopener' href='${`#item-${id}`}'>
+              Вопрос ${id}: ответы ${correct.map((d) => d + 1).join(", ")}
+            </a>;<br/>`,
+      )}
+      <br/>
+      <strong class='danger'>Нажмите 'РЕСТАРТ', чтобы начать тест заново!</strong>
+  </output>`;
   }
 
   PROFILE_PAGE(user) {

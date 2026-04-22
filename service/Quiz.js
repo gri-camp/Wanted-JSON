@@ -17,7 +17,7 @@ export class Quiz {
     this.finish = document.body.querySelector(".finish");
     this.key = key;
     this.isDone = false;
-    this.output = document.body.querySelector("pre");
+    this.output = document.body.querySelector(".output");
     this.inputs = null;
     this.list = list;
     this.Component = Component;
@@ -98,7 +98,7 @@ export class Quiz {
               block: "start",
               inline: "nearest",
             }),
-          1000,
+          500
         );
         return this.printResult("Пожалуйста, ответьте на все вопросы...");
       }

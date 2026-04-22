@@ -15,7 +15,7 @@
 		margin-top: var(--app-lg-spacing)
 
 	&-mainPage::after
-		margin-top: 0px	
+		margin-top: var(--app-sm-spacing)
 
 	&-logo		
 		@include flex-default
@@ -54,7 +54,7 @@
 .theme, .auth 
 	cursor: pointer
 	@include flex-default
-	padding: 0px
+	// padding: var(--app-md-spacing)
 
 .user
 	position: relative
@@ -65,12 +65,14 @@
 		left: var(--app-lg-spacing)
 		top: var(--app-lg-spacing)
 		z-index: 4
-		color: var(--app-dark-color)
-		background: $app-features-card-bg
+		color: var(--app-default-color)
+		background: var(--app-default-card-bg)
+		// background: $app-features-card-bg
 		display: none
 		list-style-type: none		
 		border-radius: 0px var(--app-sm-spacing) var(--app-sm-spacing) 0px
-		box-shadow: $app-card-shadow
+		// box-shadow: $app-card-shadow
+		box-shadow: var(--app-default-shadow)
 		font-size: 1.2em
 		padding: var(--app-lg-spacing)
 		
@@ -86,7 +88,7 @@
 
 				&::before
 					content: '',
-					@include hr-base(var(--app-dark-color), 0.2)					
+					@include hr-base(var(--app-default-color), 0.2)					
 						
 			div
 				width: max-content
@@ -108,7 +110,8 @@
 		letter-spacing: 1px
 		padding: 0.25rem		
 		border-radius: 0.25rem
-		box-shadow: $app-card-shadow
+		// box-shadow: $app-card-shadow
+		box-shadow: var(--app-default-shadow)
 		display: none
 
 		&.active

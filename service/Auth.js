@@ -151,7 +151,7 @@ class Auth {
 
     let response = await fetchAuthRequest(this.spinner, this.formType, body);
 
-    if (!(response instanceof Object)) return this.reset(response);
+    if (!(response instanceof Object)) return this.reset(response, true);
 
     if (this.formType === "signin") {
       this.signIn(response);
@@ -253,20 +253,22 @@ class Auth {
   }
 
   addClickListenerToVisibility(visibility) {
-    visibility.addEventListener("click", function () {      
+    visibility.addEventListener("click", function () {
       this.nextElementSibling.type =
         this.nextElementSibling.type === "password" ? "text" : "password";
-      this.classList.toggle('active')  
+      this.classList.toggle("active");
     });
   }
 
-  reset(res) {
-    this.form.reset();
-    this.state = this.getInitState(this.elements);
-    this.submitBtn.disabled = true;
-    this.submitBtn.value = this.submitBtnValue;
+  reset(res, isError) {
+    if (!isError) {
+      this.form.reset();
+      this.state = this.getInitState(this.elements);
+      this.submitBtn.disabled = true;
+    }
     this.submitBtn.nextElementSibling.classList.toggle("active");
     this.submitBtn.nextElementSibling.textContent = res;
+    this.submitBtn.value = this.submitBtnValue;
   }
 
   getInitState(elements) {

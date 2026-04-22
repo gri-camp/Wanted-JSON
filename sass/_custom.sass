@@ -6,8 +6,7 @@
 	min-height: 90vh
 
 .h1
-	width: 100%
-	margin: var(--app-lg-spacing) 0px 0px 0px
+	width: 100%	
 	font-size: 1.8em
 	text-align: center
 
@@ -57,19 +56,13 @@
 	display: flex
 	color: var(--app-warning-color)
 	border-radius: var(--app-sm-spacing)
-	background: $app-features-card-bg  
+	// background: $app-features-card-bg
+	background: var(--app-default-card-bg)   
 	width: max-content
 	user-select: none
 
-.burger 
-	display: none
-
-.theme  
-	cursor: pointer
-	@include flex-default
-	padding: var(--app-sm-spacing)
-
-.burger	
+.burger
+	display: none	
 	.material-icons-round  
 		font-size: 2rem
 
@@ -115,8 +108,8 @@
 	width: 45px
 	height: 45px
 	@include flex-default
-	cursor: pointer
-	box-shadow: $app-card-shadow
+	cursor: pointer	
+	border: 1.5px solid
 	transition: 0.25s all ease-out
 	user-select: none
 	color: var(--app-default-color)
@@ -137,7 +130,8 @@
 
 .tooltip
 	position: absolute
-	background: $app-features-card-bg	
+	// background: $app-features-card-bg
+	background: var(--app-default-card-bg)		
 	padding: var(--app-sm-spacing)
 	border-radius: var(--app-md-spacing) 0px
 	color: var(--app-danger-color)
@@ -148,7 +142,7 @@
 	transform: translateY(-100%)
 	opacity: 0
 	transition: 0.25s all linear
-	box-shadow: $app-card-shadow
+	box-shadow: var(--app-default-shadow)
 
 	&.active
 		opacity: 1	

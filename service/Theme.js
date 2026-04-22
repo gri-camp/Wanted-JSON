@@ -4,17 +4,18 @@ class Theme {
     this.trigger = document.querySelector(trigger);
     this.currTheme = this.getTheme();
     this.setRootTheme(this.currTheme);
-    if(!trigger) return
+    if (!trigger) return;
     this.setThemeIcon(this.currTheme);
     this.addListenerToTrigger(this.trigger);
   }
 
   setRootTheme = (theme) => {
-    this.root?.style.setProperty(
-      "--app-default-color",
-      `var(--app-${theme}-color)`
+    ["color", "bg", "card-bg", "shadow"].forEach((prop) =>
+      this.root?.style.setProperty(
+        `--app-default-${prop}`,
+        `var(--app-${theme}-${prop})`,
+      ),
     );
-    this.root?.style.setProperty("--app-default-bg", `var(--app-${theme}-bg)`);
   };
 
   setThemeIcon = (theme) => {
@@ -34,9 +35,12 @@ class Theme {
   };
 
   addListenerToTriggerHandler = () => {
-    [this.changeCurrTheme, this.setRootTheme, this.saveTheme, this.setThemeIcon].forEach(
-      (method) => method(this.currTheme)
-    );
+    [
+      this.changeCurrTheme,
+      this.setRootTheme,
+      this.saveTheme,
+      this.setThemeIcon,
+    ].forEach((method) => method(this.currTheme));
   };
 
   addListenerToTrigger(trigger) {

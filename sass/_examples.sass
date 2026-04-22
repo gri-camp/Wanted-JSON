@@ -1,16 +1,31 @@
-#examples 
+#examples
+
+	ol
+		list-style-type: disc
+
+	em
+		display: inline-block
+		width: 100%
+		background-color: var(--app-default-bg)
+		padding: var(--app-md-spacing) 
+		padding-top: 0px		
+		border-radius: var(--app-sm-spacing)
+		font-size: 1.1em
+		font-weight: 500
+			
 		
-	.request-card-url.doca
-			margin-bottom: var(--app-xl-spacing)
-			font-family: 'FiraCode'
-			cursor: pointer
+	.doca
+		margin-bottom: var(--app-xl-spacing)
+		font-family: 'FiraCode'
+		cursor: pointer
+		box-shadow: none		
+
+		&:last-child
+			margin-bottom: 0px
 	a
-		
 		display: flex
 		align-items: center
-		column-gap: var(--app-sm-spacing)
+		column-gap: var(--app-sm-spacing)			
 
-		.example
-			padding: var(--app-sm-spacing)				
-			padding-right: var(--app-md-spacing)	
+
 	

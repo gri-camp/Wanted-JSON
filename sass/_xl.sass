@@ -9,11 +9,13 @@
         display: flex
     
     .header        
+        
         &-nav 
             position: absolute
             top: 0%
             right: 0px
-            background: $app-features-card-bg   
+            // background: $app-features-card-bg
+            background: var(--app-default-card-bg)    
             z-index: -1
             opacity: 0
             transition: all 0.3s ease-out  
@@ -27,17 +29,17 @@
         
         &-menu
             flex-direction: column
-            padding: 0px 
+            padding: 0px
+            color: var(--app-default-color) 
                 
             .li
-                font-size: 1.2em
-                color: var(--app-dark-color)							
+                font-size: 1.15em                							
                     
                 &::after
                     @include hr-base(var(--app-default-color), 0.1)
                     content: ''				
                     width: 100%
-                    background: var(--app-dark-color)
+                    background: var(--app-default-color)
                     margin: var(--app-sm-spacing) 0px
 
                 &:last-child

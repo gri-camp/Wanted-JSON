@@ -23,6 +23,9 @@
         @include flex-default
         justify-content: flex-start
 
+    .request-card-copybar
+        background: var(--app-default-card-bg)    
+
     &-value
         color: var(--app-danger-color)
         font-weight: 500
@@ -31,13 +34,11 @@
         border: 1px dotted var(--app-default-color)
         padding: var(--app-md-spacing)
         white-space: nowrap
-        cursor: grab
-        font-size: 1.1em 
-
-    .request-card-copybar
-        padding: 0.2rem
-        background: var(--app-darken-color)
-        border-radius: 0px
+        cursor: default
+        font-size: 1.1em        
+        
+        &::-webkit-scrollbar-thumb 
+            background-color: var(--app-default-bg)    
 
     &-form
         margin: var(--app-md-spacing) 0px
@@ -64,16 +65,17 @@
 
     p
         @include flex-default
-        gap: 0.5rem
-        justify-content: flex-start
-        margin: var(--app-md-spacing) 0px
+        gap: var(--app-md-spacing)
+        justify-content: space-between
+        margin: var(--app-md-spacing) 0px            
 
     code
-        overflow: auto
-        white-space: nowrap
+        width: 50%
+        &::-webkit-scrollbar-thumb 
+            background-color: var(--app-default-bg) 
+        
 
-.logout-section
-    
+.logout-section    
 
     &-logoutBtn    
         border: 1px dotted    

@@ -6,8 +6,8 @@
 	.appContainer 
 		padding: var(--app-sm-spacing) var(--app-md-spacing)
 
-	.header
-		gap: 0.35rem
+	.noticeModal
+		width: 92%	
 		
 	.features-card 
 		width: 100%		
@@ -20,9 +20,9 @@
 	.entities 
 		gap: unset	
 
-	.entities-card 
-		width: 100%
-		margin: var(--app-md-spacing) 0px	
+		&-card 
+			width: 100%
+			margin: var(--app-md-spacing) 0px	
 
 	.request-card 
 		padding: var(--app-md-spacing)
@@ -30,13 +30,16 @@
 
 		&-info 
 			gap: 0.5rem			
-			padding: var(--app-md-spacing) 0px	
+			padding: var(--app-md-spacing) 0px		
+
+			button
+				padding: var(--app-sm-spacing)
 
 		&-copybar
 			padding: var(--app-sm-spacing)
 
-			button
-				padding: var(--app-sm-spacing)	
+		.trggr
+			padding: var(--app-sm-spacing)		
 
 	.icon-box, .back .btn 
 		padding: var(--app-sm-spacing)
@@ -48,9 +51,7 @@
 		.material-icons-round 
 			font-size: 1.45rem				
 
-	.quizItem
-		padding: 0px var(--app-sm-spacing)
-
+	.quizItem		
 		h3
 			font-size: 1.1em	
 		
@@ -64,11 +65,20 @@
 			&:first-child
 				margin-top: 2rem
 
-	.spinner		
+	.user-section
+
+		p		
+			margin: var(--app-sm-spacing) 0px   			
+
+	div.spinner		
 		width: 80px
 		height: 20px		
 		--size: 15px
 		--largeSize: 22.5px
+
+
+
+	
 
 
 	

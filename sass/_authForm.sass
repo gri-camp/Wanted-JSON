@@ -3,7 +3,7 @@
     margin: auto
     color: var(--app-dark-color)
     overflow: hidden
-    background: var(--app-dark-secondary-color)
+    background: var(--app-dark-card-bg)
     padding: var(--app-lg-spacing)  
     border-radius: var(--app-lg-spacing)
     box-shadow: 0.5px 0.5px 1.5px var(--app-darken-color) 
@@ -20,7 +20,7 @@
     &-logo
         width: 50px
         height: 50px
-        margin: 1rem auto
+        margin: var(--app-lg-spacing) auto !important
 
         img
             width: 100%
@@ -46,18 +46,17 @@
         top: 110%        
 
         &.active
-            display: block
+            display: block 
 
     &-popup
         @include popup(flex)
-
          
     &-agreemеntPopup
         @include popup(flex)
         overflow: auto 
         padding: var(--app-lg-spacing)        
         z-index: 2       
-        color: var(--app-dark-color)   
+        color: var(--app-default-color)  
 
         p
             margin: var(--app-lg-spacing)  
@@ -88,6 +87,18 @@
         cursor: pointer
 
         &.active
-            color: var(--app-success-color) 
+            color: var(--app-success-color)
+
+
+#authForm-signup-link
+    text-transform: uppercase    
+    margin: 0px
+    margin-top: var(--app-sm-spacing)
+    margin-right: var(--app-sm-spacing)
+    text-align: right   
+    letter-spacing: calc(var(--app-sm-spacing) / 3)
+    font-weight: 500
+    transition: 0.25s all linear
+    @include linkHover        
 
     

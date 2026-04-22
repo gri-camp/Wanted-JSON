@@ -1,15 +1,23 @@
-#documentation 
+#documentation	
 		
-	.request-card-url.doca
+	.doca
 		margin-bottom: var(--app-xl-spacing)
-		font-family: 'FiraCode'
 		cursor: pointer
-		
+		text-shadow: none
+
+		&:last-child
+			margin-bottom: 0px	
+				
 	a
 		display: flex
 		align-items: center
 		column-gap: var(--app-sm-spacing)
+	em
+		@extend .entities-card-url
+		font-weight: 700		
+		margin: 0px
+		
+		
+		
 
-		em
-			padding: var(--app-sm-spacing)
 			
