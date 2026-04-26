@@ -1,13 +1,21 @@
+import { getDataFromLS } from "../helpers/helpers.js";
 import { API_CONSTS } from "../models/models.js";
 
 class Api {
   static async getEntities(endpoint, qs = "") {
+
+    const accessToken = getDataFromLS('user')?.accessToken;
+
     try {
-      let res = await fetch(`${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${endpoint}?${qs}`, {
-        headers: {
-          "Content-Type": "application/json",
+      let res = await fetch(
+        `${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${endpoint}?${qs}`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${accessToken}`,
+          },
         },
-      });
+      );
       if (!res.ok) {
         const mess = await res.text();
         throw new Error(mess);
@@ -20,11 +28,14 @@ class Api {
 
   static async getSingleEntity(endpoint, id = "") {
     try {
-      let res = await fetch(`${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${endpoint}/${id}`, {
-        headers: {
-          "Content-Type": "application/json",
+      let res = await fetch(
+        `${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${endpoint}/${id}`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
         },
-      });
+      );
 
       if (!res.ok) {
         const mess = await res.text();
@@ -44,7 +55,7 @@ class Api {
           headers: {
             "Content-Type": "application/json",
           },
-        }
+        },
       );
       if (!res.ok) {
         const mess = await res.text();
@@ -58,13 +69,16 @@ class Api {
 
   static async addEntity(endpoint, body) {
     try {
-      let res = await fetch(`${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${endpoint}`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+      let res = await fetch(
+        `${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${endpoint}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(body),
         },
-        body: JSON.stringify(body),
-      });
+      );
       if (!res.ok) {
         const mess = await res.text();
         throw new Error(mess);
@@ -77,12 +91,15 @@ class Api {
 
   static async deleteEntity(endpoint, id) {
     try {
-      let res = await fetch(`${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${endpoint}/${id}`, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
+      let res = await fetch(
+        `${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${endpoint}/${id}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
         },
-      });
+      );
       if (!res.ok) {
         const mess = await res.text();
         throw new Error(mess);
@@ -95,13 +112,16 @@ class Api {
 
   static async updateEntity(endpoint, id, body) {
     try {
-      let res = await fetch(`${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.AUTH}/${endpoint}`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+      let res = await fetch(
+        `${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.AUTH}/${endpoint}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(body),
         },
-        body: JSON.stringify(body),
-      });
+      );
 
       if (!res.ok) {
         const mess = await res.text();
@@ -116,13 +136,16 @@ class Api {
 
   static async signup(body, endpoint = "signup") {
     try {
-      let res = await fetch(`${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.AUTH}/${endpoint}`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+      let res = await fetch(
+        `${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.AUTH}/${endpoint}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(body),
         },
-        body: JSON.stringify(body),
-      });
+      );
 
       if (!res.ok) {
         const mess = (await res.json())?.message;
@@ -137,14 +160,17 @@ class Api {
 
   static async signin(body, endpoint = "signin") {
     try {
-      let res = await fetch(`${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.AUTH}/${endpoint}`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+      let res = await fetch(
+        `${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.AUTH}/${endpoint}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          credentials: "include",
+          body: JSON.stringify(body),
         },
-        credentials: "include",
-        body: JSON.stringify(body),
-      });
+      );
 
       if (!res.ok) {
         const mess = (await res.json())?.message;
@@ -159,14 +185,17 @@ class Api {
 
   static async logout(accessToken, endpoint = "logout") {
     try {
-      let res = await fetch(`${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.AUTH}/${endpoint}`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${accessToken}`,
+      let res = await fetch(
+        `${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.AUTH}/${endpoint}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${accessToken}`,
+          },
+          credentials: "include",
         },
-        credentials: "include"
-      });
+      );
 
       if (!res.ok) {
         const mess = await res.json();
@@ -181,16 +210,19 @@ class Api {
 
   static async refresh(endpoint = "refresh") {
     try {
-      let res = await fetch(`${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.AUTH}/${endpoint}`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",          
+      let res = await fetch(
+        `${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.AUTH}/${endpoint}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          credentials: "include",
         },
-        credentials: "include",
-      });
+      );
 
       if (!res.ok) {
-        const mess = await res.text();
+        const mess = (await res.json())?.message;
         throw new Error(mess);
       }
 
@@ -202,13 +234,16 @@ class Api {
 
   static async fakeSignIn(endpoint, body) {
     try {
-      let res = await fetch(`${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.FAKE_AUTH}/${endpoint}`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+      let res = await fetch(
+        `${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.FAKE_AUTH}/${endpoint}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(body),
         },
-        body: JSON.stringify(body)
-      });
+      );
       if (!res.ok) {
         const mess = await res.text();
         throw new Error(mess);
@@ -220,13 +255,16 @@ class Api {
   }
   static async fakeSignUp(endpoint, body) {
     try {
-      let res = await fetch(`${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.FAKE_AUTH}/${endpoint}`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+      let res = await fetch(
+        `${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.FAKE_AUTH}/${endpoint}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(body),
         },
-        body: JSON.stringify(body)
-      });
+      );
       if (!res.ok) {
         const mess = await res.text();
         throw new Error(mess);

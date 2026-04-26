@@ -57,7 +57,7 @@
 
         padding-bottom: var(--app-md-spacing)                  
 
-.user-section
+.user-section, .limit-section
 
     &-data
         border: 1px dotted
@@ -67,10 +67,13 @@
         @include flex-default
         gap: var(--app-md-spacing)
         justify-content: space-between
+        align-items: center
         margin: var(--app-md-spacing) 0px            
 
     code
         width: 50%
+        white-space: nowrap
+
         &::-webkit-scrollbar-thumb 
             background-color: var(--app-default-bg) 
         

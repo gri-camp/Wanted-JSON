@@ -1,18 +1,22 @@
-// consts:
-// utils:
+// helpers:
 import {
   copy,
+  dateFormatter,
   draw,
   getActualUserAuthParams,
   getDataFromLS,
   getTokenDeathTimeValue,
+  setDataToLS,
 } from "../helpers/helpers.js";
 // service classes:
+import Api from "./Api.js";
 import { Auth } from "./Auth.js";
 import Components from "./Components.js";
+import { Notice } from "./Notice.js";
 
 class Profile {
   constructor() {
+    // ! DOM
     this.container = document.querySelector(".appContainer");
     this.accessTokenSection = document.querySelector(".accessTokenSection");
     this.accessTokenDeathTimeElem = null;
@@ -20,6 +24,10 @@ class Profile {
     this.accessTokenValueElem = null;
     this.spinner = this.container.querySelector(".spinner");
     this.logoutButton = null;
+    this.usedElem = null;
+    this.remainElem = null;
+    this.resetAtElem = null;
+    // ! LOGIC
     this.subscribers = [];
     this.user = getDataFromLS("user");
   }
@@ -30,6 +38,7 @@ class Profile {
     // await this.getActualUserParams();
     this.spinner.classList.toggle("active");
     this.render(this.container, this.user);
+    this.updateReqLimits(this.remainElem, this.usedElem, this.resetAtElem);
     this.addListenerToContainer();
     this.addListenerToLogoutButton();
   }
@@ -46,11 +55,18 @@ class Profile {
       ".accessToken-section-tokenDeathTimeElem",
     );
     this.logoutButton = container.querySelector(".logout-section button");
+    this.remainElem = container.querySelector(
+      ".limit-section-data-remaining code",
+    );
+    this.usedElem = container.querySelector(".limit-section-data-used code");
+    this.resetAtElem = container.querySelector(
+      ".limit-section-data-resetAt code",
+    );
   }
 
   static isUserSignedIn(container, page) {
     if (!getDataFromLS("user")?.accessToken) {
-      page !== 'index' ? this.showUnregisteredHTML(container, page) : ''
+      page !== "index" ? this.showUnregisteredHTML(container, page) : "";
       return false;
     }
     return true;
@@ -66,6 +82,29 @@ class Profile {
     this.user = getDataFromLS("user");
   }
 
+  async updateReqLimits(remainElem, usedElem, resetAtElem) {
+    this.spinner.classList.toggle("active");
+    let { requestLimit } = await Api.getEntities("athletes", "country=россия");
+    setDataToLS("user", {
+      ...this.user,
+      remaining: requestLimit?.remaining || null,
+      resetAt: requestLimit?.resetAt || null,
+      used: requestLimit?.used || null,
+    });
+    this.spinner.classList.toggle("active");
+    this.renderLimitsData(remainElem, usedElem, resetAtElem, {
+      remaining: requestLimit?.remaining,
+      resetAt: requestLimit?.resetAt,
+      used: requestLimit?.used,
+    });
+  }
+
+  renderLimitsData(remainElem, usedElem, resetAtElem, data) {
+    remainElem.textContent = data?.remaining;
+    usedElem.textContent = data?.used;
+    resetAtElem.textContent = dateFormatter(data?.resetAt);
+  }
+
   async addListenerToContainerHandler(e) {
     if (e.target.closest(".request-card-copybar")) {
       let accessTokenValueElem = this.accessTokenSection.querySelector("code"),
@@ -74,14 +113,29 @@ class Profile {
     }
     if (e.target.closest(".refresh")) {
       e.preventDefault();
-      this.spinner.classList.toggle("active");
-      await getActualUserAuthParams();
-      this.spinner.classList.toggle("active");
-      this.user = getDataFromLS("user");
-      this.subscribers.forEach((fn) =>
-        fn(this.accessTokenValueElem, this.accessTokenDeathTimeElem, this.user),
-      );
-      this.refreshButton.disabled = true;
+      try {
+        this.spinner.classList.toggle("active");
+        let res = await getActualUserAuthParams();
+        this.spinner.classList.toggle("active");
+        if (typeof res === "string") {
+          throw new Error(res);
+        }
+        this.user = getDataFromLS("user");
+        this.subscribers.forEach((fn) =>
+          fn(
+            this.accessTokenValueElem,
+            this.accessTokenDeathTimeElem,
+            this.user,
+          ),
+        );
+        this.updateReqLimits(this.remainElem, this.usedElem, this.resetAtElem);
+        this.refreshButton.disabled = true;
+      } catch (e) {
+        new Notice({
+          msg: e.message,
+          Component: Components.NOTICE_MODAL,
+        }).noticeModalShow(100);
+      }
     }
   }
 
@@ -116,4 +170,3 @@ class Profile {
 }
 
 export { Profile };
-

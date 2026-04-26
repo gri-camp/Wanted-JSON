@@ -31,7 +31,7 @@ class Notice {
   noticeModalShow(delay) {
     setTimeout(() => {
       this.noticeModal.classList.toggle("active");
-    }, 0);
+    }, delay);
     return this;
   }
 

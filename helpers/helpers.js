@@ -1,4 +1,4 @@
-import { MONTHS } from "../models/models.js";
+import { LOCALE_OPTIONS, MONTHS } from "../models/models.js";
 import Api from "../service/Api.js";
 
 const draw = (container, html) =>
@@ -18,39 +18,16 @@ async function getActualUserAuthParams() {
   if (Date.now() >= currentUserParams.exp * 1000) {
     let actualUserParams = await Api.refresh();
     setDataToLS("user", {
-      login: actualUserParams?.user?.login,
-      id: actualUserParams?.user?.id,
-      accessToken: actualUserParams?.accessToken,
+      ...currentUserParams,
+      login: actualUserParams?.user?.login || null,
+      id: actualUserParams?.user?.id || null,
+      accessToken: actualUserParams?.accessToken || null,
       exp: actualUserParams.exp || null,
     });
     return actualUserParams;
   }
   return currentUserParams;
 }
-
-const generateResByid = (id, resSchemes) => {
-  const s = resSchemes[id];
-
-  return `
-    <strong class='purple'>{</strong>
-${Object.keys(s)
-  .map((key) => {
-    switch (true) {
-      case s[key] instanceof Array:
-        return `\t${key}: <span class='purple'>[</span>${s[key]
-          .map((str) => `"${str}"`)
-          .join(", ")}<span class='purple'>]</span>`;
-      case s[key] instanceof Object && s[key] !== null:
-        return `\t${key}: <span class='purple'>{</span>${Object.keys(s[key])
-          .map((k) => `"${[k]}": "${s[key][k]}"`)
-          .join(", ")}<span class='purple'>}</span>`;
-      default:
-        return `\t${key}: ${typeof s[key] === "string" ? `'${s[key]}'` : s[key]}`;
-    }
-  })
-  .join(",\n")}
-    <strong class='purple'>}</strong>`;
-};
 
 const copy = async (target, copyStatus) => {
   const codeExample = target.textContent;
@@ -94,16 +71,26 @@ const debouncer = (cb, delay) => {
     if (timer) {
       clearTimeout(timer);
     }
-    timer = setTimeout(() => cb(...args), delay)
+    timer = setTimeout(() => cb(...args), delay);
   };
+};
+
+const dateFormatter = (utcStr) => {
+  if (typeof Temporal) {
+    return Temporal.Instant.from(utcStr).toLocaleString(
+      "ru-RU",
+      LOCALE_OPTIONS,
+    );
+  }
+  return new Date(utcStr).toLocaleString("ru-RU", LOCALE_OPTIONS);
 };
 
 export {
   copy,
+  dateFormatter,
   debouncer,
   draw,
   fetchAuthRequest,
-  generateResByid,
   getActualUserAuthParams,
   getDataFromLS,
   getHTMLFromList,

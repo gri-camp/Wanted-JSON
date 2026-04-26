@@ -1,3 +1,11 @@
+const requestLimitData = () => `
+    "requestLimit": <span class='purple'>{</span>
+        "limit": 250,
+        "remaining": 249,
+        "used": 1,
+        "resetAt": "2026-04-27"
+    <span class='purple'>}</span>`;
+
 const Responses = {
   books: {
     getEntities: `
@@ -30,7 +38,7 @@ const Responses = {
     "total": 30,
     "page": 1,
     "limit": 10,
-    "totalPages": 3,
+    "totalPages": 3, ${requestLimitData()}
 <span class='purple'>}</span>           
 </code>`,
     getEntitiesQS: `
@@ -63,7 +71,7 @@ const Responses = {
     "total": 30,
     "page": 2,
     "limit": 5,
-    "totalPages": 6,
+    "totalPages": 6, ${requestLimitData()}
 <span class='purple'>}</span>           
 </code>`,
     getSingleEntity: `
@@ -120,7 +128,7 @@ const Responses = {
     "total": 3,
     "page": 1,
     "limit": 3,
-    "totalPages": 1,
+    "totalPages": 1, ${requestLimitData()}
 <span class='purple'>}</span>
 </code>`,
     addEntity: `
@@ -220,7 +228,7 @@ const Responses = {
     "total": 28,
     "page": 1,
     "limit": 10,
-    "totalPages": 3,
+    "totalPages": 3, ${requestLimitData()}
 <span class='purple'>}</span>           
 </code>`,
     getEntitiesQS: `
@@ -255,7 +263,7 @@ const Responses = {
     "total": 28,
     "page": 2,
     "limit": 5,
-    "totalPages": 6,
+    "totalPages": 6, ${requestLimitData()}
 <span class='purple'>}</span>           
 </code>`,
     getSingleEntity: `
@@ -316,7 +324,7 @@ const Responses = {
     "total": 4,
     "page": 1,
     "limit": 4,
-    "totalPages": 1,
+    "totalPages": 1, ${requestLimitData()}
 <span class='purple'>}</span>
 </code>`,
     addEntity: `
@@ -1034,7 +1042,13 @@ const Responses = {
         "login": "foo"
     <strong class='purple'>}</strong>,
     "accessToken": "your accessToken",
-    "exp": 1770542402,  // время окончания токена, сек.  
+    "exp": 1770542402,  // время окончания токена, сек.
+    "requestLimit": {
+        "limit": 250,
+        "remaining": 249,
+        "used": 1,
+        "resetAt": "2026-04-27"
+    } 
 <strong class='purple'>}</strong>           
 </code>`,
     signup: `<code>    
@@ -1061,8 +1075,8 @@ const Responses = {
     "exp": 1770542402,  // время окончания токена, сек.  
 <strong class='purple'>}</strong>           
 </code>`,
-},
-fakeAuth: {
+  },
+  fakeAuth: {
     fakeSignin: `<code>    
 <strong class='purple'>{</strong>
     "user": <strong class='purple'>{</strong>
@@ -1086,7 +1100,3 @@ fakeAuth: {
 };
 
 export { Responses };
-
-
-
-

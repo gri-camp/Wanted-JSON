@@ -1,6 +1,7 @@
 const API_CONSTS = {
   PROTOCOL: "https",
   HOST: "api.wantedjson.ru",
+  // HOST: "dummy.chromiusj.ru",
   BOOKS: "books",
   ATHLETES: "athletes",
   VIDEOGAMES: "videoGames",
@@ -17,8 +18,21 @@ const API_CONSTS = {
   FAKE_AUTH: "fakeAuth",
 };
 
+const LOCALE_OPTIONS = {
+  hour: "2-digit",
+  minute: "2-digit",
+  second: "2-digit",
+  day: "numeric",
+  month: "long",
+  year: "numeric",
+};
+
+const DEFAULT_REQUEST_LIMIT = 250;
+const SIGNIN_REQUEST_LIMIT = 1000;
+
 const ROOT = document.documentElement;
-const ARROW = '<div class="icon-box"><span class="material-icons-round arrow">east</span></div>';
+const ARROW =
+  '<div class="icon-box"><span class="material-icons-round arrow">east</span></div>';
 
 const MONTHS = [
   "Январь",
@@ -217,7 +231,7 @@ const FEATURES_CARD_LIST = [
   },
   {
     icon: `<strong class="material-icons-round success">money_off</strong>`,
-    text: `Бесплатный доступ к данным без API-ключа и регистрации!`,
+    text: `Бесплатный доступ к данным без API-ключа и регистрации: <strong class='success'> лимит ${DEFAULT_REQUEST_LIMIT} запросов / сутки</strong>`,
     title: "Старт без регистрации",
   },
   {
@@ -260,7 +274,7 @@ const GETTING_STARTED_CARD_LIST = [
   },
   {
     icon: `<span class="material-icons-round">token</span>`,
-    text: `Скопируй токен доступа для совершения запросов к REST API - пример запроса на странице с <a href='#documentation' rel="noopener noreferrer"> документацией </a>`,
+    text: `Скопируй токен доступа для совершения запросов к REST API с <strong>увеличенным лимитом</strong> - пример запроса на странице с <a href='#documentation' rel="noopener noreferrer"> документацией </a>`,
     title: "3. Access-токен",
   },
 ];
@@ -343,42 +357,42 @@ const ENTITIES_LIST = [
 
 const EXAMPLES_LIST = [
   {
-    title: 'Получить все автомобили:',
+    title: "Получить все автомобили:",
     // href: `${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.CARS}`,
     text: ` ${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.CARS}`,
   },
   {
-    title: 'Получить книгу с ID 5:',
+    title: "Получить книгу с ID 5:",
     // href: `${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.BOOKS}/5`,
     text: ` ${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.BOOKS}/5`,
   },
   {
-    title: 'Найти спортсмена по запросу:',
+    title: "Найти спортсмена по запросу:",
     // href: `${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.ATHLETES}?q=Лионель Месси`,
     text: ` ${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.ATHLETES}<span class='danger'>?q=Месси</span>`,
   },
   {
-    title: 'Получить книги с выбранными полями:',
+    title: "Получить книги с выбранными полями:",
     // href: `${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.BOOKS}?select=title,author,pageCount`,
     text: ` ${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.BOOKS}<span class='danger'>?select=title,author,pageCount</span>`,
   },
   {
-    title: 'Отсортировать книги по кол-ву страниц:',
+    title: "Отсортировать книги по кол-ву страниц:",
     // href: `${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.BOOKS}?sort=pageCount:desc`,
     text: ` ${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.BOOKS}<span class='danger'>?sort=pageCount:desc</span>`,
   },
   {
-    title: 'Получить 20 видеоигр:',
+    title: "Получить 20 видеоигр:",
     // href: `${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.VIDEOGAMES}?limit=20`,
     text: ` ${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.VIDEOGAMES}<span class='danger'>?limit=20</span>`,
   },
   {
-    title: 'Найти фильм по запросу:',
+    title: "Найти фильм по запросу:",
     // href: `${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.MOVIES}?q=матрица`,
     text: ` ${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.MOVIES}<span class='danger'>?q=матрица</span>`,
   },
   {
-    title: 'Найти все японские автомобили:',
+    title: "Найти все японские автомобили:",
     // href: `${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.CARS}?country=ЯПОНИЯ`,
     text: ` ${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.CARS}<span class='danger'>?country=ЯПОНИЯ</span>`,
   },
@@ -808,6 +822,7 @@ export {
   getSchemesToolbarConfig,
   GETTING_STARTED_CARD_LIST,
   HOMEPAGE_MENU_LIST,
+  LOCALE_OPTIONS,
   MONTHS,
   POST_REQUIRED_FIELDS,
   QUIZ_LINK_LIST,

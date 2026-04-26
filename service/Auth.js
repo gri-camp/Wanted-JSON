@@ -11,6 +11,7 @@ import {
 import Api from "./Api.js";
 import Components from "./Components.js";
 import { Notice } from "./Notice.js";
+import { Profile } from "./Profile.js";
 
 class Auth {
   constructor({
@@ -20,7 +21,7 @@ class Auth {
     formType = "signup",
     actionTrigger = null,
   }) {
-    getDataFromLS("user") && getActualUserAuthParams();
+    Profile.isUserSignedIn(container, 'index') && getActualUserAuthParams();
     if (!((formType === "signin") | (formType === "signup")))
       throw new Error("Invalid 'formType' param!");
     // ! DOM ELEMENTS
@@ -121,8 +122,6 @@ class Auth {
     Object.values(this.state).every((v) => v)
       ? (this.submitBtn.disabled = false)
       : (this.submitBtn.disabled = true);
-
-    console.log(this.state);
   };
 
   addInputListener() {
@@ -158,7 +157,7 @@ class Auth {
       this.reset("Вход прошел успешно!");
       return setTimeout(() => {
         this.container.classList.toggle("active");
-        this.notice.noticeModalShow(3000);
+        this.notice.noticeModalShow(0);
       }, 2000);
     }
     this.reset(response?.message);
@@ -190,17 +189,21 @@ class Auth {
     return this;
   }
 
-  signIn({ user, accessToken, exp }) {
+  signIn({ user, accessToken, exp, requestLimit }) {
     this.showRegisteredUser(
       "",
       user.login.slice(0, this.textSliceValue),
       "add",
     );
     setDataToLS("user", {
-      login: user?.login,
+      login: user?.login || null,
       accessToken,
       exp: exp || null,
       id: user?.id || null,
+      limit: requestLimit?.limit || null,
+      remaining: requestLimit?.remaining || null,
+      resetAt: requestLimit?.resetAt || null,
+      used: requestLimit?.used || null,
     });
   }
 

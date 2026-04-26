@@ -1,6 +1,5 @@
 // consts:
 import {
-  API_CONSTS,
   ARROW,
   DOCUMENTATION_LIST,
   ENTITIES_LIST,
@@ -24,6 +23,7 @@ import { Observer } from "./service/Observer.js";
 import { Request } from "./service/Request.js";
 import { Theme } from "./service/Theme.js";
 import { UpwardButton } from "./service/UpWardButton.js";
+import Api from "./service/Api.js";
 
 try {
   const USER_MENU = document.querySelector(".user-menu");
@@ -113,7 +113,7 @@ try {
     actionTrigger: ".signin-icon",
   });
 
-  // Api.getEntities('athletes', 'country=россия')
+  // Api.getEntities('cars')
   //   .then(a => console.log(a))
 } catch (error) {
   console.warn(error.message, error.name);

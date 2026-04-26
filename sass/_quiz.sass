@@ -4,6 +4,7 @@
     .btn
         @include flex-default
         gap: 0.25rem
+        font-size: 1em
 
 .quizItem
     margin: var(--app-xl-spacing) 0px
@@ -13,7 +14,8 @@
     box-shadow: var(--app-default-shadow)
 
     h3
-        text-transform: none    
+        text-transform: none
+        font-weight: 500    
 
     &-ul
         padding: 0px
@@ -22,8 +24,7 @@
         width: 100%
         @include flex-default
         justify-content: flex-start
-        gap: var(--app-md-spacing)
-        font-size: 1.1em
+        gap: var(--app-md-spacing)        
         margin: var(--app-lg-spacing) 0px
         font-weight: 500
    

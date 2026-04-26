@@ -47,11 +47,35 @@
           протоколу HTTP.
         </p>
         <p class="section-text">
-          Скопируйте <em>accessToken</em> вида:
-          <span class="accessToken">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQ3...</span> на
-          странице профиля пользователя и добавьте его в настройки метода
-          выполнения HTTP-запросов - ниже показаны примеры с <dfn class="success" title="современный способ выполнения HTTP‑запросов в JavaScript. Он пришёл на смену XMLHttpRequest и работает на основе промисов, что делает код асинхронным и читаемым."> Fetch API </dfn>:
+          Каждый пользователь получает
+          <span class="success">суточный лимит в 250 запросов</span>, доступный
+          без регистрации и API-ключа. Для увеличения суточного лимита -
+          необходимо:
         </p>
+        <ol class="section-text upgradeRequestLimit">
+          <li>
+            Пройти процедуру
+            <a href="./signup.html" class="success">регистрации</a>;
+          </li>
+          <li>Авторизоваться на сайте и перейти в личный профиль;</li>
+          <li>
+            Скопировать <em>токен доступа</em> вида:
+            <em class="accessToken"
+              >eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQ3...</em
+            >
+            на странице профиля;
+          </li>
+          <li>
+            Добавить токен в настройки метода выполнения HTTP-запросов - ниже
+            показаны примеры с
+            <dfn
+              class="success"
+              title="современный способ выполнения HTTP‑запросов в JavaScript. Он пришёл на смену XMLHttpRequest и работает на основе промисов, что делает код асинхронным и читаемым."
+            >
+              Fetch API.</dfn
+            >
+          </li>
+        </ol>
       </section>
       <!-- SECTION URLS  ////////////////////// -->
       <section id="requests" class="app-section">

@@ -112,7 +112,7 @@ class Components {
   EXAMPLES_LINK = ({ href, text, title }) => `
     <em>${title}</em>
     <li class="request-card-url doca">        
-        <a ${href ? `href=${href}` : ''} rel="noopener noreferrer">
+        <a ${href ? `href=${href}` : ""} rel="noopener noreferrer">
           <div class="icon-box"><span class="material-icons-round">api</span></div>
           <span class='example'>${text}</span>
         </a>
@@ -492,7 +492,6 @@ class Components {
 
   PROFILE_PAGE(user) {
     const isAccessTokenExpired = Date.now() > new Date(user.exp * 1000);
-
     return `
       <section class="app-section accessToken-section">    
         <h3>Текущий токен:</h3>
@@ -516,10 +515,19 @@ class Components {
         </form>
       </section>
       <section class="app-section user-section">
-        <h3>Данные пользователя:</h3>
+        <h3>пользователь:</h3>
         <div class="user-section-data">
           <p>Имя пользователя: <code>${user?.login}</code></p>
           <p>ID пользователя: <code>${user?.id}</code></p>
+        </div>       
+      </section>
+      <section class="app-section limit-section">
+        <h3>Запросы <span style='text-transform: none;'>${user?.login}</span>:</h3>
+        <div class="limit-section-data">
+          <p>Суточный лимит: <code>${user?.limit}</code></p>
+          <p class='limit-section-data-remaining'>Осталось: <code></code></p>
+          <p class='limit-section-data-used'>Использовано: <code></code></p>
+          <p class='limit-section-data-resetAt'>Oбновление лимита: <code></code></p>
         </div>       
       </section>
       <section class="app-section logout-section">
