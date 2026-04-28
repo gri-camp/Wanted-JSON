@@ -154,7 +154,7 @@ const Responses = {
     goodreadsRating: null,        
     movieAdaptation: null,            
     movieTitle: null,
-    lastUpdated : null,        
+    lastUpdated : null, ${requestLimitData()}        
 <strong class='purple'>}</strong>
 </code>`,
     deleteEntity: `
@@ -256,7 +256,7 @@ const Responses = {
         firstVictory: 'Первый титул ATP 2006 в Амерсфорте',
         hobbies: 'Походы, бег, плавание, велосипедные прогулки, футбол, баскетбол',
         isActive: true, 
-        lastUpdated: '2025-10-28',
+        lastUpdated: '2025-10-28', 
     <span class='purple'>}</span>,
     ...
     <span class='purple'>]</span>,
@@ -352,7 +352,7 @@ const Responses = {
     mainAchievements: <span class='purple'>[</span><span class='purple'>]</span>,          
     annualSalary: null,
     instagramFollowers: null,   
-    lastUpdated: null,   
+    lastUpdated: null, ${requestLimitData()}    
 <strong class='purple'>}</strong>
 </code>`,
     deleteEntity: `
@@ -453,7 +453,7 @@ const Responses = {
     "total": 30,
     "page": 2,
     "limit": 5,
-    "totalPages": 6,
+    "totalPages": 6, ${requestLimitData()}
 <span class='purple'>}</span>           
 </code>`,
     getSingleEntity: `
@@ -503,7 +503,7 @@ const Responses = {
     "total": 4,
     "page": 1,
     "limit": 4,
-    "totalPages": 1,
+    "totalPages": 1, ${requestLimitData()}
 <span class='purple'>}</span>
 </code>`,
     addEntity: `
@@ -526,7 +526,7 @@ const Responses = {
     hasSequel: true,          
     sequelTitle: "Half-Life 2",
     multiplayer: null,
-    lastUpdated: null,
+    lastUpdated: null, ${requestLimitData()}  
 <strong class='purple'>}</strong>
 </code>`,
     deleteEntity: `
@@ -597,7 +597,7 @@ const Responses = {
     "total": 45,
     "page": 1,
     "limit": 10,
-    "totalPages": 5,
+    "totalPages": 5, ${requestLimitData()}
 <span class='purple'>}</span></code>`,
     getEntitiesQS: `
 <code><span class='purple'>{</span> 
@@ -631,7 +631,7 @@ const Responses = {
     "total": 45,
     "page": 2,
     "limit": 5,
-    "totalPages": 9,
+    "totalPages": 9, ${requestLimitData()}
 <span class='purple'>}</span></code>`,
     getSingleEntity: `
 <code><span class='purple'>{</span>        
@@ -690,7 +690,7 @@ const Responses = {
     "total": 5,
     "page": 1,
     "limit": 5,
-    "totalPages": 1,
+    "totalPages": 1, ${requestLimitData()}
 <span class='purple'>}</span></code>`,
     addEntity: `
 <code> // Код ответа: <span class='success'>201</span>.
@@ -717,7 +717,7 @@ const Responses = {
     studio: "The Weinstein Company",
     isSeries: false,
     seasons: null,
-    lastUpdated: null,
+    lastUpdated: null, ${requestLimitData()}  
 <strong class='purple'>}</strong>
 </code>`,
     deleteEntity: `
@@ -787,7 +787,7 @@ const Responses = {
     "total": 30,
     "page": 1,
     "limit": 10,
-    "totalPages": 3,
+    "totalPages": 3, ${requestLimitData()}
 <span class='purple'>}</span></code>`,
     getEntitiesQS: `
 <code><span class='purple'>{</span> 
@@ -817,7 +817,7 @@ const Responses = {
     "total": 30,
     "page": 2,
     "limit": 5,
-    "totalPages": 6,
+    "totalPages": 6, ${requestLimitData()}
 <span class='purple'>}</span></code>`,
     getSingleEntity: `
 <code><span class='purple'>{</span>    
@@ -868,7 +868,7 @@ const Responses = {
     "total": 3,
     "page": 1,
     "limit": 3,
-    "totalPages": 1,
+    "totalPages": 1, ${requestLimitData()}
 <span class='purple'>}</span>           
 </code>`,
     addEntity: `
@@ -892,7 +892,7 @@ const Responses = {
     topSales: 'США',
     euroStandart: 'Euro 5/Euro 6',
     colors: <span class='purple'>[</span>"тёмно-синий", "коричневый", "серебристый", "белый", "глубокий чёрный"<span class='purple'>]</span>,
-    lastUpdated: null,
+    lastUpdated: null, ${requestLimitData()}  
 <strong class='purple'>}</strong>
 </code>`,
     deleteEntity: `
@@ -949,7 +949,7 @@ const Responses = {
     "total": 88,
     "page": 1,
     "limit": 10,
-    "totalPages": 9,
+    "totalPages": 9, ${requestLimitData()}
 <span class='purple'>}</span></code>`,
     getEntitiesQS: `
 <code><span class='purple'>{</span> 
@@ -968,7 +968,7 @@ const Responses = {
     "total": 88,
     "page": 2,
     "limit": 5,
-    "totalPages": 18,
+    "totalPages": 18, ${requestLimitData()}
 <span class='purple'>}</span></code>`,
     getSingleEntity: `
 <code><span class='purple'>{</span>    
@@ -997,7 +997,7 @@ const Responses = {
     "total": 1,
     "page": 1,
     "limit": 1,
-    "totalPages": 1,
+    "totalPages": 1, ${requestLimitData()}
 <span class='purple'>}</span></code>`,
     addEntity: `
 <code> // Код ответа: <span class='success'>201</span>.
@@ -1009,7 +1009,7 @@ const Responses = {
     gameId: 3, <span class="danger">*</span>
     date: '2026-02-09', <span class="danger">*</span>
     userLevel: 22, 
-    likes: 15   
+    likes: 15, ${requestLimitData()}     
 <strong class='purple'>}</strong>
 </code>`,
     deleteEntity: `
@@ -1042,13 +1042,7 @@ const Responses = {
         "login": "foo"
     <strong class='purple'>}</strong>,
     "accessToken": "your accessToken",
-    "exp": 1770542402,  // время окончания токена, сек.
-    "requestLimit": {
-        "limit": 250,
-        "remaining": 249,
-        "used": 1,
-        "resetAt": "2026-04-27"
-    } 
+    "exp": 1770542402,  // время окончания токена, сек. ${requestLimitData()}     
 <strong class='purple'>}</strong>           
 </code>`,
     signup: `<code>    
@@ -1100,3 +1094,8 @@ const Responses = {
 };
 
 export { Responses };
+
+
+
+
+

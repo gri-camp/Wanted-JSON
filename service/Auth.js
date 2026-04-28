@@ -8,6 +8,7 @@ import {
   setDataToLS,
 } from "../helpers/helpers.js";
 // service
+import { ACCESS_TOKEN_DURATION } from "../models/models.js";
 import Api from "./Api.js";
 import Components from "./Components.js";
 import { Notice } from "./Notice.js";
@@ -21,12 +22,12 @@ class Auth {
     formType = "signup",
     actionTrigger = null,
   }) {
-    Profile.isUserSignedIn(container, 'index') && getActualUserAuthParams();
+    Profile.isUserSignedIn(container, "index") && getActualUserAuthParams();
     if (!((formType === "signin") | (formType === "signup")))
       throw new Error("Invalid 'formType' param!");
     // ! DOM ELEMENTS
     this.notice = new Notice({
-      msg: "AccessToken действует 90 минут. По истечении этого времени, Вы можете вручную обновить токен в профиле пользователя.",
+      msg: `AccessToken действует ${ACCESS_TOKEN_DURATION} минут(ы). По истечении этого времени, Вы можете вручную обновить токен в профиле пользователя.`,
       Component: Components.NOTICE_MODAL,
     });
     this.textSliceValue = 13;
@@ -119,9 +120,11 @@ class Auth {
       this.state[name] = "";
     }
 
-    Object.values(this.state).every((v) => v)
-      ? (this.submitBtn.disabled = false)
-      : (this.submitBtn.disabled = true);
+    Object.keys(this.state)
+      .filter((inputName) => inputName !== "notification")
+      .some((inputName) => !this.state[inputName])
+      ? (this.submitBtn.disabled = true)
+      : (this.submitBtn.disabled = false);
   };
 
   addInputListener() {
@@ -144,6 +147,7 @@ class Auth {
       this.submitBtn.nextElementSibling.classList.remove("active");
     }
 
+    // const body = { login: this.state.login, password: this.state.password, notification: this.state.notification };
     const body = { login: this.state.login, password: this.state.password };
 
     this.submitBtn.value = "Загрузка...";
@@ -172,11 +176,14 @@ class Auth {
   }
 
   addClickListenerToContainerHandler = (e) => {
-    if (e.target.matches(".agreement-trigger"))
+    if (e.target.matches(".agreement-trigger")) {
       return this.agreementPopup.classList.toggle("active");
-
-    if (!e.target.closest("form") && this.formType === "signin")
+    }
+    if (!e.target.closest("form") && this.formType === "signin") {
       this.container.classList.toggle("active");
+      document.body.style.overflowY = "";
+    }
+
     this.submitBtn.nextElementSibling.classList.toggle("active");
     this.submitBtn.nextElementSibling.textContent = "";
   };
@@ -200,10 +207,6 @@ class Auth {
       accessToken,
       exp: exp || null,
       id: user?.id || null,
-      limit: requestLimit?.limit || null,
-      remaining: requestLimit?.remaining || null,
-      resetAt: requestLimit?.resetAt || null,
-      used: requestLimit?.used || null,
     });
   }
 
@@ -228,6 +231,7 @@ class Auth {
     this.actionTrigger.firstElementChild.textContent = actionTriggerContent;
     this.userLogin.classList[action]("active");
     this.userLogin.textContent = userLoginContent;
+    document.body.style.overflowY = "";
   }
 
   addClickListenerToUserProfile = () => {
@@ -239,6 +243,7 @@ class Auth {
 
   addClickListenerToActionTriggerHandler = () => {
     this.container.classList.toggle("active");
+    document.body.style.overflowY = "hidden";
   };
 
   addClickListenerToActionTrigger(actionTrigger) {
@@ -263,14 +268,14 @@ class Auth {
     });
   }
 
-  reset(res, isError) {
-    if (!isError) {
+  reset(msg, Error) {
+    if (!Error) {
       this.form.reset();
       this.state = this.getInitState(this.elements);
       this.submitBtn.disabled = true;
     }
     this.submitBtn.nextElementSibling.classList.toggle("active");
-    this.submitBtn.nextElementSibling.textContent = res;
+    this.submitBtn.nextElementSibling.textContent = msg;
     this.submitBtn.value = this.submitBtnValue;
   }
 

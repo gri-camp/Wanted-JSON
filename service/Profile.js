@@ -24,6 +24,7 @@ class Profile {
     this.accessTokenValueElem = null;
     this.spinner = this.container.querySelector(".spinner");
     this.logoutButton = null;
+    this.limitElem = null;
     this.usedElem = null;
     this.remainElem = null;
     this.resetAtElem = null;
@@ -38,7 +39,12 @@ class Profile {
     // await this.getActualUserParams();
     this.spinner.classList.toggle("active");
     this.render(this.container, this.user);
-    this.updateReqLimits(this.remainElem, this.usedElem, this.resetAtElem);
+    this.updateReqLimits(
+      this.remainElem,
+      this.usedElem,
+      this.resetAtElem,
+      this.limitElem,
+    );
     this.addListenerToContainer();
     this.addListenerToLogoutButton();
   }
@@ -62,6 +68,7 @@ class Profile {
     this.resetAtElem = container.querySelector(
       ".limit-section-data-resetAt code",
     );
+    this.limitElem = container.querySelector(".limit-section-data-limit code");
   }
 
   static isUserSignedIn(container, page) {
@@ -82,27 +89,23 @@ class Profile {
     this.user = getDataFromLS("user");
   }
 
-  async updateReqLimits(remainElem, usedElem, resetAtElem) {
+  async updateReqLimits(remainElem, usedElem, resetAtElem, limitElem) {
     this.spinner.classList.toggle("active");
-    let { requestLimit } = await Api.getEntities("athletes", "country=россия");
-    setDataToLS("user", {
-      ...this.user,
-      remaining: requestLimit?.remaining || null,
-      resetAt: requestLimit?.resetAt || null,
-      used: requestLimit?.used || null,
-    });
+    let { requestLimit } = await Api.getEntities("athletes", "country=россия");    
     this.spinner.classList.toggle("active");
-    this.renderLimitsData(remainElem, usedElem, resetAtElem, {
+    this.renderLimitsData(remainElem, usedElem, resetAtElem, limitElem, {
       remaining: requestLimit?.remaining,
       resetAt: requestLimit?.resetAt,
       used: requestLimit?.used,
+      limit: requestLimit?.limit,
     });
   }
 
-  renderLimitsData(remainElem, usedElem, resetAtElem, data) {
+  renderLimitsData(remainElem, usedElem, resetAtElem, limitElem, data) {
     remainElem.textContent = data?.remaining;
     usedElem.textContent = data?.used;
     resetAtElem.textContent = dateFormatter(data?.resetAt);
+    limitElem.textContent = data?.limit;
   }
 
   async addListenerToContainerHandler(e) {
@@ -128,7 +131,12 @@ class Profile {
             this.user,
           ),
         );
-        this.updateReqLimits(this.remainElem, this.usedElem, this.resetAtElem);
+        this.updateReqLimits(
+          this.remainElem,
+          this.usedElem,
+          this.resetAtElem,
+          this.limitElem,
+        );
         this.refreshButton.disabled = true;
       } catch (e) {
         new Notice({

@@ -524,7 +524,7 @@ class Components {
       <section class="app-section limit-section">
         <h3>Запросы <span style='text-transform: none;'>${user?.login}</span>:</h3>
         <div class="limit-section-data">
-          <p>Суточный лимит: <code>${user?.limit}</code></p>
+          <p class='limit-section-data-limit'>Суточный лимит: <code></code></p>
           <p class='limit-section-data-remaining'>Осталось: <code></code></p>
           <p class='limit-section-data-used'>Использовано: <code></code></p>
           <p class='limit-section-data-resetAt'>Oбновление лимита: <code></code></p>

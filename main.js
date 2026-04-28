@@ -16,6 +16,7 @@ import {
 // utils:
 import { draw, getHTMLFromList } from "./helpers/helpers.js";
 // service classes:
+import Api from "./service/Api.js";
 import { Auth } from "./service/Auth.js";
 import Components from "./service/Components.js";
 import { Menu } from "./service/Menu.js";
@@ -23,7 +24,6 @@ import { Observer } from "./service/Observer.js";
 import { Request } from "./service/Request.js";
 import { Theme } from "./service/Theme.js";
 import { UpwardButton } from "./service/UpWardButton.js";
-import Api from "./service/Api.js";
 
 try {
   const USER_MENU = document.querySelector(".user-menu");
@@ -113,8 +113,7 @@ try {
     actionTrigger: ".signin-icon",
   });
 
-  // Api.getEntities('cars')
-  //   .then(a => console.log(a))
+  Api.addEntity("cars", {brand: 'hui', model: 'hui', country: 'hui', modelYear: 1988}).then((a) => console.log(a));
 } catch (error) {
   console.warn(error.message, error.name);
 }

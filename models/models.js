@@ -1,7 +1,7 @@
 const API_CONSTS = {
   PROTOCOL: "https",
   HOST: "api.wantedjson.ru",
-  // HOST: "dummy.chromiusj.ru",
+  HOST: "dummy.chromiusj.ru",
   BOOKS: "books",
   ATHLETES: "athletes",
   VIDEOGAMES: "videoGames",
@@ -27,27 +27,11 @@ const LOCALE_OPTIONS = {
   year: "numeric",
 };
 
-const DEFAULT_REQUEST_LIMIT = 250;
-const SIGNIN_REQUEST_LIMIT = 1000;
+const FREE_DAILY_LIMIT = 100;
+const ACCESS_TOKEN_DURATION = 90;
 
 const ROOT = document.documentElement;
-const ARROW =
-  '<div class="icon-box"><span class="material-icons-round arrow">east</span></div>';
-
-const MONTHS = [
-  "Январь",
-  "Февраль",
-  "Март",
-  "Апрель",
-  "Май",
-  "Июнь",
-  "Июль",
-  "Август",
-  "Сентябрь",
-  "Октябрь",
-  "Ноябрь",
-  "Декабрь",
-];
+const ARROW = '<div class="icon-box"><span class="material-icons-round arrow">east</span></div>';
 
 const AUTH_ENDPOINTS = ["signin", "signup", "logout", "refresh"];
 
@@ -231,8 +215,8 @@ const FEATURES_CARD_LIST = [
   },
   {
     icon: `<strong class="material-icons-round success">money_off</strong>`,
-    text: `Бесплатный доступ к данным без API-ключа и регистрации: <strong class='success'> лимит ${DEFAULT_REQUEST_LIMIT} запросов / сутки</strong>`,
-    title: "Старт без регистрации",
+    text: `Бесконечный бесплатный доступ к данным API после авторизации: <strong class='success'> ${FREE_DAILY_LIMIT} запросов / сутки</strong>`,
+    title: "Доступ без оплаты",
   },
   {
     icon: `<span class="material-icons-round">monitor_heart</span>`,
@@ -811,6 +795,7 @@ const SIGN_IN_FORM_ELEMS_LIST = [
 
 export {
   API_CONSTS,
+  FREE_DAILY_LIMIT,
   ARROW,
   AUTH_ENDPOINTS,
   DOCSPAGE_MENU_LIST,
@@ -822,8 +807,7 @@ export {
   getSchemesToolbarConfig,
   GETTING_STARTED_CARD_LIST,
   HOMEPAGE_MENU_LIST,
-  LOCALE_OPTIONS,
-  MONTHS,
+  LOCALE_OPTIONS, 
   POST_REQUIRED_FIELDS,
   QUIZ_LINK_LIST,
   REQUEST_CARD_LIST,
@@ -833,4 +817,5 @@ export {
   SORTING_WHITE_LIST,
   URLS,
   USER_MENU_LIST,
+  ACCESS_TOKEN_DURATION,
 };

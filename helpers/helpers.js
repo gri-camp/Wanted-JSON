@@ -1,4 +1,4 @@
-import { LOCALE_OPTIONS, MONTHS } from "../models/models.js";
+import { LOCALE_OPTIONS } from "../models/models.js";
 import Api from "../service/Api.js";
 
 const draw = (container, html) =>
@@ -18,9 +18,7 @@ async function getActualUserAuthParams() {
   if (Date.now() >= currentUserParams.exp * 1000) {
     let actualUserParams = await Api.refresh();
     setDataToLS("user", {
-      ...currentUserParams,
-      login: actualUserParams?.user?.login || null,
-      id: actualUserParams?.user?.id || null,
+      ...currentUserParams,      
       accessToken: actualUserParams?.accessToken || null,
       exp: actualUserParams.exp || null,
     });
@@ -52,9 +50,9 @@ const copy = async (target, copyStatus) => {
   }
 };
 
-const getTokenDeathTimeValue = (exp) => {
-  const accessTokenDeathTime = new Date(exp * 1000);
-  return `${accessTokenDeathTime.toLocaleTimeString()} часов, ${accessTokenDeathTime.getDate()} ${MONTHS[accessTokenDeathTime.getMonth()]} ${accessTokenDeathTime.getFullYear()} г.`;
+const getTokenDeathTimeValue = (expires) => {
+  const accessTokenDeathTime = new Date(expires * 1000);
+  return accessTokenDeathTime.toLocaleTimeString("ru-RU", LOCALE_OPTIONS);
 };
 
 async function fetchAuthRequest(spinner, method, payload) {
@@ -75,7 +73,7 @@ const debouncer = (cb, delay) => {
   };
 };
 
-const dateFormatter = (utcStr) => {
+const dateFormatter = (utcStr) => {  
   if (typeof Temporal) {
     return Temporal.Instant.from(utcStr).toLocaleString(
       "ru-RU",

@@ -3,10 +3,8 @@ import { API_CONSTS } from "../models/models.js";
 
 class Api {
   static async getEntities(endpoint, qs = "") {
-
-    const accessToken = getDataFromLS('user')?.accessToken;
-
     try {
+      const accessToken = getDataFromLS("user")?.accessToken;
       let res = await fetch(
         `${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${endpoint}?${qs}`,
         {
@@ -28,11 +26,13 @@ class Api {
 
   static async getSingleEntity(endpoint, id = "") {
     try {
+      const accessToken = getDataFromLS("user")?.accessToken;
       let res = await fetch(
         `${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${endpoint}/${id}`,
         {
           headers: {
             "Content-Type": "application/json",
+            Authorization: `Bearer ${accessToken}`,
           },
         },
       );
@@ -49,11 +49,13 @@ class Api {
 
   static async getSearchedEntity(endpoint, q) {
     try {
+      const accessToken = getDataFromLS("user")?.accessToken;
       let res = await fetch(
         `${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${endpoint}?q=${q}`,
         {
           headers: {
             "Content-Type": "application/json",
+            Authorization: `Bearer ${accessToken}`,
           },
         },
       );
@@ -69,12 +71,14 @@ class Api {
 
   static async addEntity(endpoint, body) {
     try {
+      const accessToken = getDataFromLS("user")?.accessToken;
       let res = await fetch(
         `${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${endpoint}`,
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
+            Authorization: `Bearer ${accessToken}`,
           },
           body: JSON.stringify(body),
         },
@@ -91,12 +95,14 @@ class Api {
 
   static async deleteEntity(endpoint, id) {
     try {
+      const accessToken = getDataFromLS("user")?.accessToken;
       let res = await fetch(
         `${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${endpoint}/${id}`,
         {
           method: "DELETE",
           headers: {
             "Content-Type": "application/json",
+            Authorization: `Bearer ${accessToken}`,
           },
         },
       );
@@ -112,12 +118,14 @@ class Api {
 
   static async updateEntity(endpoint, id, body) {
     try {
+      const accessToken = getDataFromLS("user")?.accessToken;
       let res = await fetch(
-        `${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${API_CONSTS.AUTH}/${endpoint}`,
+        `${API_CONSTS.PROTOCOL}://${API_CONSTS.HOST}/${endpoint}/${id}`,
         {
-          method: "POST",
+          method: "PATCH",
           headers: {
             "Content-Type": "application/json",
+            Authorization: `Bearer ${accessToken}`,
           },
           body: JSON.stringify(body),
         },

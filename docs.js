@@ -5,6 +5,7 @@ import {
   DOCSPAGE_MENU_LIST,
   REQUEST_CARD_LIST,
   ROOT,
+  FREE_DAILY_LIMIT
 } from "./models/models.js";
 // utils:
 import { draw } from "./helpers/helpers.js";
@@ -29,9 +30,14 @@ try {
   const deleteEntityDesc = document.querySelector("#deleteEntityDesc");
   const updateEntityDesc = document.querySelector("#updateEntityDesc");
   const FOOTER = document.querySelector(".footer");
-  
-  const endPointElem = document.querySelector(".endpoint");
-  endPointElem.textContent = "/" + endPoint;
+  const ENDPOINT_ELEM = document.querySelector(".endpoint");
+  const DAILY_LIMIT_ELEM = document.querySelector(".freeDailyLimit");
+
+  // Рендерим текущий эндпоинт в description:
+  ENDPOINT_ELEM.textContent = "/" + endPoint;
+
+  // Рендерим бесплатный дневной лимит в description:
+  DAILY_LIMIT_ELEM.textContent = FREE_DAILY_LIMIT;
 
   // Подключаем тему:
   new Theme({ trigger: ".theme", root: ROOT });
