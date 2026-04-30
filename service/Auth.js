@@ -121,7 +121,7 @@ class Auth {
     }
 
     Object.keys(this.state)
-      .filter((inputName) => inputName !== "notification")
+      // .filter((inputName) => inputName !== "notification")
       .some((inputName) => !this.state[inputName])
       ? (this.submitBtn.disabled = true)
       : (this.submitBtn.disabled = false);

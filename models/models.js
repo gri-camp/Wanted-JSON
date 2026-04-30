@@ -748,8 +748,8 @@ const SIGN_UP_FORM_ELEMS_LIST = [
   },
   {
     type: "checkbox",
-    placeholder: "согласие на получение уведомлений!",
-    name: "notification",
+    placeholder: "<a href='./privacyPolicy.html'>политика обработки персональных данных</a>",
+    name: "privacyPolicy",
     errorMsg: null,
     regExp: null,
     tabindex: 5,
