@@ -1,7 +1,7 @@
 // consts:
 import { ROOT } from "./models/models.js";
 // utils:
-import { draw } from "./helpers/helpers.js";
+import { draw, isUserSignedIn } from "./helpers/helpers.js";
 // service classes:
 import Components from "./service/Components.js";
 import { Theme } from "./service/Theme.js";
@@ -16,4 +16,4 @@ new Theme({ trigger: ".theme", root: ROOT });
 draw(FOOTER, Components.FOOTER());
 
 // !Отрисовка Профайла пользователя:
-Profile.isUserSignedIn(document.querySelector(".appContainer"), 'profile') && new Profile().template();
+isUserSignedIn(document.querySelector(".appContainer"), 'profile') && new Profile().template();

@@ -3,15 +3,15 @@ import {
   getDataFromLS,
   getHTMLFromList,
   setDataToLS,
+  isUserSignedIn
 } from "../helpers/helpers.js";
 // services
 import Components from "./Components.js";
-import { Profile } from "./Profile.js";
 
 export class Quiz {
   constructor({ list, Component, key }) {
     this.user = getDataFromLS("user");
-    if (!Profile.isUserSignedIn(document.querySelector('.appContainer'), 'quiz')) return false;
+    if (!isUserSignedIn(document.querySelector('.appContainer'), 'quiz')) return false;
     this.container = document.querySelector(".quiz");
     this.restart = document.body.querySelector(".restart");
     this.finish = document.body.querySelector(".finish");

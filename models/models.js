@@ -1,3 +1,14 @@
+const FREE_DAILY_LIMIT = 100;
+const ACCESS_TOKEN_DURATION = 90;
+const SS_AUTH_KEY = 'authorization';
+const SS_NOTICE_KEY = 'notice';
+const SS_ERROR_KEY = 'error';
+const ROOT = document.documentElement;
+const ARROW = '<div class="icon-box"><span class="material-icons-round arrow">east</span></div>';
+const AUTH_ENDPOINTS = ["signin", "signup", "logout", "refresh"];
+const COOKIE_NOTICE = '«Мы используем обязательные cookie с целью обеспечения работоспособности сайта и безопасности Вашей учетной записи. \n Cookie хранятся с момента авторизации пользователя и до момента выхода последнего из своей учетной записи!»';
+const AUTHORIZATION_NOTICE = `AccessToken действует ${ACCESS_TOKEN_DURATION} минут(ы). По истечении этого времени, Вы можете вручную обновить токен в профиле пользователя.`
+
 const API_CONSTS = {
   PROTOCOL: "https",
   HOST: "api.wantedjson.ru",
@@ -27,13 +38,6 @@ const LOCALE_OPTIONS = {
   year: "numeric",
 };
 
-const FREE_DAILY_LIMIT = 100;
-const ACCESS_TOKEN_DURATION = 90;
-
-const ROOT = document.documentElement;
-const ARROW = '<div class="icon-box"><span class="material-icons-round arrow">east</span></div>';
-
-const AUTH_ENDPOINTS = ["signin", "signup", "logout", "refresh"];
 
 const URLS = {
   getEntities: (host, ep = "${endpoint}") =>
@@ -740,7 +744,7 @@ const SIGN_UP_FORM_ELEMS_LIST = [
   },
   {
     type: "checkbox",
-    placeholder: "согласие на обработку персональных данных!",
+    placeholder: "согласие на обработку персональных данных",
     name: "agreement",
     errorMsg: null,
     regExp: null,
@@ -748,7 +752,7 @@ const SIGN_UP_FORM_ELEMS_LIST = [
   },
   {
     type: "checkbox",
-    placeholder: "<a href='./privacyPolicy.html'>политика обработки персональных данных</a>",
+    placeholder: "политика обработки персональных данных",
     name: "privacyPolicy",
     errorMsg: null,
     regExp: null,
@@ -818,4 +822,9 @@ export {
   URLS,
   USER_MENU_LIST,
   ACCESS_TOKEN_DURATION,
+  SS_AUTH_KEY,
+  SS_NOTICE_KEY,
+  SS_ERROR_KEY,
+  COOKIE_NOTICE,
+  AUTHORIZATION_NOTICE
 };

@@ -12,6 +12,8 @@ import {
   ROOT,
   SIGN_IN_FORM_ELEMS_LIST,
   USER_MENU_LIST,
+  SS_NOTICE_KEY,
+  COOKIE_NOTICE
 } from "./models/models.js";
 // utils:
 import { draw, getHTMLFromList } from "./helpers/helpers.js";
@@ -24,6 +26,7 @@ import { Observer } from "./service/Observer.js";
 import { Request } from "./service/Request.js";
 import { Theme } from "./service/Theme.js";
 import { UpwardButton } from "./service/UpWardButton.js";
+import { Notice } from "./service/Notice.js";
 
 try {
   const USER_MENU = document.querySelector(".user-menu");
@@ -113,7 +116,10 @@ try {
     actionTrigger: ".signin-icon",
   });
 
-  Api.addEntity("cars", {brand: 'hui', model: 'hui', country: 'hui', modelYear: 1988}).then((a) => console.log(a));
+  // ! Проверка уведомлений
+  new Notice({Component: Components.NOTICE_MODAL, key: SS_NOTICE_KEY}).noticeModalShow(COOKIE_NOTICE, 0)
+
+  // Api.addEntity("cars", {brand: 'hui', model: 'hui', country: 'hui', modelYear: 1988}).then((a) => console.log(a));
 } catch (error) {
   console.warn(error.message, error.name);
 }

@@ -1,14 +1,16 @@
-import { draw } from "../helpers/helpers.js";
+import { draw, getDataFromSS, setDataToSS } from "../helpers/helpers.js";
+
 
 class Notice {
-  constructor({ msg, styleString = "", Component }) {
+  constructor({styleString = "", Component, key }) {
     this.body = document.body;
     this.noticeModalExit = null;
     this.noticeModal = null;
-    this.msg = msg;
+    this.noticeModalText = null;
+    // logic
+    this.key = key
     this.Component = Component;
     this.styleString = styleString;
-
     this.templator(this.body, this.msg, this.styleString, this.Component);
   }
 
@@ -22,15 +24,19 @@ class Notice {
   }
 
   render(body, Component, msg) {
-    draw(body, Component(msg));
+    draw(body, Component());
     this.noticeModal = body.querySelector(".noticeModal");
     this.noticeModalExit = this.noticeModal.querySelector(".noticeModal-exit");
+    this.noticeModalText = this.noticeModal.querySelector(".noticeModal-text");
     return this;
   }
 
-  noticeModalShow(delay) {
+  noticeModalShow(msg, delay) {
+    if(getDataFromSS(this.key)) return;
+    setDataToSS(this.key, msg);
     setTimeout(() => {
-      this.noticeModal.classList.toggle("active");
+      this.noticeModalText.textContent = msg;
+      this.noticeModal.classList.toggle("active");      
     }, delay);
     return this;
   }

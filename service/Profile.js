@@ -6,8 +6,8 @@ import {
   getActualUserAuthParams,
   getDataFromLS,
   getTokenDeathTimeValue,
-  setDataToLS,
 } from "../helpers/helpers.js";
+import { SS_ERROR_KEY } from "../models/models.js";
 // service classes:
 import Api from "./Api.js";
 import { Auth } from "./Auth.js";
@@ -29,6 +29,10 @@ class Profile {
     this.remainElem = null;
     this.resetAtElem = null;
     // ! LOGIC
+    this.notice = new Notice({
+      Component: Components.NOTICE_MODAL,
+      key: SS_ERROR_KEY,
+    });
     this.subscribers = [];
     this.user = getDataFromLS("user");
   }
@@ -71,19 +75,6 @@ class Profile {
     this.limitElem = container.querySelector(".limit-section-data-limit code");
   }
 
-  static isUserSignedIn(container, page) {
-    if (!getDataFromLS("user")?.accessToken) {
-      page !== "index" ? this.showUnregisteredHTML(container, page) : "";
-      return false;
-    }
-    return true;
-  }
-
-  static showUnregisteredHTML(container) {
-    container.innerHTML = `<h1 class='h1'>Вы не вошли в систему</h1>`;
-    window.setTimeout(() => location.replace("./main.html"), 2000);
-  }
-
   async getActualUserParams() {
     await getActualUserAuthParams();
     this.user = getDataFromLS("user");
@@ -91,7 +82,7 @@ class Profile {
 
   async updateReqLimits(remainElem, usedElem, resetAtElem, limitElem) {
     this.spinner.classList.toggle("active");
-    let { requestLimit } = await Api.getEntities("athletes", "country=россия");    
+    let { requestLimit } = await Api.getEntities("athletes", "country=россия");
     this.spinner.classList.toggle("active");
     this.renderLimitsData(remainElem, usedElem, resetAtElem, limitElem, {
       remaining: requestLimit?.remaining,
@@ -139,10 +130,8 @@ class Profile {
         );
         this.refreshButton.disabled = true;
       } catch (e) {
-        new Notice({
-          msg: e.message,
-          Component: Components.NOTICE_MODAL,
-        }).noticeModalShow(100);
+        this.notice.noticeModalShow(e.message, 0);
+        setTimeout(() => sessionStorage.removeItem(this.notice.key), 100);
       }
     }
   }

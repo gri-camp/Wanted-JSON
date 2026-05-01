@@ -51,15 +51,30 @@
     &-popup
         @include popup(flex)
          
-    &-agreemеntPopup
-        @include popup(flex)
+    &-personalDataPopup
+        @include popup(block)
         overflow: auto 
         padding: var(--app-lg-spacing)        
         z-index: 2       
         color: var(--app-default-color)  
 
-        p
-            margin: var(--app-lg-spacing)  
+        p, div
+            font-weight: 300
+            margin: var(--app-lg-spacing)
+        
+        h3
+            text-align: center
+            font-weight: 500
+
+        ul
+            padding: var(--app-lg-spacing)
+            padding-top: 0px
+
+            li
+                font-weight: 300
+                margin-bottom: var(--app-sm-spacing)
+                &:last-child
+                    margin-bottom: 0px    	      
 
     .agreement, .privacyPolicy         
         @include flex-default

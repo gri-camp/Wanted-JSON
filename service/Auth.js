@@ -5,14 +5,14 @@ import {
   fetchAuthRequest,
   getActualUserAuthParams,
   getDataFromLS,
+  isUserSignedIn,
   setDataToLS,
 } from "../helpers/helpers.js";
+import { AUTHORIZATION_NOTICE, SS_AUTH_KEY } from "../models/models.js";
 // service
-import { ACCESS_TOKEN_DURATION } from "../models/models.js";
 import Api from "./Api.js";
 import Components from "./Components.js";
 import { Notice } from "./Notice.js";
-import { Profile } from "./Profile.js";
 
 class Auth {
   constructor({
@@ -22,15 +22,10 @@ class Auth {
     formType = "signup",
     actionTrigger = null,
   }) {
-    Profile.isUserSignedIn(container, "index") && getActualUserAuthParams();
+    isUserSignedIn(container, "index") && getActualUserAuthParams();
     if (!((formType === "signin") | (formType === "signup")))
       throw new Error("Invalid 'formType' param!");
     // ! DOM ELEMENTS
-    this.notice = new Notice({
-      msg: `AccessToken действует ${ACCESS_TOKEN_DURATION} минут(ы). По истечении этого времени, Вы можете вручную обновить токен в профиле пользователя.`,
-      Component: Components.NOTICE_MODAL,
-    });
-    this.textSliceValue = 13;
     this.container = container;
     this.component = component;
     this.form = null;
@@ -38,6 +33,11 @@ class Auth {
     this.spinner = null;
     this.userLogout = document.querySelector(".user-menu-logout");
     // ! LOGIC PROPS -----
+    this.notice = new Notice({
+      Component: Components.NOTICE_MODAL,
+      key: SS_AUTH_KEY,
+    });
+    this.textSliceValue = 13;
     this.debouncedFormFilling = debouncer(this.formFilling, 300);
     this.elements = elements;
     this.formType = formType;
@@ -56,7 +56,7 @@ class Auth {
         : this.showRegisteredUser("login", "", "remove");
     }
     if (this.formType === "signup") {
-      this.agreementPopup = null;
+      this.personalDataPopup = null;
     }
     this.submitBtnValue = this.getSubmitBtnValue(this.formType);
     this.passCompareError = new Error("пароли не совпадают!");
@@ -90,7 +90,7 @@ class Auth {
         .addClickListenerToUserProfile();
 
     formType === "signup" &&
-      this.addClickListenerToAgreementPopup(this.agreementPopup);
+      this.addClickListenerToPersonalDataPopup(this.personalDataPopup);
   }
 
   render(container, component, elements) {
@@ -100,7 +100,9 @@ class Auth {
     this.spinner = this.form.querySelector(".spinner");
     this.visibility = this.form.querySelector(".authForm-visibility");
     if (this.formType === "signup") {
-      this.agreementPopup = document.querySelector(".authForm-agreemеntPopup");
+      this.personalDataPopup = document.querySelector(
+        ".authForm-personalDataPopup",
+      );
     }
     return this;
   }
@@ -120,9 +122,7 @@ class Auth {
       this.state[name] = "";
     }
 
-    Object.keys(this.state)
-      // .filter((inputName) => inputName !== "notification")
-      .some((inputName) => !this.state[inputName])
+    Object.keys(this.state).some((inputName) => !this.state[inputName])
       ? (this.submitBtn.disabled = true)
       : (this.submitBtn.disabled = false);
   };
@@ -147,7 +147,6 @@ class Auth {
       this.submitBtn.nextElementSibling.classList.remove("active");
     }
 
-    // const body = { login: this.state.login, password: this.state.password, notification: this.state.notification };
     const body = { login: this.state.login, password: this.state.password };
 
     this.submitBtn.value = "Загрузка...";
@@ -161,7 +160,8 @@ class Auth {
       this.reset("Вход прошел успешно!");
       return setTimeout(() => {
         this.container.classList.toggle("active");
-        this.notice.noticeModalShow(0);
+        this.notice.noticeModalShow(AUTHORIZATION_NOTICE, 0);
+        setTimeout(() => sessionStorage.removeItem(this.notice.key), 100);
       }, 2000);
     }
     this.reset(response?.message);
@@ -177,7 +177,12 @@ class Auth {
 
   addClickListenerToContainerHandler = (e) => {
     if (e.target.matches(".agreement-trigger")) {
-      return this.agreementPopup.classList.toggle("active");
+      draw(this.personalDataPopup, Components.AGREEMENT());
+      return this.personalDataPopup.classList.toggle("active");
+    }
+    if (e.target.matches(".privacyPolicy-trigger")) {
+      draw(this.personalDataPopup, Components.PRIVACY_POLICE());
+      return this.personalDataPopup.classList.toggle("active");
     }
     if (!e.target.closest("form") && this.formType === "signin") {
       this.container.classList.toggle("active");
@@ -254,8 +259,9 @@ class Auth {
     return this;
   }
 
-  addClickListenerToAgreementPopup(agreementPopup) {
-    agreementPopup.addEventListener("click", function () {
+  addClickListenerToPersonalDataPopup(personalDataPopup) {
+    personalDataPopup.addEventListener("click", function () {
+      this.innerHTML = "";
       this.classList.toggle("active");
     });
   }
