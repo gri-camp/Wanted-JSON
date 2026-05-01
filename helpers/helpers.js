@@ -10,9 +10,11 @@ const getDataFromLS = (key) => JSON.parse(localStorage.getItem(key)) || null;
 
 const setDataToLS = (key, data) => localStorage.setItem(key, JSON.stringify(data));
 
-const getDataFromSS = (key) => JSON.parse(sessionStorage.getItem(key)) || null;
+// const getDataFromSS = (key) => JSON.parse(sessionStorage.getItem(key)) || null;
+// const setDataToSS = (key, data) => sessionStorage.setItem(key, JSON.stringify(data));
 
-const setDataToSS = (key, data) => sessionStorage.setItem(key, JSON.stringify(data));
+const getDataFromSS = (key) => sessionStorage[key] || null;
+const setDataToSS = (key, data) => sessionStorage[key] = data;
 
 async function getActualUserAuthParams() {
   const currentUserParams = getDataFromLS("user");

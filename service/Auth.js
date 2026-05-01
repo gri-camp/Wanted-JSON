@@ -178,10 +178,12 @@ class Auth {
   addClickListenerToContainerHandler = (e) => {
     if (e.target.matches(".agreement-trigger")) {
       draw(this.personalDataPopup, Components.AGREEMENT());
+      document.body.style.overflow = "hidden";
       return this.personalDataPopup.classList.toggle("active");
     }
     if (e.target.matches(".privacyPolicy-trigger")) {
       draw(this.personalDataPopup, Components.PRIVACY_POLICE());
+      document.body.style.overflow = "hidden";
       return this.personalDataPopup.classList.toggle("active");
     }
     if (!e.target.closest("form") && this.formType === "signin") {
@@ -263,6 +265,7 @@ class Auth {
     personalDataPopup.addEventListener("click", function () {
       this.innerHTML = "";
       this.classList.toggle("active");
+      document.body.style.overflow = "";
     });
   }
 

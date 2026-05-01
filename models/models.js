@@ -1,13 +1,15 @@
 const FREE_DAILY_LIMIT = 100;
 const ACCESS_TOKEN_DURATION = 90;
-const SS_AUTH_KEY = 'authorization';
-const SS_NOTICE_KEY = 'notice';
-const SS_ERROR_KEY = 'error';
+const SS_AUTH_KEY = "authorization";
+const SS_NOTICE_KEY = "notice";
+const SS_ERROR_KEY = "error";
 const ROOT = document.documentElement;
-const ARROW = '<div class="icon-box"><span class="material-icons-round arrow">east</span></div>';
+const ARROW =
+  '<div class="icon-box"><span class="material-icons-round arrow">east</span></div>';
 const AUTH_ENDPOINTS = ["signin", "signup", "logout", "refresh"];
-const COOKIE_NOTICE = '«Мы используем обязательные cookie с целью обеспечения работоспособности сайта и безопасности Вашей учетной записи. \n Cookie хранятся с момента авторизации пользователя и до момента выхода последнего из своей учетной записи!»';
-const AUTHORIZATION_NOTICE = `AccessToken действует ${ACCESS_TOKEN_DURATION} минут(ы). По истечении этого времени, Вы можете вручную обновить токен в профиле пользователя.`
+const COOKIE_NOTICE =
+  "«Мы используем обязательные cookie с целью обеспечения работоспособности сайта и безопасности Вашей учетной записи. \n Cookie хранятся с момента авторизации пользователя и до момента его выхода из учетной записи!»";
+const AUTHORIZATION_NOTICE = `AccessToken действует ${ACCESS_TOKEN_DURATION} минут(ы). По истечении этого времени, Вы можете вручную обновить токен в профиле пользователя.`;
 
 const API_CONSTS = {
   PROTOCOL: "https",
@@ -37,7 +39,6 @@ const LOCALE_OPTIONS = {
   month: "long",
   year: "numeric",
 };
-
 
 const URLS = {
   getEntities: (host, ep = "${endpoint}") =>
@@ -797,21 +798,33 @@ const SIGN_IN_FORM_ELEMS_LIST = [
   },
 ];
 
+const requestLimitData = () => `
+    "requestLimit": <span class='purple'>{</span>
+        "limit": 100,
+        "remaining": 95,
+        "used": 5,
+        "resetAt": "2026-04-27"
+    <span class='purple'>}</span>`;
+
 export {
+  ACCESS_TOKEN_DURATION,
   API_CONSTS,
-  FREE_DAILY_LIMIT,
   ARROW,
   AUTH_ENDPOINTS,
+  AUTHORIZATION_NOTICE,
+  COOKIE_NOTICE,
   DOCSPAGE_MENU_LIST,
   DOCUMENTATION_LIST,
   ENTITIES_LIST,
   EXAMPLES_LIST,
   FEATURES_CARD_LIST,
   FILTERING_WHITE_LIST,
+  FREE_DAILY_LIMIT,
   getSchemesToolbarConfig,
+  requestLimitData,
   GETTING_STARTED_CARD_LIST,
   HOMEPAGE_MENU_LIST,
-  LOCALE_OPTIONS, 
+  LOCALE_OPTIONS,
   POST_REQUIRED_FIELDS,
   QUIZ_LINK_LIST,
   REQUEST_CARD_LIST,
@@ -819,12 +832,9 @@ export {
   SIGN_IN_FORM_ELEMS_LIST,
   SIGN_UP_FORM_ELEMS_LIST,
   SORTING_WHITE_LIST,
+  SS_AUTH_KEY,
+  SS_ERROR_KEY,
+  SS_NOTICE_KEY,
   URLS,
   USER_MENU_LIST,
-  ACCESS_TOKEN_DURATION,
-  SS_AUTH_KEY,
-  SS_NOTICE_KEY,
-  SS_ERROR_KEY,
-  COOKIE_NOTICE,
-  AUTHORIZATION_NOTICE
 };

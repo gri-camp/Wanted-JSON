@@ -119,7 +119,8 @@ try {
   // ! Проверка уведомлений
   new Notice({Component: Components.NOTICE_MODAL, key: SS_NOTICE_KEY}).noticeModalShow(COOKIE_NOTICE, 0)
 
-  // Api.addEntity("cars", {brand: 'hui', model: 'hui', country: 'hui', modelYear: 1988}).then((a) => console.log(a));
+  // Api.fakeSignUp("signup", {login: 'lordRaiden', password: 'lordRaiden'}).then((a) => console.log(a));
+  // Api.fakeSignIn("signin", {login: 'lordRaiden', password: 'lordRaiden'}).then((a) => console.log(a));
 } catch (error) {
   console.warn(error.message, error.name);
 }

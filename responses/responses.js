@@ -1,10 +1,4 @@
-const requestLimitData = () => `
-    "requestLimit": <span class='purple'>{</span>
-        "limit": 250,
-        "remaining": 249,
-        "used": 1,
-        "resetAt": "2026-04-27"
-    <span class='purple'>}</span>`;
+import { requestLimitData } from "../models/models.js";
 
 const Responses = {
   books: {
@@ -1051,12 +1045,12 @@ const Responses = {
         "id": 13,
         "login": "foo"
     <strong class='purple'>}</strong>,
-    "message": "Пользователь успешно зарегистрирован. Теперь можно войти в систему."         
+    "message": "Пользователь успешно зарегистрирован. Теперь можно войти в систему.", ${requestLimitData()}        
 <strong class='purple'>}</strong>           
 </code>`,
     logout: `<code>    
 <strong class='purple'>{</strong>
-    "message":"Logged out successfully"         
+    "message":"Logged out successfully", ${requestLimitData()}         
 <strong class='purple'>}</strong>           
 </code>`,
     refresh: `<code>
@@ -1078,7 +1072,7 @@ const Responses = {
         "login": "foo"
     <strong class='purple'>}</strong>,
     "accessToken": "your accessToken",
-    "exp": 1770542402,  // время окончания токена, сек.  
+    "exp": 1770542402, // время окончания токена, сек. ${requestLimitData()}  
 <strong class='purple'>}</strong>           
 </code>`,
     fakeSignup: `<code>    
@@ -1087,13 +1081,13 @@ const Responses = {
         "id": 13,
         "login": "foo"
     <strong class='purple'>}</strong>,
-    "message": "Фейковый пользователь создан. Будет доступен в течение 1 часа.",       
+    "message": "Фейковый пользователь создан. Будет доступен в течение 1 часа.", ${requestLimitData()}        
 <strong class='purple'>}</strong>           
 </code>`,
   },
 };
 
-export { Responses };
+export { Responses, requestLimitData };
 
 
 
