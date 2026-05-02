@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Документация REST API сервиса для получения JSON-данных."
+    />
+    <meta
+      name="keywords"
+      content="JSON данные, Free API, free fake REST API, готовый backend, готовый бэкенд, тестирование и макетирование WEB-приложений,  JSON, REST API, бесплатное API, бесплатный RESTful API, API"
+    />
+    <link rel="icon" href="./icons/logo.svg" type="image/svg+xml" />    
+    <title>Документация RESTful API сервиса.</title>
+  </head>
+  <body>
+    <header class="header">
+      <a class="icon-box mainPageLink" rel="noopener noreferrer">
+        <span class="material-icons-round"> home </span>
+      </a>
+      <div class="theme icon-box">
+        <span class="material-icons-round"></span>
+      </div>
+      <div class="burger">
+        <span class="material-icons-round">menu</span>
+      </div>
+    </header>
+    <main class="appContainer">
+      <!-- SECTION DESCRIPTION  ////////////////////// -->
+      <section class="app-section">
+        <h1 class="h1">Документация для работы с REST API.</h1>
+        <p class="section-text">
+          Ниже описаны схемы запросов
+          <span class="material-icons-round schemes-icon">rocket_launch</span>,
+          ответов
+          <span class="material-icons-round schemes-icon">data_object</span> и
+          ошибок <span class="material-icons-round schemes-icon">error</span> по
+          эндпоинту: <em class="endpoint"></em>. Пример кода для запроса
+          представлен на
+          <dfn
+            title="язык программирования, в основном используемый для веб-разработки. Позволяет создавать динамичные и интерактивные веб-страницы"
+            >JavaScript</dfn
+          >, но Вы можете использовать любой язык для обращения к сервису по
+          протоколу HTTP.
+        </p>
+        <br/>
+        <p class="section-text">
+          Каждый пользователь получает бесплатный суточный лимит в <span class="freeDailyLimit"><!-- Render --></span> запросов, доступный
+          после авторизации и получения API-ключа:
+        </p>
+        <ol class="section-text upgradeRequestLimit">
+          <li>
+            Пройди <a href="./signup.html" class="success">регистрацию</a>;
+          </li>
+          <li>Авторизуйся на сайте и перейди в личный профиль;</li>
+          <li>
+            Скопируй <em>токен доступа</em> вида:
+            <em class="accessToken"
+              >eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjQ3...</em
+            >
+            на странице профиля;
+          </li>
+          <li>
+            Добавь токен в настройки метода выполнения HTTP-запросов - ниже
+            показаны примеры с
+            <dfn
+              class="success"
+              title="современный способ выполнения HTTP‑запросов в JavaScript. Он пришёл на смену XMLHttpRequest и работает на основе промисов, что делает код асинхронным и читаемым."
+            >
+              Fetch API.</dfn
+            >
+          </li>
+        </ol>
+        <br/>
+        <p class="section-text">
+          Для увеличения дневного лимита запроса - обратись в техническую поддержку, написав по адресу: <a href="mailto:mail@wantedjson.ru?body=привет" class="footer-link success" rel="noopener noreferrer" style="display: inline-block;">mail@wantedjson.ru</a>
+        </p>
+      </section>
+      <!-- SECTION URLS  ////////////////////// -->
+      <section id="requests" class="app-section">
+        <h2 class="h2">типы запросов:</h2>
+        <!-- Render -->
+      </section>
+      <!-- SECTION LIMITING  ////////////////////// -->
+      <section id="limiting" class="app-section" title="Лимитированный запрос">
+        <h2 class="h2">лимитирование данных:</h2>
+        <!-- Render -->
+      </section>
+      <!-- SECTION PAGINATION  ////////////////////// -->
+      <section
+        id="pagination"
+        class="app-section"
+        title="Постраничный вывод данных"
+      >
+        <h2 class="h2">пагинация:</h2>
+        <!-- Render -->
+      </section>
+      <!-- SECTION SELECTEDFIELDS  ////////////////////// -->
+      <section
+        id="selectedFields"
+        class="app-section"
+        title="Запрос по выбранным полям"
+      >
+        <h2 class="h2">выборочные данные:</h2>
+        <!-- Render -->
+      </section>
+      <!-- SECTION SORTING  ////////////////////// -->
+      <section
+        id="sorting"
+        class="app-section"
+        title="Сортировка по выбранному полю"
+      >
+        <h2 class="h2">cортировка:</h2>
+        <!-- Render -->
+      </section>
+      <!-- SECTION FILTERING  ////////////////////// -->
+      <section id="filtering" class="app-section" title="Фильтр по полям">
+        <h2 class="h2">фильтр по полю:</h2>
+        <!-- Render -->
+      </section>
+      <!-- SECTION ADD ENTITY  ////////////////////// -->
+      <section
+        id="addEntityDesc"
+        class="app-section"
+        title="Добавление новой сущности"
+      >
+        <h2 class="h2">добавление сущности:</h2>
+        <!-- Render -->
+      </section>
+      <!-- SECTION DELETE ENTITY  ////////////////////// -->
+      <section
+        id="deleteEntityDesc"
+        class="app-section"
+        title="Удаление конкретной сущности"
+      >
+        <h2 class="h2">удаление сущности:</h2>
+        <!-- Render -->
+      </section>
+      <!-- SECTION PATCH ENTITY  ////////////////////// -->
+      <section
+        id="updateEntityDesc"
+        class="app-section"
+        title="Обновление полей сущности"
+      >
+        <h2 class="h2">обновление сущности:</h2>
+        <!-- Render -->
+      </section>
+    </main>
+    <footer class="footer">
+      <!-- JS RENDER  -->
+    </footer>
+  </body>
+</html>
