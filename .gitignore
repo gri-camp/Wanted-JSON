@@ -19,3 +19,7 @@ yarn-error.log*
 # Зависимости
 node_modules/
 bower_components/
+
+# Файлы
+/webpack.config.js
+*.txt
