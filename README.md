@@ -44,4 +44,5 @@
 * студентам и преподавателям — для учебных проектов и демонстрации работы с REST API.
 
 ### Используемые продукты, распространяемые по открытым лицензиям:  
-WANTED JSON
+#### WANTED JSON использует:
+* Иконки Material Design взяты из репозитория [google/material-design-icons](https://github.com/google/material-design-icons), лицензированные под [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0.txt);
