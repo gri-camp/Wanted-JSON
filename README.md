@@ -46,3 +46,4 @@
 ### Используемые продукты, распространяемые по открытым лицензиям:  
 #### WANTED JSON использует:
 * Иконки Material Design взяты из репозитория [google/material-design-icons](https://github.com/google/material-design-icons), лицензированные под [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0.txt);
+* Шрифт **Roboto** используется по лицензии Apache 2.0. Исходный код шрифта доступен в репозитории [google/fonts](https://github.com/google/fonts/tree/main/ofl/roboto) (ветка `main`, директория `ofl/roboto`).;
