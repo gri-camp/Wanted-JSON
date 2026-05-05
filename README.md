@@ -44,7 +44,7 @@
 * студентам и преподавателям — для учебных проектов и демонстрации работы с REST API.
 
 ### Используемые продукты, распространяемые по открытым лицензиям:  
-#### WANTED JSON использует:
+
 * Иконки **Material Design** используется по лицензии [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0.txt) Исходный код шрифта доступен в репозитории [google/material-design-icons](https://github.com/google/material-design-icons);
 * Шрифт **Roboto** используется по лицензии Apache 2.0. Исходный код шрифта доступен в репозитории [google/fonts](https://github.com/google/fonts/tree/main/ofl/roboto);
 * Шрифт **FiraCode** используется по лицензии [SIL Open Font License 1.1](https://github.com/tonsky/FiraCode/blob/master/LICENSE). Исходный код шрифта доступен в репозитории [tonsky/FiraCode](https://github.com/tonsky/FiraCode);
